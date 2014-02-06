@@ -10,4 +10,5 @@ public:
     string getName();
     
     ofPixels pixels;
+    float radius;
 };

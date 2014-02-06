@@ -47,11 +47,16 @@ void testApp::keyReleased(int key){
             stateMachine.changeState("simple");
             break;
         case '2':
-            stateMachine.changeState("line");
-            break;
-        case '3':
             stateMachine.changeState("fatfont");
             break;
+        case '3':
+            stateMachine.changeState("line");
+            break;
+            
+        case 's':
+            grabber.cam.videoSettings();
+            break;
+
         //case '4':
         //    stateMachine.changeState("voronoi");
         //    break;

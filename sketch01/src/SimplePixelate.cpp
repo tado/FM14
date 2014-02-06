@@ -1,6 +1,7 @@
 #include "SimplePixelate.h"
 
 void SimplePixelate::setup(){
+    radius = 8;
 }
 
 void SimplePixelate::update(){
@@ -16,7 +17,6 @@ void SimplePixelate::draw(){
     ofVec2f ratio;
     ratio.x = ofGetWidth() / float(camWidth);
     ratio.y = ofGetHeight() / float(camHeight);
-    float radius = 8;
     ofPushMatrix();
     ofTranslate(radius / 2.0 * ratio.x, radius / 2.0 * ratio.y);
     ofEnableBlendMode(OF_BLENDMODE_ADD);

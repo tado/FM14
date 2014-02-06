@@ -10,4 +10,9 @@ public:
     string getName();
     
     ofPixels pixels;
+    
+    float radius;
+    int num;
+    vector<float> angle;
+    vector<float> length;
 };
