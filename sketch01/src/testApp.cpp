@@ -2,23 +2,25 @@
 #include "SimplePixelate.h"
 #include "LinePixelate.h"
 #include "FatfontPixelate.h"
-#include "Voronoi.h"
+#include "OpticalFlow.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
-    grabber.setup();
+    
+    stateMachine.getSharedData().camSize.x = 320;
+    stateMachine.getSharedData().camSize.y = 240;
     
     //StateMachine
     stateMachine.addState<SimplePixelate>();
     stateMachine.addState<LinePixelate>();
     stateMachine.addState<FatfontPixelate>();
+    stateMachine.addState<OpticalFlow>();
     //stateMachine.addState<Voronoi>();
     stateMachine.changeState("simple");
     
-    stateMachine.getSharedData().camSize.x = 640;
-    stateMachine.getSharedData().camSize.y = 480;
+    grabber.setup();
 }
 
 //--------------------------------------------------------------
@@ -51,6 +53,9 @@ void testApp::keyReleased(int key){
             break;
         case '3':
             stateMachine.changeState("line");
+            break;
+        case '4':
+            stateMachine.changeState("optical");
             break;
             
         case 's':

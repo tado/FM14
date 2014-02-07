@@ -2,6 +2,7 @@
 
 void FatfontPixelate::setup(){
     font.loadFont("Rotunda.otf", 13);
+    radius = 6;
 }
 
 void FatfontPixelate::update(){
@@ -17,7 +18,7 @@ void FatfontPixelate::draw(){
     ofVec2f ratio;
     ratio.x = ofGetWidth() / float(camWidth);
     ratio.y = ofGetHeight() / float(camHeight);
-    float radius = 10;
+
     ofPushMatrix();
     ofTranslate(0, radius * ratio.y);
     if (pixels.size()>0){

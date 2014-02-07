@@ -5,8 +5,9 @@ void LinePixelate::setup(){
     
     int camWidth = getSharedData().camSize.x;
     int camHeight = getSharedData().camSize.y;
-    radius = 3;
-    num = 100000000;
+    radius = 6;
+    num = camWidth * camHeight / radius;
+    cout << "NUM = " << num << endl;
     for (int i = 0; i<num; i++) {
         float a = ofRandom(360);
         float l = ofRandom(10);
@@ -28,7 +29,6 @@ void LinePixelate::draw(){
     ofVec2f ratio;
     ratio.x = ofGetWidth() / float(camWidth);
     ratio.y = ofGetHeight() / float(camHeight);
-    float radius = 5;
     ofTranslate(radius / 2.0 * ratio.x, radius / 2.0 * ratio.y);
     float scale = 0.01;
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
@@ -42,15 +42,17 @@ void LinePixelate::draw(){
                 ofPushMatrix();
                 ofTranslate(i * ratio.x, j * ratio.y);
                 
-                float curAngle = angle[(j * camWidth + i) * 3] + ((r + g + b) * 2.0 - angle[(j * camWidth + i) * 3]) / 80.0;
-                ofRotateZ(curAngle);
-                angle[(j * camWidth + i)*3] = curAngle;
+                int n = j * camWidth / radius + i / radius;
                 
-                float curLength = length[(j * camWidth + i)*3] + ((r + g + b) * radius * ratio.y / 400.0 - length[(j * camWidth + i)*3]) / 20.0;
+                float curAngle = angle[n] + ((r + g + b) * 2.0 - angle[n]) / 80.0;
+                ofRotateZ(curAngle);
+                angle[n] = curAngle;
+                
+                float curLength = length[n] + ((r + g + b) * radius * ratio.y / 1000.0 - length[n]) / 20.0;
                 ofSetColor(r, g, b, 100);
                 //ofRect(0, 0, curLength, curLength * 8.0);
                 ofEllipse(0, 0, curLength, curLength * 12.0);
-                length[(j * camWidth + i) * 3] = curLength;
+                length[n] = curLength;
                 ofPopMatrix();
             }
         }

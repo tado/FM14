@@ -12,4 +12,5 @@ public:
     
     ofPixels pixels;
     ofTrueTypeFont font;
+    float radius;
 };

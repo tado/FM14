@@ -63,11 +63,8 @@
 		18047EAF18A2E02700D11EBC /* SimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18047EAD18A2E02700D11EBC /* SimplePixelate.cpp */; };
 		18047EB318A2E2DF00D11EBC /* GrabCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18047EB118A2E2DF00D11EBC /* GrabCamera.cpp */; };
 		18047EBC18A306EC00D11EBC /* LinePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18047EBA18A306EC00D11EBC /* LinePixelate.cpp */; };
+		1805CC3518A48E950075B192 /* OpticalFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1805CC3318A48E950075B192 /* OpticalFlow.cpp */; };
 		18449EEE18A31F3D00AACF65 /* FatfontPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18449EEC18A31F3D00AACF65 /* FatfontPixelate.cpp */; };
-		1844A03518A3626900AACF65 /* libvoro++_2d32.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1844A02918A3626900AACF65 /* libvoro++_2d32.a */; };
-		1844A03618A3626900AACF65 /* Voronoi2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1844A03018A3626900AACF65 /* Voronoi2D.cpp */; };
-		1844A03718A3626900AACF65 /* ofxVoronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1844A03318A3626900AACF65 /* ofxVoronoi.cpp */; };
-		1844A03A18A3628E00AACF65 /* Voronoi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1844A03818A3628E00AACF65 /* Voronoi.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -327,27 +324,10 @@
 		18047EB718A2EC2000D11EBC /* SharedData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
 		18047EBA18A306EC00D11EBC /* LinePixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinePixelate.cpp; sourceTree = "<group>"; };
 		18047EBB18A306EC00D11EBC /* LinePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePixelate.h; sourceTree = "<group>"; };
+		1805CC3318A48E950075B192 /* OpticalFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpticalFlow.cpp; sourceTree = "<group>"; };
+		1805CC3418A48E950075B192 /* OpticalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpticalFlow.h; sourceTree = "<group>"; };
 		18449EEC18A31F3D00AACF65 /* FatfontPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatfontPixelate.cpp; sourceTree = "<group>"; };
 		18449EED18A31F3D00AACF65 /* FatfontPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatfontPixelate.h; sourceTree = "<group>"; };
-		1844A02218A3626900AACF65 /* c_loops_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = c_loops_2d.hh; sourceTree = "<group>"; };
-		1844A02318A3626900AACF65 /* cell_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cell_2d.hh; sourceTree = "<group>"; };
-		1844A02418A3626900AACF65 /* cell_nc_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cell_nc_2d.hh; sourceTree = "<group>"; };
-		1844A02518A3626900AACF65 /* common.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = common.hh; sourceTree = "<group>"; };
-		1844A02618A3626900AACF65 /* config.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config.hh; sourceTree = "<group>"; };
-		1844A02718A3626900AACF65 /* container_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = container_2d.hh; sourceTree = "<group>"; };
-		1844A02818A3626900AACF65 /* ctr_boundary_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ctr_boundary_2d.hh; sourceTree = "<group>"; };
-		1844A02918A3626900AACF65 /* libvoro++_2d32.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libvoro++_2d32.a"; sourceTree = "<group>"; };
-		1844A02A18A3626900AACF65 /* rad_option.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rad_option.hh; sourceTree = "<group>"; };
-		1844A02B18A3626900AACF65 /* v_base_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = v_base_2d.hh; sourceTree = "<group>"; };
-		1844A02C18A3626900AACF65 /* v_compute_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = v_compute_2d.hh; sourceTree = "<group>"; };
-		1844A02D18A3626900AACF65 /* wall_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wall_2d.hh; sourceTree = "<group>"; };
-		1844A02E18A3626900AACF65 /* worklist_2d.hh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = worklist_2d.hh; sourceTree = "<group>"; };
-		1844A03018A3626900AACF65 /* Voronoi2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voronoi2D.cpp; sourceTree = "<group>"; };
-		1844A03118A3626900AACF65 /* Voronoi2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voronoi2D.h; sourceTree = "<group>"; };
-		1844A03318A3626900AACF65 /* ofxVoronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxVoronoi.cpp; sourceTree = "<group>"; };
-		1844A03418A3626900AACF65 /* ofxVoronoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxVoronoi.h; sourceTree = "<group>"; };
-		1844A03818A3628E00AACF65 /* Voronoi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Voronoi.cpp; sourceTree = "<group>"; };
-		1844A03918A3628E00AACF65 /* Voronoi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Voronoi.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -383,7 +363,6 @@
 				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
 				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
 				18047E5A18A2DF4A00D11EBC /* opencv.a in Frameworks */,
-				1844A03518A3626900AACF65 /* libvoro++_2d32.a in Frameworks */,
 				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
 				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
 				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
@@ -923,85 +902,19 @@
 				18047EB718A2EC2000D11EBC /* SharedData.h */,
 				18047EAE18A2E02700D11EBC /* SimplePixelate.h */,
 				18047EAD18A2E02700D11EBC /* SimplePixelate.cpp */,
-				18047EBB18A306EC00D11EBC /* LinePixelate.h */,
-				18047EBA18A306EC00D11EBC /* LinePixelate.cpp */,
 				18449EED18A31F3D00AACF65 /* FatfontPixelate.h */,
 				18449EEC18A31F3D00AACF65 /* FatfontPixelate.cpp */,
-				1844A03918A3628E00AACF65 /* Voronoi.h */,
-				1844A03818A3628E00AACF65 /* Voronoi.cpp */,
+				18047EBB18A306EC00D11EBC /* LinePixelate.h */,
+				18047EBA18A306EC00D11EBC /* LinePixelate.cpp */,
+				1805CC3418A48E950075B192 /* OpticalFlow.h */,
+				1805CC3318A48E950075B192 /* OpticalFlow.cpp */,
 			);
 			name = states;
-			sourceTree = "<group>";
-		};
-		1844A01E18A3626900AACF65 /* ofxVoronoi */ = {
-			isa = PBXGroup;
-			children = (
-				1844A01F18A3626900AACF65 /* lib */,
-				1844A03218A3626900AACF65 /* src */,
-			);
-			name = ofxVoronoi;
-			path = ../../../addons/ofxVoronoi;
-			sourceTree = "<group>";
-		};
-		1844A01F18A3626900AACF65 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				1844A02018A3626900AACF65 /* Voronoi */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		1844A02018A3626900AACF65 /* Voronoi */ = {
-			isa = PBXGroup;
-			children = (
-				1844A02118A3626900AACF65 /* lib */,
-				1844A02F18A3626900AACF65 /* src */,
-			);
-			path = Voronoi;
-			sourceTree = "<group>";
-		};
-		1844A02118A3626900AACF65 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				1844A02218A3626900AACF65 /* c_loops_2d.hh */,
-				1844A02318A3626900AACF65 /* cell_2d.hh */,
-				1844A02418A3626900AACF65 /* cell_nc_2d.hh */,
-				1844A02518A3626900AACF65 /* common.hh */,
-				1844A02618A3626900AACF65 /* config.hh */,
-				1844A02718A3626900AACF65 /* container_2d.hh */,
-				1844A02818A3626900AACF65 /* ctr_boundary_2d.hh */,
-				1844A02918A3626900AACF65 /* libvoro++_2d32.a */,
-				1844A02A18A3626900AACF65 /* rad_option.hh */,
-				1844A02B18A3626900AACF65 /* v_base_2d.hh */,
-				1844A02C18A3626900AACF65 /* v_compute_2d.hh */,
-				1844A02D18A3626900AACF65 /* wall_2d.hh */,
-				1844A02E18A3626900AACF65 /* worklist_2d.hh */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		1844A02F18A3626900AACF65 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1844A03018A3626900AACF65 /* Voronoi2D.cpp */,
-				1844A03118A3626900AACF65 /* Voronoi2D.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
-		1844A03218A3626900AACF65 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				1844A03318A3626900AACF65 /* ofxVoronoi.cpp */,
-				1844A03418A3626900AACF65 /* ofxVoronoi.h */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				1844A01E18A3626900AACF65 /* ofxVoronoi */,
 				18047E6218A2DF6300D11EBC /* ofxPostProcessing */,
 				18047DDE18A2DF4A00D11EBC /* ofxOpenCv */,
 				18047DA918A2DF1000D11EBC /* ofxCv */,
@@ -1190,7 +1103,6 @@
 				18047DD518A2DF1100D11EBC /* Distance.cpp in Sources */,
 				18047DD918A2DF1100D11EBC /* RunningBackground.cpp in Sources */,
 				18047EAB18A2DF6300D11EBC /* VerticalTiltShifPass.cpp in Sources */,
-				1844A03618A3626900AACF65 /* Voronoi2D.cpp in Sources */,
 				18047E9918A2DF6300D11EBC /* DofAltPass.cpp in Sources */,
 				18047DDA18A2DF1100D11EBC /* Tracker.cpp in Sources */,
 				18047E9718A2DF6300D11EBC /* ContrastPass.cpp in Sources */,
@@ -1199,6 +1111,7 @@
 				18449EEE18A31F3D00AACF65 /* FatfontPixelate.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				18047DD418A2DF1100D11EBC /* ContourFinder.cpp in Sources */,
+				1805CC3518A48E950075B192 /* OpticalFlow.cpp in Sources */,
 				18047DA118A2DF0800D11EBC /* ofxBaseGui.cpp in Sources */,
 				18047EA518A2DF6300D11EBC /* PostProcessing.cpp in Sources */,
 				18047EA418A2DF6300D11EBC /* PixelatePass.cpp in Sources */,
@@ -1225,14 +1138,12 @@
 				18047E5E18A2DF4A00D11EBC /* ofxCvGrayscaleImage.cpp in Sources */,
 				18047EA218A2DF6300D11EBC /* LUTPass.cpp in Sources */,
 				18047EA818A2DF6300D11EBC /* RimHighlightingPass.cpp in Sources */,
-				1844A03718A3626900AACF65 /* ofxVoronoi.cpp in Sources */,
 				18047DA718A2DF0800D11EBC /* ofxSliderGroup.cpp in Sources */,
 				18047E6118A2DF4A00D11EBC /* ofxCvShortImage.cpp in Sources */,
 				18047DA318A2DF0800D11EBC /* ofxGuiGroup.cpp in Sources */,
 				18047EAA18A2DF6300D11EBC /* ToonPass.cpp in Sources */,
 				18047E5B18A2DF4A00D11EBC /* ofxCvColorImage.cpp in Sources */,
 				18047DDB18A2DF1100D11EBC /* Utilities.cpp in Sources */,
-				1844A03A18A3628E00AACF65 /* Voronoi.cpp in Sources */,
 				18047EAF18A2E02700D11EBC /* SimplePixelate.cpp in Sources */,
 				18047DDC18A2DF1100D11EBC /* Wrappers.cpp in Sources */,
 				18047E9C18A2DF6300D11EBC /* FakeSSSPass.cpp in Sources */,
@@ -1407,7 +1318,7 @@
 					/Users/tado/Documents/openFrameworks/of_v0.8.0_osx_release/addons/ofxVoronoi/lib/Voronoi/lib,
 				);
 				PRODUCT_NAME = Fyama_SketchDebug;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.8;
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/ofxCv/include/ ../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/ofxCv/include/";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1425,6 +1336,7 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = NONE;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
@@ -1496,7 +1408,7 @@
 					/Users/tado/Documents/openFrameworks/of_v0.8.0_osx_release/addons/ofxVoronoi/lib/Voronoi/lib,
 				);
 				PRODUCT_NAME = Fyama_Sketch;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.8;
 				USER_HEADER_SEARCH_PATHS = "../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/ofxCv/include/ ../../../addons/ofxOpenCv/libs/opencv/include/ ../../../addons/ofxCv/libs/ofxCv/include/";
 				WRAPPER_EXTENSION = app;
 			};

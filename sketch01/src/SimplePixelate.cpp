@@ -1,7 +1,7 @@
 #include "SimplePixelate.h"
 
 void SimplePixelate::setup(){
-    radius = 8;
+    radius = 4;
 }
 
 void SimplePixelate::update(){
