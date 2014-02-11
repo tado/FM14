@@ -5,7 +5,7 @@ void LinePixelate::setup(){
     
     int camWidth = getSharedData().camSize.x;
     int camHeight = getSharedData().camSize.y;
-    radius = 6;
+    radius = 4;
     num = camWidth * camHeight / radius;
     cout << "NUM = " << num << endl;
     for (int i = 0; i<num; i++) {
@@ -49,7 +49,7 @@ void LinePixelate::draw(){
                 angle[n] = curAngle;
                 
                 float curLength = length[n] + ((r + g + b) * radius * ratio.y / 1000.0 - length[n]) / 20.0;
-                ofSetColor(r, g, b, 100);
+                ofSetColor(r, g, b, 200);
                 //ofRect(0, 0, curLength, curLength * 8.0);
                 ofEllipse(0, 0, curLength, curLength * 12.0);
                 length[n] = curLength;

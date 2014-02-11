@@ -8,6 +8,7 @@
 void testApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
+    ofSetBackgroundAuto(false);
     
     stateMachine.getSharedData().camSize.x = 320;
     stateMachine.getSharedData().camSize.y = 240;

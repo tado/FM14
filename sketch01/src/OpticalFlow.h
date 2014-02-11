@@ -9,6 +9,7 @@
 class OpticalFlow : public itg::ofxState<SharedData>{
     
 public:
+    void stateEnter();
     void setup();
     void update();
     void draw();

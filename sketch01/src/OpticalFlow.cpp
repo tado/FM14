@@ -4,6 +4,12 @@
 using namespace ofxCv;
 using namespace cv;
 
+void OpticalFlow::stateEnter(){
+    ofSetColor(0);
+    ofRectMode(OF_RECTMODE_CORNER);
+    ofRect(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight());
+}
+
 void OpticalFlow::setup() {
     // GUI
     gui.setup();
@@ -52,12 +58,18 @@ void OpticalFlow::update() {
 }
 
 void OpticalFlow::draw() {
-    ofBackground(0);
-    
-    ofSetColor(255, 0, 255);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    //ofBackground(0,2);
+    ofRectMode(OF_RECTMODE_CORNER);
+    ofSetColor(0, 8);
+    ofRect(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight());
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetColor(0,127,255,127);
+    ofSetLineWidth(3);
     curFlow->draw(0,0,ofGetWidth(),ofGetHeight());
     
-    gui.draw();
+    ofDisableBlendMode();
+    //gui.draw();
 }
 
 string OpticalFlow::getName(){
