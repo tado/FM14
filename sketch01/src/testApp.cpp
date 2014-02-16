@@ -3,6 +3,8 @@
 #include "LinePixelate.h"
 #include "FatfontPixelate.h"
 #include "OpticalFlow.h"
+#include "CvParticle.h"
+#include "ColorDot.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -18,6 +20,8 @@ void testApp::setup(){
     stateMachine.addState<LinePixelate>();
     stateMachine.addState<FatfontPixelate>();
     stateMachine.addState<OpticalFlow>();
+    stateMachine.addState<CvParticle>();
+    stateMachine.addState<ColorDot>();
     //stateMachine.addState<Voronoi>();
     stateMachine.changeState("simple");
     
@@ -58,7 +62,9 @@ void testApp::keyReleased(int key){
         case '4':
             stateMachine.changeState("optical");
             break;
-            
+        case '5':
+            stateMachine.changeState("dot");
+            break;
         case 's':
             grabber.cam.videoSettings();
             break;

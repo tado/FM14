@@ -64,6 +64,9 @@
 		18047EB318A2E2DF00D11EBC /* GrabCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18047EB118A2E2DF00D11EBC /* GrabCamera.cpp */; };
 		18047EBC18A306EC00D11EBC /* LinePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18047EBA18A306EC00D11EBC /* LinePixelate.cpp */; };
 		1805CC3518A48E950075B192 /* OpticalFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1805CC3318A48E950075B192 /* OpticalFlow.cpp */; };
+		1808554D18AA0EB900D677B6 /* CvParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1808554B18AA0EB900D677B6 /* CvParticle.cpp */; };
+		1808555018AB093800D677B6 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1808554E18AB093800D677B6 /* Particle.cpp */; };
+		18314E4418B16FDD00F1DCC3 /* ColorDot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18314E4218B16FDD00F1DCC3 /* ColorDot.cpp */; };
 		18449EEE18A31F3D00AACF65 /* FatfontPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18449EEC18A31F3D00AACF65 /* FatfontPixelate.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -326,6 +329,12 @@
 		18047EBB18A306EC00D11EBC /* LinePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePixelate.h; sourceTree = "<group>"; };
 		1805CC3318A48E950075B192 /* OpticalFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpticalFlow.cpp; sourceTree = "<group>"; };
 		1805CC3418A48E950075B192 /* OpticalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpticalFlow.h; sourceTree = "<group>"; };
+		1808554B18AA0EB900D677B6 /* CvParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CvParticle.cpp; sourceTree = "<group>"; };
+		1808554C18AA0EB900D677B6 /* CvParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CvParticle.h; sourceTree = "<group>"; };
+		1808554E18AB093800D677B6 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		1808554F18AB093800D677B6 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		18314E4218B16FDD00F1DCC3 /* ColorDot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorDot.cpp; sourceTree = "<group>"; };
+		18314E4318B16FDD00F1DCC3 /* ColorDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorDot.h; sourceTree = "<group>"; };
 		18449EEC18A31F3D00AACF65 /* FatfontPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatfontPixelate.cpp; sourceTree = "<group>"; };
 		18449EED18A31F3D00AACF65 /* FatfontPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatfontPixelate.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -908,6 +917,10 @@
 				18047EBA18A306EC00D11EBC /* LinePixelate.cpp */,
 				1805CC3418A48E950075B192 /* OpticalFlow.h */,
 				1805CC3318A48E950075B192 /* OpticalFlow.cpp */,
+				1808554C18AA0EB900D677B6 /* CvParticle.h */,
+				1808554B18AA0EB900D677B6 /* CvParticle.cpp */,
+				18314E4318B16FDD00F1DCC3 /* ColorDot.h */,
+				18314E4218B16FDD00F1DCC3 /* ColorDot.cpp */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -992,6 +1005,8 @@
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				18047EB218A2E2DF00D11EBC /* GrabCamera.h */,
 				18047EB118A2E2DF00D11EBC /* GrabCamera.cpp */,
+				1808554F18AB093800D677B6 /* Particle.h */,
+				1808554E18AB093800D677B6 /* Particle.cpp */,
 				18047EB018A2E19D00D11EBC /* states */,
 			);
 			path = src;
@@ -1094,6 +1109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18047E9618A2DF6300D11EBC /* BloomPass.cpp in Sources */,
+				1808555018AB093800D677B6 /* Particle.cpp in Sources */,
 				18047E9E18A2DF6300D11EBC /* GodRaysPass.cpp in Sources */,
 				18047DD318A2DF1100D11EBC /* Calibration.cpp in Sources */,
 				18047E9818A2DF6300D11EBC /* ConvolutionPass.cpp in Sources */,
@@ -1110,6 +1126,7 @@
 				18047DD118A2DF1100D11EBC /* ETF.cpp in Sources */,
 				18449EEE18A31F3D00AACF65 /* FatfontPixelate.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				1808554D18AA0EB900D677B6 /* CvParticle.cpp in Sources */,
 				18047DD418A2DF1100D11EBC /* ContourFinder.cpp in Sources */,
 				1805CC3518A48E950075B192 /* OpticalFlow.cpp in Sources */,
 				18047DA118A2DF0800D11EBC /* ofxBaseGui.cpp in Sources */,
@@ -1128,6 +1145,7 @@
 				18047E5F18A2DF4A00D11EBC /* ofxCvHaarFinder.cpp in Sources */,
 				18047DA518A2DF0800D11EBC /* ofxPanel.cpp in Sources */,
 				18047E9A18A2DF6300D11EBC /* DofPass.cpp in Sources */,
+				18314E4418B16FDD00F1DCC3 /* ColorDot.cpp in Sources */,
 				18047DD718A2DF1100D11EBC /* Helpers.cpp in Sources */,
 				18047DD818A2DF1100D11EBC /* ObjectFinder.cpp in Sources */,
 				18047DA218A2DF0800D11EBC /* ofxButton.cpp in Sources */,

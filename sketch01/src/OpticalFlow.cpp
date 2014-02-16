@@ -6,8 +6,8 @@ using namespace cv;
 
 void OpticalFlow::stateEnter(){
     ofSetColor(0);
-    ofRectMode(OF_RECTMODE_CORNER);
-    ofRect(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight());
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 void OpticalFlow::setup() {
@@ -59,16 +59,18 @@ void OpticalFlow::update() {
 
 void OpticalFlow::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    //ofBackground(0,2);
-    ofRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 8);
-    ofRect(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight());
+    //ofEnableSmoothing();
+    ofSetRectMode(OF_RECTMODE_CORNER);
+    ofSetColor(0, 15);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    //ofRect(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight());
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetColor(0,127,255,127);
+    ofSetColor(255,127);
     ofSetLineWidth(3);
     curFlow->draw(0,0,ofGetWidth(),ofGetHeight());
-    
     ofDisableBlendMode();
+    //ofDisableSmoothing();
+
     //gui.draw();
 }
 

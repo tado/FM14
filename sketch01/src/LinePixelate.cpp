@@ -50,8 +50,8 @@ void LinePixelate::draw(){
                 
                 float curLength = length[n] + ((r + g + b) * radius * ratio.y / 1000.0 - length[n]) / 20.0;
                 ofSetColor(r, g, b, 200);
-                //ofRect(0, 0, curLength, curLength * 8.0);
-                ofEllipse(0, 0, curLength, curLength * 12.0);
+                ofRect(0, 0, curLength, curLength * 8.0);
+                //ofEllipse(0, 0, curLength, curLength * 12.0);
                 length[n] = curLength;
                 ofPopMatrix();
             }
