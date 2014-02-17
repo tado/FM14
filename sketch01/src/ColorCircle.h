@@ -17,8 +17,8 @@ public:
         live = true;
         bornTime = ofGetElapsedTimef();
         radius = 0;
-        lifeLength = ofRandom(0.1, 1.0);
-        speed = 2.0;
+        lifeLength = ofRandom(0.02,0.1);
+        speed = 4.0;
     }
     void update(){
         radius += speed;
@@ -27,8 +27,28 @@ public:
         }
     }
     void draw(){
-        ofSetColor(ofColor(color));
-        ofCircle(pos.x, pos.y, radius);
+        ofColor c;
+        int h = color.getHue();
+        int b = color.getBrightness();
+        
+        ofSetColor(b);
+        ofCircle(pos.x, pos.y, radius * b / 180);
+        
+        c.setHsb(h, 31, b);
+        ofSetColor(c);
+        ofCircle(pos.x, pos.y, radius*1.0);
+        
+        ofSetColor(color);
+        ofCircle(pos.x, pos.y, radius*0.8);
+
+        /*
+        c.setHsb(h, 10, b);
+        ofSetColor(c);
+        ofCircle(pos.x, pos.y, radius*0.5);
+        
+        ofSetColor(b);
+        ofCircle(pos.x, pos.y, radius * b / 1000.0);
+         */
     }
 };
 

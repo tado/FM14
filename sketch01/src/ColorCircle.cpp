@@ -17,6 +17,7 @@ void ColorCircle::update(){
     for(std::vector<MyCircle *>::iterator it = circles.begin(); it != circles.end(); ++it) {
         (*it)->update();
         if ((*it)->live == false) {
+            delete (*it);
             it = circles.erase(it);
         }
     }
