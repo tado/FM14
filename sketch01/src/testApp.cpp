@@ -5,6 +5,7 @@
 #include "OpticalFlow.h"
 #include "CvParticle.h"
 #include "ColorDot.h"
+#include "ColorCircle.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -22,6 +23,7 @@ void testApp::setup(){
     stateMachine.addState<OpticalFlow>();
     stateMachine.addState<CvParticle>();
     stateMachine.addState<ColorDot>();
+    stateMachine.addState<ColorCircle>();
     //stateMachine.addState<Voronoi>();
     stateMachine.changeState("simple");
     
@@ -63,7 +65,7 @@ void testApp::keyReleased(int key){
             stateMachine.changeState("optical");
             break;
         case '5':
-            stateMachine.changeState("dot");
+            stateMachine.changeState("circle");
             break;
         case 's':
             grabber.cam.videoSettings();

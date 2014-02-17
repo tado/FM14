@@ -65,7 +65,7 @@ void OpticalFlow::draw() {
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     //ofRect(ofGetWidth()/2, ofGetHeight()/2, ofGetWidth(), ofGetHeight());
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetColor(255,127);
+    ofSetColor(31,127,255,127);
     ofSetLineWidth(3);
     curFlow->draw(0,0,ofGetWidth(),ofGetHeight());
     ofDisableBlendMode();
