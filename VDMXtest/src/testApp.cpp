@@ -18,27 +18,6 @@ void testApp::setup(){
     dirIdx = -1;
 }
 
-void testApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg){
-    for( auto& dir : arg.servers ){
-        ofLogNotice("ofxSyphonServerDirectory Server Announced")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
-    }
-    dirIdx = 0;
-}
-
-void testApp::serverUpdated(ofxSyphonServerDirectoryEventArgs &arg){
-    for( auto& dir : arg.servers ){
-        ofLogNotice("ofxSyphonServerDirectory Server Updated")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
-    }
-    dirIdx = 0;
-}
-
-void testApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg){
-    for( auto& dir : arg.servers ){
-        ofLogNotice("ofxSyphonServerDirectory Server Retired")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
-    }
-    dirIdx = 0;
-}
-
 //--------------------------------------------------------------
 void testApp::update(){
     
@@ -50,7 +29,9 @@ void testApp::draw(){
     ofColor(255, 255, 255, 255);
     ofEnableAlphaBlending();
     
+    // Check for valid index
     if(dir.isValidIndex(dirIdx)){
+        // Get Video from Syphon in
         ofSetColor(255);
         fboSyphonIn.begin();
         {
@@ -61,7 +42,7 @@ void testApp::draw(){
         fboSyphonIn.getTextureReference().readToPixels(pix);
         pix.resize(640, 480);
         
-        //fboSyphonOut.begin();
+        // Draw to Syphon out
         int radius = 20;
         ofVec2f scale;
         scale.x = ofGetWidth() / float(pix.getWidth());
@@ -77,19 +58,18 @@ void testApp::draw(){
                 unsigned char b = pixels[(j * int(pix.getWidth()) + i)*3+2];
                 
                 ofSetColor(255, 0, 0, 180);
-                ofRect((i - radius / 4.0) * scale.x, j * scale.y,radius*(float)r/255.0 * scale.x, radius*(float)r/255.0 * scale.x);
+                //ofRect((i - radius / 4.0) * scale.x, j * scale.y,radius*(float)r/255.0 * scale.x, radius*(float)r/255.0 * scale.x);
+                ofCircle((i - radius / 4.0) * scale.x, j * scale.y,radius*(float)r/255.0 * scale.x);
                 ofSetColor(0, 255, 0, 180);
-                ofRect(i * scale.x, j * scale.y, radius*(float)g/255.0 * scale.x, radius*(float)g/255.0 * scale.x);
+                //ofRect(i * scale.x, j * scale.y, radius*(float)g/255.0 * scale.x, radius*(float)g/255.0 * scale.x);
+                ofCircle(i * scale.x, j * scale.y, radius*(float)g/255.0 * scale.x);
                 ofSetColor(0, 0, 255, 180);
-                ofRect((i + radius / 4.0) * scale.x, j * scale.y, radius*(float)b/255.0 * scale.x, radius*(float)b/255.0 * scale.x);
+                //ofRect((i + radius / 4.0) * scale.x, j * scale.y, radius*(float)b/255.0 * scale.x, radius*(float)b/255.0 * scale.x);
+                ofCircle((i + radius / 4.0) * scale.x, j * scale.y, radius*(float)b/255.0 * scale.x);
                 
             }
         }
         ofSetRectMode(OF_RECTMODE_CORNER);
-        //fboSyphonOut.end();
-        //ofSetColor(255);
-        //fboSyphonOut.draw(0, 0); //4. draw the texture to the OF screen - this is optional since we have our texture now...it can just be sent back out
-        //server.publishTexture(&fboSyphonOut.getTextureReference());
         server.publishScreen();
         ofDisableBlendMode();
     }
@@ -117,6 +97,28 @@ void testApp::keyPressed(int key){
         appName = "null";
     }
     ofSetWindowTitle(serverName + ":" + appName);
+}
+
+// Syphon Events
+void testApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg){
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Announced")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+void testApp::serverUpdated(ofxSyphonServerDirectoryEventArgs &arg){
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Updated")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+void testApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg){
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Retired")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
 }
 
 //--------------------------------------------------------------
