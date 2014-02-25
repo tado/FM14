@@ -6,6 +6,7 @@
 #include "CvParticle.h"
 #include "ColorDot.h"
 #include "ColorCircle.h"
+#include "OpCircle.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -24,7 +25,7 @@ void testApp::setup(){
     stateMachine.addState<CvParticle>();
     stateMachine.addState<ColorDot>();
     stateMachine.addState<ColorCircle>();
-    //stateMachine.addState<Voronoi>();
+    stateMachine.addState<OpCircle>();
     stateMachine.changeState("simple");
     
     grabber.setup();
@@ -66,6 +67,9 @@ void testApp::keyReleased(int key){
             break;
         case '5':
             stateMachine.changeState("circle");
+            break;
+        case '6':
+            stateMachine.changeState("opciecle");
             break;
         case 's':
             grabber.cam.videoSettings();
