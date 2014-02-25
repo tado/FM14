@@ -5,6 +5,7 @@ using namespace ofxCv;
 using namespace cv;
 
 void OpParticle::stateEnter(){
+    ofDisableBlendMode();
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
@@ -33,7 +34,6 @@ void OpParticle::update() {
         farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
         ofVideoGrabber cam = ((testApp*)ofGetAppPtr())->grabber.cam;
         farneback.calcOpticalFlow(cam);
-
         getSharedData().camTexture.readToPixels(pixels);
     }
 }
@@ -43,9 +43,8 @@ void OpParticle::draw() {
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0, 7);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
+
     ofSetCircleResolution(32);
-    
     int camWidth = getSharedData().camSize.x;
     int camHeight = getSharedData().camSize.y;
     
@@ -54,7 +53,7 @@ void OpParticle::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int skip = 4;
+        int skip = 1;
         for (int i = 0; i < 2000; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
@@ -66,18 +65,11 @@ void OpParticle::draw() {
             unsigned char g = pixels[n + 1];
             unsigned char b = pixels[n + 2];
             ofSetColor(r, g, b);
-            /*
-            if (abs(radius) > 10) {
-                radius = 10;
-            }
-             */
             ofCircle(x + ofRandom(-skip,skip), y + ofRandom(-skip,skip), radius);
         }
         ofPopMatrix();
     }
-    
     ofDisableBlendMode();
-    //gui.draw();
 }
 
 string OpParticle::getName(){
