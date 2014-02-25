@@ -41,13 +41,10 @@ void OpCircle::update() {
 
 void OpCircle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 5);
+    ofSetColor(0, 15);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    
     //ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetColor(31,127,255,127);
     
     int camWidth = getSharedData().camSize.x;
     int camHeight = getSharedData().camSize.y;
@@ -57,17 +54,23 @@ void OpCircle::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int skip = 6;
-        for (int j = 0; j < farneback.getHeight()-skip; j += skip) {
-            for (int i = 0; i < farneback.getWidth()-skip; i += skip) {
+        int skip = 8;
+        for (int j = 0; j < farneback.getHeight(); j += skip) {
+            for (int i = 0; i < farneback.getWidth(); i += skip) {
                 ofRectangle region = ofRectangle(i, j, skip, skip);
-                ofVec2f avrage = farneback.getAverageFlowInRegion(region);
+                ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
+                float radius = avrage.x + avrage.y;
                 int n = ((j * camWidth + i) * 3) * camWidth / farneback.getWidth();
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
                 unsigned char b = pixels[n + 2];
-                ofSetColor(r, g, b, 63);
-                ofCircle(i, j, avrage.x + avrage.y);
+                ofSetColor(r, g, b);
+                if (abs(radius) > skip / 2.0) {
+                    radius = skip/2.0;
+                }
+                ofCircle(i+skip/2.0, j+skip/2.0, radius);
+                //ofSetRectMode(OF_RECTMODE_CENTER);
+                //ofRect(i, j, radius*2.0, radius*2.0);
             }
         }
         ofPopMatrix();
