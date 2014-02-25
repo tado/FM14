@@ -67,9 +67,12 @@ void testApp::keyReleased(int key){
             stateMachine.changeState("line");
             break;
         case '4':
-            stateMachine.changeState("opciecle");
+            stateMachine.changeState("optical");
             break;
         case '5':
+            stateMachine.changeState("opciecle");
+            break;
+        case '6':
             stateMachine.changeState("opparticle");
             break;
         case 's':

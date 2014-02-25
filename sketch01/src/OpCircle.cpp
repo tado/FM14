@@ -42,7 +42,7 @@ void OpCircle::update() {
 void OpCircle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 5);
+    ofSetColor(0, 7);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
@@ -54,7 +54,7 @@ void OpCircle::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int skip = 10;
+        int skip = 8;
         for (int j = 0; j < farneback.getHeight(); j += skip) {
             for (int i = 0; i < farneback.getWidth(); i += skip) {
                 ofRectangle region = ofRectangle(i, j, skip, skip);
@@ -64,13 +64,12 @@ void OpCircle::draw() {
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
                 unsigned char b = pixels[n + 2];
-                ofSetColor(r, g, b);
-                if (abs(radius) > skip / 2.0) {
-                    radius = skip/2.0;
+                ofSetColor(r, g, b, 127);
+                
+                if (abs(radius) > skip) {
+                    radius = skip;
                 }
                 ofCircle(i+skip/2.0, j+skip/2.0, radius);
-                //ofSetRectMode(OF_RECTMODE_CENTER);
-                //ofRect(i, j, radius*2.0, radius*2.0);
             }
         }
         ofPopMatrix();
