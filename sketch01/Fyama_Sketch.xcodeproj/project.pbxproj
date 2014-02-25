@@ -71,6 +71,7 @@
 		18449EEE18A31F3D00AACF65 /* FatfontPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18449EEC18A31F3D00AACF65 /* FatfontPixelate.cpp */; };
 		18C93FE918BC22290054726E /* OpCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C93FE718BC22290054726E /* OpCircle.cpp */; };
 		18C93FEC18BC372F0054726E /* OpRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C93FEA18BC372F0054726E /* OpRect.cpp */; };
+		18C93FEF18BC4D720054726E /* OpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C93FED18BC4D720054726E /* OpParticle.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -346,6 +347,8 @@
 		18C93FE818BC22290054726E /* OpCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpCircle.h; sourceTree = "<group>"; };
 		18C93FEA18BC372F0054726E /* OpRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpRect.cpp; sourceTree = "<group>"; };
 		18C93FEB18BC372F0054726E /* OpRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpRect.h; sourceTree = "<group>"; };
+		18C93FED18BC4D720054726E /* OpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpParticle.cpp; sourceTree = "<group>"; };
+		18C93FEE18BC4D720054726E /* OpParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpParticle.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -936,6 +939,8 @@
 				18C93FE718BC22290054726E /* OpCircle.cpp */,
 				18C93FEB18BC372F0054726E /* OpRect.h */,
 				18C93FEA18BC372F0054726E /* OpRect.cpp */,
+				18C93FEE18BC4D720054726E /* OpParticle.h */,
+				18C93FED18BC4D720054726E /* OpParticle.cpp */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				18314E4418B16FDD00F1DCC3 /* ColorDot.cpp in Sources */,
 				18047DD718A2DF1100D11EBC /* Helpers.cpp in Sources */,
 				18314E4718B18F2100F1DCC3 /* ColorCircle.cpp in Sources */,
+				18C93FEF18BC4D720054726E /* OpParticle.cpp in Sources */,
 				18047DD818A2DF1100D11EBC /* ObjectFinder.cpp in Sources */,
 				18047DA218A2DF0800D11EBC /* ofxButton.cpp in Sources */,
 				18047EA118A2DF6300D11EBC /* LimbDarkeningPass.cpp in Sources */,

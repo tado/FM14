@@ -1,16 +1,16 @@
-#include "OpRect.h"
+#include "OpParticle.h"
 #include "testApp.h"
 
 using namespace ofxCv;
 using namespace cv;
 
-void OpRect::stateEnter(){
+void OpParticle::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
-void OpRect::setup() {
+void OpParticle::setup() {
     // GUI
     gui.setup();
     gui.add(pyrScale.setup("pyrScale", .5, 0, 1));
@@ -22,7 +22,7 @@ void OpRect::setup() {
     gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
 }
 
-void OpRect::update() {
+void OpParticle::update() {
     if (getSharedData().isFrameNew){
         farneback.setPyramidScale(pyrScale);
         farneback.setNumLevels(levels);
@@ -31,20 +31,20 @@ void OpRect::update() {
         farneback.setPolyN(polyN);
         farneback.setPolySigma(polySigma);
         farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
-        
         ofVideoGrabber cam = ((testApp*)ofGetAppPtr())->grabber.cam;
         farneback.calcOpticalFlow(cam);
-        
+
         getSharedData().camTexture.readToPixels(pixels);
     }
 }
 
-void OpRect::draw() {
+void OpParticle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 15);
+    ofSetColor(0, 7);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetCircleResolution(32);
     
     int camWidth = getSharedData().camSize.x;
     int camHeight = getSharedData().camSize.y;
@@ -55,28 +55,23 @@ void OpRect::draw() {
         ofScale(scale.x, scale.y);
         
         int skip = 4;
-        for (int j = 0; j < farneback.getHeight(); j += skip) {
-            for (int i = 0; i < farneback.getWidth(); i += skip) {
-                ofRectangle region = ofRectangle(i, j, skip, skip);
-                ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
-                float radius = avrage.x + avrage.y;
-                int n = ((j * camWidth + i) * 3) * camWidth / farneback.getWidth();
-                unsigned char r = pixels[n];
-                unsigned char g = pixels[n + 1];
-                unsigned char b = pixels[n + 2];
-                if (abs(radius) > skip / 2.0) {
-                    radius = skip/2.0;
-                }
-                ofSetRectMode(OF_RECTMODE_CENTER);
-                ofSetColor(31,0,0);
-                ofRect(i + skip/6.0, j, r * radius / 100.0, r * radius / 80.0);
-                ofSetColor(0,31,0);
-                ofRect(i + skip/6.0*3.0, j, g * radius / 100.0, g * radius / 80.0);
-                ofSetColor(0,0,31);
-                ofRect(i + skip/6.0*5.0, j, b * radius / 100.0 , b * radius / 80.0);
-                //ofRect(i, j, radius*2.0, radius*2.0);
-                
+        for (int i = 0; i < 2000; i++) {
+            int x = ofRandom(farneback.getWidth()-skip);
+            int y = ofRandom(farneback.getHeight()-skip);
+            ofRectangle region = ofRectangle(x, y, skip, skip);
+            ofVec2f avrage = farneback.getAverageFlowInRegion(region);
+            float radius = avrage.x + avrage.y;
+            int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+            unsigned char r = pixels[n];
+            unsigned char g = pixels[n + 1];
+            unsigned char b = pixels[n + 2];
+            ofSetColor(r, g, b);
+            /*
+            if (abs(radius) > 10) {
+                radius = 10;
             }
+             */
+            ofCircle(x + ofRandom(-skip,skip), y + ofRandom(-skip,skip), radius);
         }
         ofPopMatrix();
     }
@@ -85,6 +80,6 @@ void OpRect::draw() {
     //gui.draw();
 }
 
-string OpRect::getName(){
-    return "oprect";
+string OpParticle::getName(){
+    return "opparticle";
 }
