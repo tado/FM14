@@ -9,6 +9,7 @@
 #include "OpCircle.h"
 #include "OpRect.h"
 #include "OpParticle.h"
+#include "OpVector.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -30,6 +31,7 @@ void testApp::setup(){
     stateMachine.addState<OpCircle>();
     stateMachine.addState<OpRect>();
     stateMachine.addState<OpParticle>();
+    stateMachine.addState<OpVector>();
     stateMachine.changeState("simple");
     
     grabber.setup();
@@ -74,6 +76,9 @@ void testApp::keyReleased(int key){
             break;
         case '6':
             stateMachine.changeState("opparticle");
+            break;
+        case '7':
+            stateMachine.changeState("opvector");
             break;
         case 's':
             grabber.cam.videoSettings();

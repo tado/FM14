@@ -62,7 +62,7 @@ void Particle::checkBounds(float xmin, float ymin, float xmax, float ymax){
 
 // 描画
 void Particle::draw(){
-    ofSetHexColor(0x3399cc);
+    ofSetHexColor(0xffffff);
     ofCircle(position.x, position.y, position.z, radius);
 }
 

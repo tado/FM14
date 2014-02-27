@@ -1,16 +1,16 @@
-#include "OpCircle.h"
+#include "OpVector.h"
 #include "testApp.h"
 
 using namespace ofxCv;
 using namespace cv;
 
-void OpCircle::stateEnter(){
+void OpVector::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
-void OpCircle::setup() {
+void OpVector::setup() {
     // GUI
     gui.setup();
     gui.add(pyrScale.setup("pyrScale", .5, 0, 1));
@@ -22,7 +22,7 @@ void OpCircle::setup() {
     gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
 }
 
-void OpCircle::update() {
+void OpVector::update() {
     if (getSharedData().isFrameNew){
         farneback.setPyramidScale(pyrScale);
         farneback.setNumLevels(levels);
@@ -37,15 +37,22 @@ void OpCircle::update() {
         
         getSharedData().camTexture.readToPixels(pixels);
     }
+    
+    for (int i = 0; i < particles.size(); i++) {
+        particles[i]->resetForce();
+        particles[i]->updateForce();
+        particles[i]->updatePos();
+    }
 }
 
-void OpCircle::draw() {
+void OpVector::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 7);
+    ofSetColor(0,15);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetCircleResolution(8);
     int camWidth = getSharedData().camSize.x;
     int camHeight = getSharedData().camSize.y;
     
@@ -54,30 +61,40 @@ void OpCircle::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int skip = 8;
-        for (int j = 0; j < farneback.getHeight(); j += skip) {
-            for (int i = 0; i < farneback.getWidth(); i += skip) {
-                ofRectangle region = ofRectangle(i, j, skip, skip);
-                ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
-                float radius = avrage.x + avrage.y;
-                int n = ((j * camWidth + i) * 3) * camWidth / farneback.getWidth();
-                unsigned char r = pixels[n];
-                unsigned char g = pixels[n + 1];
-                unsigned char b = pixels[n + 2];
-                ofSetColor(r, g, b, 127);
-                if (abs(radius) > skip / 2.0) {
-                    radius = skip / 2.0;
+        int skip = 1;
+        for (int i = 0; i < 1000; i++) {
+            int x = ofRandom(farneback.getWidth()-skip);
+            int y = ofRandom(farneback.getHeight()-skip);
+            ofRectangle region = ofRectangle(x, y, skip, skip);
+            ofVec2f average = farneback.getAverageFlowInRegion(region);
+            if (abs(average.x) + abs(average.y) > 1) {
+                Particle *p = new Particle();
+                p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 2.0, average.y / 2.0, 0));
+                p->radius = (abs(average.x) + abs(average.y)) * 0.1;
+                particles.push_back(p);
+                if (particles.size() > 10000) {
+                    particles.pop_front();
                 }
-                ofCircle(i+skip/2.0, j+skip/2.0, radius);
             }
+            /*
+            int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+            unsigned char r = pixels[n];
+            unsigned char g = pixels[n + 1];
+            unsigned char b = pixels[n + 2];
+            ofSetColor(r, g, b);
+             */
+        }
+
+        for (int i = 0; i < particles.size(); i++) {
+            particles[i]->draw();
         }
         ofPopMatrix();
     }
-    
     ofDisableBlendMode();
-    //gui.draw();
+    
+    //cout << "particles: " << particles.size() << endl;
 }
 
-string OpCircle::getName(){
-    return "opciecle";
+string OpVector::getName(){
+    return "opvector";
 }
