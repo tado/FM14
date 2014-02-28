@@ -36,4 +36,5 @@ public:
     ofxFloatSlider minDistance;
     
     ofPixels pixels;
+    int cvWidth, cvHeight;
 };
