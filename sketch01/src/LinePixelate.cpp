@@ -7,7 +7,7 @@ void LinePixelate::setup(){
     int camHeight = getSharedData().camSize.y;
     radius = 4;
     num = camWidth * camHeight / radius;
-    cout << "NUM = " << num << endl;
+
     for (int i = 0; i<num; i++) {
         float a = ofRandom(360);
         float l = ofRandom(10);

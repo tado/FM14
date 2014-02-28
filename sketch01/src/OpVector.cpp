@@ -77,22 +77,20 @@ void OpVector::draw() {
                 }
             }
             /*
-            int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
-            unsigned char r = pixels[n];
-            unsigned char g = pixels[n + 1];
-            unsigned char b = pixels[n + 2];
-            ofSetColor(r, g, b);
+             int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+             unsigned char r = pixels[n];
+             unsigned char g = pixels[n + 1];
+             unsigned char b = pixels[n + 2];
+             ofSetColor(r, g, b);
              */
         }
-
+        
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
         }
         ofPopMatrix();
     }
     ofDisableBlendMode();
-    
-    //cout << "particles: " << particles.size() << endl;
 }
 
 string OpVector::getName(){

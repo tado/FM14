@@ -1,11 +1,12 @@
 #pragma once
 #include "ofMain.h"
+#include "ofxGui.h"
 
 class GrabCamera {
 public:
     void setup();
     void update();
-    void keyPressed(int key);
+    void draw();
     
     ofVideoGrabber cam;
     ofVec2f camSize;

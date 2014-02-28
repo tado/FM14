@@ -8,6 +8,10 @@ void OpCircle::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    
+    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
+    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    pixels.allocate(camWidth, camHeight, 3);
 }
 
 void OpCircle::setup() {
@@ -23,20 +27,16 @@ void OpCircle::setup() {
 }
 
 void OpCircle::update() {
-    if (getSharedData().isFrameNew){
-        farneback.setPyramidScale(pyrScale);
-        farneback.setNumLevels(levels);
-        farneback.setWindowSize(winsize);
-        farneback.setNumIterations(iterations);
-        farneback.setPolyN(polyN);
-        farneback.setPolySigma(polySigma);
-        farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
-        
-        ofVideoGrabber cam = ((testApp*)ofGetAppPtr())->grabber.cam;
-        farneback.calcOpticalFlow(cam);
-        
-        getSharedData().camTexture.readToPixels(pixels);
-    }
+    farneback.setPyramidScale(pyrScale);
+    farneback.setNumLevels(levels);
+    farneback.setWindowSize(winsize);
+    farneback.setNumIterations(iterations);
+    farneback.setPolyN(polyN);
+    farneback.setPolySigma(polySigma);
+    farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
+    
+    ((testApp*)ofGetAppPtr())->syphonIO.texture.readToPixels(pixels);
+    farneback.calcOpticalFlow(pixels);
 }
 
 void OpCircle::draw() {
@@ -46,19 +46,19 @@ void OpCircle::draw() {
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    int camWidth = getSharedData().camSize.x;
-    int camHeight = getSharedData().camSize.y;
+    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
+    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     
     ofSetCircleResolution(32);
     
     if (farneback.getWidth() > 0) {
-        ofVec2f scale = ofVec2f(ofGetWidth()/farneback.getWidth(), ofGetHeight()/farneback.getHeight());
+        ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int skip = 8;
-        for (int j = 0; j < farneback.getHeight(); j += skip) {
-            for (int i = 0; i < farneback.getWidth(); i += skip) {
+        int skip = 4;
+        for (int j = 0; j < farneback.getHeight()-skip; j += skip) {
+            for (int i = 0; i < farneback.getWidth()-skip; i += skip) {
                 ofRectangle region = ofRectangle(i, j, skip, skip);
                 ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
                 float radius = avrage.x + avrage.y;
@@ -66,7 +66,7 @@ void OpCircle::draw() {
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
                 unsigned char b = pixels[n + 2];
-                ofSetColor(r, g, b, 127);
+                ofSetColor(r, g, b);
                 if (abs(radius) > skip / 2.0) {
                     radius = skip / 2.0;
                 }
@@ -75,11 +75,11 @@ void OpCircle::draw() {
         }
         ofPopMatrix();
     }
-    
     ofDisableBlendMode();
     //gui.draw();
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string OpCircle::getName(){
-    return "opciecle";
+    return "opcircle";
 }

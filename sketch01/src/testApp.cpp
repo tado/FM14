@@ -49,6 +49,7 @@ void testApp::update(){
 void testApp::draw(){
     //ofSetColor(ofColor::white);
     //stateMachine.getSharedData().camTexture.draw(0, 0, 160, 120);
+    grabber.draw();
 }
 
 //--------------------------------------------------------------

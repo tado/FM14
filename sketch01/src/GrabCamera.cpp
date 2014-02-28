@@ -27,3 +27,7 @@ void GrabCamera::setup(){
 void GrabCamera::update(){
     cam.update();
 }
+
+void GrabCamera::draw(){
+
+}
