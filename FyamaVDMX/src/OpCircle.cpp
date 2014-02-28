@@ -8,16 +8,16 @@ void OpCircle::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    
+}
+
+void OpCircle::setup() {
     cvWidth = 80;
     cvHeight = 60;
     
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
-}
-
-void OpCircle::setup() {
+    
     // GUI
     gui.setup();
     gui.add(pyrScale.setup("pyrScale", .5, 0, 1));

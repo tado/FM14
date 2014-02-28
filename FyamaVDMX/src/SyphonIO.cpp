@@ -11,6 +11,7 @@ void SyphonIO::setup(int _width, int _height){
     
     //setup syphon server
     fboSyphonOut.allocate(width, height, GL_RGBA);
+    server.setName("oF");
 }
 
 void SyphonIO::update(){
