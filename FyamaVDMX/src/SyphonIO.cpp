@@ -12,6 +12,11 @@ void SyphonIO::setup(int _width, int _height){
     //setup syphon server
     fboSyphonOut.allocate(width, height, GL_RGBA);
     server.setName("oF");
+    
+    //gui setup
+    gui.setup();
+    gui.add(fitScreen.setup("Fit to screen", false));
+    gui.add(screenPos.setup("Screen position", ofGetWidth()/2, 0, ofGetWidth()));
 }
 
 void SyphonIO::update(){

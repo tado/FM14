@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxSyphon.h"
+#include "ofxGui.h"
 
 class SyphonIO {
 public:
@@ -20,4 +21,9 @@ public:
     
     int width, height;
     ofTexture texture;
+    
+    //GUI
+    ofxPanel gui;
+    ofxToggle fitScreen;
+    ofxIntSlider screenPos;
 };

@@ -9,7 +9,7 @@ void testApp::setup(){
     ofSetBackgroundAuto(false);
     ofBackground(0);
     
-    syphonIO.setup(640, 512);
+    syphonIO.setup(640, 480);
     
     // state machine
     stateMachine.addState<SimplePixelate>();
