@@ -6,7 +6,7 @@ class Particle {
 public:
 
     // 初期設定
-    void setup(ofVec3f position, ofVec3f velocity);
+    void setup(ofVec3f position, ofVec3f velocity, ofColor color);
     // 力をリセット
     void resetForce();
     // 力を加える
@@ -34,4 +34,7 @@ public:
     
     // パーティクルの半径
     float radius;
+    
+    // color
+    ofColor color;
 };

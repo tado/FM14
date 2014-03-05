@@ -59,8 +59,11 @@ void OpVector::draw() {
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     //ofSetCircleResolution(8);
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    //int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
+    //int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    
+    int camWidth = pixels.getWidth();
+    int camHeight = pixels.getHeight();
     
     if (farneback.getWidth() > 0) {
         ofVec2f scale = ofVec2f(ofGetWidth()/farneback.getWidth(), ofGetHeight()/farneback.getHeight());
@@ -75,8 +78,20 @@ void OpVector::draw() {
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region);
             if (abs(average.x) + abs(average.y) > 1) {
+                
+                int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+                unsigned char r = pixels[n];
+                unsigned char g = pixels[n + 1];
+                unsigned char b = pixels[n + 2];
+                
+                ofColor col = ofColor(r, g, b);
+                int hue = col.getHue();
+                int sat = col.getSaturation();
+                int br = col.getBrightness();
+                col.setHsb(hue, sat, br * 2.0);
+                
                 Particle *p = new Particle();
-                p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 4.0, average.y / 4.0, 0));
+                p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 8.0, average.y / 8.0, 0), col);
                 p->radius = (abs(average.x) + abs(average.y)) * 0.2;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;

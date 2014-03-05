@@ -8,11 +8,13 @@
 
 #include "Particle.h"
 
-void Particle::setup(ofVec3f _position, ofVec3f _velocity){
+void Particle::setup(ofVec3f _position, ofVec3f _velocity, ofColor _color){
     // 位置を設定
     position = _position;
     // 初期速度を設定
     velocity = _velocity;
+    
+    color = _color;
 }
 
 // 力をリセット
@@ -62,7 +64,8 @@ void Particle::checkBounds(float xmin, float ymin, float xmax, float ymax){
 
 // 描画
 void Particle::draw(){
-    ofSetHexColor(0x999999);
+    //ofSetHexColor(0x999999);
+    ofSetColor(color);
     ofCircle(position.x, position.y, position.z, radius);
 }
 
