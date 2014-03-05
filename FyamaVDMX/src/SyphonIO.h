@@ -26,4 +26,8 @@ public:
     ofxPanel gui;
     ofxToggle fitScreen;
     ofxIntSlider screenPos;
+    
+    //Pixel
+    ofPixels pixels;
+    ofPixels croppedPixels;
 };

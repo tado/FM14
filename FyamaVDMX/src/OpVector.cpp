@@ -11,8 +11,8 @@ void OpVector::stateEnter(){
 }
 
 void OpVector::setup() {
-    cvWidth = 80;
-    cvHeight = 60;
+    cvWidth = 40;
+    cvHeight = 30;
     
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
@@ -56,7 +56,7 @@ void OpVector::draw() {
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetCircleResolution(8);
+    //ofSetCircleResolution(8);
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     
@@ -67,7 +67,7 @@ void OpVector::draw() {
         ofScale(scale.x, scale.y);
         
         int skip = 1;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 500; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
@@ -77,7 +77,7 @@ void OpVector::draw() {
                 p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 2.0, average.y / 2.0, 0));
                 p->radius = (abs(average.x) + abs(average.y)) * 0.1;
                 particles.push_back(p);
-                if (particles.size() > 10000) {
+                if (particles.size() > 5000) {
                     particles.pop_front();
                 }
             }

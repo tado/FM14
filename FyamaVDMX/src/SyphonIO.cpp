@@ -20,7 +20,13 @@ void SyphonIO::setup(int _width, int _height){
 }
 
 void SyphonIO::update(){
-    // update syphone client
+    //update pixels
+    texture.readToPixels(pixels);
+    
+    //crop pixels
+    pixels.cropTo(croppedPixels, 0, pixels.getHeight() / 8 * 3, pixels.getWidth(), pixels.getHeight() / 36 * 9);
+    
+    //update syphone client
     ofSetColor(255);
     fboSyphonIn.begin();
     {

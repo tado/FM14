@@ -9,38 +9,35 @@ void SimplePixelate::setup(){
 }
 
 void SimplePixelate::update(){
-    ((testApp*)ofGetAppPtr())->syphonIO.texture.readToPixels(pixels);
+    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
 }
 
 void SimplePixelate::draw(){
     ofVec2f scale;
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    int camWidth = pixels.getWidth();
+    int camHeight = pixels.getHeight();
     scale.x = ofGetWidth() / float(camWidth);
     scale.y = ofGetHeight() / float(camHeight);
     
     ofBackground(0);
-    ofPushMatrix();
-    ofTranslate(radius / 2.0 * scale.x, -ofGetHeight() + radius / 2.0 * scale.y);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
-            for (int j = camHeight/3; j < camHeight/3*2; j+=radius){
-                unsigned char r = pixels[(j * camWidth + i)*3];
-                unsigned char g = pixels[(j * camWidth + i)*3+1];
-                unsigned char b = pixels[(j * camWidth + i)*3+2];
+            for (int j = 0; j < camHeight; j+=radius){
+                unsigned char r = pixels[(j * camWidth + i) * 3];
+                unsigned char g = pixels[(j * camWidth + i) * 3 + 1];
+                unsigned char b = pixels[(j * camWidth + i) * 3 + 2];
                 
                 ofSetColor(255, 0, 0, 180);
-                ofCircle((i - radius / 4.0) * scale.x, j * scale.y * 3.0, radius*(float)r/255.0 * scale.x * 0.7);
+                ofCircle(i * scale.x + radius * 1.2, j * scale.y, radius * (float)r / 100.0);
                 ofSetColor(0, 255, 0, 180);
-                ofCircle(i * scale.x, j * scale.y * 3.0, radius*(float)g/255.0 * scale.x * 0.7);
+                ofCircle(i * scale.x, j * scale.y, radius * (float)g / 100.0);
                 ofSetColor(0, 0, 255, 180);
-                ofCircle((i + radius / 4.0) * scale.x, j * scale.y * 3.0, radius*(float)b/255.0 * scale.x * 0.7);
+                ofCircle(i * scale.x -  radius * 1.2, j * scale.y, radius * (float)b / 100.0);
                 
             }
         }
         ofDisableBlendMode();
-        ofPopMatrix();
     }
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();

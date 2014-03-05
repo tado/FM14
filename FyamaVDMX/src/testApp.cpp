@@ -1,7 +1,9 @@
 #include "testApp.h"
 #include "SimplePixelate.h"
 #include "OpCircle.h"
+#include "OpParticle.h"
 #include "OpVector.h"
+
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -14,6 +16,7 @@ void testApp::setup(){
     // state machine
     stateMachine.addState<SimplePixelate>();
     stateMachine.addState<OpCircle>();
+    stateMachine.addState<OpParticle>();
     stateMachine.addState<OpVector>();
     stateMachine.changeState("simple");
 }
@@ -38,6 +41,9 @@ void testApp::keyPressed(int key){
             stateMachine.changeState("opcircle");
             break;
         case '3':
+            stateMachine.changeState("opparticle");
+            break;
+        case '4':
             stateMachine.changeState("opvector");
             break;
     }

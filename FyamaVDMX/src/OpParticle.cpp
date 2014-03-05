@@ -1,22 +1,19 @@
-#include "OpCircle.h"
+#include "OpParticle.h"
 #include "testApp.h"
 
 using namespace ofxCv;
 using namespace cv;
 
-void OpCircle::stateEnter(){
+void OpParticle::stateEnter(){
+    ofDisableBlendMode();
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
-void OpCircle::setup() {
+void OpParticle::setup() {
     cvWidth = 240;
     cvHeight = 45;
-    
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
-    pixels.allocate(camWidth, camHeight, 3);
     
     // GUI
     gui.setup();
@@ -29,7 +26,7 @@ void OpCircle::setup() {
     gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
 }
 
-void OpCircle::update() {
+void OpParticle::update() {
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels(levels);
     farneback.setWindowSize(winsize);
@@ -37,55 +34,54 @@ void OpCircle::update() {
     farneback.setPolyN(polyN);
     farneback.setPolySigma(polySigma);
     farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
-    
     //((testApp*)ofGetAppPtr())->syphonIO.texture.readToPixels(pixels);
     pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
 }
 
-void OpCircle::draw() {
+void OpParticle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 7);
+    ofSetColor(0, 16);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
+    ofSetCircleResolution(32);
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     
-    ofSetCircleResolution(32);
-    int skip = 3;
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
-    ofPushMatrix();
-    ofScale(scale.x, scale.y);
-    ofTranslate(0, skip / 2.0);
-    
-    for (int j = 0; j < farneback.getHeight()-skip; j += skip) {
-        for (int i = 0; i < farneback.getWidth()-skip; i += skip) {
-            ofRectangle region = ofRectangle(i, j, skip, skip);
-            ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
-            float radius = (avrage.x + avrage.y) * 0.3;
-            int n = (j * farneback.getWidth() + i) * 3;
+    if (farneback.getWidth() > 0) {
+        int skip = 1;
+        
+        ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
+        ofPushMatrix();
+        ofScale(scale.x, scale.y);
+        ofTranslate(0, skip);
+
+        for (int i = 0; i < 5000; i++) {
+            int x = ofRandom(farneback.getWidth()-skip);
+            int y = ofRandom(farneback.getHeight()-skip);
+            ofRectangle region = ofRectangle(x, y, skip, skip);
+            ofVec2f avrage = farneback.getAverageFlowInRegion(region);
+            float radius = (avrage.x + avrage.y) * 0.5;
+            int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
             unsigned char r = pixels[n];
             unsigned char g = pixels[n + 1];
             unsigned char b = pixels[n + 2];
-            ofSetColor(r, g, b, 63);
-            if (abs(radius) > skip * 0.75) {
-                radius = skip * 0.75;
+            ofSetColor(r, g, b);
+            if (abs(radius) > skip) {
+                radius = skip;
             }
-            ofCircle(i+skip/2.0, j+skip/2.0, radius);
+            ofCircle(x + ofRandom(-skip,skip), y + ofRandom(-skip,skip), radius);
         }
+        ofPopMatrix();
     }
-    ofPopMatrix();
-    
     ofDisableBlendMode();
-    //gui.draw();
-    
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
-string OpCircle::getName(){
-    return "opcircle";
+string OpParticle::getName(){
+    return "opparticle";
 }
