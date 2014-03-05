@@ -11,8 +11,9 @@ void OpVector::stateEnter(){
 }
 
 void OpVector::setup() {
-    cvWidth = 40;
-    cvHeight = 30;
+    cvWidth = 240;
+    cvHeight = 45;
+    particleImg.loadImage("particle32.png");
     
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
@@ -38,7 +39,8 @@ void OpVector::update() {
     farneback.setPolySigma(polySigma);
     farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
     
-    ((testApp*)ofGetAppPtr())->syphonIO.texture.readToPixels(pixels);
+    //((testApp*)ofGetAppPtr())->syphonIO.texture.readToPixels(pixels);
+    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
     
@@ -52,7 +54,7 @@ void OpVector::update() {
 void OpVector::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0,15);
+    ofSetColor(0,255);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -61,23 +63,26 @@ void OpVector::draw() {
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     
     if (farneback.getWidth() > 0) {
-        ofVec2f scale = ofVec2f(ofGetWidth()/farneback.getWidth()/3, ofGetHeight()/farneback.getHeight());
+        ofVec2f scale = ofVec2f(ofGetWidth()/farneback.getWidth(), ofGetHeight()/farneback.getHeight());
         ofPushMatrix();
-        ofTranslate(ofGetWidth()/3, 0);
+        //ofTranslate(ofGetWidth()/3, 0);
         ofScale(scale.x, scale.y);
         
         int skip = 1;
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 1000; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region);
             if (abs(average.x) + abs(average.y) > 1) {
                 Particle *p = new Particle();
-                p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 2.0, average.y / 2.0, 0));
-                p->radius = (abs(average.x) + abs(average.y)) * 0.1;
+                p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 4.0, average.y / 4.0, 0));
+                p->radius = (abs(average.x) + abs(average.y)) * 0.2;
+                if (abs(p->radius) > skip) {
+                    p->radius = skip;
+                }
                 particles.push_back(p);
-                if (particles.size() > 5000) {
+                if (particles.size() > 12000) {
                     particles.pop_front();
                 }
             }
@@ -92,6 +97,8 @@ void OpVector::draw() {
         
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
+            //particleImg.draw(particles[i]->position, particles[i]->radius, particles[i]->radius);
+            
         }
         ofPopMatrix();
     }
