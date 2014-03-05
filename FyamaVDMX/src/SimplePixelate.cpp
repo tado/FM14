@@ -29,11 +29,11 @@ void SimplePixelate::draw(){
                 unsigned char b = pixels[(j * camWidth + i) * 3 + 2];
                 
                 ofSetColor(255, 0, 0, 180);
-                ofCircle(i * scale.x + radius * 1.2, j * scale.y, radius * (float)r / 100.0);
+                ofCircle(i * scale.x + radius * 1.1, j * scale.y, radius * (float)r / 50.0);
                 ofSetColor(0, 255, 0, 180);
-                ofCircle(i * scale.x, j * scale.y, radius * (float)g / 100.0);
+                ofCircle(i * scale.x, j * scale.y, radius * (float)g / 50.0);
                 ofSetColor(0, 0, 255, 180);
-                ofCircle(i * scale.x -  radius * 1.2, j * scale.y, radius * (float)b / 100.0);
+                ofCircle(i * scale.x -  radius * 1.1, j * scale.y, radius * (float)b / 50.0);
                 
             }
         }

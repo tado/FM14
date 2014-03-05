@@ -11,6 +11,7 @@ class OpVector : public itg::ofxState<SharedData>{
     
 public:
     void stateEnter();
+    void stateExit();
     void setup();
     void update();
     void draw();

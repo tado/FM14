@@ -10,6 +10,10 @@ void OpVector::stateEnter(){
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
+void OpVector::stateExit(){
+    particles.clear();
+}
+
 void OpVector::setup() {
     cvWidth = 240;
     cvHeight = 45;
