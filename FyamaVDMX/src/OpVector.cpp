@@ -13,7 +13,6 @@ void OpVector::stateEnter(){
 void OpVector::setup() {
     cvWidth = 240;
     cvHeight = 45;
-    particleImg.loadImage("particle32.png");
     
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
@@ -66,18 +65,18 @@ void OpVector::draw() {
     int camHeight = pixels.getHeight();
     
     if (farneback.getWidth() > 0) {
-        ofVec2f scale = ofVec2f(ofGetWidth()/farneback.getWidth(), ofGetHeight()/farneback.getHeight());
+        int skip = 1;
+        ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()) * 1.1, ofGetHeight()/float(farneback.getHeight()) * 1.1);
         ofPushMatrix();
         //ofTranslate(ofGetWidth()/3, 0);
         ofScale(scale.x, scale.y);
         
-        int skip = 1;
         for (int i = 0; i < 1000; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region);
-            if (abs(average.x) + abs(average.y) > 1) {
+            if (abs(average.x) + abs(average.y) > 0.5) {
                 
                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
                 unsigned char r = pixels[n];
@@ -88,10 +87,10 @@ void OpVector::draw() {
                 int hue = col.getHue();
                 int sat = col.getSaturation();
                 int br = col.getBrightness();
-                col.setHsb(hue, sat, br * 2.0);
+                col.setHsb(hue, sat * 1.5, br * 2.0);
                 
                 Particle *p = new Particle();
-                p->setup(ofVec3f(x, y, 0), ofVec3f(average.x / 8.0, average.y / 8.0, 0), col);
+                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x / 8.0, average.y / 8.0, 0), col);
                 p->radius = (abs(average.x) + abs(average.y)) * 0.2;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;
@@ -112,8 +111,6 @@ void OpVector::draw() {
         
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
-            //particleImg.draw(particles[i]->position, particles[i]->radius, particles[i]->radius);
-            
         }
         ofPopMatrix();
     }

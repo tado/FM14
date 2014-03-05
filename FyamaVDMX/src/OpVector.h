@@ -39,5 +39,4 @@ public:
     ofPixels pixels;
     deque<Particle *> particles;
     int cvWidth, cvHeight;
-    ofImage particleImg;
 };
