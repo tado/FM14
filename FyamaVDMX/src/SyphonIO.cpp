@@ -23,7 +23,7 @@ void SyphonIO::update(){
     //update pixels
     texture.readToPixels(pixels);
     
-    //crop pixels
+    //crop pixels to cropPixels
     pixels.cropTo(croppedPixels, 0, pixels.getHeight() / 8 * 3, pixels.getWidth(), pixels.getHeight() / 36 * 9);
     
     //update syphone client

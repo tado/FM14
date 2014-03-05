@@ -71,7 +71,7 @@ void OpCircle::draw() {
             unsigned char r = pixels[n];
             unsigned char g = pixels[n + 1];
             unsigned char b = pixels[n + 2];
-            ofSetColor(r, g, b, 63);
+            ofSetColor(r, g, b, 127);
             if (abs(radius) > skip * 0.75) {
                 radius = skip * 0.75;
             }
