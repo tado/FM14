@@ -3,6 +3,7 @@
 #include "Blank.h"
 #include "SimplePixelate.h"
 #include "LinePixelate.h"
+#include "BoxPixelate.h"
 #include "OpCircle.h"
 #include "OpParticle.h"
 #include "OpVector.h"
@@ -20,6 +21,7 @@ void testApp::setup(){
     stateMachine.addState<Blank>();
     stateMachine.addState<SimplePixelate>();
     stateMachine.addState<LinePixelate>();
+    stateMachine.addState<BoxPixelate>();
     stateMachine.addState<FatfontPixelate>();
     stateMachine.addState<OpCircle>();
     stateMachine.addState<OpParticle>();
@@ -47,7 +49,7 @@ void testApp::keyPressed(int key){
             stateMachine.changeState("simple");
             break;
         case '3':
-            stateMachine.changeState("line");
+            stateMachine.changeState("box");
             break;
         case '4':
             stateMachine.changeState("fatfont");

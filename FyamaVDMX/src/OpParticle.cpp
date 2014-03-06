@@ -75,8 +75,8 @@ void OpParticle::draw() {
             int hue = col.getHue();
             int sat = col.getSaturation();
             int br = col.getBrightness();
-            col.setHsb(hue, sat * 0.7, br * 5.0);
-            ofSetColor(col);
+            col.setHsb(hue, sat * 0.7, br * 10.0);
+            ofSetColor(col, 200);
             
             if (abs(radius) > skip * 4.0) {
                 radius = skip * 4.0;

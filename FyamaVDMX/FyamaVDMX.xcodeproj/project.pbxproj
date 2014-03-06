@@ -35,6 +35,7 @@
 		7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19C918C7F10C009FCBDA /* Blank.cpp */; };
 		7A9C19CE18C7FC95009FCBDA /* FatfontPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19CC18C7FC95009FCBDA /* FatfontPixelate.cpp */; };
 		7A9C19D118C8059D009FCBDA /* LinePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */; };
+		7A9C19D718C81D9A009FCBDA /* BoxPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19D518C81D9A009FCBDA /* BoxPixelate.cpp */; };
 		7AE88FBF18C58B9300D692A0 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F025A018B5F9C800EA684F /* Syphon.framework */; };
 		7AF4721B18C733CE0012578D /* OpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AF4721918C733CE0012578D /* OpParticle.cpp */; };
 		7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF6AED6A17AC0C17F63CC4 /* RunningBackground.cpp */; };
@@ -196,6 +197,8 @@
 		7A9C19CD18C7FC95009FCBDA /* FatfontPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatfontPixelate.h; sourceTree = "<group>"; };
 		7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinePixelate.cpp; sourceTree = "<group>"; };
 		7A9C19D018C8059D009FCBDA /* LinePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePixelate.h; sourceTree = "<group>"; };
+		7A9C19D518C81D9A009FCBDA /* BoxPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxPixelate.cpp; sourceTree = "<group>"; };
+		7A9C19D618C81D9A009FCBDA /* BoxPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxPixelate.h; sourceTree = "<group>"; };
 		7AF4721918C733CE0012578D /* OpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpParticle.cpp; sourceTree = "<group>"; };
 		7AF4721A18C733CE0012578D /* OpParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpParticle.h; sourceTree = "<group>"; };
 		7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvFloatImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvFloatImage.cpp; sourceTree = SOURCE_ROOT; };
@@ -412,6 +415,8 @@
 				18182D6118C0302E003585E0 /* SimplePixelate.cpp */,
 				7A9C19D018C8059D009FCBDA /* LinePixelate.h */,
 				7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */,
+				7A9C19D618C81D9A009FCBDA /* BoxPixelate.h */,
+				7A9C19D518C81D9A009FCBDA /* BoxPixelate.cpp */,
 				7A9C19CD18C7FC95009FCBDA /* FatfontPixelate.h */,
 				7A9C19CC18C7FC95009FCBDA /* FatfontPixelate.cpp */,
 				18182D6518C038E5003585E0 /* OpCircle.h */,
@@ -1100,6 +1105,7 @@
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				18F0259918B5F8E400EA684F /* ofxSyphonServerDirectory.mm in Sources */,
+				7A9C19D718C81D9A009FCBDA /* BoxPixelate.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
