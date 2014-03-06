@@ -47,7 +47,7 @@ void OpCircle::update() {
 void OpCircle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 1);
+    ofSetColor(0, 15);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     

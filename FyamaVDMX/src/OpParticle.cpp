@@ -43,14 +43,14 @@ void OpParticle::update() {
 void OpParticle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 12);
+    ofSetColor(0, 5);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofSetCircleResolution(32);
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     if (farneback.getWidth() > 0) {
         int skip = 1;
@@ -65,7 +65,7 @@ void OpParticle::draw() {
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f avrage = farneback.getAverageFlowInRegion(region);
-            float radius = (avrage.x + avrage.y) * 0.4;
+            float radius = (avrage.x + avrage.y) * 1.0;
             int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
             unsigned char r = pixels[n];
             unsigned char g = pixels[n + 1];
@@ -75,7 +75,7 @@ void OpParticle::draw() {
             int hue = col.getHue();
             int sat = col.getSaturation();
             int br = col.getBrightness();
-            col.setHsb(hue, sat * 1.5, br * 1.5);
+            col.setHsb(hue, sat * 0.7, br * 5.0);
             ofSetColor(col);
             
             if (abs(radius) > skip * 4.0) {

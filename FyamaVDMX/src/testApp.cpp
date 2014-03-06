@@ -1,9 +1,12 @@
 #include "testApp.h"
+
+#include "Blank.h"
 #include "SimplePixelate.h"
+#include "LinePixelate.h"
 #include "OpCircle.h"
 #include "OpParticle.h"
 #include "OpVector.h"
-
+#include "FatfontPixelate.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -14,11 +17,14 @@ void testApp::setup(){
     syphonIO.setup(640, 480);
     
     // state machine
+    stateMachine.addState<Blank>();
     stateMachine.addState<SimplePixelate>();
+    stateMachine.addState<LinePixelate>();
+    stateMachine.addState<FatfontPixelate>();
     stateMachine.addState<OpCircle>();
     stateMachine.addState<OpParticle>();
     stateMachine.addState<OpVector>();
-    stateMachine.changeState("simple");
+    stateMachine.changeState("blank");
 }
 
 //--------------------------------------------------------------
@@ -35,15 +41,24 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     switch (key) {
         case '1':
-            stateMachine.changeState("simple");
+            stateMachine.changeState("blank");
             break;
         case '2':
-            stateMachine.changeState("opcircle");
+            stateMachine.changeState("simple");
             break;
         case '3':
-            stateMachine.changeState("opparticle");
+            stateMachine.changeState("line");
             break;
         case '4':
+            stateMachine.changeState("fatfont");
+            break;
+        case '5':
+            stateMachine.changeState("opcircle");
+            break;
+        case '6':
+            stateMachine.changeState("opparticle");
+            break;
+        case '7':
             stateMachine.changeState("opvector");
             break;
     }

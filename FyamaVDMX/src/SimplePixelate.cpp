@@ -41,8 +41,6 @@ void SimplePixelate::draw(){
     }
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.gui.draw();
 }
 
 string SimplePixelate::getName(){
