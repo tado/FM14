@@ -72,7 +72,7 @@ void BoxPixelate::draw(){
     }
     //ofDisableDepthTest();
     ofDisableBlendMode();
-
+    
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 

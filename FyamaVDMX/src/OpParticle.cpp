@@ -43,7 +43,7 @@ void OpParticle::update() {
 void OpParticle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 5);
+    ofSetColor(0, 15);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofSetCircleResolution(32);
