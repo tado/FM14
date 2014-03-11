@@ -17,8 +17,12 @@ public:
     
 	ofxCv::FlowFarneback flow;
 	ofMesh mesh;
-	int stepSize, xSteps, ySteps;
+	float stepSize, xSteps, ySteps;
     
-    ofPixels pixels;
+    ofPixels pixels, texPixels;
     int cvWidth, cvHeight;
+    ofImage img;
+    ofTexture tex;
+    
+    ofVec2f scale;
 };
