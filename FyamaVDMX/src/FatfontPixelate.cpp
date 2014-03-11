@@ -2,7 +2,7 @@
 #include "testApp.h"
 
 void FatfontPixelate::setup(){
-    font.loadFont("Rotunda.otf", 30, false);
+    font.loadFont("Rotunda.otf", 20, false);
     radius = 7;
 }
 

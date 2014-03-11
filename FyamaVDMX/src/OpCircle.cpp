@@ -79,11 +79,10 @@ void OpCircle::draw() {
         }
     }
     ofPopMatrix();
-    
     ofDisableBlendMode();
-    //gui.draw();
-    
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    //gui.draw();
 }
 
 string OpCircle::getName(){

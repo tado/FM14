@@ -59,8 +59,10 @@ void OpParticle::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         ofTranslate(0, skip);
-
-        for (int i = 0; i < 1000; i++) {
+        
+        //int num = 0;
+        for (int i = 0; i < 10000; i++) {
+            //while (num < 300){
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
@@ -75,13 +77,19 @@ void OpParticle::draw() {
             int hue = col.getHue();
             int sat = col.getSaturation();
             int br = col.getBrightness();
-            col.setHsb(hue, sat * 0.7, br * 10.0);
-            ofSetColor(col, 200);
             
-            if (abs(radius) > skip * 4.0) {
-                radius = skip * 4.0;
+            if (br > 31) {
+                col.setHsb(hue, sat, 255);
+                ofSetColor(col);
+                
+                if (abs(radius) > skip * 4.0) {
+                    radius = skip * 4.0;
+                }
+                ofEnableSmoothing();
+                ofCircle(x + ofRandom(-skip,skip), y + ofRandom(-skip,skip), radius);
+                ofDisableSmoothing();
+                //num++;
             }
-            ofCircle(x + ofRandom(-skip,skip), y + ofRandom(-skip,skip), radius);
         }
         ofPopMatrix();
     }

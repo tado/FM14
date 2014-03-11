@@ -17,9 +17,8 @@ public:
     void draw();
     string getName();
     
-    ofVideoGrabber camera;
     ofxCv::FlowFarneback farneback;
-    
+
     ofxPanel gui;
     ofxFloatSlider pyrScale;
     ofxIntSlider levels;
@@ -28,14 +27,6 @@ public:
     ofxIntSlider polyN;
     ofxFloatSlider polySigma;
     ofxToggle OPTFLOW_FARNEBACK_GAUSSIAN;
-    
-    ofxToggle useFarneback;
-    ofxIntSlider winSize;
-    ofxIntSlider maxLevel;
-    
-    ofxFloatSlider maxFeatures;
-    ofxFloatSlider qualityLevel;
-    ofxFloatSlider minDistance;
     
     ofPixels pixels;
     deque<Particle *> particles;
