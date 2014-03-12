@@ -23,7 +23,7 @@ public:
     int cvWidth, cvHeight;
     int camWidth, camHeight;
     ofVec2f cvScale;
-    ofImage img;
+    // ofImage img;
     ofTexture tex;
-    //ofVec2f scale;
+    vector<ofVec2f> verts;
 };

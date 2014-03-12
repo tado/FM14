@@ -45,12 +45,12 @@ void OpCircle::draw() {
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0, 8);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     
-    ofSetCircleResolution(32);
+    ofSetCircleResolution(64);
     int skip = 3;
     
     ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
@@ -73,7 +73,7 @@ void OpCircle::draw() {
             int sat = col.getSaturation();
             int br = col.getBrightness();
             col.setHsb(hue, sat, br * 3.0);
-            ofSetColor(col);
+            ofSetColor(col, 63);
             
             if (abs(radius) > skip * 0.5) {
                 radius = skip * 0.5;

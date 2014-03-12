@@ -10,7 +10,7 @@ void OpDistort::stateEnter(){
 
 void OpDistort::setup() {
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    stepSize = 8.0;
+    stepSize = 5.0;
     
     cvWidth = 240;
     cvHeight = 45;
@@ -27,6 +27,7 @@ void OpDistort::setup() {
         for(int x = 0; x < xSteps; x++) {
             mesh.addVertex(ofVec2f(x * stepSize, y * stepSize));
             mesh.addTexCoord(ofVec2f(x * stepSize, y * stepSize));
+            verts.push_back(ofVec2f(x * stepSize, y * stepSize));
         }
     }
     for(int y = 0; y + 1 < ySteps; y++) {
@@ -52,7 +53,7 @@ void OpDistort::update() {
     flow.calcOpticalFlow(pixels);
     
     int i = 0;
-    float distortionStrength = 40;
+    float distortionStrength = 200.0;
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
             int i = y * xSteps + x;
@@ -60,7 +61,9 @@ void OpDistort::update() {
             ofRectangle area(position - ofVec2f(stepSize * cvScale.x, stepSize * cvScale.y) / 2,
                              stepSize * cvScale.x, stepSize * cvScale.y);
             ofVec2f offset = flow.getAverageFlowInRegion(area);
-            mesh.setVertex(i, position / cvScale + distortionStrength * offset);
+            ofVec2f newPos = position / cvScale + distortionStrength * offset;
+            verts[i] += (newPos - verts[i]) * 0.1;
+            mesh.setVertex(i, verts[i]);
             i++;
         }
     }
@@ -69,18 +72,17 @@ void OpDistort::update() {
 void OpDistort::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 31);
+    ofSetColor(0, 127);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    ofSetColor(63);
-    ofVec2f scale = ofVec2f(ofGetWidth()/float(camWidth), ofGetHeight()/float(camHeight));
+    ofSetColor(127);
+    ofVec2f scale = ofVec2f(ofGetWidth()/float((xSteps - 1) * stepSize), ofGetHeight()/float((ySteps - 1) * stepSize));
     ofScale(scale.x, scale.y);
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.bind();
     mesh.draw();
-    //ofSetColor(63);
     mesh.drawWireframe();
     tex.unbind();
 
