@@ -1,20 +1,20 @@
-#include "OpVector.h"
+#include "OpRadial.h"
 #include "testApp.h"
 
 using namespace ofxCv;
 using namespace cv;
 
-void OpVector::stateEnter(){
+void OpRadial::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
-void OpVector::stateExit(){
+void OpRadial::stateExit(){
     particles.clear();
 }
 
-void OpVector::setup() {
+void OpRadial::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
@@ -33,7 +33,7 @@ void OpVector::setup() {
     gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
 }
 
-void OpVector::update() {
+void OpRadial::update() {
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels(levels);
     farneback.setWindowSize(winsize);
@@ -52,10 +52,10 @@ void OpVector::update() {
     }
 }
 
-void OpVector::draw() {
+void OpRadial::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0,255);
+    ofSetColor(0, 31);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -78,7 +78,7 @@ void OpVector::draw() {
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region);
-            if (abs(average.x) + abs(average.y) > 0.5) {
+            if (average.length() > 0.5) {
                 
                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
                 unsigned char r = pixels[n];
@@ -86,19 +86,27 @@ void OpVector::draw() {
                 unsigned char b = pixels[n + 2];
                 
                 ofColor col = ofColor(r, g, b);
+                /*
                 int hue = col.getHue();
                 int sat = col.getSaturation();
                 int br = col.getBrightness();
                 col.setHsb(hue, sat * 1.5, br * 2.0);
+                 */
+                
+                col = ofColor(255);
                 
                 Particle *p = new Particle();
-                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x / 8.0, average.y / 8.0, 0), col);
-                p->radius = (abs(average.x) + abs(average.y)) * 0.2;
+                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0),
+                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 0), col);
+                p->friction = -0.01;
+
+                p->radius = average.length() * 0.1 + 0.02;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;
                 }
+
                 particles.push_back(p);
-                if (particles.size() > 8000) {
+                if (particles.size() > 15000) {
                     particles.pop_front();
                 }
             }
@@ -121,6 +129,6 @@ void OpVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
-string OpVector::getName(){
-    return "opvector";
+string OpRadial::getName(){
+    return "opradial";
 }

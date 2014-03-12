@@ -9,6 +9,7 @@
 #include "OpParticle.h"
 #include "OpVector.h"
 #include "OpDistort.h"
+#include "OpRadial.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -28,6 +29,8 @@ void testApp::setup(){
     stateMachine.addState<OpParticle>();
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpDistort>();
+    stateMachine.addState<OpRadial>();
+    
     stateMachine.changeState("blank");
 }
 
@@ -67,6 +70,9 @@ void testApp::keyPressed(int key){
             break;
         case '8':
             stateMachine.changeState("opdistort");
+            break;
+        case '9':
+            stateMachine.changeState("opradial");
             break;
     }
 }

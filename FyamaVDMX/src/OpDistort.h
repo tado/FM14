@@ -25,5 +25,5 @@ public:
     ofVec2f cvScale;
     // ofImage img;
     ofTexture tex;
-    vector<ofVec2f> verts;
+    vector<ofVec3f> verts;
 };

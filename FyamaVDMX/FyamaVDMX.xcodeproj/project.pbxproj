@@ -39,6 +39,8 @@
 		7AE88FBF18C58B9300D692A0 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F025A018B5F9C800EA684F /* Syphon.framework */; };
 		7AF4721B18C733CE0012578D /* OpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AF4721918C733CE0012578D /* OpParticle.cpp */; };
 		7AFCA5CC18CECB6000945323 /* OpDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA5CA18CECB6000945323 /* OpDistort.cpp */; };
+		7AFCA5D018D0DC5F00945323 /* OpRadial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA5CE18D0DC5F00945323 /* OpRadial.cpp */; };
+		7AFCA5D318D0E75C00945323 /* Ribbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA5D118D0E75C00945323 /* Ribbon.cpp */; };
 		7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF6AED6A17AC0C17F63CC4 /* RunningBackground.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
@@ -204,6 +206,10 @@
 		7AF4721A18C733CE0012578D /* OpParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpParticle.h; sourceTree = "<group>"; };
 		7AFCA5CA18CECB6000945323 /* OpDistort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpDistort.cpp; sourceTree = "<group>"; };
 		7AFCA5CB18CECB6000945323 /* OpDistort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpDistort.h; sourceTree = "<group>"; };
+		7AFCA5CE18D0DC5F00945323 /* OpRadial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpRadial.cpp; sourceTree = "<group>"; };
+		7AFCA5CF18D0DC5F00945323 /* OpRadial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpRadial.h; sourceTree = "<group>"; };
+		7AFCA5D118D0E75C00945323 /* Ribbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ribbon.cpp; sourceTree = "<group>"; };
+		7AFCA5D218D0E75C00945323 /* Ribbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ribbon.h; sourceTree = "<group>"; };
 		7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvFloatImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvFloatImage.cpp; sourceTree = SOURCE_ROOT; };
 		7C3D9C0EAC738ED2624D264B /* ml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ml.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv/ml.h; sourceTree = SOURCE_ROOT; };
 		7E57AAE3FAB29F87D19451BC /* sampling.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = sampling.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/sampling.h; sourceTree = SOURCE_ROOT; };
@@ -430,6 +436,8 @@
 				1827312E18C0E4EF0075A4C7 /* OpVector.cpp */,
 				7AFCA5CB18CECB6000945323 /* OpDistort.h */,
 				7AFCA5CA18CECB6000945323 /* OpDistort.cpp */,
+				7AFCA5CF18D0DC5F00945323 /* OpRadial.h */,
+				7AFCA5CE18D0DC5F00945323 /* OpRadial.cpp */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -962,6 +970,8 @@
 				18182D3718C02725003585E0 /* SyphonIO.cpp */,
 				1827313218C0E5220075A4C7 /* Particle.h */,
 				1827313118C0E5220075A4C7 /* Particle.cpp */,
+				7AFCA5D218D0E75C00945323 /* Ribbon.h */,
+				7AFCA5D118D0E75C00945323 /* Ribbon.cpp */,
 				18182D3D18C02F82003585E0 /* states */,
 			);
 			path = src;
@@ -1112,9 +1122,11 @@
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				18F0259918B5F8E400EA684F /* ofxSyphonServerDirectory.mm in Sources */,
 				7A9C19D718C81D9A009FCBDA /* BoxPixelate.cpp in Sources */,
+				7AFCA5D018D0DC5F00945323 /* OpRadial.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
+				7AFCA5D318D0E75C00945323 /* Ribbon.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
