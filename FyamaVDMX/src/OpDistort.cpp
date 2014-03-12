@@ -14,14 +14,9 @@ void OpDistort::setup() {
     
     cvWidth = 240;
     cvHeight = 45;
-    //cvWidth = 160;
-    //cvHeight = 30;
-    
     
     ySteps = cvHeight / stepSize;
     xSteps = cvWidth / stepSize;
-    
-    img.allocate(cvWidth, cvHeight, OF_IMAGE_COLOR); // ofImage instance
     
     for(int y = 0; y < ySteps; y++) {
         for(int x = 0; x < xSteps; x++) {
@@ -54,14 +49,14 @@ void OpDistort::update() {
     ofVec2f scale = ofVec2f(cvWidth / float(ofGetWidth()), cvHeight / float(ofGetHeight()));
 
     int i = 0;
-    float distortionStrength = 4;
+    float distortionStrength = 8;
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
             int i = y * xSteps + x;
             ofVec2f position(x * stepSize, y * stepSize);
             ofRectangle area(position - ofVec2f(stepSize, stepSize) / 2, stepSize, stepSize);
-            ofVec2f offset = flow.getAverageFlowInRegion(area);
-            mesh.setVertex(i, position + distortionStrength * offset);
+            ofVec2f offset = distortionStrength * flow.getAverageFlowInRegion(area);
+            mesh.setVertex(i, position +  offset);
             i++;
         }
     }
@@ -70,21 +65,21 @@ void OpDistort::update() {
 void OpDistort::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 48);
+    ofSetColor(0, 200);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofDisableSmoothing();
     ofVec2f scale = ofVec2f(ofGetWidth()/float(cvWidth-1), ofGetHeight()/float(cvHeight-1));
     ofPushMatrix();
     ofScale(scale.x, scale.y);
-    ofSetLineWidth(2);
+    ofSetLineWidth(1);
 	//tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.loadData(pixels);
     tex.bind();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    //ofSetColor(50);
+    ofSetColor(180);
     mesh.drawWireframe();
-    ofSetColor(100);
+    ofSetColor(255);
     mesh.draw();
     tex.unbind();
     ofSetLineWidth(1);

@@ -14,10 +14,6 @@ void OpCircle::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
-    pixels.allocate(camWidth, camHeight, 3);
-    
     // GUI
     gui.setup();
     gui.add(pyrScale.setup("pyrScale", .5, 0, 1));
@@ -47,33 +43,40 @@ void OpCircle::update() {
 void OpCircle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 15);
+    ofSetColor(0, 8);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     
     ofSetCircleResolution(32);
-    int skip = 2;
+    int skip = 3;
     
     ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
     ofPushMatrix();
     ofScale(scale.x, scale.y);
     //ofTranslate(0, skip / 2.0);
     
-    for (int j = 0; j < farneback.getHeight()-skip; j += skip) {
-        for (int i = 0; i < farneback.getWidth()-skip; i += skip) {
+    for (int j = 0; j < farneback.getHeight(); j += skip) {
+        for (int i = 0; i < farneback.getWidth(); i += skip) {
             ofRectangle region = ofRectangle(i, j, skip, skip);
             ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
-            float radius = (avrage.x + avrage.y) * 0.3;
+            float radius = (avrage.x + avrage.y) * 2.0;
             int n = (j * farneback.getWidth() + i) * 3;
             unsigned char r = pixels[n];
             unsigned char g = pixels[n + 1];
             unsigned char b = pixels[n + 2];
-            ofSetColor(r, g, b, 127);
-            if (abs(radius) > skip * 0.75) {
-                radius = skip * 0.75;
+            
+            ofColor col = ofColor(r, g, b);
+            int hue = col.getHue();
+            int sat = col.getSaturation();
+            int br = col.getBrightness();
+            col.setHsb(hue, sat, br * 3.0);
+            ofSetColor(col);
+            
+            if (abs(radius) > skip * 0.5) {
+                radius = skip * 0.5;
             }
             ofCircle(i+skip/2.0, j+skip/2.0, radius);
         }
