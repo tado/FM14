@@ -8,6 +8,7 @@ public:
     void addForce(ofVec3f force);
     void updateForce();
     void updatePos();
+    void update();
     void draw();
 
     ofVec3f position;
@@ -16,4 +17,7 @@ public:
     float friction;
     float radius;
     ofColor color;
+    int length;
+    deque<ofVec3f> verts;
+    ofVec3f begin, end;
 };

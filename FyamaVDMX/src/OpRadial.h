@@ -5,7 +5,7 @@
 #include "ofxGui.h"
 #include "ofxState.h"
 #include "SharedData.h"
-#include "Particle.h"
+#include "Ribbon.h"
 
 class OpRadial : public itg::ofxState<SharedData>{
 public:
@@ -28,6 +28,6 @@ public:
     ofxToggle OPTFLOW_FARNEBACK_GAUSSIAN;
     
     ofPixels pixels;
-    deque<Particle *> particles;
+    deque<Ribbon *> ribbons;
     int cvWidth, cvHeight;
 };

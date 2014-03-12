@@ -11,7 +11,7 @@ void OpRadial::stateEnter(){
 }
 
 void OpRadial::stateExit(){
-    particles.clear();
+    ribbons.clear();
 }
 
 void OpRadial::setup() {
@@ -47,15 +47,15 @@ void OpRadial::update() {
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
     
-    for (int i = 0; i < particles.size(); i++) {
-        particles[i]->update();
+    for (int i = 0; i < ribbons.size(); i++) {
+        ribbons[i]->update();
     }
 }
 
 void OpRadial::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 31);
+    ofSetColor(0);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -77,37 +77,33 @@ void OpRadial::draw() {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
-            ofVec2f average = farneback.getAverageFlowInRegion(region);
+            ofVec2f average = farneback.getAverageFlowInRegion(region) * 0.5;
+            
             if (average.length() > 0.5) {
-                
                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
                 unsigned char b = pixels[n + 2];
                 
                 ofColor col = ofColor(r, g, b);
+                col = ofColor(127);
                 /*
                 int hue = col.getHue();
                 int sat = col.getSaturation();
                 int br = col.getBrightness();
-                col.setHsb(hue, sat * 1.5, br * 2.0);
+                col.setHsb(hue, sat * 0.5, br * 2.0);
                  */
                 
-                col = ofColor(255);
-                
-                Particle *p = new Particle();
+                Ribbon *p = new Ribbon();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0),
-                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 0), col);
+                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 3), col);
                 p->friction = -0.01;
+                p->radius = average.length() * 0.4 + 0.4;
 
-                p->radius = average.length() * 0.1 + 0.02;
-                if (abs(p->radius) > skip) {
-                    p->radius = skip;
-                }
-
-                particles.push_back(p);
-                if (particles.size() > 15000) {
-                    particles.pop_front();
+                ribbons.push_back(p);
+                
+                if (ribbons.size() > 4000) {
+                    ribbons.pop_front();
                 }
             }
             /*
@@ -119,12 +115,13 @@ void OpRadial::draw() {
              */
         }
         
-        for (int i = 0; i < particles.size(); i++) {
-            particles[i]->draw();
+        for (int i = 0; i < ribbons.size(); i++) {
+            ribbons[i]->draw();
         }
         ofPopMatrix();
     }
     ofDisableBlendMode();
+    ofSetLineWidth(1);
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
