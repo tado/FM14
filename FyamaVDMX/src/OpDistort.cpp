@@ -10,13 +10,18 @@ void OpDistort::stateEnter(){
 
 void OpDistort::setup() {
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    stepSize = 2;
+    stepSize = 8.0;
     
     cvWidth = 240;
     cvHeight = 45;
     
-    ySteps = cvHeight / stepSize;
-    xSteps = cvWidth / stepSize;
+    camWidth = 640;
+    camHeight = 117;
+    
+    cvScale = ofVec2f(cvWidth/float(camWidth), cvHeight/float(camHeight));
+    
+    xSteps = camWidth / stepSize;
+    ySteps = camHeight / stepSize;
     
     for(int y = 0; y < ySteps; y++) {
         for(int x = 0; x < xSteps; x++) {
@@ -41,22 +46,21 @@ void OpDistort::setup() {
 }
 
 void OpDistort::update() {
-    texPixels = pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     flow.setWindowSize(8);
     flow.calcOpticalFlow(pixels);
     
-    ofVec2f scale = ofVec2f(cvWidth / float(ofGetWidth()), cvHeight / float(ofGetHeight()));
-
     int i = 0;
-    float distortionStrength = 8;
+    float distortionStrength = 40;
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
             int i = y * xSteps + x;
-            ofVec2f position(x * stepSize, y * stepSize);
-            ofRectangle area(position - ofVec2f(stepSize, stepSize) / 2, stepSize, stepSize);
-            ofVec2f offset = distortionStrength * flow.getAverageFlowInRegion(area);
-            mesh.setVertex(i, position +  offset);
+            ofVec2f position(x * stepSize * cvScale.x, y * stepSize * cvScale.y);
+            ofRectangle area(position - ofVec2f(stepSize * cvScale.x, stepSize * cvScale.y) / 2,
+                             stepSize * cvScale.x, stepSize * cvScale.y);
+            ofVec2f offset = flow.getAverageFlowInRegion(area);
+            mesh.setVertex(i, position / cvScale + distortionStrength * offset);
             i++;
         }
     }
@@ -65,30 +69,21 @@ void OpDistort::update() {
 void OpDistort::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 200);
+    ofSetColor(0, 31);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
-    ofDisableSmoothing();
-    ofVec2f scale = ofVec2f(ofGetWidth()/float(cvWidth-1), ofGetHeight()/float(cvHeight-1));
-    ofPushMatrix();
-    ofScale(scale.x, scale.y);
-    ofSetLineWidth(1);
-	//tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
-    tex.loadData(pixels);
-    tex.bind();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetColor(180);
-    mesh.drawWireframe();
-    ofSetColor(255);
+    
+    ofSetColor(63);
+    ofVec2f scale = ofVec2f(ofGetWidth()/float(camWidth), ofGetHeight()/float(camHeight));
+    ofScale(scale.x, scale.y);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.bind();
     mesh.draw();
-    tex.unbind();
-    ofSetLineWidth(1);
-
-    /*
-    ofSetColor(15);
+    //ofSetColor(63);
     mesh.drawWireframe();
-    ofPopMatrix();
-     */
+    tex.unbind();
+
     ofDisableBlendMode();
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }

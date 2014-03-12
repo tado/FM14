@@ -19,10 +19,11 @@ public:
 	ofMesh mesh;
 	float stepSize, xSteps, ySteps;
     
-    ofPixels pixels, texPixels;
+    ofPixels pixels;
     int cvWidth, cvHeight;
+    int camWidth, camHeight;
+    ofVec2f cvScale;
     ofImage img;
     ofTexture tex;
-    
-    ofVec2f scale;
+    //ofVec2f scale;
 };
