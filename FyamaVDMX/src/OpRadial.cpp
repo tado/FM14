@@ -76,30 +76,29 @@ void OpRadial::draw() {
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region) * 0.5;
             
-            if (average.length() > 0.5) {
+            if (average.length() > 1.0) {
                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
                 unsigned char b = pixels[n + 2];
                 
                 ofColor col = ofColor(r, g, b);
-                col = ofColor(127);
-                /*
+                //col = ofColor(127);
+
                 int hue = col.getHue();
                 int sat = col.getSaturation();
                 int br = col.getBrightness();
-                col.setHsb(hue, sat * 0.5, br * 2.0);
-                 */
+                col.setHsb(hue, sat * 0.5, 255);
                 
                 Ribbon *p = new Ribbon();
-                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0),
-                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 20), col);
-                p->friction = -0.01;
-                p->radius = average.length() * 0.4 + 1.0;
+                p->setup(ofVec3f(x, y, 0),
+                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 10), col);
+                p->friction = 0.0;
+                p->radius = average.length() * 1.0 + 1.0;
 
                 ribbons.push_back(p);
                 
-                if (ribbons.size() > 4000) {
+                if (ribbons.size() > 3000) {
                     delete ribbons[0];
                     ribbons.pop_front();
                 }

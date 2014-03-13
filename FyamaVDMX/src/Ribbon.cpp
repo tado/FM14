@@ -38,8 +38,8 @@ void Ribbon::draw(){
     ofSetColor(color);
     //ofCircle(position.x, position.y, position.z, radius);
     ofSetPolyMode(OF_POLY_WINDING_NONZERO);
-    if (radius > 2) {
-        radius = 2;
+    if (radius > 4) {
+        radius = 4;
     }
     ofSetLineWidth(radius);
     if (verts.size() > 2) {
