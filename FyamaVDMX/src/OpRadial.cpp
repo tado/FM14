@@ -8,6 +8,8 @@ void OpRadial::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ribbons.clear();
+    deque<Ribbon*>().swap(ribbons);
 }
 
 void OpRadial::stateExit(){
@@ -76,14 +78,17 @@ void OpRadial::draw() {
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region) * 0.5;
             
-            if (average.length() > 1.0) {
+            if (average.length() > 0.6) {
                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+                
+                /*
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
                 unsigned char b = pixels[n + 2];
-                
                 ofColor col = ofColor(r, g, b);
-                //col = ofColor(127);
+                 */
+
+                ofColor col = ofColor(127);
 
                 int hue = col.getHue();
                 int sat = col.getSaturation();
@@ -98,7 +103,7 @@ void OpRadial::draw() {
 
                 ribbons.push_back(p);
                 
-                if (ribbons.size() > 3000) {
+                if (ribbons.size() > 4000) {
                     delete ribbons[0];
                     ribbons.pop_front();
                 }
