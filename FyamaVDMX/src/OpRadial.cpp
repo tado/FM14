@@ -12,6 +12,7 @@ void OpRadial::stateEnter(){
 
 void OpRadial::stateExit(){
     ribbons.clear();
+    deque<Ribbon*>().swap(ribbons);
 }
 
 void OpRadial::setup() {
@@ -58,19 +59,15 @@ void OpRadial::draw() {
     ofSetColor(0);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    //ofSetCircleResolution(8);
-    //int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    //int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
-    
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     if (farneback.getWidth() > 0) {
         int skip = 1;
         ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()) * 1.1, ofGetHeight()/float(farneback.getHeight()) * 1.1);
         ofPushMatrix();
-        //ofTranslate(ofGetWidth()/3, 0);
         ofScale(scale.x, scale.y);
         
         for (int i = 0; i < 1000; i++) {
@@ -96,23 +93,17 @@ void OpRadial::draw() {
                 
                 Ribbon *p = new Ribbon();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0),
-                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 3), col);
+                         ofVec3f(ofRandom(-1, 1) * average.length(), ofRandom(-1, 1)  * average.length(), 20), col);
                 p->friction = -0.01;
-                p->radius = average.length() * 0.4 + 0.4;
+                p->radius = average.length() * 0.4 + 1.0;
 
                 ribbons.push_back(p);
                 
                 if (ribbons.size() > 4000) {
+                    delete ribbons[0];
                     ribbons.pop_front();
                 }
             }
-            /*
-             int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
-             unsigned char r = pixels[n];
-             unsigned char g = pixels[n + 1];
-             unsigned char b = pixels[n + 2];
-             ofSetColor(r, g, b);
-             */
         }
         
         for (int i = 0; i < ribbons.size(); i++) {

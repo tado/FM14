@@ -2,7 +2,7 @@
 #include "testApp.h"
 
 void FatfontPixelate::setup(){
-    font.loadFont("Rotunda.otf", 20, false);
+    font.loadFont("Rotunda.otf", 28, false);
     radius = 7;
 }
 
@@ -19,7 +19,7 @@ void FatfontPixelate::draw(){
     ratio.y = ofGetHeight() / float(camHeight);
 
     ofPushMatrix();
-    ofTranslate(0, radius * ratio.y);
+    //ofTranslate(0, radius * ratio.y);
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
             for (int j = 0; j < camHeight; j+=radius){
@@ -32,7 +32,7 @@ void FatfontPixelate::draw(){
                 int hue = col.getHue();
                 int sat = col.getSaturation();
                 int br = col.getBrightness();
-                col.setHsb(hue, sat, 255);
+                col.setHsb(hue, sat * 0.5, 255);
                 
                 ofSetColor(col);
 

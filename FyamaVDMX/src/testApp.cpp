@@ -16,6 +16,7 @@ void testApp::setup(){
     ofSetFrameRate(60);
     ofSetBackgroundAuto(false);
     ofBackground(0);
+    ofSetWindowPosition(400, 200);
     
     syphonIO.setup(640, 480);
     

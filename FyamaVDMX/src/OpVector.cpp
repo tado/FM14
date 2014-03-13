@@ -12,6 +12,7 @@ void OpVector::stateEnter(){
 
 void OpVector::stateExit(){
     particles.clear();
+    deque<Particle*>().swap(particles);
 }
 
 void OpVector::setup() {
@@ -99,6 +100,7 @@ void OpVector::draw() {
                 }
                 particles.push_back(p);
                 if (particles.size() > 8000) {
+                    delete particles[0];
                     particles.pop_front();
                 }
             }
