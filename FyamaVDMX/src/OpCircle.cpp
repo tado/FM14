@@ -43,7 +43,7 @@ void OpCircle::update() {
 void OpCircle::draw() {
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 8);
+    ofSetColor(0, 12);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
@@ -51,7 +51,7 @@ void OpCircle::draw() {
     int camHeight = pixels.getHeight();
     
     ofSetCircleResolution(64);
-    int skip = 3;
+    int skip = 5;
     
     ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
     ofPushMatrix();
@@ -72,7 +72,7 @@ void OpCircle::draw() {
             int hue = col.getHue();
             int sat = col.getSaturation();
             int br = col.getBrightness();
-            col.setHsb(hue, sat, br * 3.0);
+            col.setHsb(hue, sat * 2.0, br * 3.0);
             ofSetColor(col, 63);
             
             if (abs(radius) > skip * 0.5) {

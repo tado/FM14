@@ -4,7 +4,7 @@ void Ribbon::setup(ofVec3f _position, ofVec3f _velocity, ofColor _color){
     position = _position;
     velocity = _velocity;
     color = _color;
-    length = 20;
+    length = 4;
 }
 
 void Ribbon::resetForce(){
@@ -43,10 +43,10 @@ void Ribbon::draw(){
     }
     ofSetLineWidth(radius);
     if (verts.size() > 2) {
-        ofLine(verts[0].x, verts[0].y, verts[0].z,
-           verts[verts.size()-1].x, verts[verts.size()-1].y, verts[verts.size()-1].z);
+        //ofLine(verts[0].x, verts[0].y, verts[0].z,
+        //   verts[verts.size()-1].x, verts[verts.size()-1].y, verts[verts.size()-1].z);
         ofSetColor(255);
-        //ofCircle(verts[verts.size()-1], radius*0.11);
+        ofCircle(verts[verts.size()-1], radius*0.11);
     }
 }
 
