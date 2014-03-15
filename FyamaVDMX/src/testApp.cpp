@@ -37,11 +37,15 @@ void testApp::setup(){
     stateMachine.addState<Tile>();
     
     stateMachine.changeState("blank");
+    
+    // OSC control
+    oscControl.setup();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     syphonIO.update();
+    oscControl.update();
 }
 
 //--------------------------------------------------------------

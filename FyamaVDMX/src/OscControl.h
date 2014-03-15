@@ -5,5 +5,9 @@
 
 class OscControl {
 public:
+    void setup();
+    void update();
     
+    ofxOscReceiver receiver;
+    int state;
 };

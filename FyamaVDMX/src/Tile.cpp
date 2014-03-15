@@ -2,7 +2,7 @@
 #include "testApp.h"
 
 void Tile::setup(){
-    div = 1;
+    div = 3;
 }
 
 void Tile::update(){

@@ -5,6 +5,7 @@
 #include "SyphonIO.h"
 #include "ofxStateMachine.h"
 #include "SharedData.h"
+#include "OscControl.h"
 
 class testApp : public ofBaseApp{
     
@@ -25,5 +26,7 @@ public:
     
     SyphonIO syphonIO;
     itg::ofxStateMachine<SharedData> stateMachine;
+    
+    OscControl oscControl;
 };
 
