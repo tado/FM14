@@ -10,6 +10,7 @@
 #include "OpVector.h"
 #include "OpDistort.h"
 #include "OpRadial.h"
+#include "Tile.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -33,6 +34,7 @@ void testApp::setup(){
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpDistort>();
     stateMachine.addState<OpRadial>();
+    stateMachine.addState<Tile>();
     
     stateMachine.changeState("blank");
 }
@@ -76,6 +78,9 @@ void testApp::keyPressed(int key){
             break;
         case '9':
             stateMachine.changeState("opradial");
+            break;
+        case '0':
+            stateMachine.changeState("tile");
             break;
     }
 }
