@@ -18,7 +18,9 @@ void testApp::setup(){
     ofBackground(0);
     ofSetWindowPosition(400, 200);
     
-    syphonIO.setup(640, 480);
+    //syphonIO.setup(640, 480);
+    syphonIO.setup(1920, 1080);
+    
     
     // state machine
     stateMachine.addState<Blank>();

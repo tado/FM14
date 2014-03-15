@@ -99,7 +99,7 @@ void OpVector::draw() {
                     p->radius = skip;
                 }
                 particles.push_back(p);
-                if (particles.size() > 20000) {
+                if (particles.size() > 10000) {
                     delete particles[0];
                     particles.pop_front();
                 }

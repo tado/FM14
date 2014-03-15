@@ -4,9 +4,9 @@
 void BoxPixelate::setup(){
     ofSetRectMode(OF_RECTMODE_CENTER);
     
-    int camWidth = 640;
-    int camHeight = 117;
-    radius = 5;
+    int camWidth = 1920;
+    int camHeight = 351;
+    radius = 10;
     num = camWidth * camHeight / radius;
     
     for (int i = 0; i<num; i++) {
@@ -25,22 +25,21 @@ void BoxPixelate::draw(){
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofBackground(0);
-    int camWidth = pixels.getWidth();
-    int camHeight = pixels.getHeight();
+    float width = pixels.getWidth();
+    float height = pixels.getHeight();
     ofVec2f ratio;
-    ratio.x = ofGetWidth() / float(camWidth);
-    ratio.y = ofGetHeight() / float(camHeight);
+    ratio.x = ofGetWidth() / float(width);
+    ratio.y = ofGetHeight() / float(height);
     ofTranslate(radius / 2.0 * ratio.x, radius / 2.0 * ratio.y);
     float scale = 0.01;
     
-    //ofEnableDepthTest();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (pixels.size()>0 && angle.size() > 0 && length.size() > 0){
-        for (int i = 0; i < camWidth; i+=radius){
-            for (int j = 0; j < camHeight; j+=radius){
-                unsigned char r = pixels[(j * camWidth + i)*3];
-                unsigned char g = pixels[(j * camWidth + i)*3+1];
-                unsigned char b = pixels[(j * camWidth + i)*3+2];
+        for (int i = 0; i < width; i+=radius){
+            for (int j = 0; j < height; j+=radius){
+                unsigned char r = pixels[(j * width + i)*3];
+                unsigned char g = pixels[(j * width + i)*3+1];
+                unsigned char b = pixels[(j * width + i)*3+2];
                 
                 ofColor col = ofColor(r, g, b);
                 int hue = col.getHue();
@@ -52,7 +51,7 @@ void BoxPixelate::draw(){
                 ofPushMatrix();
                 ofTranslate(i * ratio.x, j * ratio.y);
                 
-                int n = j * camWidth / radius + i / radius;
+                int n = j * width / radius + i / radius;
                 
                 float curAngle = angle[n] + ((r + g + b) * 2.0 - angle[n]) / 60.0;
                 ofRotateX(curAngle);
@@ -60,17 +59,15 @@ void BoxPixelate::draw(){
                 ofRotateZ(curAngle * 0.2);
                 angle[n] = curAngle;
                 
-                float curLength = length[n] + ((r + g + b) * radius * ratio.y / 1000.0 - length[n]) / 20.0;
+                float curLength = length[n] + ((r + g + b) * 1.0 - length[n]) / 20.0;
                 ofSetRectMode(OF_RECTMODE_CENTER);
-                ofRect(0, 0, radius * 14, radius * 14 * br / 255);
-                //ofEllipse(0, 0, curLength, curLength * 12.0);
+                ofRect(0, 0, radius * 8, radius * 8 * br / 255);
                 ofSetRectMode(OF_RECTMODE_CORNER);
                 length[n] = curLength;
                 ofPopMatrix();
             }
         }
     }
-    //ofDisableDepthTest();
     ofDisableBlendMode();
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();

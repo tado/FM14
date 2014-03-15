@@ -15,4 +15,5 @@ public:
     int num;
     vector<float> angle;
     vector<float> length;
+    float camWidth, camHeight;
 };

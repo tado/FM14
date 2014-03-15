@@ -15,13 +15,15 @@ void OpDistort::stateEnter(){
 
 void OpDistort::setup() {
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    stepSize = 8.0;
+    stepSize = 20.0;
     
     cvWidth = 240;
     cvHeight = 45;
     
-    camWidth = 640;
-    camHeight = 117;
+    //camWidth = 640;
+    //camHeight = 117;
+    camWidth = 1920;
+    camHeight = 351;
     
     cvScale = ofVec2f(cvWidth/float(camWidth), cvHeight/float(camHeight));
     

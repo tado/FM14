@@ -2,8 +2,8 @@
 #include "testApp.h"
 
 void FatfontPixelate::setup(){
-    font.loadFont("Rotunda.otf", 28, false);
-    radius = 7;
+    font.loadFont("Rotunda.otf", 36, false);
+    radius = 18;
 }
 
 void FatfontPixelate::update(){
@@ -19,7 +19,6 @@ void FatfontPixelate::draw(){
     ratio.y = ofGetHeight() / float(camHeight);
 
     ofPushMatrix();
-    //ofTranslate(0, radius * ratio.y);
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
             for (int j = 0; j < camHeight; j+=radius){

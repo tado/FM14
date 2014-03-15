@@ -2,7 +2,7 @@
 #include "testApp.h"
 
 void SimplePixelate::setup(){
-    radius = 6;
+    radius = 20;
     int width = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int height = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(width, height, 3);
