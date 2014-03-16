@@ -3,5 +3,5 @@
 
 class SharedData{
 public:
-
+    int tileDiv;
 };

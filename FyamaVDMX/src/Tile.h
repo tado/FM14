@@ -8,6 +8,4 @@ public:
     void draw();
     void keyPressed(int key);
     string getName();
-    
-    int div;
 };
