@@ -2,6 +2,7 @@
 
 #include "Blank.h"
 #include "SimplePixelate.h"
+#include "NofillPixelate.h"
 #include "LinePixelate.h"
 #include "BoxPixelate.h"
 #include "FatfontPixelate.h"
@@ -26,6 +27,7 @@ void testApp::setup(){
     // state machine
     stateMachine.addState<Blank>();
     stateMachine.addState<SimplePixelate>();
+    stateMachine.addState<NofillPixelate>();
     stateMachine.addState<LinePixelate>();
     stateMachine.addState<BoxPixelate>();
     stateMachine.addState<FatfontPixelate>();
@@ -57,10 +59,10 @@ void testApp::draw(){
 void testApp::keyPressed(int key){
     switch (key) {
         case '1':
-            stateMachine.changeState("blank");
+            stateMachine.changeState("simple");
             break;
         case '2':
-            stateMachine.changeState("simple");
+            stateMachine.changeState("nofill");
             break;
         case '3':
             stateMachine.changeState("box");
