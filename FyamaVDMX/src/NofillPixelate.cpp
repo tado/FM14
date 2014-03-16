@@ -21,9 +21,11 @@ void NofillPixelate::draw(){
     
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofTranslate(0, radius / 2.0);
+    
     ofNoFill();
     //ofEnableSmoothing();
-    ofSetLineWidth(2.0);
+    ofSetLineWidth(4.0);
     
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){

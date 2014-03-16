@@ -19,6 +19,7 @@ void SimplePixelate::draw(){
     scale.x = ofGetWidth() / float(camWidth);
     scale.y = ofGetHeight() / float(camHeight);
     
+    ofTranslate(0, radius / 2.0);
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (pixels.size()>0){
