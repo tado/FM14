@@ -20,8 +20,6 @@ void OpDistort::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
-    //camWidth = 640;
-    //camHeight = 117;
     camWidth = 1920;
     camHeight = 351;
     

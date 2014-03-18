@@ -2,8 +2,6 @@
 #include "testApp.h"
 
 void BoxPixelate::setup(){
-    ofSetRectMode(OF_RECTMODE_CENTER);
-    
     int camWidth = 1920;
     int camHeight = 351;
     radius = 10;
@@ -30,6 +28,8 @@ void BoxPixelate::draw(){
     ofVec2f ratio;
     ratio.x = ofGetWidth() / float(width);
     ratio.y = ofGetHeight() / float(height);
+    
+    ofPushMatrix();
     ofTranslate(radius / 2.0 * ratio.x, radius / 2.0 * ratio.y);
     float scale = 0.01;
     
@@ -69,6 +69,7 @@ void BoxPixelate::draw(){
         }
     }
     ofDisableBlendMode();
+    ofPopMatrix();
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }

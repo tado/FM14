@@ -3,9 +3,6 @@
 
 void SimplePixelate::setup(){
     radius = 20;
-    int width = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int height = ((testApp*)ofGetAppPtr())->syphonIO.height;
-    pixels.allocate(width, height, 3);
 }
 
 void SimplePixelate::update(){
@@ -18,7 +15,8 @@ void SimplePixelate::draw(){
     int camHeight = pixels.getHeight();
     scale.x = ofGetWidth() / float(camWidth);
     scale.y = ofGetHeight() / float(camHeight);
-    
+
+    ofPushMatrix();
     ofTranslate(0, radius / 2.0);
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -40,6 +38,7 @@ void SimplePixelate::draw(){
         }
         ofDisableBlendMode();
     }
+    ofPopMatrix();
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }

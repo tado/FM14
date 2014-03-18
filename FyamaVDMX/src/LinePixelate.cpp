@@ -3,14 +3,9 @@
 
 void LinePixelate::setup(){
     radius = 20;
-    int width = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int height = ((testApp*)ofGetAppPtr())->syphonIO.height;
-    pixels.allocate(width, height, 3);
-    
+        
     camWidth = pixels.getWidth();
     camHeight = pixels.getHeight();
-    //camWidth = 1920;
-    //camHeight = 350;
     
     num = camWidth * camHeight / radius;
     for (int i = 0; i < num; i++) {

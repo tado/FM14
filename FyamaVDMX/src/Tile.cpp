@@ -6,7 +6,7 @@ void Tile::setup(){
 }
 
 void Tile::update(){
-
+    
 }
 
 void Tile::draw(){

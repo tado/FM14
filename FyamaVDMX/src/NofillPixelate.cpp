@@ -3,9 +3,6 @@
 
 void NofillPixelate::setup(){
     radius = 20;
-    int width = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int height = ((testApp*)ofGetAppPtr())->syphonIO.height;
-    pixels.allocate(width, height, 3);
 }
 
 void NofillPixelate::update(){
@@ -21,10 +18,11 @@ void NofillPixelate::draw(){
     
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+    ofPushMatrix();
     ofTranslate(0, radius / 2.0);
     
     ofNoFill();
-    //ofEnableSmoothing();
     ofSetLineWidth(4.0);
     
     if (pixels.size()>0){
@@ -46,7 +44,7 @@ void NofillPixelate::draw(){
         ofDisableBlendMode();
     }
     ofSetLineWidth(1.0);
-    //ofDisableSmoothing();
+    ofPopMatrix();
     ofFill();
     
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();

@@ -17,10 +17,10 @@ void FatfontPixelate::draw(){
     ofVec2f ratio;
     ratio.x = ofGetWidth() / float(camWidth);
     ratio.y = ofGetHeight() / float(camHeight);
-    
-    ofTranslate(0, radius * 2);
 
     ofPushMatrix();
+    ofTranslate(0, radius * 2);
+
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
             for (int j = 0; j < camHeight; j+=radius){
