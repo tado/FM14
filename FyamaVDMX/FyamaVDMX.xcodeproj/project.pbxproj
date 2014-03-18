@@ -33,6 +33,7 @@
 		63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */; };
 		6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FBB4A8427353AED09174BE5 /* ContourFinder.cpp */; };
 		7A83C47E18D660FC00E070E2 /* NofillPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */; };
+		7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */; };
 		7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19C918C7F10C009FCBDA /* Blank.cpp */; };
 		7A9C19CE18C7FC95009FCBDA /* FatfontPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19CC18C7FC95009FCBDA /* FatfontPixelate.cpp */; };
 		7A9C19D118C8059D009FCBDA /* LinePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */; };
@@ -213,6 +214,8 @@
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
 		7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NofillPixelate.cpp; sourceTree = "<group>"; };
 		7A83C47D18D660FC00E070E2 /* NofillPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NofillPixelate.h; sourceTree = "<group>"; };
+		7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBubble.cpp; sourceTree = "<group>"; };
+		7A83C48018D6BC2F00E070E2 /* OpBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpBubble.h; sourceTree = "<group>"; };
 		7A9C19C918C7F10C009FCBDA /* Blank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Blank.cpp; sourceTree = "<group>"; };
 		7A9C19CA18C7F10C009FCBDA /* Blank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blank.h; sourceTree = "<group>"; };
 		7A9C19CC18C7FC95009FCBDA /* FatfontPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatfontPixelate.cpp; sourceTree = "<group>"; };
@@ -491,6 +494,8 @@
 				18182D6418C038E5003585E0 /* OpCircle.cpp */,
 				7AF4721A18C733CE0012578D /* OpParticle.h */,
 				7AF4721918C733CE0012578D /* OpParticle.cpp */,
+				7A83C48018D6BC2F00E070E2 /* OpBubble.h */,
+				7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */,
 				1827312F18C0E4EF0075A4C7 /* OpVector.h */,
 				1827312E18C0E4EF0075A4C7 /* OpVector.cpp */,
 				7AFCA5CB18CECB6000945323 /* OpDistort.h */,
@@ -1311,6 +1316,7 @@
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				7AD2D11C18D4734500AA8B47 /* UdpSocketWin.cpp in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
+				7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,
 				7AD2D12518D4734500AA8B47 /* ofxOscSender.cpp in Sources */,
 				45CC483A999BF1065A6B926C /* Distance.cpp in Sources */,

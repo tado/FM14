@@ -8,6 +8,7 @@
 #include "FatfontPixelate.h"
 #include "OpCircle.h"
 #include "OpParticle.h"
+#include "OpBubble.h"
 #include "OpVector.h"
 #include "OpDistort.h"
 #include "OpRadial.h"
@@ -33,6 +34,7 @@ void testApp::setup(){
     stateMachine.addState<FatfontPixelate>();
     stateMachine.addState<OpCircle>();
     stateMachine.addState<OpParticle>();
+    stateMachine.addState<OpBubble>();
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpDistort>();
     stateMachine.addState<OpRadial>();
@@ -87,6 +89,9 @@ void testApp::keyPressed(int key){
             break;
         case '0':
             stateMachine.changeState("tile");
+            break;
+        case 'q':
+            stateMachine.changeState("bubble");
             break;
     }
 }

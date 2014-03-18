@@ -36,12 +36,15 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
                     break;
                 case 7:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 8:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 9:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    break;
+                case 10:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
                     break;
             }
