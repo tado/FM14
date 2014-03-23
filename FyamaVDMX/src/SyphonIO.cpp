@@ -1,4 +1,5 @@
 #include "SyphonIO.h"
+#include "testApp.h"
 
 void SyphonIO::setup(int _width, int _height){
     width = _width;
@@ -10,8 +11,12 @@ void SyphonIO::setup(int _width, int _height){
     client.setup();
     
     //setup syphon server
-    fboSyphonOut.allocate(width, height, GL_RGBA);
+    //fboSyphonOut.allocate(width, height, GL_RGBA);
+    fboSyphonOut.allocate(3840, 720, GL_RGBA);
     server.setName("oF");
+    
+    outTex.allocate(SCREEN_WIDTH, SCREEN_HEIGHT, GL_RGBA);
+    fbo.allocate(SCREEN_WIDTH, SCREEN_HEIGHT);
     
     //gui setup
     gui.setup();

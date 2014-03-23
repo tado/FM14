@@ -11,12 +11,14 @@ void FatfontPixelate::update(){
 }
 
 void FatfontPixelate::draw(){
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+
     ofBackground(0);
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     ofVec2f ratio;
-    ratio.x = ofGetWidth() / float(camWidth);
-    ratio.y = ofGetHeight() / float(camHeight);
+    ratio.x = SCREEN_WIDTH / float(camWidth);
+    ratio.y = SCREEN_HEIGHT / float(camHeight);
 
     ofPushMatrix();
     ofTranslate(0, radius * 2);
@@ -45,7 +47,12 @@ void FatfontPixelate::draw(){
         }
     }
     ofPopMatrix();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string FatfontPixelate::getName(){

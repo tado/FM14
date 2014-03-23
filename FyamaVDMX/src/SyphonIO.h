@@ -30,4 +30,10 @@ public:
     //Pixel
     ofPixels pixels;
     ofPixels croppedPixels;
+    
+    //fbo
+    ofFbo fbo;
+    
+    //Texture
+    ofTexture outTex;
 };

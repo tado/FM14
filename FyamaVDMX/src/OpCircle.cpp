@@ -41,10 +41,12 @@ void OpCircle::update() {
 }
 
 void OpCircle::draw() {
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0, 12);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     int camWidth = pixels.getWidth();
@@ -53,7 +55,7 @@ void OpCircle::draw() {
     ofSetCircleResolution(64);
     int skip = 5;
     
-    ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
+    ofVec2f scale = ofVec2f(SCREEN_WIDTH/float(farneback.getWidth()), SCREEN_HEIGHT/float(farneback.getHeight()));
     ofPushMatrix();
     ofScale(scale.x, scale.y);
     //ofTranslate(0, skip / 2.0);
@@ -83,7 +85,12 @@ void OpCircle::draw() {
     }
     ofPopMatrix();
     ofDisableBlendMode();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
     
     //gui.draw();
 }

@@ -81,15 +81,17 @@ void OpDistort::update() {
 }
 
 void OpDistort::draw() {
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0, 127);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     ofSetColor(200);
-    ofVec2f scale = ofVec2f(ofGetWidth()/float((xSteps - 1) * stepSize), ofGetHeight()/float((ySteps - 1) * stepSize));
+    ofVec2f scale = ofVec2f(SCREEN_WIDTH / float((xSteps - 1) * stepSize), SCREEN_HEIGHT / float((ySteps - 1) * stepSize));
     ofScale(scale.x, scale.y);
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.bind();
@@ -98,7 +100,12 @@ void OpDistort::draw() {
     tex.unbind();
 
     ofDisableBlendMode();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string OpDistort::getName(){

@@ -6,8 +6,9 @@ using namespace cv;
 
 void OpVector::stateEnter(){
     ofSetColor(0);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void OpVector::stateExit(){
@@ -54,10 +55,12 @@ void OpVector::update() {
 }
 
 void OpVector::draw() {
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0,255);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     //ofSetCircleResolution(8);
@@ -69,7 +72,7 @@ void OpVector::draw() {
     
     if (farneback.getWidth() > 0) {
         int skip = 1;
-        ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()) * 1.1, ofGetHeight()/float(farneback.getHeight()) * 1.1);
+        ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()) * 1.1, SCREEN_HEIGHT / float(farneback.getHeight()) * 1.1);
         ofPushMatrix();
         //ofTranslate(ofGetWidth()/3, 0);
         ofScale(scale.x, scale.y);
@@ -120,7 +123,11 @@ void OpVector::draw() {
     }
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string OpVector::getName(){

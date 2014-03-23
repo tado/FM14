@@ -8,7 +8,7 @@ void OpParticle::stateEnter(){
     ofDisableBlendMode();
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 void OpParticle::setup() {
@@ -41,10 +41,12 @@ void OpParticle::update() {
 }
 
 void OpParticle::draw() {
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0, 15);
-    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofSetCircleResolution(32);
     int camWidth = pixels.getWidth();
@@ -55,7 +57,7 @@ void OpParticle::draw() {
     if (farneback.getWidth() > 0) {
         int skip = 1;
         
-        ofVec2f scale = ofVec2f(ofGetWidth()/float(farneback.getWidth()), ofGetHeight()/float(farneback.getHeight()));
+        ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()), SCREEN_HEIGHT / float(farneback.getHeight()));
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         ofTranslate(0, skip);
@@ -94,7 +96,12 @@ void OpParticle::draw() {
         ofPopMatrix();
     }
     ofDisableBlendMode();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string OpParticle::getName(){

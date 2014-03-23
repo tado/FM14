@@ -1,5 +1,8 @@
 #pragma once
 
+#define SCREEN_WIDTH 3840
+#define SCREEN_HEIGHT 720
+
 #include "ofMain.h"
 #include "ofxSyphon.h"
 #include "SyphonIO.h"

@@ -20,14 +20,16 @@ void BoxPixelate::update(){
 }
 
 void BoxPixelate::draw(){
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofBackground(0);
     float width = pixels.getWidth();
     float height = pixels.getHeight();
     ofVec2f ratio;
-    ratio.x = ofGetWidth() / float(width);
-    ratio.y = ofGetHeight() / float(height);
+    ratio.x = SCREEN_WIDTH / float(width);
+    ratio.y = SCREEN_HEIGHT / float(height);
     
     ofPushMatrix();
     ofTranslate(radius / 2.0 * ratio.x, radius / 2.0 * ratio.y);
@@ -71,7 +73,11 @@ void BoxPixelate::draw(){
     ofDisableBlendMode();
     ofPopMatrix();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string BoxPixelate::getName(){

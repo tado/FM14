@@ -13,8 +13,10 @@ void NofillPixelate::draw(){
     ofVec2f scale;
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
-    scale.x = ofGetWidth() / float(camWidth);
-    scale.y = ofGetHeight() / float(camHeight);
+    scale.x = SCREEN_WIDTH / float(camWidth);
+    scale.y = SCREEN_HEIGHT / float(camHeight);
+    
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -47,7 +49,11 @@ void NofillPixelate::draw(){
     ofPopMatrix();
     ofFill();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ofSetColor(255);
+    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 string NofillPixelate::getName(){
