@@ -47,6 +47,9 @@ void OscControl::update(){
                 case 10:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
                     break;
+                case 11:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
+                    break;
             }
 		}
         if(m.getAddress() == "/FromVDMX/tile"){

@@ -13,14 +13,14 @@
 #include "OpDistort.h"
 #include "OpRadial.h"
 #include "Tile.h"
+#include "MoveTile.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetFrameRate(60);
     ofSetBackgroundAuto(false);
-    ofBackground(0);
-    ofSetWindowPosition(400, 200);
-    
+    //ofBackground(0);
+    //ofSetWindowPosition(400, 200);
     //syphonIO.setup(640, 480);
     syphonIO.setup(1920, 1080);
     
@@ -39,6 +39,7 @@ void testApp::setup(){
     stateMachine.addState<OpDistort>();
     stateMachine.addState<OpRadial>();
     stateMachine.addState<Tile>();
+    stateMachine.addState<MoveTile>();
     
     stateMachine.changeState("blank");
     
@@ -88,10 +89,13 @@ void testApp::keyPressed(int key){
             stateMachine.changeState("opradial");
             break;
         case '0':
-            stateMachine.changeState("tile");
+            stateMachine.changeState("bubble");
             break;
         case 'q':
-            stateMachine.changeState("bubble");
+            stateMachine.changeState("tile");
+            break;
+        case 'w':
+            stateMachine.changeState("movetile");
             break;
     }
 }

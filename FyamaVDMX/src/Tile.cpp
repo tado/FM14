@@ -21,7 +21,6 @@ void Tile::draw(){
             }
         }
     }
-    
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
     ofSetColor(255);
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
