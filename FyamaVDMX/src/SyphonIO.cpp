@@ -22,6 +22,9 @@ void SyphonIO::setup(int _width, int _height){
     gui.setup();
     gui.add(fitScreen.setup("Fit to screen", false));
     gui.add(screenPos.setup("Screen position", ofGetWidth()/2, 0, ofGetWidth()));
+    
+    //initial crop Y position
+    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = 0.5;
 }
 
 void SyphonIO::update(){
@@ -29,7 +32,10 @@ void SyphonIO::update(){
     texture.readToPixels(pixels);
     
     //crop pixels to cropPixels
-    pixels.cropTo(croppedPixels, 0, pixels.getHeight() / 8 * 3, pixels.getWidth(), pixels.getHeight() / 36 * 9);
+    //pixels.cropTo(croppedPixels, 0, pixels.getHeight() / 8 * 3, pixels.getWidth(), pixels.getHeight() / 36 * 9);
+    float y = ofMap(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY,
+                    0, 1, 0, pixels.getHeight() - pixels.getHeight() / 36 * 9);
+    pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 36 * 9);
 
     //update syphone client
     ofSetColor(255);

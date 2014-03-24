@@ -56,5 +56,8 @@ void OscControl::update(){
             int div = m.getArgAsInt32(0) + 1;
             ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().tileDiv = div;
         }
+        if(m.getAddress() == "/FromVDMX/cropPosY"){
+            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = m.getArgAsFloat(0);
+        }
     }
 }
