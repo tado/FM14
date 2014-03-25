@@ -11,14 +11,19 @@ void SimplePixelate::update(){
 
 void SimplePixelate::draw(){
     ofVec2f scale;
-    int camWidth = pixels.getWidth();
-    int camHeight = pixels.getHeight();
+    
+    int camWidth, camHeight;
+    
+    camWidth = pixels.getWidth();
+    camHeight = pixels.getHeight();
+
     scale.x = SCREEN_WIDTH / float(camWidth);
     scale.y = SCREEN_HEIGHT / float(camHeight);
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     ofPushMatrix();
     ofTranslate(0, radius / 2.0);
+    
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (pixels.size()>0){
@@ -39,7 +44,9 @@ void SimplePixelate::draw(){
         }
         ofDisableBlendMode();
     }
+    
     ofPopMatrix();
+    
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
     ofSetColor(255);
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);

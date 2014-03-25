@@ -9,6 +9,7 @@ void OpVector::stateEnter(){
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    farneback.resetFlow();
 }
 
 void OpVector::stateExit(){

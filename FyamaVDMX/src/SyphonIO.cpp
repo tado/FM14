@@ -30,13 +30,26 @@ void SyphonIO::setup(int _width, int _height){
 void SyphonIO::update(){
     //update pixels
     texture.readToPixels(pixels);
-    
-    //crop pixels to cropPixels
-    //pixels.cropTo(croppedPixels, 0, pixels.getHeight() / 8 * 3, pixels.getWidth(), pixels.getHeight() / 36 * 9);
-    float y = ofMap(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY,
-                    0, 1, 0, pixels.getHeight() - pixels.getHeight() / 36 * 9);
-    pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 36 * 9);
 
+    //crop pixels to cropPixels
+    if (((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead) {
+        // three head
+        float y = ofMap(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY,
+                        0, 1, 0, pixels.getHeight() - pixels.getHeight() / 36 * 9);
+        //pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 36 * 9);
+        pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 3.0);
+    } else {
+        // centro screen only
+        pixels.resize(pixels.getWidth() / 3.0, pixels.getHeight() / 3.0);
+        croppedPixels.allocate(pixels.getWidth() * 3, pixels.getHeight(), OF_PIXELS_RGB);
+        int i = 0;
+        while( i < croppedPixels.size()) {
+            croppedPixels[i] = 0;
+            i++;
+        }
+        pixels.pasteInto(croppedPixels, pixels.getWidth(), 0);
+    }
+    
     //update syphone client
     ofSetColor(255);
     fboSyphonIn.begin();

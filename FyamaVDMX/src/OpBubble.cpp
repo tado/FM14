@@ -8,6 +8,7 @@ void OpBubble::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    farneback.resetFlow();
 }
 
 void OpBubble::stateExit(){

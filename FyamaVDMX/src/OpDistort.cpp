@@ -11,6 +11,7 @@ void OpDistort::stateEnter(){
             verts.push_back(ofVec3f(x * stepSize, y * stepSize, 0));
         }
     }
+    flow.resetFlow();
 }
 
 void OpDistort::setup() {
@@ -66,6 +67,9 @@ void OpDistort::update() {
             ofRectangle area(position - ofVec2f(stepSize * cvScale.x, stepSize * cvScale.y) / 2,
                              stepSize * cvScale.x, stepSize * cvScale.y);
             ofVec2f offset = flow.getAverageFlowInRegion(area);
+            if (offset.length() > 1) {
+                offset = ofVec2f(0, 0);
+            }
             float zLength = offset.length() * 10;
             if (zLength > 10) {
                 zLength = 10;

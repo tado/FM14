@@ -43,6 +43,9 @@ void testApp::setup(){
     
     stateMachine.changeState("blank");
     
+    // start as three head
+    stateMachine.getSharedData().threeHead = true;
+    
     // OSC control
     oscControl.setup();
 }
