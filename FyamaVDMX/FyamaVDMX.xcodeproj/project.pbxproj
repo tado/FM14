@@ -35,6 +35,7 @@
 		7A31463018DFBA6D0029A8EE /* MoveTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */; };
 		7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1018E2C9E900A45230 /* OpRedVector.cpp */; };
 		7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1318E2D56100A45230 /* OpBlueVector.cpp */; };
+		7A380B1818E37C2800A45230 /* OpSakura.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1618E37C2800A45230 /* OpSakura.cpp */; };
 		7A83C47E18D660FC00E070E2 /* NofillPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */; };
 		7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */; };
 		7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19C918C7F10C009FCBDA /* Blank.cpp */; };
@@ -222,6 +223,8 @@
 		7A380B1118E2C9E900A45230 /* OpRedVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpRedVector.h; sourceTree = "<group>"; };
 		7A380B1318E2D56100A45230 /* OpBlueVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBlueVector.cpp; sourceTree = "<group>"; };
 		7A380B1418E2D56100A45230 /* OpBlueVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpBlueVector.h; sourceTree = "<group>"; };
+		7A380B1618E37C2800A45230 /* OpSakura.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpSakura.cpp; sourceTree = "<group>"; };
+		7A380B1718E37C2800A45230 /* OpSakura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura.h; sourceTree = "<group>"; };
 		7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NofillPixelate.cpp; sourceTree = "<group>"; };
 		7A83C47D18D660FC00E070E2 /* NofillPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NofillPixelate.h; sourceTree = "<group>"; };
 		7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBubble.cpp; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 				7A380B1018E2C9E900A45230 /* OpRedVector.cpp */,
 				7A380B1418E2D56100A45230 /* OpBlueVector.h */,
 				7A380B1318E2D56100A45230 /* OpBlueVector.cpp */,
+				7A380B1718E37C2800A45230 /* OpSakura.h */,
+				7A380B1618E37C2800A45230 /* OpSakura.cpp */,
 				7AFCA5CB18CECB6000945323 /* OpDistort.h */,
 				7AFCA5CA18CECB6000945323 /* OpDistort.cpp */,
 				7AFCA5CF18D0DC5F00945323 /* OpRadial.h */,
@@ -1342,6 +1347,7 @@
 				7AF4721B18C733CE0012578D /* OpParticle.cpp in Sources */,
 				7AD2D11B18D4734500AA8B47 /* NetworkingUtilsWin.cpp in Sources */,
 				7AD2D12218D4734500AA8B47 /* ofxOscMessage.cpp in Sources */,
+				7A380B1818E37C2800A45230 /* OpSakura.cpp in Sources */,
 				7AD2D11918D4734500AA8B47 /* NetworkingUtils.cpp in Sources */,
 				C602002DE761F9B52DB4400A /* ObjectFinder.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,

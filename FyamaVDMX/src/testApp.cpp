@@ -9,6 +9,7 @@
 #include "OpCircle.h"
 #include "OpParticle.h"
 #include "OpBubble.h"
+#include "OpSakura.h"
 #include "OpRedVector.h"
 #include "OpBlueVector.h"
 #include "OpVector.h"
@@ -26,7 +27,6 @@ void testApp::setup(){
     //syphonIO.setup(640, 480);
     syphonIO.setup(1920, 1080);
     
-    
     // state machine
     stateMachine.addState<Blank>();
     stateMachine.addState<SimplePixelate>();
@@ -37,6 +37,7 @@ void testApp::setup(){
     stateMachine.addState<OpCircle>();
     stateMachine.addState<OpParticle>();
     stateMachine.addState<OpBubble>();
+    stateMachine.addState<OpSakura>();
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpRedVector>();
     stateMachine.addState<OpBlueVector>();
