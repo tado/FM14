@@ -5,5 +5,5 @@ class SharedData{
 public:
     int tileDiv;
     float cropPosY;
-    bool threeHead;
+    int threeHead;
 };

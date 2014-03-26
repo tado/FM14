@@ -61,7 +61,6 @@ void OscControl::update(){
         }
         if (m.getAddress() == "/FromVDMX/threeHead") {
             ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead = m.getArgAsInt32(0);
-            //((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
         }
     }
 }

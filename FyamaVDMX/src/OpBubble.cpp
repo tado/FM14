@@ -69,9 +69,10 @@ void OpBubble::draw() {
     
     if (farneback.getWidth() > 0) {
         int skip = 1;
-        ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()) * 1.1, SCREEN_HEIGHT / float(farneback.getHeight()) * 1.1);
+        ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()), SCREEN_HEIGHT / float(farneback.getHeight()));
         ofPushMatrix();
         ofScale(scale.x, scale.y);
+        ofTranslate(-skip, 0);
         
         for (int i = 0; i < 1000; i++) {
             int x = ofRandom(farneback.getWidth()-skip);

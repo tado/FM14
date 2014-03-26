@@ -73,7 +73,7 @@ void OpVector::draw() {
     
     if (farneback.getWidth() > 0) {
         int skip = 1;
-        ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()) * 1.1, SCREEN_HEIGHT / float(farneback.getHeight()) * 1.1);
+        ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()), SCREEN_HEIGHT / float(farneback.getHeight()));
         ofPushMatrix();
         //ofTranslate(ofGetWidth()/3, 0);
         ofScale(scale.x, scale.y);
