@@ -33,6 +33,8 @@
 		63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */; };
 		6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FBB4A8427353AED09174BE5 /* ContourFinder.cpp */; };
 		7A31463018DFBA6D0029A8EE /* MoveTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */; };
+		7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1018E2C9E900A45230 /* OpRedVector.cpp */; };
+		7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1318E2D56100A45230 /* OpBlueVector.cpp */; };
 		7A83C47E18D660FC00E070E2 /* NofillPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */; };
 		7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */; };
 		7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19C918C7F10C009FCBDA /* Blank.cpp */; };
@@ -216,6 +218,10 @@
 		7A0BE70E18D83BF700161237 /* FyamaVDMXDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FyamaVDMXDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveTile.cpp; sourceTree = "<group>"; };
 		7A31462F18DFBA6D0029A8EE /* MoveTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveTile.h; sourceTree = "<group>"; };
+		7A380B1018E2C9E900A45230 /* OpRedVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpRedVector.cpp; sourceTree = "<group>"; };
+		7A380B1118E2C9E900A45230 /* OpRedVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpRedVector.h; sourceTree = "<group>"; };
+		7A380B1318E2D56100A45230 /* OpBlueVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBlueVector.cpp; sourceTree = "<group>"; };
+		7A380B1418E2D56100A45230 /* OpBlueVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpBlueVector.h; sourceTree = "<group>"; };
 		7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NofillPixelate.cpp; sourceTree = "<group>"; };
 		7A83C47D18D660FC00E070E2 /* NofillPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NofillPixelate.h; sourceTree = "<group>"; };
 		7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBubble.cpp; sourceTree = "<group>"; };
@@ -501,6 +507,10 @@
 				7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */,
 				1827312F18C0E4EF0075A4C7 /* OpVector.h */,
 				1827312E18C0E4EF0075A4C7 /* OpVector.cpp */,
+				7A380B1118E2C9E900A45230 /* OpRedVector.h */,
+				7A380B1018E2C9E900A45230 /* OpRedVector.cpp */,
+				7A380B1418E2D56100A45230 /* OpBlueVector.h */,
+				7A380B1318E2D56100A45230 /* OpBlueVector.cpp */,
 				7AFCA5CB18CECB6000945323 /* OpDistort.h */,
 				7AFCA5CA18CECB6000945323 /* OpDistort.cpp */,
 				7AFCA5CF18D0DC5F00945323 /* OpRadial.h */,
@@ -1314,6 +1324,7 @@
 				7A9C19D718C81D9A009FCBDA /* BoxPixelate.cpp in Sources */,
 				7AFCA5D018D0DC5F00945323 /* OpRadial.cpp in Sources */,
 				7AD2D12118D4734500AA8B47 /* ofxOscBundle.cpp in Sources */,
+				7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
@@ -1339,6 +1350,7 @@
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
+				7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */,
 				18F0259818B5F8E400EA684F /* ofxSyphonServer.mm in Sources */,
 				18182D6318C0302E003585E0 /* SimplePixelate.cpp in Sources */,
 				7AD2D11D18D4734500AA8B47 /* OscOutboundPacketStream.cpp in Sources */,

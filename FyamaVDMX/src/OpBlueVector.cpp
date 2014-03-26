@@ -1,10 +1,10 @@
-#include "OpVector.h"
+#include "OpBlueVector.h"
 #include "testApp.h"
 
 using namespace ofxCv;
 using namespace cv;
 
-void OpVector::stateEnter(){
+void OpBlueVector::stateEnter(){
     ofSetColor(0);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -12,12 +12,12 @@ void OpVector::stateEnter(){
     farneback.resetFlow();
 }
 
-void OpVector::stateExit(){
+void OpBlueVector::stateExit(){
     particles.clear();
     deque<Particle*>().swap(particles);
 }
 
-void OpVector::setup() {
+void OpBlueVector::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
@@ -36,7 +36,7 @@ void OpVector::setup() {
     gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
 }
 
-void OpVector::update() {
+void OpBlueVector::update() {
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels(levels);
     farneback.setWindowSize(winsize);
@@ -54,17 +54,16 @@ void OpVector::update() {
     }
 }
 
-void OpVector::draw() {
+void OpBlueVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
-    /*
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0,255);
-    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    /*
+     ofSetRectMode(OF_RECTMODE_CORNER);
+     ofSetColor(0,255);
+     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
      */
-    
-    ofSetColor(255);
+    ofSetColor(255, 0, 0);
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
@@ -86,16 +85,20 @@ void OpVector::draw() {
             ofVec2f average = farneback.getAverageFlowInRegion(region);
             if (abs(average.x) + abs(average.y) > 0.5) {
                 
-                int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
-                unsigned char r = pixels[n];
-                unsigned char g = pixels[n + 1];
-                unsigned char b = pixels[n + 2];
-                
-                ofColor col = ofColor(r, g, b);
-                int hue = col.getHue();
-                int sat = col.getSaturation();
-                int br = col.getBrightness();
-                col.setHsb(hue, sat * 1.5, br * 2.0);
+                /*
+                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+                 unsigned char r = pixels[n];
+                 unsigned char g = pixels[n + 1];
+                 unsigned char b = pixels[n + 2];
+                 
+                 ofColor col = ofColor(r, g, b);
+                 int hue = col.getHue();
+                 int sat = col.getSaturation();
+                 int br = col.getBrightness();
+                 col.setHsb(hue, sat * 1.5, br * 2.0);
+                 */
+                ofColor col;
+                col = ofColor(0, 0, 255);
                 
                 Particle *p = new Particle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x / 8.0, average.y / 8.0, 0), col);
@@ -111,9 +114,13 @@ void OpVector::draw() {
             }
         }
         
+        ofNoFill();
+        ofSetLineWidth(3.0);
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
         }
+        ofSetLineWidth(1.0);
+        ofFill();
         ofPopMatrix();
     }
     ofDisableBlendMode();
@@ -124,6 +131,6 @@ void OpVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
 }
 
-string OpVector::getName(){
-    return "opvector";
+string OpBlueVector::getName(){
+    return "opbluevector";
 }

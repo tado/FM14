@@ -38,6 +38,14 @@ void SyphonIO::update(){
                         0, 1, 0, pixels.getHeight() - pixels.getHeight() / 36 * 9);
         pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 3.0);
     } else if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 1) {
+        // three screen tile
+        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = 0.5;
+        pixels.resize(pixels.getWidth() / 3.0, pixels.getHeight() / 3.0);
+        croppedPixels.allocate(pixels.getWidth() * 3, pixels.getHeight(), OF_PIXELS_RGB);
+        pixels.pasteInto(croppedPixels, 0, 0);
+        pixels.pasteInto(croppedPixels, pixels.getWidth(), 0);
+        pixels.pasteInto(croppedPixels, pixels.getWidth() * 2, 0);
+    } else if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 2) {
         // center screen only
         ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = 0.5;
         pixels.resize(pixels.getWidth() / 3.0, pixels.getHeight() / 3.0);
@@ -48,14 +56,6 @@ void SyphonIO::update(){
             i++;
         }
         pixels.pasteInto(croppedPixels, pixels.getWidth(), 0);
-    } else if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 2) {
-        // three screen tile
-        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = 0.5;
-        pixels.resize(pixels.getWidth() / 3.0, pixels.getHeight() / 3.0);
-        croppedPixels.allocate(pixels.getWidth() * 3, pixels.getHeight(), OF_PIXELS_RGB);
-        pixels.pasteInto(croppedPixels, 0, 0);
-        pixels.pasteInto(croppedPixels, pixels.getWidth(), 0);
-        pixels.pasteInto(croppedPixels, pixels.getWidth() * 2, 0);
     }
     
     //update syphone client

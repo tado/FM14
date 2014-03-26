@@ -8,4 +8,6 @@ public:
     void update();
     void draw();
     string getName();
+    ofPixels pixels;
+    ofTexture tex;
 };

@@ -31,4 +31,5 @@ public:
     ofPixels pixels;
     deque<Particle *> particles;
     int cvWidth, cvHeight;
+    ofTexture tex;
 };

@@ -7,7 +7,7 @@
 #include "SharedData.h"
 #include "Particle.h"
 
-class OpBubble : public itg::ofxState<SharedData>{
+class OpRedVector : public itg::ofxState<SharedData>{
     
 public:
     void stateEnter();

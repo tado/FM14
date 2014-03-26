@@ -57,10 +57,16 @@ void OpBubble::update() {
 void OpBubble::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
+    /*
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(0,255);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    */
+    
+    ofSetColor(255);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     

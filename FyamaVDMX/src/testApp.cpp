@@ -9,6 +9,8 @@
 #include "OpCircle.h"
 #include "OpParticle.h"
 #include "OpBubble.h"
+#include "OpRedVector.h"
+#include "OpBlueVector.h"
 #include "OpVector.h"
 #include "OpDistort.h"
 #include "OpRadial.h"
@@ -36,6 +38,8 @@ void testApp::setup(){
     stateMachine.addState<OpParticle>();
     stateMachine.addState<OpBubble>();
     stateMachine.addState<OpVector>();
+    stateMachine.addState<OpRedVector>();
+    stateMachine.addState<OpBlueVector>();
     stateMachine.addState<OpDistort>();
     stateMachine.addState<OpRadial>();
     stateMachine.addState<Tile>();

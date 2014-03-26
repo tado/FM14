@@ -36,19 +36,28 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
                     break;
                 case 7:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
                     break;
                 case 8:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
                     break;
                 case 9:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 10:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 11:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    break;
+                case 12:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    break;
+                case 13:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
+                    break;
+                case 14:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
                     break;
             }
 		}
@@ -61,6 +70,7 @@ void OscControl::update(){
         }
         if (m.getAddress() == "/FromVDMX/threeHead") {
             ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead = m.getArgAsInt32(0);
+            //((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
         }
     }
 }
