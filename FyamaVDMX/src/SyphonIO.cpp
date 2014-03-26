@@ -39,7 +39,8 @@ void SyphonIO::update(){
         //pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 36 * 9);
         pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 3.0);
     } else {
-        // centro screen only
+        // center screen only
+        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = 0.5;
         pixels.resize(pixels.getWidth() / 3.0, pixels.getHeight() / 3.0);
         croppedPixels.allocate(pixels.getWidth() * 3, pixels.getHeight(), OF_PIXELS_RGB);
         int i = 0;
