@@ -8,7 +8,7 @@ void OpSakura::stateEnter(){
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    farneback.resetFlow();
+    //farneback.resetFlow();
 }
 
 void OpSakura::stateExit(){
@@ -17,9 +17,10 @@ void OpSakura::stateExit(){
 }
 
 void OpSakura::setup() {
+    /*
     cvWidth = 240;
     cvHeight = 45;
-    
+
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
@@ -33,9 +34,11 @@ void OpSakura::setup() {
     gui.add(polyN.setup("polyN", 7, 5, 10));
     gui.add(polySigma.setup("polySigma", 1.5, 1.1, 2));
     gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
+     */
 }
 
 void OpSakura::update() {
+    /*
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels(levels);
     farneback.setWindowSize(winsize);
@@ -47,7 +50,7 @@ void OpSakura::update() {
     pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
-    
+    */
     for (int i = 0; i < particles.size(); i++) {
         particles[i]->update();
     }
@@ -65,12 +68,13 @@ void OpSakura::draw() {
      ofSetColor(255);
      tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
      tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-     */
+
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
+
     
     if (farneback.getWidth() > 0) {
         int skip = 1;
@@ -81,31 +85,50 @@ void OpSakura::draw() {
         
         int i = 0;
         
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 1000; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region);
             //if (abs(average.x) + abs(average.y) > 0.1 || abs(average.x) + abs(average.y) < 2.0) {
-            if (abs(average.x) + abs(average.y) > 0.2) {
+            if (abs(average.x) + abs(average.y) > 0.5) {
                 SakuraParticle *p = new SakuraParticle();
-                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x / 8.0 + 1.0, average.y / 16.0 + 0.5, 0), ofColor(255,200,200));
+                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x / 10.0 + 0.3, average.y / 16.0 + 0.1, 0), ofColor(255,200,200));
                 p->radius = (abs(average.x) + abs(average.y)) * 0.2;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;
                 }
                 particles.push_back(p);
-                if (particles.size() > 20000) {
+                if (particles.size() > 8000) {
                     delete particles[0];
                     particles.pop_front();
                 }
             }
         }
-        
+
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
         }
         ofPopMatrix();
+    }
+    */
+    
+    for (int i = 0; i < 1; i++) {
+        SakuraParticle *p = new SakuraParticle();
+        p->setup(ofVec3f(ofRandom(-1000, 0), ofRandom(-SCREEN_HEIGHT/2, SCREEN_HEIGHT), ofRandom(400)),
+                 ofVec3f(ofRandom(1,2), ofRandom(0.2,1.0), 0),
+                 ofColor(255,180,180));
+        p->friction = 0.0;
+        p->radius = 6;
+        particles.push_back(p);
+        if (particles.size() > 10000) {
+            delete particles[0];
+            particles.pop_front();
+        }
+    }
+    
+    for (int i = 0; i < particles.size(); i++) {
+        particles[i]->draw();
     }
     ofDisableBlendMode();
     

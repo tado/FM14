@@ -24,13 +24,17 @@ public:
     float radius;
     ofColor color;
     ofVec3f rot;
+    ofVec3f rotVel;
+    int count;
 };
 
 void SakuraParticle::setup(ofVec3f _position, ofVec3f _velocity, ofColor _color){
     position = _position;
     velocity = _velocity;
     color = _color;
-    rot = ofVec3f(ofRandom(180), ofRandom(180), ofRandom(180));
+    rot = ofVec3f(ofRandom(360), ofRandom(360), ofRandom(360));
+    rotVel = ofVec3f(ofRandom(2.0), ofRandom(2.0), ofRandom(2.0));
+    count = 0;
 }
 
 void SakuraParticle::resetForce(){
@@ -54,6 +58,7 @@ void SakuraParticle::update(){
     resetForce();
     updateForce();
     updatePos();
+    rot += rotVel;
 }
 
 void SakuraParticle::draw(){

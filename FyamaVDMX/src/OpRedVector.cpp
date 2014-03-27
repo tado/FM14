@@ -25,6 +25,8 @@ void OpRedVector::setup() {
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
+    //img.loadImage("particle32.png");
+    
     // GUI
     gui.setup();
     gui.add(pyrScale.setup("pyrScale", .5, 0, 1));
@@ -116,8 +118,10 @@ void OpRedVector::draw() {
         
         ofNoFill();
         ofSetLineWidth(3.0);
+        ofSetColor(255, 0, 0);
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
+            //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
         }
         ofSetLineWidth(1.0);
         ofFill();

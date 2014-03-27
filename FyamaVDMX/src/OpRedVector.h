@@ -32,4 +32,5 @@ public:
     deque<Particle *> particles;
     int cvWidth, cvHeight;
     ofTexture tex;
+    ofImage img;
 };

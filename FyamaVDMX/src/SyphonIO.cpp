@@ -32,12 +32,12 @@ void SyphonIO::update(){
     texture.readToPixels(pixels);
 
     //crop pixels to cropPixels
-    if (((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 0) {
+    if (((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 1) {
         // threehead wide
         float y = ofMap(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY,
                         0, 1, 0, pixels.getHeight() - pixels.getHeight() / 36 * 9);
         pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 3.0);
-    } else if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 1) {
+    } else if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 0) {
         // three screen tile
         ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = 0.5;
         pixels.resize(pixels.getWidth() / 3.0, pixels.getHeight() / 3.0);
