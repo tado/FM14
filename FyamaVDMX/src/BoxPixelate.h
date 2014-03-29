@@ -1,6 +1,7 @@
 #pragma once
 #include "ofxState.h"
 #include "SharedData.h"
+#include "ofxGui.h"
 
 class BoxPixelate : public itg::ofxState<SharedData>{
 public:
@@ -11,10 +12,14 @@ public:
     
     ofPixels pixels;
     
-    float radius;
     int num;
     vector<float> angle;
     vector<float> length;
     
-    ofLight light;
+    float radius;
+    
+    ofxPanel gui;
+    ofxIntSlider srcLevel;
+    ofxFloatSlider rectScale;
+    ofTexture tex;
 };

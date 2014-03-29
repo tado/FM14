@@ -18,13 +18,13 @@ public:
     ofxCv::FlowFarneback farneback;
     
     ofxPanel gui;
-    ofxFloatSlider pyrScale;
-    ofxIntSlider levels;
-    ofxIntSlider winsize;
-    ofxIntSlider iterations;
-    ofxIntSlider polyN;
-    ofxFloatSlider polySigma;
-    ofxToggle OPTFLOW_FARNEBACK_GAUSSIAN;
+    float pyrScale;
+    int levels;
+    int winsize;
+    int iterations;
+    int polyN;
+    float polySigma;
+    bool OPTFLOW_FARNEBACK_GAUSSIAN;
     
     ofPixels pixels;
     int cvWidth, cvHeight;

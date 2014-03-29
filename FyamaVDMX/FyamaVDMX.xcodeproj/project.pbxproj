@@ -40,7 +40,6 @@
 		7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */; };
 		7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19C918C7F10C009FCBDA /* Blank.cpp */; };
 		7A9C19CE18C7FC95009FCBDA /* FatfontPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19CC18C7FC95009FCBDA /* FatfontPixelate.cpp */; };
-		7A9C19D118C8059D009FCBDA /* LinePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */; };
 		7A9C19D718C81D9A009FCBDA /* BoxPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19D518C81D9A009FCBDA /* BoxPixelate.cpp */; };
 		7AD2D0AF18D456C900AA8B47 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D0AD18D456C900AA8B47 /* Tile.cpp */; };
 		7AD2D0B218D46C0100AA8B47 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D0B018D46C0100AA8B47 /* OscControl.cpp */; };
@@ -161,6 +160,7 @@
 		1827312F18C0E4EF0075A4C7 /* OpVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpVector.h; sourceTree = "<group>"; };
 		1827313118C0E5220075A4C7 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		1827313218C0E5220075A4C7 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		183ABC1518E7564D00C067CA /* settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = settings.xml; path = bin/data/settings.xml; sourceTree = "<group>"; };
 		18F0258418B5F8E400EA684F /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Syphon.framework; sourceTree = "<group>"; };
 		18F0258618B5F8E400EA684F /* SyphonNameboundClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyphonNameboundClient.h; sourceTree = "<group>"; };
 		18F0258718B5F8E400EA684F /* SyphonNameboundClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyphonNameboundClient.m; sourceTree = "<group>"; };
@@ -233,8 +233,6 @@
 		7A9C19CA18C7F10C009FCBDA /* Blank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Blank.h; sourceTree = "<group>"; };
 		7A9C19CC18C7FC95009FCBDA /* FatfontPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FatfontPixelate.cpp; sourceTree = "<group>"; };
 		7A9C19CD18C7FC95009FCBDA /* FatfontPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatfontPixelate.h; sourceTree = "<group>"; };
-		7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LinePixelate.cpp; sourceTree = "<group>"; };
-		7A9C19D018C8059D009FCBDA /* LinePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinePixelate.h; sourceTree = "<group>"; };
 		7A9C19D518C81D9A009FCBDA /* BoxPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxPixelate.cpp; sourceTree = "<group>"; };
 		7A9C19D618C81D9A009FCBDA /* BoxPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxPixelate.h; sourceTree = "<group>"; };
 		7AD2D0AD18D456C900AA8B47 /* Tile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
@@ -496,8 +494,6 @@
 				18182D6118C0302E003585E0 /* SimplePixelate.cpp */,
 				7A83C47D18D660FC00E070E2 /* NofillPixelate.h */,
 				7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */,
-				7A9C19D018C8059D009FCBDA /* LinePixelate.h */,
-				7A9C19CF18C8059D009FCBDA /* LinePixelate.cpp */,
 				7A9C19D618C81D9A009FCBDA /* BoxPixelate.h */,
 				7A9C19D518C81D9A009FCBDA /* BoxPixelate.cpp */,
 				7A9C19CD18C7FC95009FCBDA /* FatfontPixelate.h */,
@@ -1143,6 +1139,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				183ABC1518E7564D00C067CA /* settings.xml */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -1289,7 +1286,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9C19CE18C7FC95009FCBDA /* FatfontPixelate.cpp in Sources */,
-				7A9C19D118C8059D009FCBDA /* LinePixelate.cpp in Sources */,
 				18182D3918C02725003585E0 /* SyphonIO.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,

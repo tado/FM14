@@ -2,7 +2,11 @@
 #include "testApp.h"
 
 void SimplePixelate::setup(){
-    radius = 20;
+    gui.setup();
+    gui.add(radius.setup("Simple Radius", 20, 1, 50));
+    gui.add(srcLevel.setup("Simple Level", 0, 0, 255));
+    gui.add(circleScale.setup("Simple scale", 0.02, 0.0, 0.1));
+    gui.loadFromFile("settings.xml");
 }
 
 void SimplePixelate::update(){
@@ -21,10 +25,14 @@ void SimplePixelate::draw(){
     scale.y = SCREEN_HEIGHT / float(camHeight);
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofSetColor(srcLevel);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     ofPushMatrix();
     ofTranslate(0, radius / 2.0);
-    
-    ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
@@ -34,25 +42,23 @@ void SimplePixelate::draw(){
                 unsigned char b = pixels[(j * camWidth + i) * 3 + 2];
                 
                 ofSetColor(255, 0, 0, 180);
-                ofCircle(i * scale.x + radius * 1.1, j * scale.y, radius * (float)r / 50.0);
+                ofCircle(i * scale.x + radius * 1.1, j * scale.y, radius * (float)r * circleScale);
                 ofSetColor(0, 255, 0, 180);
-                ofCircle(i * scale.x, j * scale.y, radius * (float)g / 50.0);
+                ofCircle(i * scale.x, j * scale.y, radius * (float)g * circleScale);
                 ofSetColor(0, 0, 255, 180);
-                ofCircle(i * scale.x -  radius * 1.1, j * scale.y, radius * (float)b / 50.0);
+                ofCircle(i * scale.x -  radius * 1.1, j * scale.y, radius * (float)b * circleScale);
                 
             }
         }
-        ofDisableBlendMode();
     }
-    
+    ofDisableBlendMode();
     ofPopMatrix();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    ofBackground(0);
+    gui.draw();
 }
 
 string SimplePixelate::getName(){

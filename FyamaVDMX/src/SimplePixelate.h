@@ -1,6 +1,7 @@
 #pragma once
 #include "ofxState.h"
 #include "SharedData.h"
+#include "ofxGui.h"
 
 class SimplePixelate : public itg::ofxState<SharedData>{
 public:
@@ -10,5 +11,11 @@ public:
     string getName();
     
     ofPixels pixels;
-    float radius;
+    
+    //GUI
+    ofxPanel gui;
+    ofxFloatSlider radius;
+    ofxIntSlider srcLevel;
+    ofxFloatSlider circleScale;
+    ofTexture tex;
 };

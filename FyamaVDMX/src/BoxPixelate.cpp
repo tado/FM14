@@ -13,6 +13,11 @@ void BoxPixelate::setup(){
         angle.push_back(a);
         length.push_back(l);
     }
+    
+    gui.setup();
+    gui.add(srcLevel.setup("Box Level", 0, 0, 255));
+    gui.add(rectScale.setup("Box scale", 8.0, 1.0, 10.0));
+    gui.loadFromFile("settings.xml");
 }
 
 void BoxPixelate::update(){
@@ -21,10 +26,12 @@ void BoxPixelate::update(){
 
 void BoxPixelate::draw(){
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
-    
+
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofBackground(0);
+    ofSetColor(srcLevel);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     float width = pixels.getWidth();
     float height = pixels.getHeight();
     ofVec2f ratio;
@@ -63,7 +70,7 @@ void BoxPixelate::draw(){
                 
                 float curLength = length[n] + ((r + g + b) * 1.0 - length[n]) / 20.0;
                 ofSetRectMode(OF_RECTMODE_CENTER);
-                ofRect(0, 0, radius * 8, radius * 8 * br / 255);
+                ofRect(0, 0, radius * rectScale, radius * rectScale * br / 255);
                 ofSetRectMode(OF_RECTMODE_CORNER);
                 length[n] = curLength;
                 ofPopMatrix();
@@ -74,10 +81,10 @@ void BoxPixelate::draw(){
     ofPopMatrix();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ofBackground(0);
+    gui.draw();
 }
 
 string BoxPixelate::getName(){

@@ -16,16 +16,16 @@ void OpCircle::setup() {
     
     // GUI
     gui.setup();
-    gui.add(pyrScale.setup("pyrScale", .5, 0, 1));
-    gui.add(levels.setup("levels", 4, 1, 8));
-    gui.add(winsize.setup("winsize", 8, 4, 64));
-    gui.add(iterations.setup("iterations", 2, 1, 8));
-    gui.add(polyN.setup("polyN", 7, 5, 10));
-    gui.add(polySigma.setup("polySigma", 1.5, 1.1, 2));
-    gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
-}
 
-void OpCircle::update() {
+    //CV params
+    pyrScale = 0.5;
+    levels = 4;
+    winsize = 8;
+    iterations = 2;
+    polyN = 7;
+    polySigma = 1.5;
+    OPTFLOW_FARNEBACK_GAUSSIAN = false;
+    
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels(levels);
     farneback.setWindowSize(winsize);
@@ -33,8 +33,9 @@ void OpCircle::update() {
     farneback.setPolyN(polyN);
     farneback.setPolySigma(polySigma);
     farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
-    
-    //((testApp*)ofGetAppPtr())->syphonIO.texture.readToPixels(pixels);
+}
+
+void OpCircle::update() {
     pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
@@ -88,11 +89,8 @@ void OpCircle::draw() {
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
     ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    // ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
-    
-    //gui.draw();
 }
 
 string OpCircle::getName(){

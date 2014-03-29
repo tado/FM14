@@ -1,6 +1,7 @@
 #pragma once
 #include "ofxState.h"
 #include "SharedData.h"
+#include "ofxGui.h"
 
 class NofillPixelate : public itg::ofxState<SharedData>{
 public:
@@ -10,5 +11,10 @@ public:
     string getName();
     
     ofPixels pixels;
-    float radius;
+    
+    ofxPanel gui;
+    ofxFloatSlider radius;
+    ofxIntSlider srcLevel;
+    ofxFloatSlider circleScale;
+    ofTexture tex;
 };

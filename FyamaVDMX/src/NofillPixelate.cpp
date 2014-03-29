@@ -2,7 +2,11 @@
 #include "testApp.h"
 
 void NofillPixelate::setup(){
-    radius = 20;
+    gui.setup();
+    gui.add(radius.setup("Nofill Radius", 20, 1, 50));
+    gui.add(srcLevel.setup("Nofill Level", 0, 0, 255));
+    gui.add(circleScale.setup("Nofill scale", 0.02, 0.0, 0.1));
+    gui.loadFromFile("settings.xml");
 }
 
 void NofillPixelate::update(){
@@ -18,7 +22,11 @@ void NofillPixelate::draw(){
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
-    ofBackground(0);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofSetColor(srcLevel);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     ofPushMatrix();
@@ -35,25 +43,25 @@ void NofillPixelate::draw(){
                 unsigned char b = pixels[(j * camWidth + i) * 3 + 2];
                 
                 ofSetColor(255, 0, 0, 180);
-                ofCircle(i * scale.x, j * scale.y, radius * (float)r / 50.0);
+                ofCircle(i * scale.x, j * scale.y, radius * (float)r  * circleScale);
                 ofSetColor(0, 255, 0, 180);
-                ofCircle(i * scale.x, j * scale.y, radius * (float)g / 50.0);
+                ofCircle(i * scale.x, j * scale.y, radius * (float)g  * circleScale);
                 ofSetColor(0, 0, 255, 180);
-                ofCircle(i * scale.x, j * scale.y, radius * (float)b / 50.0);
+                ofCircle(i * scale.x, j * scale.y, radius * (float)b  * circleScale);
                 
             }
         }
-        ofDisableBlendMode();
     }
+    ofDisableBlendMode();
     ofSetLineWidth(1.0);
     ofPopMatrix();
     ofFill();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ofBackground(0);
+    gui.draw();
 }
 
 string NofillPixelate::getName(){

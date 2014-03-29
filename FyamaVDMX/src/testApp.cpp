@@ -3,7 +3,6 @@
 #include "Blank.h"
 #include "SimplePixelate.h"
 #include "NofillPixelate.h"
-#include "LinePixelate.h"
 #include "BoxPixelate.h"
 #include "FatfontPixelate.h"
 #include "OpCircle.h"
@@ -22,7 +21,7 @@
 void testApp::setup(){
     ofSetFrameRate(60);
     ofSetBackgroundAuto(false);
-    //ofBackground(0);
+    ofBackground(0);
     //ofSetWindowPosition(400, 200);
     //syphonIO.setup(640, 480);
     syphonIO.setup(1920, 1080);
@@ -31,7 +30,6 @@ void testApp::setup(){
     stateMachine.addState<Blank>();
     stateMachine.addState<SimplePixelate>();
     stateMachine.addState<NofillPixelate>();
-    stateMachine.addState<LinePixelate>();
     stateMachine.addState<BoxPixelate>();
     stateMachine.addState<FatfontPixelate>();
     stateMachine.addState<OpCircle>();
@@ -46,13 +44,13 @@ void testApp::setup(){
     stateMachine.addState<Tile>();
     stateMachine.addState<MoveTile>();
     
-    stateMachine.changeState("blank");
+    stateMachine.changeState("simple");
     
     // start as three head
     stateMachine.getSharedData().threeHead = true;
     
     // OSC control
-    oscControl.setup();
+    oscControl.setup();    
 }
 
 //--------------------------------------------------------------

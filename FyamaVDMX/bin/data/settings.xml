@@ -1,0 +1,12 @@
+<group>
+    <Simple_Radius>20</Simple_Radius>
+    <Simple_Level>0</Simple_Level>
+	<Simple_scale>0.007</Simple_scale>
+    <Nofill_Radius>20</Nofill_Radius>
+	<Nofill_Level>0</Nofill_Level>
+	<Nofill_scale>0.017</Nofill_scale>
+<group/>
+<Box_Radius>20</Box_Radius>
+	<Box_Level>0</Box_Level>
+	<Box_scale>4.285</Box_scale>
+</group>
