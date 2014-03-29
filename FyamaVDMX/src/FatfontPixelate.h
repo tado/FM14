@@ -1,6 +1,7 @@
 #pragma once
 #include "ofxState.h"
 #include "SharedData.h"
+#include "ofxGui.h"
 
 class FatfontPixelate : public itg::ofxState<SharedData>{
 public:
@@ -11,5 +12,10 @@ public:
     
     ofPixels pixels;
     ofTrueTypeFont font;
-    float radius;
+
+    ofxPanel gui;
+    ofxFloatSlider radius;
+    ofxIntSlider srcLevel;
+    ofxFloatSlider scale;
+    ofTexture tex;
 };

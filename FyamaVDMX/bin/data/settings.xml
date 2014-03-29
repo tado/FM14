@@ -6,7 +6,15 @@
 	<Nofill_Level>0</Nofill_Level>
 	<Nofill_scale>0.017</Nofill_scale>
 <group/>
-<Box_Radius>20</Box_Radius>
+<Box_Radius>18.395</Box_Radius>
 	<Box_Level>0</Box_Level>
-	<Box_scale>4.285</Box_scale>
+	<Box_scale>5.365</Box_scale>
+<Font_Radius>27.46</Font_Radius>
+	<Font_Level>0</Font_Level>
+	<Font_scale>0.0575</Font_scale>
+<Circle_fade>6</Circle_fade>
+	<Circle_hue>1.005</Circle_hue>
+	<Circle_saturation>5</Circle_saturation>
+	<Circle_brightness>0.69</Circle_brightness>
+<Circle_skip>4.61</Circle_skip>
 </group>

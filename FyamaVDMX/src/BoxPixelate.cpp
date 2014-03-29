@@ -15,6 +15,7 @@ void BoxPixelate::setup(){
     }
     
     gui.setup();
+    gui.add(radius.setup("Box Radius", 20, 1, 50));
     gui.add(srcLevel.setup("Box Level", 0, 0, 255));
     gui.add(rectScale.setup("Box scale", 8.0, 1.0, 10.0));
     gui.loadFromFile("settings.xml");

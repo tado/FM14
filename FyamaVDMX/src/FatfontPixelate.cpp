@@ -3,7 +3,11 @@
 
 void FatfontPixelate::setup(){
     font.loadFont("Rotunda.otf", 36, false);
-    radius = 18;
+
+    gui.setup();
+    gui.add(radius.setup("Font Radius", 20, 1, 50));
+    gui.add(srcLevel.setup("Font Level", 0, 0, 255));
+    gui.loadFromFile("settings.xml");
 }
 
 void FatfontPixelate::update(){
@@ -13,7 +17,11 @@ void FatfontPixelate::update(){
 void FatfontPixelate::draw(){
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
 
-    ofBackground(0);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofSetColor(srcLevel);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     ofVec2f ratio;
@@ -49,10 +57,10 @@ void FatfontPixelate::draw(){
     ofPopMatrix();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ofBackground(0);
+    gui.draw();
 }
 
 string FatfontPixelate::getName(){

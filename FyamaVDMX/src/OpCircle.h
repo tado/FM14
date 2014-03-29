@@ -16,8 +16,7 @@ public:
     string getName();
     
     ofxCv::FlowFarneback farneback;
-    
-    ofxPanel gui;
+   
     float pyrScale;
     int levels;
     int winsize;
@@ -28,4 +27,13 @@ public:
     
     ofPixels pixels;
     int cvWidth, cvHeight;
+    
+    //GUI
+    ofxPanel gui;
+    ofxFloatSlider skip;
+    ofxIntSlider fade;
+    ofxFloatSlider hue;
+    ofxFloatSlider sat;
+    ofxFloatSlider br;
+    ofTexture tex;
 };

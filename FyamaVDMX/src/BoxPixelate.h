@@ -16,9 +16,8 @@ public:
     vector<float> angle;
     vector<float> length;
     
-    float radius;
-    
     ofxPanel gui;
+    ofxFloatSlider radius;
     ofxIntSlider srcLevel;
     ofxFloatSlider rectScale;
     ofTexture tex;

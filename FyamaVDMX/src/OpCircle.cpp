@@ -5,6 +5,7 @@ using namespace ofxCv;
 using namespace cv;
 
 void OpCircle::stateEnter(){
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
@@ -16,6 +17,12 @@ void OpCircle::setup() {
     
     // GUI
     gui.setup();
+    gui.add(skip.setup("Circle skip", 5, 1, 20));
+    gui.add(fade.setup("Circle fade", 12, 0, 31));
+    gui.add(hue.setup("Circle hue", 1.0, 0.0, 3.0));
+    gui.add(sat.setup("Circle saturation", 1.0, 0.0, 5.0));
+    gui.add(br.setup("Circle brightness", 1.0, 0.0, 3.0));
+    gui.loadFromFile("settings.xml");
 
     //CV params
     pyrScale = 0.5;
@@ -43,26 +50,25 @@ void OpCircle::update() {
 
 void OpCircle::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
-    
+
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 12);
+    ofSetColor(0, fade);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    
+        
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     
     ofSetCircleResolution(64);
-    int skip = 5;
+    //int skip = 5;
     
     ofVec2f scale = ofVec2f(SCREEN_WIDTH/float(farneback.getWidth()), SCREEN_HEIGHT/float(farneback.getHeight()));
     ofPushMatrix();
     ofScale(scale.x, scale.y);
-    //ofTranslate(0, skip / 2.0);
     
-    for (int j = 0; j < farneback.getHeight(); j += skip) {
-        for (int i = 0; i < farneback.getWidth(); i += skip) {
+    for (int j = 0; j < farneback.getHeight() - skip; j += skip) {
+        for (int i = 0; i < farneback.getWidth() - skip; i += skip) {
             ofRectangle region = ofRectangle(i, j, skip, skip);
             ofVec2f avrage = farneback.getAverageFlowInRegion(region) * 2.0;
             float radius = (avrage.x + avrage.y) * 2.0;
@@ -72,10 +78,10 @@ void OpCircle::draw() {
             unsigned char b = pixels[n + 2];
             
             ofColor col = ofColor(r, g, b);
-            int hue = col.getHue();
-            int sat = col.getSaturation();
-            int br = col.getBrightness();
-            col.setHsb(hue, sat * 2.0, br * 3.0);
+            int h = col.getHue();
+            int s = col.getSaturation();
+            int v = col.getBrightness();
+            col.setHsb(h * hue, s * sat, v * br);
             ofSetColor(col, 63);
             
             if (abs(radius) > skip * 0.5) {
@@ -88,9 +94,10 @@ void OpCircle::draw() {
     ofDisableBlendMode();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    // ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    
+    ofBackground(0);
+    gui.draw();
 }
 
 string OpCircle::getName(){
