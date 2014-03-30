@@ -28,11 +28,11 @@
 	<Particle_alpha>1</Particle_alpha>
 <Vector_skip>1</Vector_skip>
 	<Vector_thresh>7.8</Vector_thresh>
-	<Vector_Level>170</Vector_Level>
+	<Vector_Level>201</Vector_Level>
 	<Vector_fade>12</Vector_fade>
 	<Vector_hue>1</Vector_hue>
 	<Vector_saturation>4.3</Vector_saturation>
-	<Vector_brightness>3</Vector_brightness>
+	<Vector_brightness>1</Vector_brightness>
 	<Vector_alpha>0.8</Vector_alpha>
 	<Vector_num>11004</Vector_num>
 <Vector_radius>0.275</Vector_radius>
@@ -54,4 +54,11 @@
 	<Red_accel>0.495</Red_accel>
 	<Red_brightness>1</Red_brightness>
 	<Red_num>5407</Red_num>
+<Blue_skip>1</Blue_skip>
+	<Blue_thresh>5</Blue_thresh>
+	<Blue_Level>175</Blue_Level>
+	<Blue_radius>0.145</Blue_radius>
+	<Blue_accel>0.47</Blue_accel>
+	<Blue_brightness>1</Blue_brightness>
+	<Blue_num>6906</Blue_num>
 </group>

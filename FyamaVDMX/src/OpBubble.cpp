@@ -34,7 +34,7 @@ void OpBubble::setup() {
     gui.add(speed.setup("Bubble speed", 0.2, 0.0, 1.0));
     gui.add(hue.setup("Bubble hue", 1.0, 0.0, 3.0));
     gui.add(sat.setup("Bubble saturation", 1.0, 0.0, 5.0));
-    gui.add(br.setup("Bubble brightness", 1.0, 0.0, 3.0));
+    gui.add(br.setup("Bubble brightness", 1.0, 0.0, 1.0));
     gui.add(num.setup("Bubble num", 1000, 10, 20000));
     gui.loadFromFile("settings.xml");
     
