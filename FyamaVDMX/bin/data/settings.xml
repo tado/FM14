@@ -6,9 +6,9 @@
 	<Nofill_Level>0</Nofill_Level>
 	<Nofill_scale>0.017</Nofill_scale>
 <group/>
-<Box_Radius>18.395</Box_Radius>
+<Box_Radius>9.575</Box_Radius>
 	<Box_Level>0</Box_Level>
-	<Box_scale>5.365</Box_scale>
+	<Box_scale>5.185</Box_scale>
 <Font_Radius>27.46</Font_Radius>
 	<Font_Level>0</Font_Level>
 	<Font_scale>0.0575</Font_scale>
@@ -17,4 +17,41 @@
 	<Circle_saturation>5</Circle_saturation>
 	<Circle_brightness>0.69</Circle_brightness>
 <Circle_skip>4.61</Circle_skip>
+<Particle_skip>1</Particle_skip>
+	<Particle_Level>0</Particle_Level>
+	<Particle_fade>0</Particle_fade>
+	<Particle_hue>1</Particle_hue>
+	<Particle_saturation>1.675</Particle_saturation>
+	<Particle_brightness>2.535</Particle_brightness>
+<Particle_num>2108</Particle_num>
+<Particle_thresh>5.55</Particle_thresh>
+	<Particle_alpha>1</Particle_alpha>
+<Vector_skip>1</Vector_skip>
+	<Vector_thresh>7.8</Vector_thresh>
+	<Vector_Level>170</Vector_Level>
+	<Vector_fade>12</Vector_fade>
+	<Vector_hue>1</Vector_hue>
+	<Vector_saturation>4.3</Vector_saturation>
+	<Vector_brightness>3</Vector_brightness>
+	<Vector_alpha>0.8</Vector_alpha>
+	<Vector_num>11004</Vector_num>
+<Vector_radius>0.275</Vector_radius>
+	<Vector_accel>0.495</Vector_accel>
+<Bubble_skip>1</Bubble_skip>
+	<Bubble_thresh>8.35</Bubble_thresh>
+	<Bubble_Level>200</Bubble_Level>
+	<Bubble_radius>0.185</Bubble_radius>
+	<Bubble_accel>0.035</Bubble_accel>
+	<Bubble_speed>0.25</Bubble_speed>
+	<Bubble_hue>1</Bubble_hue>
+	<Bubble_saturation>2.425</Bubble_saturation>
+	<Bubble_brightness>0.795</Bubble_brightness>
+	<Bubble_num>8705</Bubble_num>
+<Red_skip>1</Red_skip>
+	<Red_thresh>5</Red_thresh>
+	<Red_Level>189</Red_Level>
+	<Red_radius>0.165</Red_radius>
+	<Red_accel>0.495</Red_accel>
+	<Red_brightness>1</Red_brightness>
+	<Red_num>5407</Red_num>
 </group>

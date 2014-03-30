@@ -19,17 +19,27 @@ public:
     
     ofxCv::FlowFarneback farneback;
 
-    ofxPanel gui;
-    ofxFloatSlider pyrScale;
-    ofxIntSlider levels;
-    ofxIntSlider winsize;
-    ofxIntSlider iterations;
-    ofxIntSlider polyN;
-    ofxFloatSlider polySigma;
-    ofxToggle OPTFLOW_FARNEBACK_GAUSSIAN;
-    
     ofPixels pixels;
     deque<Particle *> particles;
     int cvWidth, cvHeight;
     ofTexture tex;
+    
+    float pyrScale;
+    int levels;
+    int winsize;
+    int iterations;
+    int polyN;
+    float polySigma;
+    bool OPTFLOW_FARNEBACK_GAUSSIAN;
+    
+    ofxPanel gui;
+    ofxFloatSlider skip;
+    ofxFloatSlider thresh;
+    ofxIntSlider srcLevel;
+    ofxFloatSlider radius;
+    ofxFloatSlider accel;
+    ofxFloatSlider hue;
+    ofxFloatSlider sat;
+    ofxFloatSlider br;
+    ofxIntSlider num;
 };

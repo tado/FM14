@@ -25,15 +25,27 @@ void OpBlueVector::setup() {
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
+    //img.loadImage("particle32.png");
+    
     // GUI
     gui.setup();
-    gui.add(pyrScale.setup("pyrScale", .5, 0, 1));
-    gui.add(levels.setup("levels", 4, 1, 8));
-    gui.add(winsize.setup("winsize", 8, 4, 64));
-    gui.add(iterations.setup("iterations", 2, 1, 8));
-    gui.add(polyN.setup("polyN", 7, 5, 10));
-    gui.add(polySigma.setup("polySigma", 1.5, 1.1, 2));
-    gui.add(OPTFLOW_FARNEBACK_GAUSSIAN.setup("OPTFLOW_FARNEBACK_GAUSSIAN", false));
+    gui.add(skip.setup("Blue skip", 1, 1, 20));
+    gui.add(thresh.setup("Blue thresh", 5, 0, 10));
+    gui.add(srcLevel.setup("Blue Level", 0, 0, 255));
+    gui.add(radius.setup("Blue radius", 0.2, 0.0, 1.0));
+    gui.add(accel.setup("Blue accel", 0.12, 0.0, 1.0));
+    gui.add(br.setup("Blue brightness", 1.0, 0.0, 1.0));
+    gui.add(num.setup("Blue num", 1000, 10, 20000));
+    gui.loadFromFile("settings.xml");
+    
+    //CV params
+    pyrScale = 0.5;
+    levels = 4;
+    winsize = 8;
+    iterations = 2;
+    polyN = 7;
+    polySigma = 1.5;
+    OPTFLOW_FARNEBACK_GAUSSIAN = false;
 }
 
 void OpBlueVector::update() {
@@ -58,12 +70,7 @@ void OpBlueVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    /*
-     ofSetRectMode(OF_RECTMODE_CORNER);
-     ofSetColor(0,255);
-     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-     */
-    ofSetColor(255, 0, 0);
+    ofSetColor(srcLevel, 0, 0);
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
@@ -83,31 +90,23 @@ void OpBlueVector::draw() {
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
             ofVec2f average = farneback.getAverageFlowInRegion(region);
+            
+            if (average.length() > thresh) {
+                average = ofVec2f(0, 0);
+            }
+            
             if (abs(average.x) + abs(average.y) > 0.5) {
-                
-                /*
-                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
-                 unsigned char r = pixels[n];
-                 unsigned char g = pixels[n + 1];
-                 unsigned char b = pixels[n + 2];
-                 
-                 ofColor col = ofColor(r, g, b);
-                 int hue = col.getHue();
-                 int sat = col.getSaturation();
-                 int br = col.getBrightness();
-                 col.setHsb(hue, sat * 1.5, br * 2.0);
-                 */
                 ofColor col;
-                col = ofColor(0, 0, 255);
+                col = ofColor(0, 0, br * 255);
                 
                 Particle *p = new Particle();
-                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x / 8.0, average.y / 8.0, 0), col);
-                p->radius = (abs(average.x) + abs(average.y)) * 0.2;
+                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
+                p->radius = (abs(average.x) + abs(average.y)) * radius;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;
                 }
                 particles.push_back(p);
-                if (particles.size() > 10000) {
+                if (particles.size() > num) {
                     delete particles[0];
                     particles.pop_front();
                 }
@@ -116,8 +115,10 @@ void OpBlueVector::draw() {
         
         ofNoFill();
         ofSetLineWidth(3.0);
+        ofSetColor(255, 0, 0);
         for (int i = 0; i < particles.size(); i++) {
             particles[i]->draw();
+            //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
         }
         ofSetLineWidth(1.0);
         ofFill();
@@ -126,9 +127,10 @@ void OpBlueVector::draw() {
     ofDisableBlendMode();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    
+    ofBackground(0);
+    gui.draw();
 }
 
 string OpBlueVector::getName(){
