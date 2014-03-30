@@ -15,12 +15,18 @@ void OpDistort::stateEnter(){
 }
 
 void OpDistort::setup() {
+    gui.setup();
+    gui.add(thresh.setup("Distort thresh", 5, 0, 10));
+    gui.add(srcLevel.setup("Distort Level", 0, 0, 255));
+    gui.add(texLevel.setup("Distort texLevel", 127, 0, 255));
+    gui.add(strength.setup("Distort strength", 40.0, 0.0, 200.0));
+    gui.add(interpolate.setup("Distort interpolate", 0.1, 0.0, 0.5));
+    gui.loadFromFile("settings.xml");
+    
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 20.0;
-    
     cvWidth = 240;
     cvHeight = 45;
-    
     camWidth = 1920;
     camHeight = 351;
     
@@ -59,7 +65,7 @@ void OpDistort::update() {
     flow.calcOpticalFlow(pixels);
     
     int i = 0;
-    float distortionStrength = 40.0;
+    float distortionStrength = strength;
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
             int i = y * xSteps + x;
@@ -67,7 +73,7 @@ void OpDistort::update() {
             ofRectangle area(position - ofVec2f(stepSize * cvScale.x, stepSize * cvScale.y) / 2,
                              stepSize * cvScale.x, stepSize * cvScale.y);
             ofVec2f offset = flow.getAverageFlowInRegion(area);
-            if (offset.length() > 1) {
+            if (offset.length() > thresh){
                 offset = ofVec2f(0, 0);
             }
             float zLength = offset.length() * 10;
@@ -77,7 +83,7 @@ void OpDistort::update() {
             ofVec3f offset3 = ofVec3f(offset.x, offset.y, zLength);
             ofVec3f pos3 = ofVec3f(position.x, position.y, 0) / ofVec3f(cvScale.x, cvScale.y, 0);
             ofVec3f newPos = pos3 + distortionStrength * offset3;
-            verts[i] += (newPos - verts[i]) * 0.1;
+            verts[i] += (newPos - verts[i]) * interpolate;
             mesh.setVertex(i, verts[i]);
             i++;
         }
@@ -87,14 +93,13 @@ void OpDistort::update() {
 void OpDistort::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0, 127);
-    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    ofSetColor(srcLevel);
+    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    ofSetColor(200);
+    ofSetColor(texLevel);
     ofVec2f scale = ofVec2f(SCREEN_WIDTH / float((xSteps - 1) * stepSize), SCREEN_HEIGHT / float((ySteps - 1) * stepSize));
     ofScale(scale.x, scale.y);
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
@@ -106,10 +111,10 @@ void OpDistort::draw() {
     ofDisableBlendMode();
     
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    
+    ofBackground(0);
+    gui.draw();
 }
 
 string OpDistort::getName(){

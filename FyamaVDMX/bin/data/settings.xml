@@ -61,4 +61,9 @@
 	<Blue_accel>0.47</Blue_accel>
 	<Blue_brightness>1</Blue_brightness>
 	<Blue_num>6906</Blue_num>
+<Distort_Level>28</Distort_Level>
+	<Distort_strength>43</Distort_strength>
+<Distort_texLevel>255</Distort_texLevel>
+<Distort_interpolate>0.305</Distort_interpolate>
+<Distort_thresh>7.5</Distort_thresh>
 </group>

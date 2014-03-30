@@ -25,4 +25,11 @@ public:
     ofVec2f cvScale;
     ofTexture tex;
     vector<ofVec3f> verts;
+    
+    ofxPanel gui;
+    ofxIntSlider srcLevel;
+    ofxIntSlider texLevel;
+    ofxFloatSlider thresh;
+    ofxFloatSlider interpolate;
+    ofxFloatSlider strength;
 };
