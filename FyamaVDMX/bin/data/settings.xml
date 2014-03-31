@@ -66,4 +66,6 @@
 <Distort_texLevel>255</Distort_texLevel>
 <Distort_interpolate>0.305</Distort_interpolate>
 <Distort_thresh>7.5</Distort_thresh>
+<Sakura_num>10000</Sakura_num>
+	<Sakura_wind_speed>1</Sakura_wind_speed>
 </group>

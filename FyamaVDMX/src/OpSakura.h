@@ -63,14 +63,12 @@ void SakuraParticle::update(){
 
 void SakuraParticle::draw(){
     ofSetColor(color);
-    //ofCircle(position.x, position.y, position.z, radius);
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofPushMatrix();
     ofTranslate(position);
     ofRotateX(rot.x);
     ofRotateY(rot.y);
     ofRotateZ(rot.z);
-    //ofRect(0, 0, radius, radius);
     ofEllipse(0, 0, radius, radius * 1.4);
     ofPopMatrix();
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -89,13 +87,8 @@ public:
     ofxCv::FlowFarneback farneback;
     
     ofxPanel gui;
-    ofxFloatSlider pyrScale;
-    ofxIntSlider levels;
-    ofxIntSlider winsize;
-    ofxIntSlider iterations;
-    ofxIntSlider polyN;
-    ofxFloatSlider polySigma;
-    ofxToggle OPTFLOW_FARNEBACK_GAUSSIAN;
+    ofxIntSlider num;
+    ofxFloatSlider windSpeed;
     
     ofPixels pixels;
     deque<SakuraParticle *> particles;
