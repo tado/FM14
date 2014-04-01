@@ -68,4 +68,14 @@
 <Distort_thresh>7.5</Distort_thresh>
 <Sakura_num>10000</Sakura_num>
 	<Sakura_wind_speed>1</Sakura_wind_speed>
+<Notes_skip>1</Notes_skip>
+	<Notes_thresh>5</Notes_thresh>
+	<Notes_Level>195</Notes_Level>
+	<Notes_radius>0.27</Notes_radius>
+	<Notes_accel>0.37</Notes_accel>
+	<Notes_hue>1</Notes_hue>
+	<Notes_saturation>1</Notes_saturation>
+	<Notes_brightness>0.88</Notes_brightness>
+	<Notes_size>1</Notes_size>
+	<Notes_num>1000</Notes_num>
 </group>

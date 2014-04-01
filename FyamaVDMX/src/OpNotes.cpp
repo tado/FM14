@@ -14,11 +14,14 @@ void OpNotes::stateEnter(){
 
 void OpNotes::stateExit(){
     particles.clear();
-    deque<Particle*>().swap(particles);
+    deque<NoteParticle*>().swap(particles);
 }
 
 void OpNotes::setup() {
-    img.loadImage("notes.png");
+    img[0].loadImage("note0.png");
+    img[1].loadImage("note1.png");
+    img[2].loadImage("note2.png");
+    img[3].loadImage("note3.png");
     
     cvWidth = 240;
     cvHeight = 45;
@@ -32,12 +35,11 @@ void OpNotes::setup() {
     gui.add(skip.setup("Notes skip", 1, 1, 20));
     gui.add(thresh.setup("Notes thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Notes Level", 0, 0, 255));
-    gui.add(radius.setup("Notes radius", 0.2, 0.0, 1.0));
     gui.add(accel.setup("Notes accel", 0.12, 0.0, 1.0));
-    gui.add(hue.setup("Notes hue", 1.0, 0.0, 3.0));
-    gui.add(sat.setup("Notes saturation", 1.0, 0.0, 5.0));
+    //gui.add(hue.setup("Notes hue", 1.0, 0.0, 3.0));
+    gui.add(sat.setup("Notes saturation", 1.0, 0.0, 1.0));
     gui.add(br.setup("Notes brightness", 1.0, 0.0, 1.0));
-    gui.add(noteSize.setup("Notes size", 4.0, 0.0, 10.0));
+    gui.add(noteSize.setup("Notes size", 1.0, 0.0, 2.0));
     gui.add(num.setup("Notes num", 1000, 10, 20000));
     gui.loadFromFile("settings.xml");
     
@@ -97,7 +99,7 @@ void OpNotes::draw() {
             }
             
             if (abs(average.x) + abs(average.y) > 0.5) {
-                
+                /*
                 int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
                 unsigned char r = pixels[n];
                 unsigned char g = pixels[n + 1];
@@ -108,10 +110,14 @@ void OpNotes::draw() {
                 int s = col.getSaturation();
                 int v = col.getBrightness();
                 col.setHsb(h * hue, s * sat, v * br);
+                 */
                 
-                Particle *p = new Particle();
+                ofColor col;
+                col.setHsb(ofRandom(255), sat * 255, br * 255);
+                
+                NoteParticle *p = new NoteParticle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
-                p->radius = (abs(average.x) + abs(average.y)) * radius;
+                p->radius = (abs(average.x) + abs(average.y));
                 //if (abs(p->radius) > skip) {
                 //    p->radius = skip;
                 //}
@@ -125,7 +131,15 @@ void OpNotes::draw() {
         
         for (int i = 0; i < particles.size(); i++) {
             ofSetColor(particles[i]->color);
-            img.draw(particles[i]->position.x, particles[i]->position.y, particles[i]->position.z, particles[i]->radius * noteSize, particles[i]->radius * noteSize);
+            ofSetRectMode(OF_RECTMODE_CENTER);
+            ofPushMatrix();
+            ofTranslate(particles[i]->position);
+            //ofRotateX(particles[i]->rot.x);
+            //ofRotateY(particles[i]->rot.y);
+            ofRotateZ(particles[i]->rot.z);
+            img[particles[i]->imgNum].draw(0, 0, 0, particles[i]->radius * noteSize, particles[i]->radius * noteSize);
+            ofPopMatrix();
+            ofSetRectMode(OF_RECTMODE_CORNER);
             //particles[i]->draw();
         }
         ofPopMatrix();
