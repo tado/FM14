@@ -6,9 +6,9 @@
 	<Nofill_Level>0</Nofill_Level>
 	<Nofill_scale>0.017</Nofill_scale>
 <group/>
-<Box_Radius>9.575</Box_Radius>
+<Box_Radius>16.19</Box_Radius>
 	<Box_Level>0</Box_Level>
-	<Box_scale>5.185</Box_scale>
+	<Box_scale>4.555</Box_scale>
 <Font_Radius>27.46</Font_Radius>
 	<Font_Level>0</Font_Level>
 	<Font_scale>0.0575</Font_scale>
@@ -78,4 +78,7 @@
 	<Notes_brightness>0.88</Notes_brightness>
 	<Notes_size>1</Notes_size>
 	<Notes_num>1000</Notes_num>
+<Box_hue>1</Box_hue>
+	<Box_saturation>1</Box_saturation>
+	<Box_brightness>0.69</Box_brightness>
 </group>

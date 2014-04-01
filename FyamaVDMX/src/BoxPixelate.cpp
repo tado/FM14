@@ -18,6 +18,9 @@ void BoxPixelate::setup(){
     gui.add(radius.setup("Box Radius", 20, 1, 50));
     gui.add(srcLevel.setup("Box Level", 0, 0, 255));
     gui.add(rectScale.setup("Box scale", 8.0, 1.0, 10.0));
+    gui.add(hue.setup("Box hue", 1.0, 0.0, 3.0));
+    gui.add(sat.setup("Box saturation", 1.0, 0.0, 5.0));
+    gui.add(br.setup("Box brightness", 1.0, 0.0, 3.0));
     gui.loadFromFile("settings.xml");
 }
 
@@ -52,11 +55,11 @@ void BoxPixelate::draw(){
                 unsigned char b = pixels[(j * width + i)*3+2];
                 
                 ofColor col = ofColor(r, g, b);
-                int hue = col.getHue();
-                int sat = col.getSaturation();
-                int br = col.getBrightness();
-                col.setHsb(hue, sat * 1.2, 180);
-                ofSetColor(col, 127);
+                int h = col.getHue();
+                int s = col.getSaturation();
+                int v = col.getBrightness();
+                col.setHsb(h * hue, s * sat, v * br);
+                ofSetColor(col);
                 
                 ofPushMatrix();
                 ofTranslate(i * ratio.x, j * ratio.y);
@@ -71,7 +74,7 @@ void BoxPixelate::draw(){
                 
                 float curLength = length[n] + ((r + g + b) * 1.0 - length[n]) / 20.0;
                 ofSetRectMode(OF_RECTMODE_CENTER);
-                ofRect(0, 0, radius * rectScale, radius * rectScale * br / 255);
+                ofRect(0, 0, radius * rectScale, radius * rectScale / 5.0);
                 ofSetRectMode(OF_RECTMODE_CORNER);
                 length[n] = curLength;
                 ofPopMatrix();

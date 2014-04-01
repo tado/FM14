@@ -20,5 +20,8 @@ public:
     ofxFloatSlider radius;
     ofxIntSlider srcLevel;
     ofxFloatSlider rectScale;
+    ofxFloatSlider hue;
+    ofxFloatSlider sat;
+    ofxFloatSlider br;
     ofTexture tex;
 };

@@ -219,7 +219,6 @@
 		758F19335D4E46A5E0DE449F /* kdtree_single_index.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = kdtree_single_index.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/kdtree_single_index.h; sourceTree = SOURCE_ROOT; };
 		7673F0AA19794A4C9517CF14 /* ts.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ts.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/ts/ts.hpp; sourceTree = SOURCE_ROOT; };
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
-		7A0BE70E18D83BF700161237 /* FyamaVDMXDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FyamaVDMXDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveTile.cpp; sourceTree = "<group>"; };
 		7A31462F18DFBA6D0029A8EE /* MoveTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveTile.h; sourceTree = "<group>"; };
 		7A380B1018E2C9E900A45230 /* OpRedVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpRedVector.cpp; sourceTree = "<group>"; };
@@ -228,6 +227,7 @@
 		7A380B1418E2D56100A45230 /* OpBlueVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpBlueVector.h; sourceTree = "<group>"; };
 		7A380B1618E37C2800A45230 /* OpSakura.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpSakura.cpp; sourceTree = "<group>"; };
 		7A380B1718E37C2800A45230 /* OpSakura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura.h; sourceTree = "<group>"; };
+		7A3E755618EAC32100B7D44C /* FyamaVDMXDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FyamaVDMXDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NofillPixelate.cpp; sourceTree = "<group>"; };
 		7A83C47D18D660FC00E070E2 /* NofillPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NofillPixelate.h; sourceTree = "<group>"; };
 		7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBubble.cpp; sourceTree = "<group>"; };
@@ -1151,7 +1151,7 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				7A0BE70E18D83BF700161237 /* FyamaVDMXDebug.app */,
+				7A3E755618EAC32100B7D44C /* FyamaVDMXDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1222,7 +1222,7 @@
 			);
 			name = FyamaVDMX;
 			productName = myOFApp;
-			productReference = 7A0BE70E18D83BF700161237 /* FyamaVDMXDebug.app */;
+			productReference = 7A3E755618EAC32100B7D44C /* FyamaVDMXDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
