@@ -12,6 +12,7 @@
 #include "OpRedVector.h"
 #include "OpBlueVector.h"
 #include "OpVector.h"
+#include "OpNotes.h"
 #include "OpDistort.h"
 #include "OpRadial.h"
 #include "Tile.h"
@@ -36,6 +37,7 @@ void testApp::setup(){
     stateMachine.addState<OpParticle>();
     stateMachine.addState<OpBubble>();
     stateMachine.addState<OpSakura>();
+    stateMachine.addState<OpNotes>();
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpRedVector>();
     stateMachine.addState<OpBlueVector>();
@@ -89,18 +91,21 @@ void testApp::keyPressed(int key){
             stateMachine.changeState("opvector");
             break;
         case '8':
-            stateMachine.changeState("opdistort");
+            stateMachine.changeState("opnotes");
             break;
         case '9':
-            stateMachine.changeState("opradial");
-            break;
-        case '0':
-            stateMachine.changeState("bubble");
+            stateMachine.changeState("opdistort");
             break;
         case 'q':
-            stateMachine.changeState("tile");
+            stateMachine.changeState("opradial");
             break;
         case 'w':
+            stateMachine.changeState("bubble");
+            break;
+        case 'e':
+            stateMachine.changeState("tile");
+            break;
+        case 't':
             stateMachine.changeState("movetile");
             break;
     }

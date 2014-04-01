@@ -14,6 +14,7 @@
 		18182D6618C038E5003585E0 /* OpCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18182D6418C038E5003585E0 /* OpCircle.cpp */; };
 		1827313018C0E4EF0075A4C7 /* OpVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1827312E18C0E4EF0075A4C7 /* OpVector.cpp */; };
 		1827313318C0E5220075A4C7 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1827313118C0E5220075A4C7 /* Particle.cpp */; };
+		188B260218EA77F6003D1291 /* OpNotes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 188B260018EA77F6003D1291 /* OpNotes.cpp */; };
 		18F0259518B5F8E400EA684F /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F0258418B5F8E400EA684F /* Syphon.framework */; };
 		18F0259618B5F8E400EA684F /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F0258718B5F8E400EA684F /* SyphonNameboundClient.m */; };
 		18F0259718B5F8E400EA684F /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18F0258C18B5F8E400EA684F /* ofxSyphonClient.mm */; };
@@ -161,6 +162,8 @@
 		1827313118C0E5220075A4C7 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		1827313218C0E5220075A4C7 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		183ABC1518E7564D00C067CA /* settings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = settings.xml; path = bin/data/settings.xml; sourceTree = "<group>"; };
+		188B260018EA77F6003D1291 /* OpNotes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpNotes.cpp; sourceTree = "<group>"; };
+		188B260118EA77F6003D1291 /* OpNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpNotes.h; sourceTree = "<group>"; };
 		18F0258418B5F8E400EA684F /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Syphon.framework; sourceTree = "<group>"; };
 		18F0258618B5F8E400EA684F /* SyphonNameboundClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyphonNameboundClient.h; sourceTree = "<group>"; };
 		18F0258718B5F8E400EA684F /* SyphonNameboundClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyphonNameboundClient.m; sourceTree = "<group>"; };
@@ -504,6 +507,8 @@
 				7AF4721918C733CE0012578D /* OpParticle.cpp */,
 				1827312F18C0E4EF0075A4C7 /* OpVector.h */,
 				1827312E18C0E4EF0075A4C7 /* OpVector.cpp */,
+				188B260118EA77F6003D1291 /* OpNotes.h */,
+				188B260018EA77F6003D1291 /* OpNotes.cpp */,
 				7A83C48018D6BC2F00E070E2 /* OpBubble.h */,
 				7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */,
 				7A380B1118E2C9E900A45230 /* OpRedVector.h */,
@@ -1353,6 +1358,7 @@
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
 				7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */,
+				188B260218EA77F6003D1291 /* OpNotes.cpp in Sources */,
 				18F0259818B5F8E400EA684F /* ofxSyphonServer.mm in Sources */,
 				18182D6318C0302E003585E0 /* SimplePixelate.cpp in Sources */,
 				7AD2D11D18D4734500AA8B47 /* OscOutboundPacketStream.cpp in Sources */,

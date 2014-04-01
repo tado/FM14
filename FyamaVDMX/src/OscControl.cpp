@@ -36,30 +36,33 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
                     break;
                 case 7:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opnotes");
                     break;
                 case 8:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
                     break;
                 case 9:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
                     break;
                 case 10:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 11:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
                     break;
                 case 12:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 13:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
                     break;
                 case 14:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
                     break;
                 case 15:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
+                    break;
+                case 16:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
                     break;
             }
