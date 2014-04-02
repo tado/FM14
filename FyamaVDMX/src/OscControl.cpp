@@ -15,55 +15,58 @@ void OscControl::update(){
             state = m.getArgAsInt32(0);
             switch (state) {
                 case 0:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("simple");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
                     break;
                 case 1:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("simple");
                     break;
                 case 2:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("box");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
                     break;
                 case 3:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("box");
                     break;
                 case 4:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
                     break;
                 case 5:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
                     break;
                 case 6:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
                     break;
                 case 7:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opnotes");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
                     break;
                 case 8:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opnotes");
                     break;
                 case 9:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
                     break;
                 case 10:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
                     break;
                 case 11:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 12:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
                     break;
                 case 13:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura2");
                     break;
                 case 14:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 15:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
                     break;
                 case 16:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    break;
+                case 17:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
                     break;
             }
 		}

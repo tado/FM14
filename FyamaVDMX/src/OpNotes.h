@@ -113,4 +113,5 @@ public:
     ofxFloatSlider br;
     ofxFloatSlider noteSize;
     ofxIntSlider num;
+    ofxIntSlider max;
 };

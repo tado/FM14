@@ -36,6 +36,7 @@ void OpBubble::setup() {
     gui.add(sat.setup("Bubble saturation", 1.0, 0.0, 5.0));
     gui.add(br.setup("Bubble brightness", 1.0, 0.0, 1.0));
     gui.add(num.setup("Bubble num", 1000, 10, 20000));
+    gui.add(max.setup("Bubble max", 10, 1, 200));
     gui.loadFromFile("settings.xml");
     
     //CV params
@@ -85,7 +86,7 @@ void OpBubble::draw() {
         ofScale(scale.x, scale.y);
         ofTranslate(-skip, 0);
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < max; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);

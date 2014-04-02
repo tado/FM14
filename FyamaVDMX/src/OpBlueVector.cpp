@@ -36,6 +36,7 @@ void OpBlueVector::setup() {
     gui.add(accel.setup("Blue accel", 0.12, 0.0, 1.0));
     gui.add(br.setup("Blue brightness", 1.0, 0.0, 1.0));
     gui.add(num.setup("Blue num", 1000, 10, 20000));
+    gui.add(max.setup("Blue max", 10, 1, 100));
     gui.loadFromFile("settings.xml");
     
     //CV params
@@ -85,7 +86,7 @@ void OpBlueVector::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < max; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);

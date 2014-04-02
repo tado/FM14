@@ -9,6 +9,7 @@
 #include "OpParticle.h"
 #include "OpBubble.h"
 #include "OpSakura.h"
+#include "OpSakura2.h"
 #include "OpRedVector.h"
 #include "OpBlueVector.h"
 #include "OpVector.h"
@@ -37,6 +38,7 @@ void testApp::setup(){
     stateMachine.addState<OpParticle>();
     stateMachine.addState<OpBubble>();
     stateMachine.addState<OpSakura>();
+    stateMachine.addState<OpSakura2>();
     stateMachine.addState<OpNotes>();
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpRedVector>();

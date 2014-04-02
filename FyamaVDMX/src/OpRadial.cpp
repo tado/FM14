@@ -25,8 +25,10 @@ void OpRadial::setup() {
     
     // GUI
     gui.setup();
-    gui.add(num.setup("Distort number", 10000, 0, 20000));
+    gui.add(fade.setup("Distort fade", 0.5, 0.0, 1.0));
     gui.add(friction.setup("Distort friction", 0.0, -0.1, 0.1));
+    gui.add(num.setup("Distort number", 10000, 0, 20000));
+    gui.add(max.setup("Distort max", 100, 1, 1000));
     
     //CV params
     pyrScale = 0.5;
@@ -61,7 +63,7 @@ void OpRadial::draw() {
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
-    ofSetColor(0,7);
+    ofSetColor(0,fade * 32);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -75,7 +77,7 @@ void OpRadial::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < max; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);

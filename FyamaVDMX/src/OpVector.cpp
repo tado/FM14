@@ -36,6 +36,7 @@ void OpVector::setup() {
     gui.add(sat.setup("Vector saturation", 1.0, 0.0, 5.0));
     gui.add(br.setup("Vector brightness", 1.0, 0.0, 1.0));
     gui.add(num.setup("Vector num", 1000, 10, 20000));
+    gui.add(max.setup("Vector max", 100, 1, 1000));
     gui.loadFromFile("settings.xml");
     
     //CV params
@@ -83,7 +84,7 @@ void OpVector::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < max; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);

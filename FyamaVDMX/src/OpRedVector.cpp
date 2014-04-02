@@ -36,6 +36,7 @@ void OpRedVector::setup() {
     gui.add(accel.setup("Red accel", 0.12, 0.0, 1.0));
     gui.add(br.setup("Red brightness", 1.0, 0.0, 1.0));
     gui.add(num.setup("Red num", 1000, 10, 20000));
+    gui.add(max.setup("Red max", 10, 1, 100));
     gui.loadFromFile("settings.xml");
     
     //CV params
@@ -85,7 +86,7 @@ void OpRedVector::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < max; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);

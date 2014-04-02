@@ -41,6 +41,7 @@ void OpNotes::setup() {
     gui.add(br.setup("Notes brightness", 1.0, 0.0, 1.0));
     gui.add(noteSize.setup("Notes size", 1.0, 0.0, 2.0));
     gui.add(num.setup("Notes num", 1000, 10, 20000));
+    gui.add(max.setup("Notes max", 100, 10, 1000));
     gui.loadFromFile("settings.xml");
     
     //CV params
@@ -88,7 +89,7 @@ void OpNotes::draw() {
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < max; i++) {
             int x = ofRandom(farneback.getWidth()-skip);
             int y = ofRandom(farneback.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);

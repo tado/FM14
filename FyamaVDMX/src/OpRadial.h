@@ -32,6 +32,8 @@ public:
     int cvWidth, cvHeight;
     
     ofxPanel gui;
-    ofxIntSlider num;
+    ofxFloatSlider fade;
     ofxFloatSlider friction;
+    ofxIntSlider num;
+    ofxIntSlider max;
 };

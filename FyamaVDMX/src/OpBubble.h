@@ -43,4 +43,5 @@ public:
     ofxFloatSlider sat;
     ofxFloatSlider br;
     ofxIntSlider num;
+    ofxIntSlider max;
 };
