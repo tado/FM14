@@ -122,6 +122,8 @@ void OpBlueVector::draw() {
         ofNoFill();
         
         /*
+         
+         
          for (int i = 0; i < particles.size(); i++) {
          particles[i]->draw();
          //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
@@ -135,7 +137,7 @@ void OpBlueVector::draw() {
                                     particles[j]->position.x, particles[j]->position.y);
                 if(dist < minDist){
                     float level = ofMap(dist, 0, minDist, 255, 0);
-                    if (!getSharedData().redBlue) {
+                    if (!   getSharedData().redBlue) {
                         ofSetColor(level, 0, 0);
                     } else {
                         ofSetColor(0, 0, level);
