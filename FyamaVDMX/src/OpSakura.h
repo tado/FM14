@@ -88,6 +88,7 @@ public:
     
     ofxPanel gui;
     ofxIntSlider num;
+    ofxIntSlider density;
     ofxFloatSlider windSpeed;
     
     ofPixels pixels;

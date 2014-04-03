@@ -1,7 +1,7 @@
 <group>
-    <Simple_Radius>20</Simple_Radius>
+    <Simple_Radius>25.745</Simple_Radius>
     <Simple_Level>0</Simple_Level>
-	<Simple_scale>0.007</Simple_scale>
+	<Simple_scale>0.023</Simple_scale>
     <Nofill_Radius>22.805</Nofill_Radius>
 	<Nofill_Level>0</Nofill_Level>
 	<Nofill_scale>0.0085</Nofill_scale>
@@ -66,8 +66,8 @@
 <Distort_texLevel>138</Distort_texLevel>
 <Distort_interpolate>0.155</Distort_interpolate>
 <Distort_thresh>7.5</Distort_thresh>
-<Sakura_num>6906</Sakura_num>
-	<Sakura_wind_speed>1.1</Sakura_wind_speed>
+<Sakura_num>10000</Sakura_num>
+	<Sakura_wind_speed>2.55</Sakura_wind_speed>
 <Notes_skip>1</Notes_skip>
 	<Notes_thresh>5</Notes_thresh>
 	<Notes_Level>0</Notes_Level>
@@ -90,7 +90,11 @@
 <Bubble_max>10</Bubble_max>
 <Distort_fade>0.825</Distort_fade>
 	<Distort_max>535</Distort_max>
-<Sakura2_num>4107</Sakura2_num>
-	<Sakura2_density>31</Sakura2_density>
-	<Sakura2_wind_speed>1.5</Sakura2_wind_speed>
+<Sakura2_num>10000</Sakura2_num>
+	<Sakura2_density>29</Sakura2_density>
+	<Sakura2_wind_speed>0.875</Sakura2_wind_speed>
+<Sakura_density>91</Sakura_density>
+<Simple_hue>1</Simple_hue>
+	<Simple_saturation>1</Simple_saturation>
+	<Simple_brightness>0.69</Simple_brightness>
 </group>

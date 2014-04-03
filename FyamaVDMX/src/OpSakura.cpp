@@ -19,7 +19,8 @@ void OpSakura::stateExit(){
 void OpSakura::setup() {
     gui.setup();
     gui.add(num.setup("Sakura num", 10000, 10, 20000));
-    gui.add(windSpeed.setup("Sakura wind speed", 1.5, 0.0, 5.0));
+    gui.add(density.setup("Sakura density", 80, 100, 1));
+    gui.add(windSpeed.setup("Sakura wind speed", 1.5, 0.0, 10.0));
 }
 
 void OpSakura::update() {
@@ -36,17 +37,19 @@ void OpSakura::draw() {
     ofSetColor(0,255);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
-    for (int i = 0; i < 1; i++) {
-        SakuraParticle *p = new SakuraParticle();
-        p->setup(ofVec3f(ofRandom(-1000, 0), ofRandom(-SCREEN_HEIGHT/2, SCREEN_HEIGHT), ofRandom(400)),
-                 ofVec3f(ofRandom(windSpeed * 0.5, windSpeed * 1.5), ofRandom(0.2,1.0), 0),
-                 ofColor(255,180,180));
-        p->friction = 0.0;
-        p->radius = 6;
-        particles.push_back(p);
-        if (particles.size() > num) {
-            delete particles[0];
-            particles.pop_front();
+    if (ofGetFrameNum() % density == 0){
+        for (int i = 0; i < 10; i++) {
+            SakuraParticle *p = new SakuraParticle();
+            p->setup(ofVec3f(ofRandom(-1000, 0), ofRandom(-SCREEN_HEIGHT/2, SCREEN_HEIGHT), ofRandom(400)),
+                     ofVec3f(ofRandom(windSpeed * 0.5, windSpeed * 1.5), ofRandom(0.2,1.0), 0),
+                     ofColor(255,180,180));
+            p->friction = 0.0;
+            p->radius = 6;
+            particles.push_back(p);
+            if (particles.size() > num) {
+                delete particles[0];
+                particles.pop_front();
+            }
         }
     }
     

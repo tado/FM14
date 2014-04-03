@@ -34,7 +34,7 @@ void SyphonIO::update(){
     if (((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 0) {
         // threehead wide
         float y = ofMap(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY,
-                        0, 1, 0, pixels.getHeight() - pixels.getHeight() / 36 * 9);
+                        0, 1, 0, pixels.getHeight() - pixels.getHeight() / 3.0);
         pixels.cropTo(croppedPixels, 0, y, pixels.getWidth(), pixels.getHeight() / 3.0);
     } else if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead == 1) {
         // three screen tile

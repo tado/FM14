@@ -23,7 +23,6 @@ public:
     ofxIntSlider num;
     ofxIntSlider density;
     ofxFloatSlider windSpeed;
-
     
     ofPixels pixels;
     deque<SakuraParticle *> particles;
