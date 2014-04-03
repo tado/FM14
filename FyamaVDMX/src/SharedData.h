@@ -6,4 +6,5 @@ public:
     int tileDiv;
     float cropPosY;
     int threeHead;
+    bool redBlue;
 };

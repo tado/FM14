@@ -36,6 +36,7 @@ public:
     ofxFloatSlider hue;
     ofxFloatSlider sat;
     ofxFloatSlider br;
+    ofxFloatSlider minDist;
     ofxIntSlider num;
     ofxIntSlider max;
     

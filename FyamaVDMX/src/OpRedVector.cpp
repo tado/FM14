@@ -14,7 +14,7 @@ void OpRedVector::stateEnter(){
 
 void OpRedVector::stateExit(){
     particles.clear();
-    deque<Particle*>().swap(particles);
+    deque<RectParticle*>().swap(particles);
 }
 
 void OpRedVector::setup() {
@@ -32,10 +32,12 @@ void OpRedVector::setup() {
     gui.add(skip.setup("Red skip", 1, 1, 20));
     gui.add(thresh.setup("Red thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Red Level", 0, 0, 255));
-    gui.add(radius.setup("Red radius", 0.2, 0.0, 1.0));
+    gui.add(radius.setup("Red radius", 0.2, 0.0, 10.0));
     gui.add(accel.setup("Red accel", 0.12, 0.0, 1.0));
-    gui.add(br.setup("Red brightness", 1.0, 0.0, 1.0));
-    gui.add(num.setup("Red num", 1000, 10, 20000));
+    gui.add(lfoAmp.setup("Red lfoAmp", 100.0, 0.0, 1000.0));
+    gui.add(lfoFreq.setup("Red lfoFreq", 0.05, 0.0, 0.2));
+    gui.add(minDist.setup("Red dist", 10.0, 1.0, 40.0));
+    gui.add(num.setup("Red num", 500, 10, 1000));
     gui.add(max.setup("Red max", 10, 1, 100));
     gui.loadFromFile("settings.xml");
     
@@ -63,6 +65,8 @@ void OpRedVector::update() {
     farneback.calcOpticalFlow(pixels);
     
     for (int i = 0; i < particles.size(); i++) {
+        particles[i]->lfoFreq = lfoFreq;
+        particles[i]->lfoAmp = lfoAmp;
         particles[i]->update();
     }
 }
@@ -71,7 +75,12 @@ void OpRedVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0, 0, srcLevel);
+    if (getSharedData().redBlue) {
+        ofSetColor(0, 0, srcLevel);
+    } else {
+        ofSetColor(srcLevel, 0, 0);
+    }
+
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
@@ -81,7 +90,7 @@ void OpRedVector::draw() {
     int camHeight = pixels.getHeight();
     
     if (farneback.getWidth() > 0) {
-        int skip = 1;
+        int skip = 10;
         ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()), SCREEN_HEIGHT / float(farneback.getHeight()));
         ofPushMatrix();
         ofScale(scale.x, scale.y);
@@ -97,17 +106,15 @@ void OpRedVector::draw() {
             }
             
             if (abs(average.x) + abs(average.y) > 0.5) {
-                ofColor col;
-                col = ofColor(br * 255, 0, 0);
-                
-                Particle *p = new Particle();
-                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
+                RectParticle *p = new RectParticle();
+                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0.0), ofVec3f(average.x * accel, average.y * accel, 0), ofColor(255));
                 p->radius = (abs(average.x) + abs(average.y)) * radius;
                 if (abs(p->radius) > skip) {
                     p->radius = skip;
                 }
                 particles.push_back(p);
-                if (particles.size() > num) {
+
+                while(particles.size() > num){
                     delete particles[0];
                     particles.pop_front();
                 }
@@ -115,12 +122,44 @@ void OpRedVector::draw() {
         }
         
         ofNoFill();
-        ofSetLineWidth(3.0);
-        ofSetColor(255, 0, 0);
+        
+        ofSetRectMode(OF_RECTMODE_CENTER);
+        //ofDisableBlendMode();
         for (int i = 0; i < particles.size(); i++) {
-            particles[i]->draw();
-            //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
+            if (getSharedData().redBlue) {
+                ofSetColor(255, 0, 0);
+            } else {
+                ofSetColor(0, 0, 255);
+            }
+            ofSetLineWidth(5.0);
+            ofRect(particles[i]->position.x, particles[i]->position.y, particles[i]->position.z,
+                   particles[i]->radius, particles[i]->radius);
+            
+            ofSetLineWidth(2.0);
+            for (int j = 1; j < particles.size()-1; j++) {
+                float dist = sqrt(double((particles[i]->position.x - particles[j]->position.x)
+                                         * (particles[i]->position.x - particles[j]->position.x)
+                                         + (particles[i]->position.y - particles[j]->position.y)
+                                         * (particles[i]->position.y - particles[j]->position.y)
+                                         + (particles[i]->position.z - particles[j]->position.z)
+                                         * (particles[i]->position.z - particles[j]->position.z)
+                                         ));
+                if(dist < minDist){
+                    float level = ofMap(dist, 0, minDist, 255, 0);
+                    
+                    
+                    if (getSharedData().redBlue) {
+                        ofSetColor(level, 0, 0);
+                    } else {
+                        ofSetColor(0, 0, level);
+                    }
+                    
+                    ofLine(particles[i]->position.x, particles[i]->position.y, particles[i]->position.z,
+                           particles[j]->position.x, particles[j]->position.y, particles[j]->position.z);
+                }
+            }
         }
+        ofSetRectMode(OF_RECTMODE_CORNER);
         ofSetLineWidth(1.0);
         ofFill();
         ofPopMatrix();
@@ -132,6 +171,14 @@ void OpRedVector::draw() {
     
     ofBackground(0);
     gui.draw();
+}
+
+void OpRedVector::toggleRedBlue(){
+    if (getSharedData().redBlue) {
+        getSharedData().redBlue == false;
+    } else {
+        getSharedData().redBlue == true;
+    }
 }
 
 string OpRedVector::getName(){

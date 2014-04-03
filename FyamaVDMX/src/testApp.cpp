@@ -70,6 +70,8 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    stateMachine.enableKeyEvents();
+    
     switch (key) {
         case '1':
             stateMachine.changeState("simple");

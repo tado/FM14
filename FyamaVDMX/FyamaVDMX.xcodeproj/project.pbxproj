@@ -34,6 +34,7 @@
 		63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 50DF87D612C5AAE17AAFA6C0 /* ofxXmlSettings.cpp */; };
 		6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FBB4A8427353AED09174BE5 /* ContourFinder.cpp */; };
 		7A115FC118EC4CF500F06F63 /* OpSakura2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A115FBF18EC4CF500F06F63 /* OpSakura2.cpp */; };
+		7A2116BE18EDFECD00F41D5D /* RectParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */; };
 		7A31463018DFBA6D0029A8EE /* MoveTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */; };
 		7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1018E2C9E900A45230 /* OpRedVector.cpp */; };
 		7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1318E2D56100A45230 /* OpBlueVector.cpp */; };
@@ -59,6 +60,7 @@
 		7AD2D12318D4734500AA8B47 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11218D4734500AA8B47 /* ofxOscParameterSync.cpp */; };
 		7AD2D12418D4734500AA8B47 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11418D4734500AA8B47 /* ofxOscReceiver.cpp */; };
 		7AD2D12518D4734500AA8B47 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11618D4734500AA8B47 /* ofxOscSender.cpp */; };
+		7AE758C618ED274000F7042D /* TriParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AE758C418ED274000F7042D /* TriParticle.cpp */; };
 		7AE88FBF18C58B9300D692A0 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F025A018B5F9C800EA684F /* Syphon.framework */; };
 		7AF4721B18C733CE0012578D /* OpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AF4721918C733CE0012578D /* OpParticle.cpp */; };
 		7AFCA5CC18CECB6000945323 /* OpDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA5CA18CECB6000945323 /* OpDistort.cpp */; };
@@ -222,6 +224,8 @@
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
 		7A115FBF18EC4CF500F06F63 /* OpSakura2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpSakura2.cpp; sourceTree = "<group>"; };
 		7A115FC018EC4CF500F06F63 /* OpSakura2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura2.h; sourceTree = "<group>"; };
+		7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectParticle.cpp; sourceTree = "<group>"; };
+		7A2116BD18EDFECD00F41D5D /* RectParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectParticle.h; sourceTree = "<group>"; };
 		7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveTile.cpp; sourceTree = "<group>"; };
 		7A31462F18DFBA6D0029A8EE /* MoveTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveTile.h; sourceTree = "<group>"; };
 		7A380B1018E2C9E900A45230 /* OpRedVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpRedVector.cpp; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 		7AD2D11518D4734500AA8B47 /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		7AD2D11618D4734500AA8B47 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		7AD2D11718D4734500AA8B47 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		7AE758C418ED274000F7042D /* TriParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TriParticle.cpp; sourceTree = "<group>"; };
+		7AE758C518ED274000F7042D /* TriParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriParticle.h; sourceTree = "<group>"; };
 		7AF4721918C733CE0012578D /* OpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpParticle.cpp; sourceTree = "<group>"; };
 		7AF4721A18C733CE0012578D /* OpParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpParticle.h; sourceTree = "<group>"; };
 		7AFCA5CA18CECB6000945323 /* OpDistort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpDistort.cpp; sourceTree = "<group>"; };
@@ -1172,6 +1178,10 @@
 				1827313118C0E5220075A4C7 /* Particle.cpp */,
 				7AFCA5D218D0E75C00945323 /* Ribbon.h */,
 				7AFCA5D118D0E75C00945323 /* Ribbon.cpp */,
+				7AE758C518ED274000F7042D /* TriParticle.h */,
+				7AE758C418ED274000F7042D /* TriParticle.cpp */,
+				7A2116BD18EDFECD00F41D5D /* RectParticle.h */,
+				7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */,
 				7AD2D0B118D46C0100AA8B47 /* OscControl.h */,
 				7AD2D0B018D46C0100AA8B47 /* OscControl.cpp */,
 				18182D3D18C02F82003585E0 /* states */,
@@ -1298,6 +1308,7 @@
 				7A9C19CE18C7FC95009FCBDA /* FatfontPixelate.cpp in Sources */,
 				18182D3918C02725003585E0 /* SyphonIO.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				7A2116BE18EDFECD00F41D5D /* RectParticle.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				7AFCA5CC18CECB6000945323 /* OpDistort.cpp in Sources */,
@@ -1362,6 +1373,7 @@
 				18F0259718B5F8E400EA684F /* ofxSyphonClient.mm in Sources */,
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
+				7AE758C618ED274000F7042D /* TriParticle.cpp in Sources */,
 				DBCB84A37F9AECC254870D79 /* Wrappers.cpp in Sources */,
 				7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */,
 				188B260218EA77F6003D1291 /* OpNotes.cpp in Sources */,

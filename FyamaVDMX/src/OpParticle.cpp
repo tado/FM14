@@ -20,7 +20,7 @@ void OpParticle::setup() {
     gui.add(skip.setup("Particle skip", 1, 1, 20));
     gui.add(thresh.setup("Particle thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Particle Level", 0, 0, 255));
-    gui.add(fade.setup("Particle fade", 12, 0, 255));
+    gui.add(fade.setup("Particle fade", 12, 0, 63));
     gui.add(hue.setup("Particle hue", 1.0, 0.0, 3.0));
     gui.add(sat.setup("Particle saturation", 1.0, 0.0, 5.0)); 
     gui.add(br.setup("Particle brightness", 1.0, 0.0, 3.0));

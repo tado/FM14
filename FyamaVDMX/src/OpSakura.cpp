@@ -46,7 +46,7 @@ void OpSakura::draw() {
             p->friction = 0.0;
             p->radius = 6;
             particles.push_back(p);
-            if (particles.size() > num) {
+            while (particles.size() > num) {
                 delete particles[0];
                 particles.pop_front();
             }

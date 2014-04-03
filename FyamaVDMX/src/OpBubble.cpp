@@ -113,7 +113,7 @@ void OpBubble::draw() {
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel - speed, 0), col);
                 p->radius = (abs(average.x) + abs(average.y)) * radius;
                 particles.push_back(p);
-                if (particles.size() > num) {
+                while (particles.size() > num) {
                     delete particles[0];
                     particles.pop_front();
                 }

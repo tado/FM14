@@ -5,7 +5,7 @@
 #include "ofxGui.h"
 #include "ofxState.h"
 #include "SharedData.h"
-#include "Particle.h"
+#include "RectParticle.h"
 
 class OpRedVector : public itg::ofxState<SharedData>{
     
@@ -15,6 +15,7 @@ public:
     void setup();
     void update();
     void draw();
+    void toggleRedBlue();
     string getName();
     
     ofxCv::FlowFarneback farneback;
@@ -33,15 +34,15 @@ public:
     ofxIntSlider srcLevel;
     ofxFloatSlider radius;
     ofxFloatSlider accel;
-    ofxFloatSlider hue;
-    ofxFloatSlider sat;
-    ofxFloatSlider br;
+    ofxFloatSlider lfoAmp;
+    ofxFloatSlider lfoFreq;
+    ofxFloatSlider minDist;
     ofxIntSlider num;
     ofxIntSlider max;
     
     ofPixels pixels;
-    deque<Particle *> particles;
+    deque<RectParticle *> particles;
     int cvWidth, cvHeight;
     ofTexture tex;
-    ofImage img;
+    //ofImage img;
 };

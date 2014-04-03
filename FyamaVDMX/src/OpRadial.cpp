@@ -103,7 +103,7 @@ void OpRadial::draw() {
                     p->radius = skip / 4.0;
                 }
                 particles.push_back(p);
-                if (particles.size() > num) {
+                while (particles.size() > num) {
                     delete particles[0];
                     particles.pop_front();
                 }

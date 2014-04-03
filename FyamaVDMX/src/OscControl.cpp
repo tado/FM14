@@ -81,5 +81,12 @@ void OscControl::update(){
             ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead = m.getArgAsInt32(0);
             //((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
         }
+        if (m.getAddress() == "/FromVDMX/redblue") {
+            if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue){
+                ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = false;
+            } else {
+                ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = true;
+            }
+        }
     }
 }

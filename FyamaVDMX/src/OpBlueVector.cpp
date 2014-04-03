@@ -33,9 +33,10 @@ void OpBlueVector::setup() {
     gui.add(thresh.setup("Blue thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Blue Level", 0, 0, 255));
     gui.add(radius.setup("Blue radius", 0.2, 0.0, 1.0));
-    gui.add(accel.setup("Blue accel", 0.12, 0.0, 1.0));
+    gui.add(accel.setup("Blue accel", 0.12, 0.0, 2.0));
     gui.add(br.setup("Blue brightness", 1.0, 0.0, 1.0));
-    gui.add(num.setup("Blue num", 1000, 10, 20000));
+    gui.add(minDist.setup("Blue dist", 10.0, 1.0, 40.0));
+    gui.add(num.setup("Blue num", 100, 2, 1000));
     gui.add(max.setup("Blue max", 10, 1, 100));
     gui.loadFromFile("settings.xml");
     
@@ -71,7 +72,11 @@ void OpBlueVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(srcLevel, 0, 0);
+    if (getSharedData().redBlue) {
+        ofSetColor(0, 0, srcLevel);
+    } else {
+        ofSetColor(srcLevel, 0, 0);
+    }
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
@@ -107,7 +112,7 @@ void OpBlueVector::draw() {
                     p->radius = skip;
                 }
                 particles.push_back(p);
-                if (particles.size() > num) {
+                while (particles.size() > num) {
                     delete particles[0];
                     particles.pop_front();
                 }
@@ -115,13 +120,37 @@ void OpBlueVector::draw() {
         }
         
         ofNoFill();
-        ofSetLineWidth(3.0);
-        ofSetColor(255, 0, 0);
+        
+        /*
+         for (int i = 0; i < particles.size(); i++) {
+         particles[i]->draw();
+         //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
+         }
+         */
+        ofSetRectMode(OF_RECTMODE_CENTER);
         for (int i = 0; i < particles.size(); i++) {
-            particles[i]->draw();
-            //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
+            for (int j = 1; j < particles.size()-1; j++) {
+                //particles[i]->draw();
+                float dist = ofDist(particles[i]->position.x, particles[i]->position.y,
+                                    particles[j]->position.x, particles[j]->position.y);
+                if(dist < minDist){
+                    float level = ofMap(dist, 0, minDist, 255, 0);
+                    if (getSharedData().redBlue) {
+                        ofSetColor(level, 0, 0);
+                    } else {
+                        ofSetColor(0, 0, level);
+                    }
+                    ofSetLineWidth(3.0);
+                    ofLine(particles[i]->position.x, particles[i]->position.y,
+                       particles[j]->position.x, particles[j]->position.y);
+                    ofRect(particles[i]->position.x, particles[i]->position.y, 1.0, 1.0);
+                    ofRect(particles[j]->position.x, particles[j]->position.y, 1.0, 1.0);
+                    ofSetLineWidth(1.0);
+                }
+            }
         }
-        ofSetLineWidth(1.0);
+        ofSetRectMode(OF_RECTMODE_CORNER);
+        //ofSetLineWidth(1.0);
         ofFill();
         ofPopMatrix();
     }
