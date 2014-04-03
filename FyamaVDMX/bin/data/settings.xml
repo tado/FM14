@@ -53,7 +53,7 @@
 	<Red_radius>2</Red_radius>
 	<Red_accel>0.82</Red_accel>
 	<Red_brightness>1</Red_brightness>
-	<Red_num>574</Red_num>
+	<Red_num>208</Red_num>
 <Blue_skip>1</Blue_skip>
 	<Blue_thresh>5</Blue_thresh>
 	<Blue_Level>255</Blue_Level>
@@ -99,7 +99,7 @@
 	<Simple_brightness>0.69</Simple_brightness>
 <Blue_dist>7.24</Blue_dist>
 <Red_zSpeed>0</Red_zSpeed>
-<Red_dist>22.06</Red_dist>
+<Red_dist>28.3</Red_dist>
 <Red_lfoAmp>425</Red_lfoAmp>
 <Red_lfoFreq>0.148</Red_lfoFreq>
 </group>

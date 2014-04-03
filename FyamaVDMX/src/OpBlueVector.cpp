@@ -72,7 +72,7 @@ void OpBlueVector::draw() {
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    if (getSharedData().redBlue) {
+    if (!getSharedData().redBlue) {
         ofSetColor(0, 0, srcLevel);
     } else {
         ofSetColor(srcLevel, 0, 0);
@@ -135,7 +135,7 @@ void OpBlueVector::draw() {
                                     particles[j]->position.x, particles[j]->position.y);
                 if(dist < minDist){
                     float level = ofMap(dist, 0, minDist, 255, 0);
-                    if (getSharedData().redBlue) {
+                    if (!getSharedData().redBlue) {
                         ofSetColor(level, 0, 0);
                     } else {
                         ofSetColor(0, 0, level);
