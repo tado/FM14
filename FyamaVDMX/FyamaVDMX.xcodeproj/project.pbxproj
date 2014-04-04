@@ -35,6 +35,7 @@
 		6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5FBB4A8427353AED09174BE5 /* ContourFinder.cpp */; };
 		7A115FC118EC4CF500F06F63 /* OpSakura2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A115FBF18EC4CF500F06F63 /* OpSakura2.cpp */; };
 		7A2116BE18EDFECD00F41D5D /* RectParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */; };
+		7A2116C418EE1AFC00F41D5D /* OpVbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A2116C218EE1AFC00F41D5D /* OpVbo.cpp */; };
 		7A31463018DFBA6D0029A8EE /* MoveTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */; };
 		7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1018E2C9E900A45230 /* OpRedVector.cpp */; };
 		7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1318E2D56100A45230 /* OpBlueVector.cpp */; };
@@ -226,6 +227,8 @@
 		7A115FC018EC4CF500F06F63 /* OpSakura2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura2.h; sourceTree = "<group>"; };
 		7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectParticle.cpp; sourceTree = "<group>"; };
 		7A2116BD18EDFECD00F41D5D /* RectParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectParticle.h; sourceTree = "<group>"; };
+		7A2116C218EE1AFC00F41D5D /* OpVbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpVbo.cpp; sourceTree = "<group>"; };
+		7A2116C318EE1AFC00F41D5D /* OpVbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpVbo.h; sourceTree = "<group>"; };
 		7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoveTile.cpp; sourceTree = "<group>"; };
 		7A31462F18DFBA6D0029A8EE /* MoveTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveTile.h; sourceTree = "<group>"; };
 		7A380B1018E2C9E900A45230 /* OpRedVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpRedVector.cpp; sourceTree = "<group>"; };
@@ -532,6 +535,8 @@
 				7AFCA5CA18CECB6000945323 /* OpDistort.cpp */,
 				7AFCA5CF18D0DC5F00945323 /* OpRadial.h */,
 				7AFCA5CE18D0DC5F00945323 /* OpRadial.cpp */,
+				7A2116C318EE1AFC00F41D5D /* OpVbo.h */,
+				7A2116C218EE1AFC00F41D5D /* OpVbo.cpp */,
 				7AD2D0AE18D456C900AA8B47 /* Tile.h */,
 				7AD2D0AD18D456C900AA8B47 /* Tile.cpp */,
 				7A31462F18DFBA6D0029A8EE /* MoveTile.h */,
@@ -1329,6 +1334,7 @@
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
+				7A2116C418EE1AFC00F41D5D /* OpVbo.cpp in Sources */,
 				7AD2D11F18D4734500AA8B47 /* OscReceivedElements.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				1827313018C0E4EF0075A4C7 /* OpVector.cpp in Sources */,

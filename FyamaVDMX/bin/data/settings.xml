@@ -102,4 +102,12 @@
 <Red_dist>28.3</Red_dist>
 <Red_lfoAmp>425</Red_lfoAmp>
 <Red_lfoFreq>0.148</Red_lfoFreq>
+<VBO_skip>1</VBO_skip>
+	<VBO_fade>0.45</VBO_fade>
+	<VBO_accel>0.235</VBO_accel>
+	<VBO_friction>0.024</VBO_friction>
+	<VBO_hue>1</VBO_hue>
+	<VBO_saturation>1.8</VBO_saturation>
+	<VBO_brightness>3.4</VBO_brightness>
+<VBO_radius>2.305</VBO_radius>
 </group>

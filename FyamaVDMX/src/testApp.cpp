@@ -16,6 +16,7 @@
 #include "OpNotes.h"
 #include "OpDistort.h"
 #include "OpRadial.h"
+#include "OpVbo.h"
 #include "Tile.h"
 #include "MoveTile.h"
 
@@ -45,6 +46,7 @@ void testApp::setup(){
     stateMachine.addState<OpBlueVector>();
     stateMachine.addState<OpDistort>();
     stateMachine.addState<OpRadial>();
+    stateMachine.addState<OpVbo>();
     stateMachine.addState<Tile>();
     stateMachine.addState<MoveTile>();
     
@@ -101,7 +103,7 @@ void testApp::keyPressed(int key){
             stateMachine.changeState("opdistort");
             break;
         case 'q':
-            stateMachine.changeState("opradial");
+            stateMachine.changeState("opvbo");
             break;
         case 'w':
             stateMachine.changeState("bubble");

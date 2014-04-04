@@ -60,7 +60,7 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 15:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opradial");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvbo");
                     break;
                 case 16:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
