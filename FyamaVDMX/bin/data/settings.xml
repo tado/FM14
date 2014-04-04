@@ -60,7 +60,7 @@
 	<Blue_radius>0.145</Blue_radius>
 	<Blue_accel>0.49</Blue_accel>
 	<Blue_brightness>1</Blue_brightness>
-	<Blue_num>630</Blue_num>
+	<Blue_num>251</Blue_num>
 <Distort_Level>0</Distort_Level>
 	<Distort_strength>55</Distort_strength>
 <Distort_texLevel>76</Distort_texLevel>
@@ -85,7 +85,7 @@
 	<Distort_friction>0.00399999</Distort_friction>
 <Red_max>61</Red_max>
 <Notes_max>100</Notes_max>
-<Blue_max>39</Blue_max>
+<Blue_max>100</Blue_max>
 <Vector_max>450</Vector_max>
 <Bubble_max>10</Bubble_max>
 <Distort_fade>0.825</Distort_fade>
@@ -97,7 +97,7 @@
 <Simple_hue>1</Simple_hue>
 	<Simple_saturation>1</Simple_saturation>
 	<Simple_brightness>0.69</Simple_brightness>
-<Blue_dist>7.24</Blue_dist>
+<Blue_dist>5.68</Blue_dist>
 <Red_zSpeed>0</Red_zSpeed>
 <Red_dist>28.3</Red_dist>
 <Red_lfoAmp>425</Red_lfoAmp>
