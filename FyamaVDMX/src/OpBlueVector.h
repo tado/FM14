@@ -28,14 +28,15 @@ public:
     bool OPTFLOW_FARNEBACK_GAUSSIAN;
     
     ofxPanel gui;
+    ofxIntSlider sat;
     ofxFloatSlider skip;
     ofxFloatSlider thresh;
     ofxIntSlider srcLevel;
     ofxFloatSlider radius;
     ofxFloatSlider accel;
-    ofxFloatSlider hue;
-    ofxFloatSlider sat;
-    ofxFloatSlider br;
+    //ofxFloatSlider hue;
+    //ofxFloatSlider sat;
+    //ofxFloatSlider br;
     ofxFloatSlider minDist;
     ofxIntSlider num;
     ofxIntSlider max;

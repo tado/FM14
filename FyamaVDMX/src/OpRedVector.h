@@ -29,6 +29,7 @@ public:
     bool OPTFLOW_FARNEBACK_GAUSSIAN;
     
     ofxPanel gui;
+    ofxIntSlider sat;
     ofxFloatSlider skip;
     ofxFloatSlider thresh;
     ofxIntSlider srcLevel;

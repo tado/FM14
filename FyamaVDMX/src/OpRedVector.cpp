@@ -29,6 +29,7 @@ void OpRedVector::setup() {
     
     // GUI
     gui.setup();
+    gui.add(sat.setup("Red sat", 0, 0, 255));
     gui.add(skip.setup("Red skip", 1, 1, 20));
     gui.add(thresh.setup("Red thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Red Level", 0, 0, 255));
@@ -76,9 +77,9 @@ void OpRedVector::draw() {
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     if (getSharedData().redBlue) {
-        ofSetColor(0, 0, srcLevel);
+        ofSetColor(sat, sat, srcLevel);
     } else {
-        ofSetColor(srcLevel, 0, 0);
+        ofSetColor(srcLevel, sat, sat);
     }
 
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);

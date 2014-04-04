@@ -29,12 +29,13 @@ void OpBlueVector::setup() {
     
     // GUI
     gui.setup();
+    gui.add(sat.setup("Blue sat", 0, 0, 255));
     gui.add(skip.setup("Blue skip", 1, 1, 20));
     gui.add(thresh.setup("Blue thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Blue Level", 0, 0, 255));
     gui.add(radius.setup("Blue radius", 0.2, 0.0, 1.0));
     gui.add(accel.setup("Blue accel", 0.12, 0.0, 2.0));
-    gui.add(br.setup("Blue brightness", 1.0, 0.0, 1.0));
+    //gui.add(br.setup("Blue brightness", 1.0, 0.0, 1.0));
     gui.add(minDist.setup("Blue dist", 10.0, 1.0, 40.0));
     gui.add(num.setup("Blue num", 100, 2, 1000));
     gui.add(max.setup("Blue max", 10, 1, 100));
@@ -73,9 +74,9 @@ void OpBlueVector::draw() {
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     if (!getSharedData().redBlue) {
-        ofSetColor(0, 0, srcLevel);
+        ofSetColor(sat, sat, srcLevel);
     } else {
-        ofSetColor(srcLevel, 0, 0);
+        ofSetColor(srcLevel, sat, sat);
     }
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -103,7 +104,7 @@ void OpBlueVector::draw() {
             
             if (abs(average.x) + abs(average.y) > 0.5) {
                 ofColor col;
-                col = ofColor(0, 0, br * 255);
+                col = ofColor(0, 0, 255);
                 
                 Particle *p = new Particle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
@@ -121,14 +122,6 @@ void OpBlueVector::draw() {
         
         ofNoFill();
         
-        /*
-         
-         
-         for (int i = 0; i < particles.size(); i++) {
-         particles[i]->draw();
-         //img.draw(particles[i]->position.x, particles[i]->position.y, 2, 2);
-         }
-         */
         ofSetRectMode(OF_RECTMODE_CENTER);
         for (int i = 0; i < particles.size(); i++) {
             for (int j = 1; j < particles.size()-1; j++) {
@@ -144,7 +137,7 @@ void OpBlueVector::draw() {
                     }
                     ofSetLineWidth(1.5);
                     ofLine(particles[i]->position.x, particles[i]->position.y,
-                       particles[j]->position.x, particles[j]->position.y);
+                           particles[j]->position.x, particles[j]->position.y);
                     //ofRect(particles[i]->position.x, particles[i]->position.y, 1.0, 1.0);
                     //ofRect(particles[j]->position.x, particles[j]->position.y, 1.0, 1.0);
                     ofSetLineWidth(1.0);

@@ -50,7 +50,7 @@ void testApp::setup(){
     stateMachine.addState<Tile>();
     stateMachine.addState<MoveTile>();
     
-    stateMachine.changeState("simple");
+    stateMachine.changeState("blank");
     
     // start as three head
     stateMachine.getSharedData().threeHead = true;

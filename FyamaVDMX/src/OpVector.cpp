@@ -35,7 +35,7 @@ void OpVector::setup() {
     gui.add(hue.setup("Vector hue", 1.0, 0.0, 3.0));
     gui.add(sat.setup("Vector saturation", 1.0, 0.0, 5.0));
     gui.add(br.setup("Vector brightness", 1.0, 0.0, 1.0));
-    gui.add(num.setup("Vector num", 1000, 10, 20000));
+    gui.add(num.setup("Vector num", 1000, 10, 2000));
     gui.add(max.setup("Vector max", 100, 1, 1000));
     gui.loadFromFile("settings.xml");
     
