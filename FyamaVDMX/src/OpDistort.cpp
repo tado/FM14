@@ -21,10 +21,12 @@ void OpDistort::setup() {
     gui.add(texLevel.setup("Distort texLevel", 127, 0, 255));
     gui.add(strength.setup("Distort strength", 40.0, 0.0, 200.0));
     gui.add(interpolate.setup("Distort interpolate", 0.1, 0.0, 0.5));
+    gui.add(lineWidth.setup("Distort lineWidth", 2.0, 0.0, 5.0));
+
     gui.loadFromFile("settings.xml");
     
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    stepSize = 20.0;
+    stepSize = 10.0;
     cvWidth = 240;
     cvHeight = 45;
     camWidth = 1920;
@@ -102,11 +104,15 @@ void OpDistort::draw() {
     ofSetColor(texLevel);
     ofVec2f scale = ofVec2f(SCREEN_WIDTH / float((xSteps - 1) * stepSize), SCREEN_HEIGHT / float((ySteps - 1) * stepSize));
     ofScale(scale.x, scale.y);
+
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.bind();
     mesh.draw();
-    mesh.drawWireframe();
+    ofSetLineWidth(lineWidth);
     tex.unbind();
+    
+    ofSetColor(63);
+    mesh.drawWireframe();
 
     ofDisableBlendMode();
     

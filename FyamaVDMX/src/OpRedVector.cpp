@@ -131,7 +131,7 @@ void OpRedVector::draw() {
             } else {
                 ofSetColor(0, 0, 255);
             }
-            ofSetLineWidth(5.0);
+            ofSetLineWidth(3.0);
             ofRect(particles[i]->position.x, particles[i]->position.y, particles[i]->position.z,
                    particles[i]->radius, particles[i]->radius);
             

@@ -25,7 +25,7 @@ void OpBlueVector::setup() {
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
-    //img.loadImage("particle32.png");
+    img.loadImage("particle32.png");
     
     // GUI
     gui.setup();
@@ -142,11 +142,11 @@ void OpBlueVector::draw() {
                     } else {
                         ofSetColor(0, 0, level);
                     }
-                    ofSetLineWidth(3.0);
+                    ofSetLineWidth(1.5);
                     ofLine(particles[i]->position.x, particles[i]->position.y,
                        particles[j]->position.x, particles[j]->position.y);
-                    ofRect(particles[i]->position.x, particles[i]->position.y, 1.0, 1.0);
-                    ofRect(particles[j]->position.x, particles[j]->position.y, 1.0, 1.0);
+                    //ofRect(particles[i]->position.x, particles[i]->position.y, 1.0, 1.0);
+                    //ofRect(particles[j]->position.x, particles[j]->position.y, 1.0, 1.0);
                     ofSetLineWidth(1.0);
                 }
             }

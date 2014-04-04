@@ -38,6 +38,7 @@ public:
     ofxFloatSlider sat;
     ofxFloatSlider br;
     ofxFloatSlider radius;
+    ofxFloatSlider wind;
     
     static const int NUM = 100000;
     ofVbo vbo;
@@ -48,4 +49,5 @@ public:
     ofVec3f force[NUM];
     //float friction;
     bool initPos;
+    ofImage img;
 };

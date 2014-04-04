@@ -32,4 +32,5 @@ public:
     ofxFloatSlider thresh;
     ofxFloatSlider interpolate;
     ofxFloatSlider strength;
+    ofxFloatSlider lineWidth;
 };

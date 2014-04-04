@@ -19,10 +19,10 @@
 <Circle_skip>4.61</Circle_skip>
 <Particle_skip>1</Particle_skip>
 	<Particle_Level>0</Particle_Level>
-	<Particle_fade>10</Particle_fade>
+	<Particle_fade>36</Particle_fade>
 	<Particle_hue>1</Particle_hue>
 	<Particle_saturation>1.675</Particle_saturation>
-	<Particle_brightness>2.535</Particle_brightness>
+	<Particle_brightness>1.29</Particle_brightness>
 <Particle_num>2108</Particle_num>
 <Particle_thresh>5.55</Particle_thresh>
 	<Particle_alpha>1</Particle_alpha>
@@ -62,10 +62,10 @@
 	<Blue_brightness>1</Blue_brightness>
 	<Blue_num>630</Blue_num>
 <Distort_Level>0</Distort_Level>
-	<Distort_strength>16</Distort_strength>
-<Distort_texLevel>138</Distort_texLevel>
-<Distort_interpolate>0.155</Distort_interpolate>
-<Distort_thresh>7.5</Distort_thresh>
+	<Distort_strength>55</Distort_strength>
+<Distort_texLevel>76</Distort_texLevel>
+<Distort_interpolate>0.12</Distort_interpolate>
+<Distort_thresh>6.6</Distort_thresh>
 <Sakura_num>10000</Sakura_num>
 	<Sakura_wind_speed>2.55</Sakura_wind_speed>
 <Notes_skip>1</Notes_skip>
@@ -103,11 +103,13 @@
 <Red_lfoAmp>425</Red_lfoAmp>
 <Red_lfoFreq>0.148</Red_lfoFreq>
 <VBO_skip>1</VBO_skip>
-	<VBO_fade>0.45</VBO_fade>
-	<VBO_accel>0.235</VBO_accel>
-	<VBO_friction>0.024</VBO_friction>
+	<VBO_fade>0.59</VBO_fade>
+	<VBO_accel>0.14</VBO_accel>
+	<VBO_friction>0.036</VBO_friction>
 	<VBO_hue>1</VBO_hue>
-	<VBO_saturation>1.8</VBO_saturation>
-	<VBO_brightness>3.4</VBO_brightness>
-<VBO_radius>2.305</VBO_radius>
+	<VBO_saturation>1.9</VBO_saturation>
+	<VBO_brightness>1.575</VBO_brightness>
+<VBO_radius>9.99</VBO_radius>
+<VBO_wind>0.00043</VBO_wind>
+<Distort_lineWidth>0</Distort_lineWidth>
 </group>
