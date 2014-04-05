@@ -73,7 +73,7 @@
 	<Notes_Level>0</Notes_Level>
 	<Notes_radius>0.27</Notes_radius>
 	<Notes_accel>0.37</Notes_accel>
-	<Notes_hue>1</Notes_hue>
+	<Notes_hue>0.075</Notes_hue>
 	<Notes_saturation>1</Notes_saturation>
 	<Notes_brightness>0.88</Notes_brightness>
 	<Notes_size>1.32</Notes_size>
@@ -114,4 +114,13 @@
 <Distort_lineWidth>0</Distort_lineWidth>
 <Blue_sat>89</Blue_sat>
 <Red_sat>70</Red_sat>
+<Sparkle_skip>1</Sparkle_skip>
+	<Sparkle_thresh>5</Sparkle_thresh>
+	<Sparkle_Level>0</Sparkle_Level>
+	<Sparkle_accel>0.58</Sparkle_accel>
+	<Sparkle_saturation>0.415</Sparkle_saturation>
+	<Sparkle_brightness>0.5</Sparkle_brightness>
+	<Sparkle_size>2</Sparkle_size>
+	<Sparkle_num>534</Sparkle_num>
+	<Sparkle_max>1000</Sparkle_max>
 </group>

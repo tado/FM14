@@ -14,6 +14,7 @@
 #include "OpBlueVector.h"
 #include "OpVector.h"
 #include "OpNotes.h"
+#include "OpSparkle.h"
 #include "OpDistort.h"
 #include "OpRadial.h"
 #include "OpVbo.h"
@@ -41,6 +42,7 @@ void testApp::setup(){
     stateMachine.addState<OpSakura>();
     stateMachine.addState<OpSakura2>();
     stateMachine.addState<OpNotes>();
+    stateMachine.addState<OpSparkle>();
     stateMachine.addState<OpVector>();
     stateMachine.addState<OpRedVector>();
     stateMachine.addState<OpBlueVector>();
