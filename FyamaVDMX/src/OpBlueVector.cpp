@@ -74,9 +74,9 @@ void OpBlueVector::draw() {
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     if (!getSharedData().redBlue) {
-        ofSetColor(sat, sat, srcLevel);
+        ofSetColor(sat, sat, srcLevel - sat);
     } else {
-        ofSetColor(srcLevel, sat, sat);
+        ofSetColor(srcLevel - sat, sat, sat);
     }
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

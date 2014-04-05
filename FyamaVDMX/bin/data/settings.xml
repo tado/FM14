@@ -31,12 +31,12 @@
 	<Vector_Level>0</Vector_Level>
 	<Vector_fade>12</Vector_fade>
 	<Vector_hue>1</Vector_hue>
-	<Vector_saturation>2.45</Vector_saturation>
+	<Vector_saturation>2.525</Vector_saturation>
 	<Vector_brightness>1</Vector_brightness>
 	<Vector_alpha>0.8</Vector_alpha>
-	<Vector_num>13103</Vector_num>
+	<Vector_num>1008</Vector_num>
 <Vector_radius>0.275</Vector_radius>
-	<Vector_accel>0.21</Vector_accel>
+	<Vector_accel>0.395</Vector_accel>
 <Bubble_skip>1</Bubble_skip>
 	<Bubble_thresh>8.35</Bubble_thresh>
 	<Bubble_Level>0</Bubble_Level>

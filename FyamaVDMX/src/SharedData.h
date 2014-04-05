@@ -7,4 +7,5 @@ public:
     float cropPosY;
     int threeHead;
     bool redBlue;
+    float particleNum;
 };

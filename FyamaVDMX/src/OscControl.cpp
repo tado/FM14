@@ -24,10 +24,10 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 3:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
                     break;
                 case 4:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
                     break;
                 case 5:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
@@ -87,6 +87,9 @@ void OscControl::update(){
             } else {
                 ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = true;
             }
+        }
+        if(m.getAddress() == "/FromVDMX/particlenum"){
+            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().particleNum = m.getArgAsFloat(0);
         }
     }
 }

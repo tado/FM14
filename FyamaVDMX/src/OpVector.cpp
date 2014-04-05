@@ -25,6 +25,8 @@ void OpVector::setup() {
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
+    getSharedData().particleNum = 0.5;
+    
     // GUI
     gui.setup();
     gui.add(skip.setup("Vector skip", 1, 1, 20));
@@ -35,7 +37,7 @@ void OpVector::setup() {
     gui.add(hue.setup("Vector hue", 1.0, 0.0, 3.0));
     gui.add(sat.setup("Vector saturation", 1.0, 0.0, 5.0));
     gui.add(br.setup("Vector brightness", 1.0, 0.0, 1.0));
-    gui.add(num.setup("Vector num", 1000, 10, 2000));
+    gui.add(num.setup("Vector num", 1000, 10, 5000));
     gui.add(max.setup("Vector max", 100, 1, 1000));
     gui.loadFromFile("settings.xml");
     
@@ -68,6 +70,7 @@ void OpVector::update() {
 }
 
 void OpVector::draw() {
+    int currentParticleNum;
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofSetColor(srcLevel);
@@ -115,7 +118,9 @@ void OpVector::draw() {
                 //}
                 particles.push_back(p);
 
-                while (particles.size() > num) {
+                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.0, 10.0);
+                currentParticleNum = num * multi;
+                while (particles.size() > currentParticleNum) {
                     delete particles[0];
                     particles.pop_front();
                 }
@@ -134,6 +139,8 @@ void OpVector::draw() {
     
     ofBackground(0);
     gui.draw();
+    ofSetColor(255);
+    ofDrawBitmapString("Current Particle Num = " + ofToString(currentParticleNum, 0), 10, 250);
 }
 
 string OpVector::getName(){
