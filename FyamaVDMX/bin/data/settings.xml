@@ -76,7 +76,7 @@
 	<Notes_hue>1</Notes_hue>
 	<Notes_saturation>1</Notes_saturation>
 	<Notes_brightness>0.88</Notes_brightness>
-	<Notes_size>1</Notes_size>
+	<Notes_size>1.32</Notes_size>
 	<Notes_num>509</Notes_num>
 <Box_hue>1</Box_hue>
 	<Box_saturation>1</Box_saturation>
@@ -86,13 +86,13 @@
 <Red_max>61</Red_max>
 <Notes_max>34</Notes_max>
 <Blue_max>100</Blue_max>
-<Vector_max>715</Vector_max>
+<Vector_max>1000</Vector_max>
 <Bubble_max>10</Bubble_max>
 <Distort_fade>0.825</Distort_fade>
 	<Distort_max>535</Distort_max>
 <Sakura2_num>10000</Sakura2_num>
 	<Sakura2_density>20</Sakura2_density>
-	<Sakura2_wind_speed>1.3</Sakura2_wind_speed>
+	<Sakura2_wind_speed>1.5</Sakura2_wind_speed>
 <Sakura_density>80</Sakura_density>
 <Simple_hue>1</Simple_hue>
 	<Simple_saturation>1</Simple_saturation>
@@ -112,6 +112,6 @@
 <VBO_radius>7.975</VBO_radius>
 <VBO_wind>0.00043</VBO_wind>
 <Distort_lineWidth>0</Distort_lineWidth>
-<Blue_sat>40</Blue_sat>
-<Red_sat>40</Red_sat>
+<Blue_sat>89</Blue_sat>
+<Red_sat>70</Red_sat>
 </group>

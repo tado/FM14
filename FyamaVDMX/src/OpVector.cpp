@@ -118,7 +118,7 @@ void OpVector::draw() {
                 //}
                 particles.push_back(p);
 
-                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.0, 10.0);
+                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.01, 10.0);
                 currentParticleNum = num * multi;
                 while (particles.size() > currentParticleNum) {
                     delete particles[0];
@@ -139,8 +139,8 @@ void OpVector::draw() {
     
     ofBackground(0);
     gui.draw();
-    ofSetColor(255);
-    ofDrawBitmapString("Current Particle Num = " + ofToString(currentParticleNum, 0), 10, 250);
+    //ofSetColor(255);
+    //ofDrawBitmapString("Current Particle Num = " + ofToString(currentParticleNum, 0), 10, 250);
 }
 
 string OpVector::getName(){
