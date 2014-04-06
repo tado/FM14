@@ -82,6 +82,7 @@ void OpSparkle::draw() {
     int camHeight = pixels.getHeight();
     
     if (farneback.getWidth() > 0) {
+        int currentParticleNum;
         ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()), SCREEN_HEIGHT / float(farneback.getHeight()));
         ofPushMatrix();
         ofScale(scale.x, scale.y);
@@ -105,7 +106,9 @@ void OpSparkle::draw() {
                 p->radius = (abs(average.x) + abs(average.y));
 
                 particles.push_back(p);
-                while (particles.size() > num) {
+                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.01, 10.0);
+                currentParticleNum = num * multi;
+                while (particles.size() > currentParticleNum) {
                     delete particles[0];
                     particles.pop_front();
                 }

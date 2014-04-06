@@ -41,6 +41,7 @@
 		7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1018E2C9E900A45230 /* OpRedVector.cpp */; };
 		7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1318E2D56100A45230 /* OpBlueVector.cpp */; };
 		7A380B1818E37C2800A45230 /* OpSakura.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1618E37C2800A45230 /* OpSakura.cpp */; };
+		7A73D7BB18F0E2B0003DA46D /* Through.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A73D7B918F0E2B0003DA46D /* Through.cpp */; };
 		7A83C47E18D660FC00E070E2 /* NofillPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */; };
 		7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */; };
 		7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C19C918C7F10C009FCBDA /* Blank.cpp */; };
@@ -241,6 +242,8 @@
 		7A380B1618E37C2800A45230 /* OpSakura.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpSakura.cpp; sourceTree = "<group>"; };
 		7A380B1718E37C2800A45230 /* OpSakura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura.h; sourceTree = "<group>"; };
 		7A3E755618EAC32100B7D44C /* FyamaVDMXDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FyamaVDMXDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A73D7B918F0E2B0003DA46D /* Through.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Through.cpp; sourceTree = "<group>"; };
+		7A73D7BA18F0E2B0003DA46D /* Through.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Through.h; sourceTree = "<group>"; };
 		7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NofillPixelate.cpp; sourceTree = "<group>"; };
 		7A83C47D18D660FC00E070E2 /* NofillPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NofillPixelate.h; sourceTree = "<group>"; };
 		7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpBubble.cpp; sourceTree = "<group>"; };
@@ -508,6 +511,8 @@
 				18182D6018C03003003585E0 /* SharedData.h */,
 				7A9C19CA18C7F10C009FCBDA /* Blank.h */,
 				7A9C19C918C7F10C009FCBDA /* Blank.cpp */,
+				7A73D7BA18F0E2B0003DA46D /* Through.h */,
+				7A73D7B918F0E2B0003DA46D /* Through.cpp */,
 				18182D6218C0302E003585E0 /* SimplePixelate.h */,
 				18182D6118C0302E003585E0 /* SimplePixelate.cpp */,
 				7A83C47D18D660FC00E070E2 /* NofillPixelate.h */,
@@ -1354,6 +1359,7 @@
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				7AD2D0AF18D456C900AA8B47 /* Tile.cpp in Sources */,
+				7A73D7BB18F0E2B0003DA46D /* Through.cpp in Sources */,
 				18F0259918B5F8E400EA684F /* ofxSyphonServerDirectory.mm in Sources */,
 				7A9C19D718C81D9A009FCBDA /* BoxPixelate.cpp in Sources */,
 				7AFCA5D018D0DC5F00945323 /* OpRadial.cpp in Sources */,

@@ -1,6 +1,7 @@
 #include "testApp.h"
 
 #include "Blank.h"
+#include "Through.h"
 #include "SimplePixelate.h"
 #include "NofillPixelate.h"
 #include "BoxPixelate.h"
@@ -32,6 +33,7 @@ void testApp::setup(){
     
     // state machine
     stateMachine.addState<Blank>();
+    stateMachine.addState<Through>();
     stateMachine.addState<SimplePixelate>();
     stateMachine.addState<NofillPixelate>();
     stateMachine.addState<BoxPixelate>();
@@ -74,8 +76,8 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
+    /*
     stateMachine.enableKeyEvents();
-    
     switch (key) {
         case '1':
             stateMachine.changeState("simple");
@@ -117,6 +119,7 @@ void testApp::keyPressed(int key){
             stateMachine.changeState("movetile");
             break;
     }
+     */
 }
 
 //--------------------------------------------------------------
