@@ -18,7 +18,7 @@ void OpSparkle::stateExit(){
 }
 
 void OpSparkle::setup() {
-    img.loadImage("star.png");
+    img.loadImage("sparkle.png");
     
     cvWidth = 240;
     cvHeight = 45;
