@@ -63,6 +63,7 @@
 		7AD2D12318D4734500AA8B47 /* ofxOscParameterSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11218D4734500AA8B47 /* ofxOscParameterSync.cpp */; };
 		7AD2D12418D4734500AA8B47 /* ofxOscReceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11418D4734500AA8B47 /* ofxOscReceiver.cpp */; };
 		7AD2D12518D4734500AA8B47 /* ofxOscSender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AD2D11618D4734500AA8B47 /* ofxOscSender.cpp */; };
+		7ADCB53218FA8C6F004ED88E /* StopMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCB53018FA8C6F004ED88E /* StopMotion.cpp */; };
 		7AE758C618ED274000F7042D /* TriParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AE758C418ED274000F7042D /* TriParticle.cpp */; };
 		7AE88FBF18C58B9300D692A0 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F025A018B5F9C800EA684F /* Syphon.framework */; };
 		7AF4721B18C733CE0012578D /* OpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AF4721918C733CE0012578D /* OpParticle.cpp */; };
@@ -292,6 +293,8 @@
 		7AD2D11518D4734500AA8B47 /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		7AD2D11618D4734500AA8B47 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		7AD2D11718D4734500AA8B47 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		7ADCB53018FA8C6F004ED88E /* StopMotion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StopMotion.cpp; sourceTree = "<group>"; };
+		7ADCB53118FA8C6F004ED88E /* StopMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopMotion.h; sourceTree = "<group>"; };
 		7AE758C418ED274000F7042D /* TriParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TriParticle.cpp; sourceTree = "<group>"; };
 		7AE758C518ED274000F7042D /* TriParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriParticle.h; sourceTree = "<group>"; };
 		7AF4721918C733CE0012578D /* OpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpParticle.cpp; sourceTree = "<group>"; };
@@ -551,6 +554,8 @@
 				7AD2D0AD18D456C900AA8B47 /* Tile.cpp */,
 				7A31462F18DFBA6D0029A8EE /* MoveTile.h */,
 				7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */,
+				7ADCB53118FA8C6F004ED88E /* StopMotion.h */,
+				7ADCB53018FA8C6F004ED88E /* StopMotion.cpp */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -1373,6 +1378,7 @@
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				7AD2D11C18D4734500AA8B47 /* UdpSocketWin.cpp in Sources */,
 				7A115FC118EC4CF500F06F63 /* OpSakura2.cpp in Sources */,
+				7ADCB53218FA8C6F004ED88E /* StopMotion.cpp in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,

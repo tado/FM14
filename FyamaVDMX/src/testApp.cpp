@@ -21,6 +21,7 @@
 #include "OpVbo.h"
 #include "Tile.h"
 #include "MoveTile.h"
+#include "StopMotion.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -53,6 +54,7 @@ void testApp::setup(){
     stateMachine.addState<OpVbo>();
     stateMachine.addState<Tile>();
     stateMachine.addState<MoveTile>();
+    stateMachine.addState<StopMotion>();
     
     stateMachine.changeState("blank");
     
@@ -76,50 +78,70 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    /*
-    stateMachine.enableKeyEvents();
     switch (key) {
+            /*
         case '1':
-            stateMachine.changeState("simple");
+            stateMachine.changeState("blank");
             break;
         case '2':
-            stateMachine.changeState("nofill");
+            stateMachine.changeState("sakura2");
             break;
         case '3':
-            stateMachine.changeState("box");
+            stateMachine.changeState("opdistort");
             break;
         case '4':
-            stateMachine.changeState("fatfont");
+            stateMachine.changeState("opbluevector");
             break;
         case '5':
-            stateMachine.changeState("opcircle");
+            stateMachine.changeState("opredvector");
             break;
         case '6':
-            stateMachine.changeState("opparticle");
+            stateMachine.changeState("opvector");
             break;
         case '7':
-            stateMachine.changeState("opvector");
+            stateMachine.changeState("opvbo");
             break;
         case '8':
             stateMachine.changeState("opnotes");
             break;
         case '9':
-            stateMachine.changeState("opdistort");
+            stateMachine.changeState("opsparkle");
+            break;
+        case '0':
+            stateMachine.changeState("through");
+            break;
+        case '-':
+            stateMachine.changeState("simple");
+            break;
+        case '^':
+            stateMachine.changeState("nofill");
             break;
         case 'q':
-            stateMachine.changeState("opvbo");
+            stateMachine.changeState("box");
             break;
         case 'w':
-            stateMachine.changeState("bubble");
+            stateMachine.changeState("fatfont");
             break;
         case 'e':
-            stateMachine.changeState("tile");
+            stateMachine.changeState("opcircle");
+            break;
+        case 'r':
+            stateMachine.changeState("opparticle");
             break;
         case 't':
+            stateMachine.changeState("bubble");
+            break;
+        case 'y':
+            stateMachine.changeState("sakura2");
+            break;
+        case 'u':
+            stateMachine.changeState("tile");
+            break;
+        case 'i':
             stateMachine.changeState("movetile");
             break;
+             */
     }
-     */
 }
 
 //--------------------------------------------------------------

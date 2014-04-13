@@ -8,4 +8,5 @@ public:
     int threeHead;
     bool redBlue;
     float particleNum;
+    int stop;
 };
