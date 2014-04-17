@@ -109,7 +109,8 @@ void OpVbo::draw() {
                 col.setHsb(h * hue, s * sat, v * br);
                 colors[i] = col;
             } else {
-                if (verts[i].x > 0 && verts[i].x < farneback.getWidth()
+                if (((verts[i].x > 0 && verts[i].x < farneback.getWidth() / 2.0 - 1.0)
+                     || (verts[i].x > farneback.getWidth() / 2.0 + 1.0 && verts[i].x < farneback.getWidth()))
                     && verts[i].y > 0 && verts[i].y < farneback.getHeight()) {
                     x = verts[i].x;
                     y = verts[i].y;
