@@ -22,6 +22,7 @@
 #include "Tile.h"
 #include "MoveTile.h"
 #include "StopMotion.h"
+#include "RgbDelay.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -55,6 +56,7 @@ void testApp::setup(){
     stateMachine.addState<Tile>();
     stateMachine.addState<MoveTile>();
     stateMachine.addState<StopMotion>();
+    stateMachine.addState<RgbDelay>();
     
     stateMachine.changeState("blank");
     
