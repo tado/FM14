@@ -123,4 +123,8 @@
 	<Sparkle_size>2</Sparkle_size>
 	<Sparkle_num>59</Sparkle_num>
 	<Sparkle_max>1000</Sparkle_max>
+<rgb_level>127</rgb_level>
+	<rgb_delay_Length>54</rgb_delay_Length>
+<rgb_through_level>94</rgb_through_level>
+<rgb_delay_level>255</rgb_delay_level>
 </group>

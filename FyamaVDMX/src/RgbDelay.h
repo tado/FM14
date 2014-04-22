@@ -12,8 +12,9 @@ public:
     ofPixels pixels;
     ofTexture tex;
     deque<ofTexture> texBuffer;
-    //int bufLength;
     
     ofxPanel gui;
     ofxIntSlider bufLength;
+    ofxIntSlider throughLevel;
+    ofxIntSlider rgbLevel;
 };

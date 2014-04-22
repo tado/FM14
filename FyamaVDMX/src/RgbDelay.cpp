@@ -3,7 +3,9 @@
 
 void RgbDelay::setup(){
     gui.setup();
-    gui.add(bufLength.setup("buf Length", 10, 2, 100));
+    gui.add(throughLevel.setup("rgb through level", 127, 0, 255));
+    gui.add(rgbLevel.setup("rgb delay level", 127, 0, 255));
+    gui.add(bufLength.setup("rgb delay Length", 10, 2, 100));
     gui.loadFromFile("settings.xml");
 }
 
@@ -26,16 +28,18 @@ void RgbDelay::draw(){
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-
-    if (texBuffer.size() > 1) {
-        ofSetColor(255, 0, 0);
+    
+    if (texBuffer.size() > 3) {
+        ofSetColor(throughLevel);
         texBuffer[0].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        ofSetColor(0, 255, 0);
-        texBuffer[texBuffer.size() / 2].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        ofSetColor(0, 0, 255);
+        ofSetColor(rgbLevel, 0, 0);
+        texBuffer[texBuffer.size() / 3].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        ofSetColor(0, rgbLevel, 0);
+        texBuffer[texBuffer.size() * 2 / 3].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        ofSetColor(0, 0, rgbLevel);
         texBuffer[texBuffer.size() - 1].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     } else {
-        ofSetColor(255);
+        ofSetColor(rgbLevel);
         tex.loadData(pixels);
         tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
