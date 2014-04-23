@@ -29,6 +29,7 @@ public:
     ofxPanel gui;
     ofxIntSlider srcLevel;
     ofxIntSlider texLevel;
+    ofxIntSlider wireLevel;
     ofxFloatSlider thresh;
     ofxFloatSlider interpolate;
     ofxFloatSlider strength;

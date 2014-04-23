@@ -12,6 +12,8 @@ void OpDistort::stateEnter(){
         }
     }
     flow.resetFlow();
+    
+    ofEnableArbTex();
 }
 
 void OpDistort::setup() {
@@ -19,6 +21,7 @@ void OpDistort::setup() {
     gui.add(thresh.setup("Distort thresh", 5, 0, 10));
     gui.add(srcLevel.setup("Distort Level", 0, 0, 255));
     gui.add(texLevel.setup("Distort texLevel", 127, 0, 255));
+    gui.add(wireLevel.setup("Distort wire Level", 127, 0, 255));
     gui.add(strength.setup("Distort strength", 40.0, 0.0, 200.0));
     gui.add(interpolate.setup("Distort interpolate", 0.1, 0.0, 0.5));
     gui.add(lineWidth.setup("Distort lineWidth", 2.0, 0.0, 5.0));
@@ -107,15 +110,24 @@ void OpDistort::draw() {
 
     tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.bind();
+
+    ofSetColor(texLevel);
     mesh.draw();
-    ofSetLineWidth(lineWidth);
+    ofDisableBlendMode();
     tex.unbind();
     
-    ofSetColor(63);
+    // set wire color
+    ofVec2f average = flow.getAverageFlow();
+    float dist = ofMap(average.length(), 0, 2, 0, 127);
+    ofColor col;
+    col.setHsb(dist, 220, wireLevel);
+    ofSetColor(col);
+    ofEnableSmoothing();
+    ofSetLineWidth(lineWidth);
+    ofDisableSmoothing();
     mesh.drawWireframe();
-
-    ofDisableBlendMode();
     
+
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     

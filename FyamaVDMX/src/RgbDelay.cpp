@@ -31,13 +31,13 @@ void RgbDelay::draw(){
     
     if (texBuffer.size() > 3) {
         ofSetColor(throughLevel);
-        texBuffer[0].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        ofSetColor(rgbLevel, 0, 0);
-        texBuffer[texBuffer.size() / 3].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        ofSetColor(0, rgbLevel, 0);
-        texBuffer[texBuffer.size() * 2 / 3].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        ofSetColor(0, 0, rgbLevel);
         texBuffer[texBuffer.size() - 1].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        ofSetColor(rgbLevel, 0, 0);
+        texBuffer[0].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        ofSetColor(0, rgbLevel, 0);
+        texBuffer[texBuffer.size() / 3].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        ofSetColor(0, 0, rgbLevel);
+        texBuffer[texBuffer.size() / 3 * 2].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     } else {
         ofSetColor(rgbLevel);
         tex.loadData(pixels);
