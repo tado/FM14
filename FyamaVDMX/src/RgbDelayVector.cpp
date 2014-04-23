@@ -79,23 +79,13 @@ void RgbDelayVector::update() {
 }
 
 void RgbDelayVector::draw() {
+    int currentParticleNum;
+    
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
-    
-    /*
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    if (!getSharedData().redBlue) {
-        ofSetColor(sat, sat, srcLevel - sat);
-    } else {
-        ofSetColor(srcLevel - sat, sat, sat);
-    }
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
-    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    */
-    
     ofBackground(0);
-    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    
+
+    // RGB delay
     if (texBuffer.size() > 3) {
         ofSetColor(throughLevel);
         texBuffer[texBuffer.size() - 1].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -106,6 +96,8 @@ void RgbDelayVector::draw() {
         ofSetColor(0, 0, rgbLevel);
         texBuffer[texBuffer.size() / 3 * 2].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
+    
+    // Wire
     
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
@@ -128,7 +120,7 @@ void RgbDelayVector::draw() {
             
             if (abs(average.x) + abs(average.y) > 0.5) {
                 ofColor col;
-                col = ofColor(0, 0, 255);
+                col = ofColor(255);
                 
                 Particle *p = new Particle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
@@ -137,7 +129,10 @@ void RgbDelayVector::draw() {
                     p->radius = skip;
                 }
                 particles.push_back(p);
-                while (particles.size() > num) {
+
+                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.01, 10.0);
+                currentParticleNum = num * multi;
+                while (particles.size() > currentParticleNum) {
                     delete particles[0];
                     particles.pop_front();
                 }
@@ -154,25 +149,16 @@ void RgbDelayVector::draw() {
                                     particles[j]->position.x, particles[j]->position.y);
                 if(dist < minDist){
                     float level = ofMap(dist, 0, minDist, 255, 0);
-                    /*
-                    if (!   getSharedData().redBlue) {
-                        ofSetColor(level, 0, 0);
-                    } else {
-                        ofSetColor(0, 0, level);
-                    }
-                     */
                     ofSetColor(wireLevel);
                     ofSetLineWidth(1.5);
                     ofLine(particles[i]->position.x, particles[i]->position.y,
                            particles[j]->position.x, particles[j]->position.y);
-                    //ofRect(particles[i]->position.x, particles[i]->position.y, 1.0, 1.0);
-                    //ofRect(particles[j]->position.x, particles[j]->position.y, 1.0, 1.0);
                     ofSetLineWidth(1.0);
                 }
             }
         }
         ofSetRectMode(OF_RECTMODE_CORNER);
-        //ofSetLineWidth(1.0);
+        ofSetLineWidth(1.0);
         ofFill();
         ofPopMatrix();
     }

@@ -128,15 +128,15 @@
 <rgb_through_level>94</rgb_through_level>
 <rgb_delay_level>255</rgb_delay_level>
 <Distort_wire_Level>255</Distort_wire_Level>
-<RGB_wire_Level>49</RGB_wire_Level>
+<RGB_wire_Level>47</RGB_wire_Level>
 	<RGB_skip>14.395</RGB_skip>
 	<RGB_thresh>9.6</RGB_thresh>
-	<RGB_radius>0.455</RGB_radius>
-	<RGB_accel>0.38</RGB_accel>
-	<RGB_dist>6.46</RGB_dist>
-	<RGB_num>106</RGB_num>
-	<RGB_max>70</RGB_max>
-	<RGB_through_level>75</RGB_through_level>
+	<RGB_radius>0.365</RGB_radius>
+	<RGB_accel>0.23</RGB_accel>
+	<RGB_dist>3.73</RGB_dist>
+	<RGB_num>211</RGB_num>
+	<RGB_max>23</RGB_max>
+	<RGB_through_level>159</RGB_through_level>
 	<RGB_delay_level>255</RGB_delay_level>
-	<RGB_delay_Length>38</RGB_delay_Length>
+	<RGB_delay_Length>56</RGB_delay_Length>
 </group>
