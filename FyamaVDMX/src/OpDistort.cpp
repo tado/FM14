@@ -113,7 +113,6 @@ void OpDistort::draw() {
 
     ofSetColor(texLevel);
     mesh.draw();
-    ofDisableBlendMode();
     tex.unbind();
     
     // set wire color
@@ -122,11 +121,11 @@ void OpDistort::draw() {
     ofColor col;
     col.setHsb(dist, 220, wireLevel);
     ofSetColor(col);
-    ofEnableSmoothing();
+    //ofEnableSmoothing();
     ofSetLineWidth(lineWidth);
-    ofDisableSmoothing();
+    //ofDisableSmoothing();
     mesh.drawWireframe();
-    
+    ofDisableBlendMode();
 
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
     ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());

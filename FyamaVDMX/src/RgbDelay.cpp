@@ -53,5 +53,5 @@ void RgbDelay::draw(){
 }
 
 string RgbDelay::getName(){
-    return "rgbdelay";
+    return "rgbdelay--";
 }

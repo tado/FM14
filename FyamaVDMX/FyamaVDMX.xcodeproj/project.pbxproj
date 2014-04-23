@@ -67,6 +67,7 @@
 		7ADCB53218FA8C6F004ED88E /* StopMotion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7ADCB53018FA8C6F004ED88E /* StopMotion.cpp */; };
 		7AE758C618ED274000F7042D /* TriParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AE758C418ED274000F7042D /* TriParticle.cpp */; };
 		7AE88FBF18C58B9300D692A0 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18F025A018B5F9C800EA684F /* Syphon.framework */; };
+		7AF18BE4190773D3006C065F /* RgbDelayVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AF18BE2190773D3006C065F /* RgbDelayVector.cpp */; };
 		7AF4721B18C733CE0012578D /* OpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AF4721918C733CE0012578D /* OpParticle.cpp */; };
 		7AFCA5CC18CECB6000945323 /* OpDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA5CA18CECB6000945323 /* OpDistort.cpp */; };
 		7AFCA5D018D0DC5F00945323 /* OpRadial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AFCA5CE18D0DC5F00945323 /* OpRadial.cpp */; };
@@ -300,6 +301,8 @@
 		7ADCB53118FA8C6F004ED88E /* StopMotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopMotion.h; sourceTree = "<group>"; };
 		7AE758C418ED274000F7042D /* TriParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TriParticle.cpp; sourceTree = "<group>"; };
 		7AE758C518ED274000F7042D /* TriParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriParticle.h; sourceTree = "<group>"; };
+		7AF18BE2190773D3006C065F /* RgbDelayVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RgbDelayVector.cpp; sourceTree = "<group>"; };
+		7AF18BE3190773D3006C065F /* RgbDelayVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RgbDelayVector.h; sourceTree = "<group>"; };
 		7AF4721918C733CE0012578D /* OpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpParticle.cpp; sourceTree = "<group>"; };
 		7AF4721A18C733CE0012578D /* OpParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpParticle.h; sourceTree = "<group>"; };
 		7AFCA5CA18CECB6000945323 /* OpDistort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpDistort.cpp; sourceTree = "<group>"; };
@@ -561,6 +564,8 @@
 				7ADCB53018FA8C6F004ED88E /* StopMotion.cpp */,
 				18B28B4B19004CF1005FC104 /* RgbDelay.h */,
 				18B28B4A19004CF1005FC104 /* RgbDelay.cpp */,
+				7AF18BE3190773D3006C065F /* RgbDelayVector.h */,
+				7AF18BE2190773D3006C065F /* RgbDelayVector.cpp */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -1344,6 +1349,7 @@
 				7AD2D11818D4734500AA8B47 /* IpEndpointName.cpp in Sources */,
 				1827313318C0E5220075A4C7 /* Particle.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
+				7AF18BE4190773D3006C065F /* RgbDelayVector.cpp in Sources */,
 				7AD2D11E18D4734500AA8B47 /* OscPrintReceivedElements.cpp in Sources */,
 				7A31463018DFBA6D0029A8EE /* MoveTile.cpp in Sources */,
 				7AD2D11A18D4734500AA8B47 /* UdpSocket.cpp in Sources */,
