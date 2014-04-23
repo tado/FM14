@@ -97,7 +97,7 @@ void RgbDelayVector::draw() {
         texBuffer[texBuffer.size() / 3 * 2].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
     
-    // Wire
+    // particle
     
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
@@ -120,14 +120,22 @@ void RgbDelayVector::draw() {
             
             if (abs(average.x) + abs(average.y) > 0.5) {
                 ofColor col;
-                col = ofColor(255);
+                int n = ofRandom(3);
+                switch (n) {
+                    case 0:
+                        col = ofColor(255, 0, 0);
+                        break;
+                    case 1:
+                        col = ofColor(0, 255, 0);
+                        break;
+                    case 2:
+                        col = ofColor(0, 0, 255);
+                        break;
+                }
                 
                 Particle *p = new Particle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
-                p->radius = (abs(average.x) + abs(average.y)) * radius;
-                if (abs(p->radius) > skip) {
-                    p->radius = skip;
-                }
+                p->radius = 0.1;
                 particles.push_back(p);
 
                 float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.01, 10.0);
@@ -139,17 +147,18 @@ void RgbDelayVector::draw() {
             }
         }
         
-        ofNoFill();
-        
-        ofSetRectMode(OF_RECTMODE_CENTER);
+        // draw wire
         for (int i = 0; i < particles.size(); i++) {
+            ofFill();
+            particles[i]->draw();
+            ofNoFill();
             for (int j = 1; j < particles.size()-1; j++) {
                 //particles[i]->draw();
                 float dist = ofDist(particles[i]->position.x, particles[i]->position.y,
                                     particles[j]->position.x, particles[j]->position.y);
                 if(dist < minDist){
                     float level = ofMap(dist, 0, minDist, 255, 0);
-                    ofSetColor(wireLevel);
+                    ofSetColor(particles[i]->color);
                     ofSetLineWidth(1.5);
                     ofLine(particles[i]->position.x, particles[i]->position.y,
                            particles[j]->position.x, particles[j]->position.y);
@@ -157,7 +166,6 @@ void RgbDelayVector::draw() {
                 }
             }
         }
-        ofSetRectMode(OF_RECTMODE_CORNER);
         ofSetLineWidth(1.0);
         ofFill();
         ofPopMatrix();
