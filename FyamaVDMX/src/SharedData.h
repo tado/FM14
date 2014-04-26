@@ -9,4 +9,5 @@ public:
     bool redBlue;
     float particleNum;
     int stop;
+    bool changeColor;
 };

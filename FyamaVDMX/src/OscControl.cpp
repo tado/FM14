@@ -44,6 +44,11 @@ void OscControl::update(){
                 case 9:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("stopmotion");
                     break;
+                    /*
+                case 10:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("flowtools");
+                    break;
+                     */
                 case 10:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("rgbdelay");
                     break;
@@ -105,6 +110,9 @@ void OscControl::update(){
         }
         if(m.getAddress() == "/FromVDMX/stop"){
             ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().stop = m.getArgAsInt32(0);
+        }
+        if(m.getAddress() == "/FromVDMX/changecolor"){
+            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = true;
         }
     }
 }

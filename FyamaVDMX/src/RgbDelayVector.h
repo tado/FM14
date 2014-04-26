@@ -52,4 +52,5 @@ public:
     ofImage img;
     
     deque<ofTexture> texBuffer;
+    ofColor baseColor;
 };

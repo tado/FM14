@@ -22,8 +22,9 @@ void RgbDelay::update(){
 void RgbDelay::draw(){
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0);
+    //ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    //ofSetColor(0);
+    ofClear(0);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     

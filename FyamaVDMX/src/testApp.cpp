@@ -24,10 +24,11 @@
 #include "StopMotion.h"
 #include "RgbDelay.h"
 #include "RgbDelayVector.h"
+//#include "FlowTools.h"
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    ofSetFrameRate(60);
+    //ofSetFrameRate(60);
     ofSetBackgroundAuto(false);
     ofBackground(0);
     //ofSetWindowPosition(400, 200);
@@ -59,6 +60,7 @@ void testApp::setup(){
     stateMachine.addState<StopMotion>();
     stateMachine.addState<RgbDelay>();
     stateMachine.addState<RgbDelayVector>();
+    //stateMachine.addState<FlowTools>();
     
     stateMachine.changeState("blank");
     

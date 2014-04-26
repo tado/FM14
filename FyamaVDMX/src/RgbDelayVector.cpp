@@ -10,6 +10,8 @@ void RgbDelayVector::stateEnter(){
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     farneback.resetFlow();
+    
+    baseColor.setHsb(ofRandom(255), 255, throughLevel);
 }
 
 void RgbDelayVector::stateExit(){
@@ -51,6 +53,9 @@ void RgbDelayVector::setup() {
     polyN = 7;
     polySigma = 1.5;
     OPTFLOW_FARNEBACK_GAUSSIAN = false;
+    
+    //change color
+    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
 }
 
 void RgbDelayVector::update() {
@@ -76,6 +81,14 @@ void RgbDelayVector::update() {
     for (int i = 0; i < particles.size(); i++) {
         particles[i]->update();
     }
+    
+    // change color
+    if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
+        int hue = baseColor.getHue();
+        hue = (hue + 80) % 255;
+        baseColor.setHsb(hue, 255, throughLevel);
+        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+    }
 }
 
 void RgbDelayVector::draw() {
@@ -87,7 +100,7 @@ void RgbDelayVector::draw() {
 
     // RGB delay
     if (texBuffer.size() > 3) {
-        ofSetColor(throughLevel);
+        ofSetColor(baseColor);
         texBuffer[texBuffer.size() - 1].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         ofSetColor(rgbLevel, 0, 0);
         texBuffer[0].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -120,25 +133,14 @@ void RgbDelayVector::draw() {
             
             if (abs(average.x) + abs(average.y) > 0.5) {
                 ofColor col;
-                int n = ofRandom(3);
-                switch (n) {
-                    case 0:
-                        col = ofColor(255, 0, 0);
-                        break;
-                    case 1:
-                        col = ofColor(0, 255, 0);
-                        break;
-                    case 2:
-                        col = ofColor(0, 0, 255);
-                        break;
-                }
+                col.setHsb(ofRandom(255), 255, 127);
                 
                 Particle *p = new Particle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
-                p->radius = 0.1;
+                p->radius = 0.2;
                 particles.push_back(p);
 
-                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.01, 10.0);
+                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.0, 10.0);
                 currentParticleNum = num * multi;
                 while (particles.size() > currentParticleNum) {
                     delete particles[0];

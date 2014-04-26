@@ -136,7 +136,7 @@
 	<RGB_dist>3.73</RGB_dist>
 	<RGB_num>131</RGB_num>
 	<RGB_max>23</RGB_max>
-	<RGB_through_level>58</RGB_through_level>
-	<RGB_delay_level>255</RGB_delay_level>
+	<RGB_through_level>255</RGB_through_level>
+	<RGB_delay_level>140</RGB_delay_level>
 	<RGB_delay_Length>39</RGB_delay_Length>
 </group>
