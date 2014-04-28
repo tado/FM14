@@ -32,6 +32,6 @@ public:
     ofxIntSlider wireLevel;
     ofxFloatSlider thresh;
     ofxFloatSlider interpolate;
-    ofxFloatSlider strength;
+    //ofxFloatSlider strength;
     ofxFloatSlider lineWidth;
 };

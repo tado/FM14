@@ -10,4 +10,5 @@ public:
     float particleNum;
     int stop;
     bool changeColor;
+    int distortStrength;
 };

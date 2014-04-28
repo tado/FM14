@@ -62,9 +62,9 @@
 	<Blue_brightness>1</Blue_brightness>
 	<Blue_num>251</Blue_num>
 <Distort_Level>255</Distort_Level>
-	<Distort_strength>58</Distort_strength>
-<Distort_texLevel>93</Distort_texLevel>
-<Distort_interpolate>0.4</Distort_interpolate>
+	<Distort_strength>100</Distort_strength>
+<Distort_texLevel>0</Distort_texLevel>
+<Distort_interpolate>0.08</Distort_interpolate>
 <Distort_thresh>10</Distort_thresh>
 <Sakura_num>10000</Sakura_num>
 	<Sakura_wind_speed>1.5</Sakura_wind_speed>
@@ -111,7 +111,7 @@
 	<VBO_brightness>0.925</VBO_brightness>
 <VBO_radius>7.975</VBO_radius>
 <VBO_wind>0.00043</VBO_wind>
-<Distort_lineWidth>2.025</Distort_lineWidth>
+<Distort_lineWidth>0.65</Distort_lineWidth>
 <Blue_sat>73</Blue_sat>
 <Red_sat>70</Red_sat>
 <Sparkle_skip>1</Sparkle_skip>

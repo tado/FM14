@@ -1,7 +1,7 @@
 #include "ofMain.h"
 #include "testApp.h"
 #include "ofAppGLFWWindow.h"
-#include "ofAppGlutWindow.h"
+//#include "ofAppGlutWindow.h"
 
 //========================================================================
 int main( ){

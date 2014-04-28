@@ -22,11 +22,12 @@ void OpDistort::setup() {
     gui.add(srcLevel.setup("Distort Level", 0, 0, 255));
     gui.add(texLevel.setup("Distort texLevel", 127, 0, 255));
     gui.add(wireLevel.setup("Distort wire Level", 127, 0, 255));
-    gui.add(strength.setup("Distort strength", 40.0, 0.0, 200.0));
+    //gui.add(strength.setup("Distort strength", 40.0, 0.0, 200.0));
     gui.add(interpolate.setup("Distort interpolate", 0.1, 0.0, 0.5));
     gui.add(lineWidth.setup("Distort lineWidth", 2.0, 0.0, 5.0));
-
     gui.loadFromFile("settings.xml");
+    
+    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength = 100;
     
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 10.0;
@@ -70,7 +71,7 @@ void OpDistort::update() {
     flow.calcOpticalFlow(pixels);
     
     int i = 0;
-    float distortionStrength = strength;
+    float distortionStrength = ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength;
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
             int i = y * xSteps + x;

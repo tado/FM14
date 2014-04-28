@@ -77,7 +77,7 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 19:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura2");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
                     break;
                 case 20:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
@@ -113,6 +113,9 @@ void OscControl::update(){
         }
         if(m.getAddress() == "/FromVDMX/changecolor"){
             ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = true;
+        }
+        if(m.getAddress() == "/FromVDMX/distortstrength"){
+            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength = m.getArgAsFloat(0);
         }
     }
 }
