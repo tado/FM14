@@ -139,4 +139,7 @@
 	<RGB_through_level>255</RGB_through_level>
 	<RGB_delay_level>140</RGB_delay_level>
 	<RGB_delay_Length>39</RGB_delay_Length>
+<phaseshift_level>127</phaseshift_level>
+	<phaseshift_height>15</phaseshift_height>
+<phaseshift_through_level>45</phaseshift_through_level>
 </group>

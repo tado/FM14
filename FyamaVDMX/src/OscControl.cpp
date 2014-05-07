@@ -53,36 +53,39 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("rgbdelay");
                     break;
                 case 11:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("through");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("phaseshift");
                     break;
                 case 12:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("simple");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("through");
                     break;
                 case 13:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("simple");
                     break;
                 case 14:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("box");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
                     break;
                 case 15:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("box");
                     break;
                 case 16:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
                     break;
                 case 17:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
                     break;
                 case 18:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
                     break;
                 case 19:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 20:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
                     break;
                 case 21:
+                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    break;
+                case 22:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
                     break;
             }
