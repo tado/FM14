@@ -39,7 +39,7 @@
 	<Vector_accel>0.395</Vector_accel>
 <Bubble_skip>1</Bubble_skip>
 	<Bubble_thresh>8.35</Bubble_thresh>
-	<Bubble_Level>0</Bubble_Level>
+	<Bubble_Level>20</Bubble_Level>
 	<Bubble_radius>0</Bubble_radius>
 	<Bubble_accel>0.035</Bubble_accel>
 	<Bubble_speed>0.2</Bubble_speed>
@@ -145,4 +145,5 @@
 <Path_srcLevel>255</Path_srcLevel>
 <Path_max>270</Path_max>
 	<Path_min>175</Path_min>
+<Bubble_base_Level>127</Bubble_base_Level>
 </group>

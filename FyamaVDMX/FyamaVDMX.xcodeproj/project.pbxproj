@@ -40,6 +40,8 @@
 		7A0F38F4191B81C9007E6541 /* SparkleParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A0F38F2191B81C9007E6541 /* SparkleParticle.cpp */; };
 		7A0F38F7191B82B3007E6541 /* PathParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A0F38F5191B82B3007E6541 /* PathParticle.cpp */; };
 		7A115FC118EC4CF500F06F63 /* OpSakura2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A115FBF18EC4CF500F06F63 /* OpSakura2.cpp */; };
+		7A19120E191BC07700030FFA /* ColorBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A19120C191BC07700030FFA /* ColorBubble.cpp */; };
+		7A191211191C0C2500030FFA /* FloatingBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A19120F191C0C2500030FFA /* FloatingBubble.cpp */; };
 		7A2116BE18EDFECD00F41D5D /* RectParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */; };
 		7A2116C418EE1AFC00F41D5D /* OpVbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A2116C218EE1AFC00F41D5D /* OpVbo.cpp */; };
 		7A31463018DFBA6D0029A8EE /* MoveTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A31462E18DFBA6D0029A8EE /* MoveTile.cpp */; };
@@ -248,6 +250,10 @@
 		7A0F38F6191B82B3007E6541 /* PathParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathParticle.h; sourceTree = "<group>"; };
 		7A115FBF18EC4CF500F06F63 /* OpSakura2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpSakura2.cpp; sourceTree = "<group>"; };
 		7A115FC018EC4CF500F06F63 /* OpSakura2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura2.h; sourceTree = "<group>"; };
+		7A19120C191BC07700030FFA /* ColorBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColorBubble.cpp; sourceTree = "<group>"; };
+		7A19120D191BC07700030FFA /* ColorBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorBubble.h; sourceTree = "<group>"; };
+		7A19120F191C0C2500030FFA /* FloatingBubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FloatingBubble.cpp; sourceTree = "<group>"; };
+		7A191210191C0C2500030FFA /* FloatingBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingBubble.h; sourceTree = "<group>"; };
 		7A2116BC18EDFECD00F41D5D /* RectParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectParticle.cpp; sourceTree = "<group>"; };
 		7A2116BD18EDFECD00F41D5D /* RectParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectParticle.h; sourceTree = "<group>"; };
 		7A2116C218EE1AFC00F41D5D /* OpVbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpVbo.cpp; sourceTree = "<group>"; };
@@ -588,6 +594,8 @@
 				7A9E8506191A7C0B00749E95 /* PhaseShift.cpp */,
 				7A9E850A191B297000749E95 /* OpPath.h */,
 				7A9E8509191B297000749E95 /* OpPath.cpp */,
+				7A19120D191BC07700030FFA /* ColorBubble.h */,
+				7A19120C191BC07700030FFA /* ColorBubble.cpp */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -866,6 +874,8 @@
 				7A0F38F2191B81C9007E6541 /* SparkleParticle.cpp */,
 				7A0F38F6191B82B3007E6541 /* PathParticle.h */,
 				7A0F38F5191B82B3007E6541 /* PathParticle.cpp */,
+				7A191210191C0C2500030FFA /* FloatingBubble.h */,
+				7A19120F191C0C2500030FFA /* FloatingBubble.cpp */,
 			);
 			name = Particle;
 			sourceTree = "<group>";
@@ -1426,6 +1436,7 @@
 				7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				7A9C19CB18C7F10C009FCBDA /* Blank.cpp in Sources */,
+				7A191211191C0C2500030FFA /* FloatingBubble.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 				7AFCA5D318D0E75C00945323 /* Ribbon.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
@@ -1448,6 +1459,7 @@
 				7A380B1818E37C2800A45230 /* OpSakura.cpp in Sources */,
 				7AD2D11918D4734500AA8B47 /* NetworkingUtils.cpp in Sources */,
 				C602002DE761F9B52DB4400A /* ObjectFinder.cpp in Sources */,
+				7A19120E191BC07700030FFA /* ColorBubble.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				7AD2D12318D4734500AA8B47 /* ofxOscParameterSync.cpp in Sources */,
 				18F0259718B5F8E400EA684F /* ofxSyphonClient.mm in Sources */,
