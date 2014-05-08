@@ -15,9 +15,9 @@ public:
     ofColor baseColor;
     ofColor gradStart, gradEnd;
     vector<FloatingBubble*> bubbles;
-    int bubbleNum;
     
     ofxPanel gui;
     ofxIntSlider baseLevel;
     ofxIntSlider bubbleLevel;
+    ofxIntSlider bubbleNum;
 };

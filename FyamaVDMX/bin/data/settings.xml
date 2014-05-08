@@ -39,14 +39,14 @@
 	<Vector_accel>0.395</Vector_accel>
 <Bubble_skip>1</Bubble_skip>
 	<Bubble_thresh>8.35</Bubble_thresh>
-	<Bubble_Level>20</Bubble_Level>
+	<Bubble_Level>35</Bubble_Level>
 	<Bubble_radius>0</Bubble_radius>
 	<Bubble_accel>0.035</Bubble_accel>
 	<Bubble_speed>0.2</Bubble_speed>
 	<Bubble_hue>1</Bubble_hue>
 	<Bubble_saturation>2.425</Bubble_saturation>
 	<Bubble_brightness>0.795</Bubble_brightness>
-	<Bubble_num>309</Bubble_num>
+	<Bubble_num>198</Bubble_num>
 <Red_skip>1</Red_skip>
 	<Red_thresh>5</Red_thresh>
 	<Red_Level>255</Red_Level>
@@ -145,5 +145,5 @@
 <Path_srcLevel>255</Path_srcLevel>
 <Path_max>270</Path_max>
 	<Path_min>175</Path_min>
-<Bubble_base_Level>127</Bubble_base_Level>
+<Bubble_base_Level>255</Bubble_base_Level>
 </group>

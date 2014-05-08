@@ -3,20 +3,27 @@
 
 void ColorBubble::setup(){
     baseColor.setHsb(ofRandom(255), 255, 255);
-    bubbleNum = 200;
+    gui.setup();
+    gui.add(baseLevel.setup("Bubble base Level", 127, 0, 255));
+    gui.add(bubbleLevel.setup("Bubble Level", 31, 0, 127));
+    gui.add(bubbleNum.setup("Bubble num", 200, 1, 400));
+    gui.loadFromFile("settings.xml");
     
     for (int i = 0; i < bubbleNum; i++) {
         bubbles.push_back(new FloatingBubble());
     }
-    
-    gui.setup();
-    gui.add(baseLevel.setup("Bubble base Level", 127, 0, 255));
-    gui.add(bubbleLevel.setup("Bubble Level", 31, 0, 127));
-    gui.loadFromFile("settings.xml");
 }
 
 void ColorBubble::update(){
     pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    
+    while (bubbles.size() < bubbleNum) {
+        bubbles.push_back(new FloatingBubble());
+    }
+    
+    while (bubbles.size() > bubbleNum) {
+        bubbles.pop_back();
+    }
     
     for (int i = 0; i < bubbles.size(); i++) {
         bubbles[i]->update();
