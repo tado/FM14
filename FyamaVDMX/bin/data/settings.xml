@@ -140,6 +140,9 @@
 	<RGB_delay_level>140</RGB_delay_level>
 	<RGB_delay_Length>39</RGB_delay_Length>
 <phaseshift_level>127</phaseshift_level>
-	<phaseshift_height>15</phaseshift_height>
-<phaseshift_through_level>45</phaseshift_through_level>
+	<phaseshift_height>10</phaseshift_height>
+<phaseshift_through_level>65</phaseshift_through_level>
+<Path_srcLevel>255</Path_srcLevel>
+<Path_max>270</Path_max>
+	<Path_min>175</Path_min>
 </group>

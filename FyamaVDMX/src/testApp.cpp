@@ -25,6 +25,7 @@
 #include "RgbDelay.h"
 #include "RgbDelayVector.h"
 #include "PhaseShift.h"
+#include "OpPath.h"
 //#include "FlowTools.h"
 
 //--------------------------------------------------------------
@@ -59,9 +60,11 @@ void testApp::setup(){
     stateMachine.addState<Tile>();
     stateMachine.addState<MoveTile>();
     stateMachine.addState<StopMotion>();
-    //stateMachine.addState<RgbDelay>();
     stateMachine.addState<RgbDelayVector>();
     stateMachine.addState<PhaseShift>();
+    stateMachine.addState<OpPath>();
+
+    //stateMachine.addState<RgbDelay>();
     //stateMachine.addState<FlowTools>();
     
     stateMachine.changeState("blank");
