@@ -54,39 +54,36 @@ void OscControl::update(){
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("colorbubble");
                     break;
                 case 13:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("oppath");
-                    break;
-                case 14:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("through");
                     break;
-                case 15:
+                case 14:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("simple");
                     break;
-                case 16:
+                case 15:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
                     break;
-                case 17:
+                case 16:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("box");
                     break;
-                case 18:
+                case 17:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
                     break;
-                case 19:
+                case 18:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
                     break;
-                case 20:
+                case 19:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
                     break;
-                case 21:
+                case 20:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
-                case 22:
+                case 21:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
                     break;
-                case 23:
+                case 22:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
                     break;
-                case 24:
+                case 23:
                     ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
                     break;
             }

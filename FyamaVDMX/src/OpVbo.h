@@ -30,7 +30,7 @@ public:
     ofPixels pixels;
     
     ofxPanel gui;
-    //ofxIntSlider skip;
+    ofxToggle dual;
     ofxFloatSlider accel;
     ofxFloatSlider fade;
     ofxFloatSlider friction;

@@ -25,7 +25,7 @@
 #include "RgbDelay.h"
 #include "RgbDelayVector.h"
 #include "PhaseShift.h"
-#include "OpPath.h"
+//#include "OpPath.h"
 #include "ColorBubble.h"
 //#include "FlowTools.h"
 
@@ -63,7 +63,7 @@ void testApp::setup(){
     stateMachine.addState<StopMotion>();
     stateMachine.addState<RgbDelayVector>();
     stateMachine.addState<PhaseShift>();
-    stateMachine.addState<OpPath>();
+    //stateMachine.addState<OpPath>();
     stateMachine.addState<ColorBubble>();
 
     //stateMachine.addState<RgbDelay>();

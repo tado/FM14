@@ -32,13 +32,13 @@ void OpVbo::setup() {
     int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
-
+    
     ofDisableArbTex();
     img.loadImage("particle32.png");
     
     // GUI
     gui.setup();
-    //gui.add(skip.setup("VBO skip", 1, 0, 10));
+    gui.add(dual.setup("VBO dual", false));
     gui.add(fade.setup("VBO fade", 0.5, 0.0, 1.0));
     gui.add(accel.setup("VBO accel", 0.12, 0.0, 1.0));
     gui.add(friction.setup("VBO friction", 0.0, -0.1, 0.1));
@@ -56,7 +56,7 @@ void OpVbo::setup() {
     iterations = 2;
     polyN = 7;
     polySigma = 1.5;
-    OPTFLOW_FARNEBACK_GAUSSIAN = false; 
+    OPTFLOW_FARNEBACK_GAUSSIAN = false;
 }
 
 void OpVbo::update() {
@@ -93,31 +93,14 @@ void OpVbo::draw() {
         //ofTranslate(0, skip);
         
         for (int i = 0; i < NUM; i++) {
-            int x, y;
-            if (!initPos) {
-                x = verts[i].x = ofRandom(farneback.getWidth()-skip);
-                y = verts[i].y = ofRandom(farneback.getHeight()-skip);
-                int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
-                unsigned char r = pixels[n];
-                unsigned char g = pixels[n + 1];
-                unsigned char b = pixels[n + 2];
+            
+            // Dual screen
+            if (dual) {
                 
-                ofColor col = ofColor(r, g, b);
-                int h = col.getHue();
-                int s = col.getSaturation();
-                int v = col.getBrightness();
-                col.setHsb(h * hue, s * sat, v * br);
-                colors[i] = col;
-            } else {
-                if (((verts[i].x > 0 && verts[i].x < farneback.getWidth() / 2.0 - 1.0)
-                     || (verts[i].x > farneback.getWidth() / 2.0 + 1.0 && verts[i].x < farneback.getWidth()))
-                    && verts[i].y > 0 && verts[i].y < farneback.getHeight()) {
-                    x = verts[i].x;
-                    y = verts[i].y;
-                } else {
+                int x, y;
+                if (!initPos) {
                     x = verts[i].x = ofRandom(farneback.getWidth()-skip);
                     y = verts[i].y = ofRandom(farneback.getHeight()-skip);
-                    verts[i].z = 0;
                     int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
                     unsigned char r = pixels[n];
                     unsigned char g = pixels[n + 1];
@@ -129,29 +112,108 @@ void OpVbo::draw() {
                     int v = col.getBrightness();
                     col.setHsb(h * hue, s * sat, v * br);
                     colors[i] = col;
+                } else {
+                    if (((verts[i].x > 0 && verts[i].x < farneback.getWidth() / 2.0 - 1.0)
+                         || (verts[i].x > farneback.getWidth() / 2.0 + 1.0 && verts[i].x < farneback.getWidth()))
+                        && verts[i].y > 0 && verts[i].y < farneback.getHeight()) {
+                        x = verts[i].x;
+                        y = verts[i].y;
+                    } else {
+                        x = verts[i].x = ofRandom(farneback.getWidth()-skip);
+                        y = verts[i].y = ofRandom(farneback.getHeight()-skip);
+                        verts[i].z = 0;
+                        int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+                        unsigned char r = pixels[n];
+                        unsigned char g = pixels[n + 1];
+                        unsigned char b = pixels[n + 2];
+                        
+                        ofColor col = ofColor(r, g, b);
+                        int h = col.getHue();
+                        int s = col.getSaturation();
+                        int v = col.getBrightness();
+                        col.setHsb(h * hue, s * sat, v * br);
+                        colors[i] = col;
+                    }
                 }
-            }
-            ofRectangle region = ofRectangle(x, y, skip, skip);
-            ofVec2f average = farneback.getAverageFlowInRegion(region);
-            
-            force[i].set(0, 0, 0);
-            force[i] -= velocity[i] * friction;
-            force[i] += ofVec3f(average.x * accel, average.y * accel, 0);
-            
-            ofVec2f center;
-            if (x < farneback.getWidth()/2.0) {
-                center.x = farneback.getWidth() / 6.0;
-                center.y = farneback.getHeight() / 2.0;
+                ofRectangle region = ofRectangle(x, y, skip, skip);
+                ofVec2f average = farneback.getAverageFlowInRegion(region);
+                
+                force[i].set(0, 0, 0);
+                force[i] -= velocity[i] * friction;
+                force[i] += ofVec3f(average.x * accel, average.y * accel, 0);
+                
+                ofVec2f center;
+                if (x < farneback.getWidth()/2.0) {
+                    center.x = farneback.getWidth() / 6.0;
+                    center.y = farneback.getHeight() / 2.0;
+                } else {
+                    center.x = farneback.getWidth() / 6.0 * 5.0;
+                    center.y = farneback.getHeight() / 2.0;
+                }
+                
+                force[i] += ofVec3f((x - center.x) * wind,
+                                    (y - center.y) * wind,
+                                    0.0);
+                velocity[i] += force[i];
+                verts[i] += velocity[i];
             } else {
-                center.x = farneback.getWidth() / 6.0 * 5.0;
+                
+                // Single screen
+                
+                int x, y;
+                if (!initPos) {
+                    x = verts[i].x = ofRandom(farneback.getWidth()-skip);
+                    y = verts[i].y = ofRandom(farneback.getHeight()-skip);
+                    int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+                    unsigned char r = pixels[n];
+                    unsigned char g = pixels[n + 1];
+                    unsigned char b = pixels[n + 2];
+                    
+                    ofColor col = ofColor(r, g, b);
+                    int h = col.getHue();
+                    int s = col.getSaturation();
+                    int v = col.getBrightness();
+                    col.setHsb(h * hue, s * sat, v * br);
+                    colors[i] = col;
+                } else {
+                    if (verts[i].x > 0 && verts[i].x < farneback.getWidth()
+                        && verts[i].y > 0 && verts[i].y < farneback.getHeight()) {
+                        x = verts[i].x;
+                        y = verts[i].y;
+                    } else {
+                        x = verts[i].x = ofRandom(farneback.getWidth()-skip);
+                        y = verts[i].y = ofRandom(farneback.getHeight()-skip);
+                        verts[i].z = 0;
+                        int n = ((y * camWidth + x) * 3) * camWidth / farneback.getWidth();
+                        unsigned char r = pixels[n];
+                        unsigned char g = pixels[n + 1];
+                        unsigned char b = pixels[n + 2];
+                        
+                        ofColor col = ofColor(r, g, b);
+                        int h = col.getHue();
+                        int s = col.getSaturation();
+                        int v = col.getBrightness();
+                        col.setHsb(h * hue, s * sat, v * br);
+                        colors[i] = col;
+                    }
+                }
+                ofRectangle region = ofRectangle(x, y, skip, skip);
+                ofVec2f average = farneback.getAverageFlowInRegion(region);
+                
+                force[i].set(0, 0, 0);
+                force[i] -= velocity[i] * friction;
+                force[i] += ofVec3f(average.x * accel, average.y * accel, 0);
+                
+                ofVec2f center;
+                center.x = farneback.getWidth() / 2.0;
                 center.y = farneback.getHeight() / 2.0;
+                
+                force[i] += ofVec3f((x - center.x) * wind,
+                                    (y - center.y) * wind,
+                                    0.0);
+                velocity[i] += force[i];
+                verts[i] += velocity[i];
             }
-            
-            force[i] += ofVec3f((x - center.x) * wind,
-                                (y - center.y) * wind,
-                                0.0);
-            velocity[i] += force[i];
-            verts[i] += velocity[i];
         }
         
         vbo.setVertexData(verts, NUM, GL_DYNAMIC_DRAW);
@@ -165,7 +227,7 @@ void OpVbo::draw() {
         img.getTextureReference().unbind();
         ofDisablePointSprites();
         
-        ofPopMatrix();        
+        ofPopMatrix();
         initPos = true;
     }
     ofDisableBlendMode();
