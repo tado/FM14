@@ -136,9 +136,9 @@
 	<RGB_dist>3.73</RGB_dist>
 	<RGB_num>131</RGB_num>
 	<RGB_max>23</RGB_max>
-	<RGB_through_level>255</RGB_through_level>
-	<RGB_delay_level>140</RGB_delay_level>
-	<RGB_delay_Length>39</RGB_delay_Length>
+	<RGB_through_level>138</RGB_through_level>
+	<RGB_delay_level>195</RGB_delay_level>
+	<RGB_delay_Length>78</RGB_delay_Length>
 <phaseshift_level>127</phaseshift_level>
 	<phaseshift_height>10</phaseshift_height>
 <phaseshift_through_level>65</phaseshift_through_level>
@@ -146,4 +146,5 @@
 <Path_max>270</Path_max>
 	<Path_min>175</Path_min>
 <Bubble_base_Level>255</Bubble_base_Level>
+<RGB_delay_num>6</RGB_delay_num>
 </group>

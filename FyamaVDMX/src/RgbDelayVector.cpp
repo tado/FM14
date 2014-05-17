@@ -182,5 +182,5 @@ void RgbDelayVector::draw() {
 }
 
 string RgbDelayVector::getName(){
-    return "rgbdelay";
+    return "rgbdelay--";
 }
