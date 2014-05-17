@@ -48,6 +48,7 @@
 		7A380B1218E2C9E900A45230 /* OpRedVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1018E2C9E900A45230 /* OpRedVector.cpp */; };
 		7A380B1518E2D56100A45230 /* OpBlueVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1318E2D56100A45230 /* OpBlueVector.cpp */; };
 		7A380B1818E37C2800A45230 /* OpSakura.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A380B1618E37C2800A45230 /* OpSakura.cpp */; };
+		7A56053B192820500070087A /* RgbVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A560539192820500070087A /* RgbVector.cpp */; };
 		7A73D7BB18F0E2B0003DA46D /* Through.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A73D7B918F0E2B0003DA46D /* Through.cpp */; };
 		7A83C47E18D660FC00E070E2 /* NofillPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */; };
 		7A83C48118D6BC2F00E070E2 /* OpBubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A83C47F18D6BC2F00E070E2 /* OpBubble.cpp */; };
@@ -267,6 +268,8 @@
 		7A380B1618E37C2800A45230 /* OpSakura.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpSakura.cpp; sourceTree = "<group>"; };
 		7A380B1718E37C2800A45230 /* OpSakura.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpSakura.h; sourceTree = "<group>"; };
 		7A3E755618EAC32100B7D44C /* FyamaVDMXDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FyamaVDMXDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A560539192820500070087A /* RgbVector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RgbVector.cpp; sourceTree = "<group>"; };
+		7A56053A192820500070087A /* RgbVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RgbVector.h; sourceTree = "<group>"; };
 		7A73D7B918F0E2B0003DA46D /* Through.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Through.cpp; sourceTree = "<group>"; };
 		7A73D7BA18F0E2B0003DA46D /* Through.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Through.h; sourceTree = "<group>"; };
 		7A83C47C18D660FC00E070E2 /* NofillPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NofillPixelate.cpp; sourceTree = "<group>"; };
@@ -588,6 +591,8 @@
 				7ADCB53018FA8C6F004ED88E /* StopMotion.cpp */,
 				18B28B4B19004CF1005FC104 /* RgbDelay.h */,
 				18B28B4A19004CF1005FC104 /* RgbDelay.cpp */,
+				7A56053A192820500070087A /* RgbVector.h */,
+				7A560539192820500070087A /* RgbVector.cpp */,
 				7AF18BE3190773D3006C065F /* RgbDelayVector.h */,
 				7AF18BE2190773D3006C065F /* RgbDelayVector.cpp */,
 				7A9E8507191A7C0B00749E95 /* PhaseShift.h */,
@@ -1397,6 +1402,7 @@
 				7AD2D11818D4734500AA8B47 /* IpEndpointName.cpp in Sources */,
 				1827313318C0E5220075A4C7 /* Particle.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
+				7A56053B192820500070087A /* RgbVector.cpp in Sources */,
 				7AF18BE4190773D3006C065F /* RgbDelayVector.cpp in Sources */,
 				7A0F38ED191B8047007E6541 /* NoteParticle.cpp in Sources */,
 				7AD2D11E18D4734500AA8B47 /* OscPrintReceivedElements.cpp in Sources */,

@@ -1,10 +1,10 @@
-#include "OpSparkle.h"
+#include "RgbVector.h"
 #include "testApp.h"
 
 using namespace ofxCv;
 using namespace cv;
 
-void OpSparkle::stateEnter(){
+void RgbVector::stateEnter(){
     ofSetColor(0);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -12,14 +12,12 @@ void OpSparkle::stateEnter(){
     farneback.resetFlow();
 }
 
-void OpSparkle::stateExit(){
+void RgbVector::stateExit(){
     particles.clear();
-    deque<SparkleParticle*>().swap(particles);
+    deque<Particle*>().swap(particles);
 }
 
-void OpSparkle::setup() {
-    img.loadImage("sparkle.png");
-    
+void RgbVector::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
@@ -27,18 +25,19 @@ void OpSparkle::setup() {
     int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
+    img.loadImage("particle32.png");
+    
     // GUI
     gui.setup();
-    gui.add(skip.setup("Sparkle skip", 1, 1, 20));
-    gui.add(thresh.setup("Sparkle thresh", 5, 0, 10));
-    gui.add(srcLevel.setup("Sparkle Level", 0, 0, 255));
-    gui.add(accel.setup("Sparkle accel", 0.12, 0.0, 1.0));
-    gui.add(hue.setup("Notes hue", 1.0, 0.0, 3.0));
-    gui.add(sat.setup("Sparkle saturation", 1.0, 0.0, 1.0));
-    gui.add(br.setup("Sparkle brightness", 1.0, 0.0, 1.0));
-    gui.add(noteSize.setup("Sparkle size", 1.0, 0.0, 2.0));
-    gui.add(num.setup("Sparkle num", 100, 10, 1000));
-    gui.add(max.setup("Sparkle max", 100, 10, 1000));
+    gui.add(wireLevel.setup("RGB wire Level", 127, 0, 255));
+    gui.add(skip.setup("RGB skip", 1, 1, 20));
+    gui.add(thresh.setup("RGB thresh", 5, 0, 10));
+    gui.add(radius.setup("RGB radius", 0.2, 0.0, 1.0));
+    gui.add(accel.setup("RGB accel", 0.12, 0.0, 2.0));
+    gui.add(minDist.setup("RGB dist", 10.0, 1.0, 40.0));
+    gui.add(num.setup("RGB num", 100, 2, 1000));
+    gui.add(max.setup("RGB max", 10, 1, 100));
+
     gui.loadFromFile("settings.xml");
     
     //CV params
@@ -50,10 +49,11 @@ void OpSparkle::setup() {
     polySigma = 1.5;
     OPTFLOW_FARNEBACK_GAUSSIAN = false;
     
-    colorNegative = false;
+    //change color
+    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
 }
 
-void OpSparkle::update() {
+void RgbVector::update() {
     farneback.setPyramidScale(pyrScale);
     farneback.setNumLevels(levels);
     farneback.setWindowSize(winsize);
@@ -62,39 +62,29 @@ void OpSparkle::update() {
     farneback.setPolySigma(polySigma);
     farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
     
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;    
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
     
     for (int i = 0; i < particles.size(); i++) {
         particles[i]->update();
     }
-    
-    // change color
-    if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
-        if (colorNegative) {
-            colorNegative = false;
-        } else {
-            colorNegative = true;
-        }
-        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
-    }
 }
 
-void OpSparkle::draw() {
+void RgbVector::draw() {
+    int currentParticleNum;
+    
     ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
-    
-    ofSetColor(srcLevel);
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
-    tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    
+    ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+    // particle
     
     int camWidth = pixels.getWidth();
     int camHeight = pixels.getHeight();
     
     if (farneback.getWidth() > 0) {
-        int currentParticleNum;
+        int skip = 1;
         ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(farneback.getWidth()), SCREEN_HEIGHT / float(farneback.getHeight()));
         ofPushMatrix();
         ofScale(scale.x, scale.y);
@@ -111,14 +101,14 @@ void OpSparkle::draw() {
             
             if (abs(average.x) + abs(average.y) > 0.5) {
                 ofColor col;
-                col.setHsb(ofRandom(hue * 255 - 10, hue * 255 + 10), sat * 255, br * 255);
+                col.setHsb(ofRandom(255), 255, 127);
                 
-                SparkleParticle *p = new SparkleParticle();
-                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 1.0), col);
-                p->radius = (abs(average.x) + abs(average.y));
-
+                Particle *p = new Particle();
+                p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
+                p->radius = 0.2;
                 particles.push_back(p);
-                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.01, 10.0);
+                
+                float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.0, 10.0);
                 currentParticleNum = num * multi;
                 while (particles.size() > currentParticleNum) {
                     delete particles[0];
@@ -127,23 +117,27 @@ void OpSparkle::draw() {
             }
         }
         
+        // draw wire
         for (int i = 0; i < particles.size(); i++) {
-            if (!colorNegative) {
-                ofSetColor(particles[i]->color);
-            } else {
-                ofColor col;
-                col.setHsb(int(particles[i]->color.getHue() + 127) % 255, particles[i]->color.getSaturation(), particles[i]->color.getBrightness());
-                ofSetColor(col);
+            ofFill();
+            particles[i]->draw();
+            ofNoFill();
+            for (int j = 1; j < particles.size()-1; j++) {
+                //particles[i]->draw();
+                float dist = ofDist(particles[i]->position.x, particles[i]->position.y,
+                                    particles[j]->position.x, particles[j]->position.y);
+                if(dist < minDist){
+                    float level = ofMap(dist, 0, minDist, 255, 0);
+                    ofSetColor(particles[i]->color);
+                    ofSetLineWidth(1.5);
+                    ofLine(particles[i]->position.x, particles[i]->position.y,
+                           particles[j]->position.x, particles[j]->position.y);
+                    ofSetLineWidth(1.0);
+                }
             }
-
-            ofSetRectMode(OF_RECTMODE_CENTER);
-            ofPushMatrix();
-            ofTranslate(particles[i]->position);
-            ofRotateZ(20);
-            img.draw(0, 0, 0, particles[i]->radius * noteSize, particles[i]->radius * noteSize);
-            ofPopMatrix();
-            ofSetRectMode(OF_RECTMODE_CORNER);
         }
+        ofSetLineWidth(1.0);
+        ofFill();
         ofPopMatrix();
     }
     ofDisableBlendMode();
@@ -155,6 +149,6 @@ void OpSparkle::draw() {
     gui.draw();
 }
 
-string OpSparkle::getName(){
-    return "opsparkle";
+string RgbVector::getName(){
+    return "rgbvector";
 }

@@ -23,7 +23,7 @@
 #include "MoveTile.h"
 #include "StopMotion.h"
 #include "RgbDelay.h"
-//#include "RgbDelayVector.h"
+#include "RgbVector.h"
 #include "PhaseShift.h"
 //#include "OpPath.h"
 #include "ColorBubble.h"
@@ -62,6 +62,7 @@ void testApp::setup(){
     stateMachine.addState<MoveTile>();
     stateMachine.addState<StopMotion>();
     stateMachine.addState<RgbDelay>();
+    stateMachine.addState<RgbVector>();
     stateMachine.addState<PhaseShift>();
     //stateMachine.addState<OpPath>();
     stateMachine.addState<ColorBubble>();

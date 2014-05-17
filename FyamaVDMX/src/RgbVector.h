@@ -5,9 +5,9 @@
 #include "ofxGui.h"
 #include "ofxState.h"
 #include "SharedData.h"
-#include "SparkleParticle.h"
+#include "Particle.h"
 
-class OpSparkle : public itg::ofxState<SharedData>{
+class RgbVector : public itg::ofxState<SharedData>{
     
 public:
     void stateEnter();
@@ -19,11 +19,6 @@ public:
     
     ofxCv::FlowFarneback farneback;
     
-    ofPixels pixels;
-    deque<SparkleParticle *> particles;
-    int cvWidth, cvHeight;
-    ofTexture tex;
-    
     float pyrScale;
     int levels;
     int winsize;
@@ -31,19 +26,25 @@ public:
     int polyN;
     float polySigma;
     bool OPTFLOW_FARNEBACK_GAUSSIAN;
-    ofImage img;
     
     ofxPanel gui;
+    //ofxIntSlider sat;
     ofxFloatSlider skip;
     ofxFloatSlider thresh;
-    ofxIntSlider srcLevel;
+    //ofxIntSlider srcLevel;
+    ofxIntSlider wireLevel;
+    ofxFloatSlider radius;
     ofxFloatSlider accel;
-    ofxFloatSlider hue;
-    ofxFloatSlider sat;
-    ofxFloatSlider br;
-    ofxFloatSlider noteSize;
+    //ofxFloatSlider hue;
+    //ofxFloatSlider sat;
+    //ofxFloatSlider br;
+    ofxFloatSlider minDist;
     ofxIntSlider num;
     ofxIntSlider max;
     
-    bool colorNegative;
+    ofPixels pixels;
+    deque<Particle *> particles;
+    int cvWidth, cvHeight;
+    ofTexture tex;
+    ofImage img;
 };
