@@ -80,7 +80,7 @@ void RgbDelay::draw() {
     
     if (texBuffer.size() > delayNum) {
         for (int i = 0; i < delayNum; i++) {
-            col.setHsb(baseColor.getHue()+ 255/delayNum * i, 255, rgbLevel/delayNum * 2);
+            col.setHsb(int(baseColor.getHue()+ 255/delayNum * i) % 255, 255, rgbLevel/delayNum * 2);
             ofSetColor(col);
             texBuffer[texBuffer.size() / delayNum * i].draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         }
