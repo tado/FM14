@@ -32,7 +32,7 @@ void RgbVector::setup() {
     gui.add(wireLevel.setup("RGB wire Level", 127, 0, 255));
     gui.add(skip.setup("RGB skip", 1, 1, 20));
     gui.add(thresh.setup("RGB thresh", 5, 0, 10));
-    gui.add(radius.setup("RGB radius", 0.2, 0.0, 1.0));
+    gui.add(radius.setup("RGB radius", 0.2, 0.0, 2.0));
     gui.add(accel.setup("RGB accel", 0.12, 0.0, 2.0));
     gui.add(minDist.setup("RGB dist", 10.0, 1.0, 40.0));
     gui.add(num.setup("RGB num", 100, 2, 1000));
@@ -119,9 +119,6 @@ void RgbVector::draw() {
         
         // draw wire
         for (int i = 0; i < particles.size(); i++) {
-            ofFill();
-            particles[i]->draw();
-            ofNoFill();
             for (int j = 1; j < particles.size()-1; j++) {
                 //particles[i]->draw();
                 float dist = ofDist(particles[i]->position.x, particles[i]->position.y,
@@ -133,6 +130,13 @@ void RgbVector::draw() {
                     ofLine(particles[i]->position.x, particles[i]->position.y,
                            particles[j]->position.x, particles[j]->position.y);
                     ofSetLineWidth(1.0);
+                    
+                    float r = ofMap(dist, 0, minDist, radius, radius * 0.5);
+                    ofSetColor(particles[i]->color, 200);
+                    if(r < radius){
+                        ofCircle(particles[i]->position.x, particles[i]->position.y, r);
+                        ofCircle(particles[j]->position.x, particles[j]->position.y, r);
+                    }
                 }
             }
         }

@@ -135,6 +135,10 @@ void OpSparkle::draw() {
                 col.setHsb(int(particles[i]->color.getHue() + 127) % 255, particles[i]->color.getSaturation(), particles[i]->color.getBrightness());
                 ofSetColor(col);
             }
+            
+            if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue){
+                ofSetColor(255, 255, 255);
+            }
 
             ofSetRectMode(OF_RECTMODE_CENTER);
             ofPushMatrix();

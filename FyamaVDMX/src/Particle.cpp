@@ -4,6 +4,7 @@ void Particle::setup(ofVec3f _position, ofVec3f _velocity, ofColor _color){
     position = _position;
     velocity = _velocity;
     color = _color;
+    drawParticle = false;
 }
 
 void Particle::resetForce(){

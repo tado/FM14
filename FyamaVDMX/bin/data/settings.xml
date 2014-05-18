@@ -131,9 +131,9 @@
 <RGB_wire_Level>233</RGB_wire_Level>
 	<RGB_skip>14.395</RGB_skip>
 	<RGB_thresh>9.6</RGB_thresh>
-	<RGB_radius>0.545</RGB_radius>
+	<RGB_radius>0.96</RGB_radius>
 	<RGB_accel>0.38</RGB_accel>
-	<RGB_dist>3.73</RGB_dist>
+	<RGB_dist>8.215</RGB_dist>
 	<RGB_num>131</RGB_num>
 	<RGB_max>23</RGB_max>
 	<RGB_through_level>210</RGB_through_level>

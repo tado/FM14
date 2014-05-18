@@ -18,4 +18,5 @@ public:
     float friction;
     float radius;
     ofColor color;
+    bool drawParticle;
 };
