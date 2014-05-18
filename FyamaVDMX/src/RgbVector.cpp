@@ -105,7 +105,7 @@ void RgbVector::draw() {
                 
                 Particle *p = new Particle();
                 p->setup(ofVec3f(x + ofRandom(skip), y + ofRandom(skip), 0), ofVec3f(average.x * accel, average.y * accel, 0), col);
-                p->radius = 0.2;
+                p->radius = radius;
                 particles.push_back(p);
                 
                 float multi = ofMap(getSharedData().particleNum, 0.0, 1.0, 0.0, 10.0);
