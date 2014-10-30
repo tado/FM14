@@ -7,15 +7,12 @@ void ofApp::setup(){
     showGui = false;
     testPattern = false;
     
-    // shader.load("deinterlace.frag");
-    
     font.loadFont("NotoSans-Bold.ttf", 100);
-    
     gui.setup();
     gui.add(deviceId.setup("device ID", 2, 0, 12));
-    gui.add(topMargin.setup("topMargin", 135, 0, 270));
-    gui.add(gridWidth.setup("grid width", 480, 1, 960));
-    gui.add(gridHeight.setup("grid height", 270, 1, 540));
+    gui.add(topMargin.setup("topMargin", 135, 0, 1080));
+    gui.add(gridWidth.setup("grid width", 480, 1, 1920));
+    gui.add(gridHeight.setup("grid height", 270, 1, 1080));
     gui.loadFromFile("settings.xml");
     
     video.listDevices();
@@ -37,8 +34,6 @@ void ofApp::draw(){
     int ydiv = 3;
     
     ofPushMatrix();
-    // shader.begin();
-    
     ofTranslate(0, topMargin);
     
     if (testPattern) {
@@ -52,7 +47,7 @@ void ofApp::draw(){
                 }
                 ofRect(gridWidth * i, gridHeight * j, gridWidth, gridHeight);
                 ofSetColor(255);
-                string msg = ofToString(i+1, 0) + "-" + ofToString(j+1, 0);
+                string msg = ofToString(j+1, 0) + "-" + ofToString(i+1, 0);
                 font.drawString(msg, gridWidth * i + gridWidth / 3.5, gridHeight * j + gridHeight / 1.5);
             }
         }
@@ -65,7 +60,7 @@ void ofApp::draw(){
             }
         }
     }
-    //shader.end();
+
     ofPopMatrix();
     
     if (showGui) {
