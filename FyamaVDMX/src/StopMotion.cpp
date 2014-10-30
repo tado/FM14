@@ -1,5 +1,5 @@
 #include "StopMotion.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 void StopMotion::setup(){
     getSharedData().stop = 0;
@@ -7,12 +7,12 @@ void StopMotion::setup(){
 }
 
 void StopMotion::update(){
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
 }
 
 void StopMotion::draw(){
     ofDisableBlendMode();
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     if (getSharedData().stop == 0) {
         tex.loadData(pixels);
@@ -21,8 +21,8 @@ void StopMotion::draw(){
     ofSetColor(255);
     drawTex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofSetColor(0);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());

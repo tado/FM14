@@ -1,5 +1,5 @@
 #include "OpCircle.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -43,13 +43,13 @@ void OpCircle::setup() {
 }
 
 void OpCircle::update() {
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
 }
 
 void OpCircle::draw() {
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
 
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -93,8 +93,8 @@ void OpCircle::draw() {
     ofPopMatrix();
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

@@ -1,5 +1,5 @@
 #include "OpSakura2.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -30,7 +30,7 @@ void OpSakura2::update() {
 }
 
 void OpSakura2::draw() {
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetRectMode(OF_RECTMODE_CORNER);
@@ -60,8 +60,8 @@ void OpSakura2::draw() {
     }
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

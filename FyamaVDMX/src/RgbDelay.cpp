@@ -1,5 +1,5 @@
 #include "RgbDelay.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -22,8 +22,8 @@ void RgbDelay::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    int camWidth = ((ofApp*)ofGetAppPtr())->syphonIO.width;
+    int camHeight = ((ofApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
     img.loadImage("particle32.png");
@@ -39,11 +39,11 @@ void RgbDelay::setup() {
     gui.loadFromFile("settings.xml");
     
     //change color
-    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+    ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
 }
 
 void RgbDelay::update() {
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     ofTexture t;
     t.loadData(pixels);
     texBuffer.push_back(t);
@@ -58,11 +58,11 @@ void RgbDelay::update() {
     }
     
     // change color
-    if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
+    if(((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
         int hue = baseColor.getHue();
         hue = (hue + 80) % 255;
         baseColor.setHsb(hue, 255, throughLevel);
-        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+        ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
     }
 }
 
@@ -70,7 +70,7 @@ void RgbDelay::draw() {
     int currentParticleNum;
     ofColor col;
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     ofClear(0);
@@ -119,8 +119,8 @@ void RgbDelay::draw() {
     
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

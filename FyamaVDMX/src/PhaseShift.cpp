@@ -1,5 +1,5 @@
 #include "PhaseShift.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 void PhaseShift::setup(){
     gui.setup();
@@ -12,7 +12,7 @@ void PhaseShift::setup(){
 }
 
 void PhaseShift::update(){
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     
     bufLength = SCREEN_HEIGHT / sliceHeight / 2 + 1;
     
@@ -24,16 +24,16 @@ void PhaseShift::update(){
     }
     
     // change color
-    if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
+    if(((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
         int hue = baseColor.getHue();
         hue = (hue + 80) % 255;
         baseColor.setHsb(hue, 255, 255);
-        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+        ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
     }
 }
 
 void PhaseShift::draw(){
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofClear(0);
     ofDisableBlendMode();
@@ -55,8 +55,8 @@ void PhaseShift::draw(){
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

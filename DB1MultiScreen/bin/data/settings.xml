@@ -1,0 +1,14 @@
+<group>
+	<auto_scan>1</auto_scan>
+	<scan_speed>1</scan_speed>
+	<freq_ratio>1.1005</freq_ratio>
+	<freq_offset>50</freq_offset>
+<group/>
+<amplitude>0.02</amplitude>
+<device_ID>2</device_ID>
+	<x_divide>16</x_divide>
+	<y_divide>3</y_divide>
+<topMargin>135</topMargin>
+	<grid_width>480</grid_width>
+	<grid_height>270</grid_height>
+</group>

@@ -1,5 +1,5 @@
 #include "RgbVector.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -21,8 +21,8 @@ void RgbVector::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    int camWidth = ((ofApp*)ofGetAppPtr())->syphonIO.width;
+    int camHeight = ((ofApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
     img.loadImage("particle32.png");
@@ -50,7 +50,7 @@ void RgbVector::setup() {
     OPTFLOW_FARNEBACK_GAUSSIAN = false;
     
     //change color
-    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+    ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
 }
 
 void RgbVector::update() {
@@ -62,7 +62,7 @@ void RgbVector::update() {
     farneback.setPolySigma(polySigma);
     farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
     
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;    
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;    
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
     
@@ -74,7 +74,7 @@ void RgbVector::update() {
 void RgbVector::draw() {
     int currentParticleNum;
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     ofBackground(0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
@@ -146,8 +146,8 @@ void RgbVector::draw() {
     }
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

@@ -1,5 +1,5 @@
 #include "FatfontPixelate.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 void FatfontPixelate::setup(){
     font.loadFont("Rotunda.otf", 36, false);
@@ -11,15 +11,15 @@ void FatfontPixelate::setup(){
 }
 
 void FatfontPixelate::update(){
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
 }
 
 void FatfontPixelate::draw(){
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
 
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(srcLevel);
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.loadData(((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     int camWidth = pixels.getWidth();
@@ -56,8 +56,8 @@ void FatfontPixelate::draw(){
     }
     ofPopMatrix();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

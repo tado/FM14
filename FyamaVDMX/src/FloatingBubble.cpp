@@ -1,5 +1,5 @@
 #include "FloatingBubble.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 FloatingBubble::FloatingBubble(){
     position = ofVec2f(ofRandom(-radius, SCREEN_WIDTH+radius), ofRandom(-radius, SCREEN_HEIGHT+radius));

@@ -1,5 +1,5 @@
 #include "ColorBubble.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 void ColorBubble::setup(){
     baseColor.setHsb(ofRandom(255), 255, 255);
@@ -15,7 +15,7 @@ void ColorBubble::setup(){
 }
 
 void ColorBubble::update(){
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     
     while (bubbles.size() < bubbleNum) {
         bubbles.push_back(new FloatingBubble());
@@ -30,7 +30,7 @@ void ColorBubble::update(){
     }
 
     // change color
-    if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
+    if(((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
         for (int i = 0; i < bubbles.size(); i++) {
             ofColor col;
             col.setHsb(ofRandom(255), 255, 255);
@@ -39,13 +39,13 @@ void ColorBubble::update(){
         int hue = baseColor.getHue();
         hue = (hue + 80) % 255;
         baseColor.setHsb(hue, 255, 255);
-        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+        ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
     }
 }
 
 void ColorBubble::draw(){
 
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
 
     ofClear(0);
 
@@ -63,8 +63,8 @@ void ColorBubble::draw(){
     
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

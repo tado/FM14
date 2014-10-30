@@ -1,5 +1,5 @@
 #include "MoveTile.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 void MoveTile::setup(){
     getSharedData().tileDiv = 2;
@@ -18,7 +18,7 @@ void MoveTile::update(){
 }
 
 void MoveTile::draw(){
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
 
     
     ofBackground(0);
@@ -27,16 +27,16 @@ void MoveTile::draw(){
     ofTranslate(0, tilePos);
     
     for (int y = 0; y < getSharedData().tileDiv + 1; y++) {
-        ((testApp*)ofGetAppPtr())->syphonIO.texture.draw(SCREEN_WIDTH / 2, y * height, width, height);
+        ((ofApp*)ofGetAppPtr())->syphonIO.texture.draw(SCREEN_WIDTH / 2, y * height, width, height);
     }
     
     ofPopMatrix();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
     ofSetColor(255);
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
-    //((testApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.draw(0, 0);
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    //((ofApp*)ofGetAppPtr())->syphonIO.server.publishScreen();
 }
 
 void MoveTile::keyPressed(int key){

@@ -1,5 +1,5 @@
 #include "OscControl.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 void OscControl::setup(){
     receiver.setup(9000);
@@ -15,111 +15,111 @@ void OscControl::update(){
             state = m.getArgAsInt32(0);
             switch (state) {
                 case 0:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("blank");
                     break;
                 case 1:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura2");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("sakura2");
                     break;
                 case 2:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opdistort");
                     break;
                 case 3:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opbluevector");
                     break;
                 case 4:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opredvector");
                     break;
                 case 5:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opvector");
                     break;
                 case 6:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opvbo");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opvbo");
                     break;
                 case 7:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opnotes");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opnotes");
                     break;
                 case 8:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opsparkle");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opsparkle");
                     break;
                 case 9:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("stopmotion");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("stopmotion");
                     break;
                 case 10:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("rgbdelay");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("rgbdelay");
                     break;
                 case 11:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("rgbvector");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("rgbvector");
                     break;
                 case 12:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("phaseshift");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("phaseshift");
                     break;
                 case 13:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("colorbubble");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("colorbubble");
                     break;
                 case 14:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("through");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("through");
                     break;
                 case 15:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("simple");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("simple");
                     break;
                 case 16:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("nofill");
                     break;
                 case 17:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("box");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("box");
                     break;
                 case 18:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("fatfont");
                     break;
                 case 19:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opcircle");
                     break;
                 case 20:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("opparticle");
                     break;
                 case 21:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("bubble");
                     break;
                 case 22:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("sakura");
                     break;
                 case 23:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("tile");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("tile");
                     break;
                 case 24:
-                    ((testApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
+                    ((ofApp*)ofGetAppPtr())->stateMachine.changeState("movetile");
                     break;
             }
 		}
         if(m.getAddress() == "/FromVDMX/tile"){
             int div = m.getArgAsInt32(0) + 1;
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().tileDiv = div;
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().tileDiv = div;
         }
         if(m.getAddress() == "/FromVDMX/cropPosY"){
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = m.getArgAsFloat(0);
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().cropPosY = m.getArgAsFloat(0);
         }
         if (m.getAddress() == "/FromVDMX/threeHead") {
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead = m.getArgAsInt32(0);
-            //((testApp*)ofGetAppPtr())->stateMachine.changeState("blank");
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().threeHead = m.getArgAsInt32(0);
+            //((ofApp*)ofGetAppPtr())->stateMachine.changeState("blank");
         }
         if (m.getAddress() == "/FromVDMX/redblue") {
-            if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue){
-                ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = false;
+            if(((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue){
+                ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = false;
             } else {
-                ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = true;
+                ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().redBlue = true;
             }
         }
         if(m.getAddress() == "/FromVDMX/particlenum"){
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().particleNum = m.getArgAsFloat(0);
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().particleNum = m.getArgAsFloat(0);
         }
         if(m.getAddress() == "/FromVDMX/stop"){
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().stop = m.getArgAsInt32(0);
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().stop = m.getArgAsInt32(0);
         }
         if(m.getAddress() == "/FromVDMX/changecolor"){
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = true;
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = true;
         }
         if(m.getAddress() == "/FromVDMX/distortstrength"){
-            ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength = m.getArgAsFloat(0);
+            ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength = m.getArgAsFloat(0);
         }
     }
 }

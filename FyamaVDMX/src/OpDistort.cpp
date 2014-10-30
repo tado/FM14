@@ -1,5 +1,5 @@
 #include "OpDistort.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -27,7 +27,7 @@ void OpDistort::setup() {
     gui.add(lineWidth.setup("Distort lineWidth", 2.0, 0.0, 5.0));
     gui.loadFromFile("settings.xml");
     
-    ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength = 100;
+    ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength = 100;
     
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 10.0;
@@ -65,13 +65,13 @@ void OpDistort::setup() {
 }
 
 void OpDistort::update() {
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     flow.setWindowSize(8);
     flow.calcOpticalFlow(pixels);
     
     int i = 0;
-    float distortionStrength = ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength;
+    float distortionStrength = ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().distortStrength;
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
             int i = y * xSteps + x;
@@ -97,10 +97,10 @@ void OpDistort::update() {
 }
 
 void OpDistort::draw() {
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofSetColor(srcLevel);
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.loadData(((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -109,7 +109,7 @@ void OpDistort::draw() {
     ofVec2f scale = ofVec2f(SCREEN_WIDTH / float((xSteps - 1) * stepSize), SCREEN_HEIGHT / float((ySteps - 1) * stepSize));
     ofScale(scale.x, scale.y);
 
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.loadData(((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.bind();
 
     ofSetColor(texLevel);
@@ -128,8 +128,8 @@ void OpDistort::draw() {
     mesh.drawWireframe();
     ofDisableBlendMode();
 
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

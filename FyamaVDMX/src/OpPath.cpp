@@ -1,5 +1,5 @@
 #include "OpPath.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -39,27 +39,27 @@ void OpPath::update() {
     pyrLk.setWindowSize(winSize);
     pyrLk.setMaxLevel(maxLevel);
 
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
 
     pyrLk.calcOpticalFlow(pixels);
     
     // change color
-    if(((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
+    if(((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor){
         int hue = baseColor.getHue();
         hue = (hue + 80) % 255;
         baseColor.setHsb(hue, 255, srcLevel);
-        ((testApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
+        ((ofApp*)ofGetAppPtr())->stateMachine.getSharedData().changeColor = false;
     }
 }
 void OpPath::draw() {
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
 
     ofClear(0);
     
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(baseColor);
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.loadData(((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofSetCircleResolution(32);
@@ -104,8 +104,8 @@ void OpPath::draw() {
     }
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();

@@ -1,5 +1,5 @@
 #include "OpVector.h"
-#include "testApp.h"
+#include "ofApp.h"
 
 using namespace ofxCv;
 using namespace cv;
@@ -21,8 +21,8 @@ void OpVector::setup() {
     cvWidth = 240;
     cvHeight = 45;
     
-    int camWidth = ((testApp*)ofGetAppPtr())->syphonIO.width;
-    int camHeight = ((testApp*)ofGetAppPtr())->syphonIO.height;
+    int camWidth = ((ofApp*)ofGetAppPtr())->syphonIO.width;
+    int camHeight = ((ofApp*)ofGetAppPtr())->syphonIO.height;
     pixels.allocate(camWidth, camHeight, 3);
     
     getSharedData().particleNum = 0.5;
@@ -60,7 +60,7 @@ void OpVector::update() {
     farneback.setPolySigma(polySigma);
     farneback.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
     
-    pixels = ((testApp*)ofGetAppPtr())->syphonIO.croppedPixels;
+    pixels = ((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels;
     pixels.resize(cvWidth, cvHeight);
     farneback.calcOpticalFlow(pixels);
     
@@ -71,10 +71,10 @@ void OpVector::update() {
 
 void OpVector::draw() {
     int currentParticleNum;
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.begin();
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.begin();
     
     ofSetColor(srcLevel);
-    tex.loadData(((testApp*)ofGetAppPtr())->syphonIO.croppedPixels);
+    tex.loadData(((ofApp*)ofGetAppPtr())->syphonIO.croppedPixels);
     tex.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -134,8 +134,8 @@ void OpVector::draw() {
     }
     ofDisableBlendMode();
     
-    ((testApp*)ofGetAppPtr())->syphonIO.fbo.end();
-    ((testApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((testApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
+    ((ofApp*)ofGetAppPtr())->syphonIO.fbo.end();
+    ((ofApp*)ofGetAppPtr())->syphonIO.server.publishTexture(&((ofApp*)ofGetAppPtr())->syphonIO.fbo.getTextureReference());
     
     ofBackground(0);
     gui.draw();
