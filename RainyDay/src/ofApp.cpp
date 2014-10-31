@@ -4,18 +4,27 @@
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
-    maskImage.loadImage("mask.png");
+    
+    sourceImage.loadImage("source.jpg");
+    sourceImage.resize(ofGetWidth(), ofGetHeight());
+    
+    // Blur image
+    cv::Mat src_mat, dst_mat;
+    src_mat = ofxCv::toCv(sourceImage);
+    cv::GaussianBlur(src_mat, dst_mat, cv::Size(31,31), 0, 0);
+    ofxCv::toOf(dst_mat, blurImage);
+    blurImage.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {        
-        for (int i = 0; i < 10; i++) {
+        // for (int i = 0; i < 20; i++) {
             Drop *d = new Drop(&sourceImage,
                                ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                               ofRandom(1, 5));
+                               ofRandom(3, 12));
             drops.push_back(d);
-        }
+        //}
     }
 }
 
@@ -28,6 +37,8 @@ void ofApp::draw(){
             drops[i]->draw();
         }
     }
+    
+    ofDrawBitmapString(ofToString(ofGetFrameRate(), 8) + "fps", 10, 10);
 }
 
 //--------------------------------------------------------------
@@ -83,45 +94,12 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         }
         draggedImages[0].resize(ofGetWidth(), ofGetHeight());
         sourceImage = draggedImages[0];
-        dropImage = sourceImage;
-        dropImage.resize(40, 40);
         
         // Blur image
         cv::Mat src_mat, dst_mat;
         src_mat = ofxCv::toCv(sourceImage);
-        cv::GaussianBlur(src_mat, dst_mat, cv::Size(21,21), 0, 0);
+        cv::GaussianBlur(src_mat, dst_mat, cv::Size(31,31), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
     }
 }
-
-/*
-void ofApp::createCircleTexture(){
-    
-    circleTexture.allocate(sourceImage.width, sourceImage.height, GL_RGB);
-    circleTexture.loadData(sourceImage.getPixels(), sourceImage.width, sourceImage.height, GL_RGB);
-    
-    int numPts  = 64;
-    float angle = 0.0;
-    float step  = TWO_PI / (float)(numPts-1);
-    
-    
-    for(int i = 0; i < numPts; i++){
-        
-        //get the -1 to 1 values - we will use these for drawing our pts.
-        float px = cos(angle);
-        float py = sin(angle);
-        
-        NormCirclePts.push_back( ofPoint(px, py) );
-        
-        //map the -1 to 1 range produced by cos/sin
-        //to the dimensions of the image we need for our texture coords
-        float tx = ofMap( px, -1.0, 1.0, 0, circleTexture.getWidth());
-        float ty = ofMap( py, -1.0, 1.0, 0, circleTexture.getHeight());
-        
-        NormCircleCoords.push_back( ofPoint(tx, ty) );
-        
-        angle += step;
-    }
-}
- */
