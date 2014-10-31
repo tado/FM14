@@ -27,6 +27,7 @@ public:
     ofImage sourceImage;
     ofImage blurImage;
     ofImage dropImage;
+    ofImage maskImage;
     
     vector<ofPoint> NormCirclePts;
     vector<ofPoint> NormCircleCoords;

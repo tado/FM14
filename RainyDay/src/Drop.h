@@ -4,10 +4,12 @@
 
 class Drop {
 public:
-    Drop(ofTexture *texture, ofVec2f position, float radius);
+    Drop(ofImage *image, ofImage *mask, ofVec2f position, float radius);
     void draw();
     
     float radius;
-    ofTexture *circleTexture;
+    ofImage *sourceImage;
+    ofImage *maskImage;
+    ofImage dropImage;
     ofVec2f position;
 };

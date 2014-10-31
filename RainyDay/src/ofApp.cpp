@@ -2,24 +2,21 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    ofSetFrameRate(60);
+    ofBackground(0);
+    maskImage.loadImage("mask.png");
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {
         
-        for (int i = 0; i < 40; i++) {
-            Drop *d = new Drop(&circleTexture,
+        for (int i = 0; i < 20; i++) {
+            Drop *d = new Drop(&sourceImage, &maskImage,
                                ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                               ofRandom(1, 2));
+                               ofRandom(1,5));
             drops.push_back(d);
         }
-        Drop *d = new Drop(&circleTexture,
-                           ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                           ofRandom(3, 5));
-        drops.push_back(d);
-
     }
 }
 
@@ -92,12 +89,11 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         // Blur image
         cv::Mat src_mat, dst_mat;
         src_mat = ofxCv::toCv(sourceImage);
-        //ofxCv::copyGray(src_mat, dst_mat);
         cv::GaussianBlur(src_mat, dst_mat, cv::Size(21,21), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
         
-        createCircleTexture();
+        //createCircleTexture();
     }
 }
 
