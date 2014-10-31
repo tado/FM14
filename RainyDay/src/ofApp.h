@@ -21,5 +21,14 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    deque<Drop> drops;
+    void createCircleTexture();
+    
+    deque<Drop *> drops;
+    ofImage sourceImage;
+    ofImage blurImage;
+    ofImage dropImage;
+    
+    vector<ofPoint> NormCirclePts;
+    vector<ofPoint> NormCircleCoords;
+    ofTexture circleTexture;
 };

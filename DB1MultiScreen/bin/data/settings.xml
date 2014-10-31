@@ -11,12 +11,12 @@
 <Widget>
     <Kind>17</Kind>
     <Name>Blackmagic NTSC/PAL - 10 Bit</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
     <Name>Blackmagic HD 1080i 60 - 10 Bit</Name>
-    <Value>1</Value>
+    <Value>0</Value>
 </Widget>
 <Widget>
     <Kind>17</Kind>
