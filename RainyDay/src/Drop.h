@@ -4,12 +4,13 @@
 
 class Drop {
 public:
-    Drop(ofImage *image, ofImage *mask, ofVec2f position, float radius);
+    Drop(ofImage *image, ofVec2f position, float radius);
     void draw();
     
     float radius;
     ofImage *sourceImage;
     ofImage *maskImage;
     ofImage dropImage;
+    ofImage inputImage;
     ofVec2f position;
 };

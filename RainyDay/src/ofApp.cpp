@@ -9,12 +9,11 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if (blurImage.getWidth() > 0) {
-        
-        for (int i = 0; i < 20; i++) {
-            Drop *d = new Drop(&sourceImage, &maskImage,
+    if (blurImage.getWidth() > 0) {        
+        for (int i = 0; i < 10; i++) {
+            Drop *d = new Drop(&sourceImage,
                                ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                               ofRandom(1,5));
+                               ofRandom(1, 5));
             drops.push_back(d);
         }
     }
@@ -75,6 +74,7 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
     vector<ofImage> draggedImages;
     if( dragInfo.files.size() > 0 ){
+        drops.clear();
         
         // get image data
         draggedImages.assign( dragInfo.files.size(), ofImage() );
@@ -92,11 +92,10 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         cv::GaussianBlur(src_mat, dst_mat, cv::Size(21,21), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
-        
-        //createCircleTexture();
     }
 }
 
+/*
 void ofApp::createCircleTexture(){
     
     circleTexture.allocate(sourceImage.width, sourceImage.height, GL_RGB);
@@ -125,3 +124,4 @@ void ofApp::createCircleTexture(){
         angle += step;
     }
 }
+ */
