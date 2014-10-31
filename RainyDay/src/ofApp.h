@@ -32,4 +32,7 @@ public:
     vector<ofPoint> NormCirclePts;
     vector<ofPoint> NormCircleCoords;
     ofTexture circleTexture;
+    
+    float dropRatio;
+    ofFbo dropFbo;
 };
