@@ -7,24 +7,22 @@ void ofApp::setup(){
     showGui = false;
     testPattern = false;
     
+    topMargin = 135;
+    gridWidth = 480;
+    gridHeight = 270;
+    
     font.loadFont("NotoSans-Bold.ttf", 100);
-    gui.setup();
-    gui.add(deviceId.setup("device ID", 2, 0, 12));
-    gui.add(topMargin.setup("topMargin", 135, 0, 1080));
-    gui.add(gridWidth.setup("grid width", 480, 1, 1920));
-    gui.add(gridHeight.setup("grid height", 270, 1, 1080));
-    gui.loadFromFile("settings.xml");
     
-    video.listDevices();
-    video.setDeviceID(deviceId);
-    video.initGrabber(1920, 1080);
+    showGui = false;
     
-    deviceId.addListener(this, &ofApp::deviceIdChanged);
+    grabber.initGrabber(1920, 1080);
+    grabber.setDeviceID(2);
+    setupGui();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    video.update();
+    grabber.update();
 }
 
 //--------------------------------------------------------------
@@ -56,23 +54,60 @@ void ofApp::draw(){
         ofSetColor(255);
         for (int j = 0; j < ydiv; j++) {
             for (int i = 0; i < xdiv; i++) {
-                video.draw(gridWidth * i, gridHeight * j, gridWidth, gridHeight);
+                grabber.draw(gridWidth * i, gridHeight * j, gridWidth, gridHeight);
             }
         }
     }
 
     ofPopMatrix();
+}
+
+
+void ofApp::setupGui(){
+    vector<ofVideoDevice> devices = grabber.listDevices();
+    for (int i = 0; i < devices.size(); i++) {
+        string item = devices[i].deviceName;
+        items.push_back(item);
+    }
     
-    if (showGui) {
-        gui.draw();
+    gui = new ofxUICanvas();
+    gui->setWidth(360);
+    gui->setHeight(54);
+    gui->setPosition(5, 5);
+    gui->addLabel("VIDEO SETTINGS", OFX_UI_FONT_MEDIUM);
+    gui->addSpacer();
+    gui->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
+    ddl = gui->addDropDownList("DEVICES", items);
+    ddl->setAllowMultiple(false);
+    ddl->setAutoClose(false);
+    gui->autoSizeToFitWidgets();
+    gui->setDrawWidgetPadding(true);
+    ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
+    gui->loadSettings("settings.xml");
+    gui->toggleVisible();
+}
+
+void ofApp::guiEvent(ofxUIEventArgs &e){
+    if (e.getName() == "DEVICES") {
+        grabber.close();
+        ofxUIDropDownList *ddlist = (ofxUIDropDownList *) e.widget;
+        vector<ofxUIWidget *> &selected = ddlist->getSelected();
+        for (int i = 0; i < items.size(); i++) {
+            if(selected.size() > 0 && items[i] == selected[0]->getName()){
+                grabber.setDeviceID(i);
+                cout << "Selected Device: " << selected[0]->getName() << endl;
+                cout << "Selected ID: " << i << endl;
+            }
+        }
+        grabber.initGrabber(1920, 1080);
     }
 }
 
-void ofApp::deviceIdChanged(int & deviceId){
-    video.close();
-    video.setDeviceID(deviceId);
-    video.initGrabber(1920, 1080);
+void ofApp::exit(){
+    gui->saveSettings("settings.xml");
+    delete gui;
 }
+
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -82,6 +117,7 @@ void ofApp::keyPressed(int key){
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     if (key == 'g') {
+        gui->toggleVisible();
         showGui? ofHideCursor() : ofShowCursor();
         showGui? showGui = false : showGui = true;
     }

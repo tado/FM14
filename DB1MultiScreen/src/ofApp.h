@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxUI.h"
 
 class ofApp : public ofBaseApp{
     
@@ -19,19 +20,22 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
-
-    void deviceIdChanged(int & deviceId);
+    void exit();
+    void setupGui();
+    void guiEvent(ofxUIEventArgs &e);
     
-    ofVideoGrabber video;
-    ofShader shader;
+    ofVideoGrabber grabber;
+    //ofShader shader;
     
-    ofxPanel gui;
-    ofxIntSlider deviceId;
-    ofxIntSlider topMargin;
-    ofxIntSlider gridWidth;
-    ofxIntSlider gridHeight;
+    int deviceId;
+    int topMargin;
+    int gridWidth;
+    int gridHeight;
     ofTrueTypeFont font;
     
-    bool testPattern;
     bool showGui;
+    bool testPattern;
+    vector<string> items;
+    ofxUICanvas *gui;
+    ofxUIDropDownList *ddl;
 };
