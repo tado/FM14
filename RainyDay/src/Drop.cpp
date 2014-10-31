@@ -7,10 +7,10 @@ Drop::Drop(ofImage *image, ofVec2f pos, float rad){
     
     inputImage = *image;
     float ratio = image->getWidth() / float(ofGetWidth());
-    float cropWidth = ofGetWidth() / 3.0 * ratio;
-    float cropHeight = ofGetHeight() / 3.0 * ratio;
-    float cropX = ofMap(position.x, 0, ofGetWidth(), cropWidth * ratio, (ofGetWidth() - cropWidth) * ratio * 0.7);
-    float cropY = ofMap(position.y, 0, ofGetHeight(), cropHeight * ratio, (ofGetHeight()- cropHeight) * ratio * 0.7);
+    float cropWidth = ofGetWidth() / 8.0 * ratio;
+    float cropHeight = ofGetHeight() / 8.0 * ratio;
+    float cropX = ofMap(position.x, 0, ofGetWidth(), cropWidth * ratio, (ofGetWidth() - cropWidth) * ratio * 0.9);
+    float cropY = ofMap(position.y, 0, ofGetHeight(), cropHeight * ratio, (ofGetHeight()- cropHeight) * ratio * 0.9);
     
     inputImage.crop(cropX, cropY, cropWidth, cropHeight);
     inputImage.resize(radius*2, radius*2);
