@@ -4,27 +4,29 @@
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
-    //ofSetBackgroundAuto(true);
-    
-    sourceImage.loadImage("source.jpg");
-    sourceImage.resize(ofGetWidth(), ofGetHeight());
-    
+
     //FBO
     dropFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
     dropFbo.begin();
     ofClear(255,255,255, 0);
     dropFbo.end();
     
+    /*
+    // source image
+    sourceImage.loadImage("source.jpg");
+    sourceImage.resize(ofGetWidth(), ofGetHeight());
+    
     // Blur image
     dropRatio = 1.0;
     cv::Mat src_mat, dst_mat;
     src_mat = ofxCv::toCv(sourceImage);
-    cv::GaussianBlur(src_mat, dst_mat, cv::Size(31,31), 0, 0);
+    cv::GaussianBlur(src_mat, dst_mat, cv::Size(51,51), 0, 0);
     ofxCv::toOf(dst_mat, blurImage);
     blurImage.update();
     sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
     bgImage = blurImage;
     bgImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+     */
     
     /*
     dropFbo.begin();
@@ -49,7 +51,7 @@ void ofApp::update(){
                                ofRandom(3, 12));
             drops.push_back(d);
             drops[drops.size()-1]->draw();
-            drops[ofRandom(drops.size()-1)]->kill();
+            //drops[ofRandom(drops.size()-1)]->kill();
         }
         
         dropFbo.end();
@@ -137,14 +139,16 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         sourceImage = draggedImages[0];
         
         // Blur image
+        dropRatio = 1.0;
         cv::Mat src_mat, dst_mat;
         src_mat = ofxCv::toCv(sourceImage);
-        cv::GaussianBlur(src_mat, dst_mat, cv::Size(31,31), 0, 0);
+        cv::GaussianBlur(src_mat, dst_mat, cv::Size(51,51), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
-        
         sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
-        blurImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+        bgImage = blurImage;
+        bgImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+        
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();
