@@ -1,7 +1,9 @@
 #pragma once
 #include "ofMain.h"
-#include "ofxGui.h"
 #include "ofxCv.h"
+#include "ofxExportImageSequence.h"
+#include "ofxUI.h"
+
 #include "Drop.h"
 
 class ofApp : public ofBaseApp{
@@ -21,6 +23,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     void exit();
+    void guiEvent(ofxUIEventArgs &e);
     
     void createCircleTexture();
     
@@ -29,15 +32,14 @@ public:
     ofImage blurImage;
     ofImage bgImage;
     ofImage dropImage;
-    ofImage maskImage;
-    
-    vector<ofPoint> NormCirclePts;
-    vector<ofPoint> NormCircleCoords;
-    ofTexture circleTexture;
-    
-    float dropRatio;
     ofFbo dropFbo;
     
+    float dropRatio;
     int drawWidth;
     int drawHeight;
+    
+    ofxExportImageSequence exp;
+    
+    ofxUICanvas *gui;
+    bool recording;
 };

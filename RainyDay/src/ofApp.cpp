@@ -3,46 +3,39 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
-    ofBackground(0);
+    ofBackground(127);
     
     // drawWidth, drawHeight
     drawWidth = 1920;
     drawHeight = 1080;
-
-    //FBO
+    
+    // FBO
     dropFbo.allocate(drawWidth, drawHeight, GL_RGBA);
     dropFbo.begin();
     ofClear(255,255,255, 0);
     dropFbo.end();
     
-    /*
-    // source image
-    sourceImage.loadImage("source.jpg");
-    sourceImage.resize(ofGetWidth(), ofGetHeight());
+    // image export
+    exp.setup(1920, 1080, 60);
+    //exp.setFrameRange(0, 200);
+    exp.setOverwriteSequence(true);
+    exp.setAutoExit(true);
     
-    // Blur image
-    dropRatio = 1.0;
-    cv::Mat src_mat, dst_mat;
-    src_mat = ofxCv::toCv(sourceImage);
-    cv::GaussianBlur(src_mat, dst_mat, cv::Size(51,51), 0, 0);
-    ofxCv::toOf(dst_mat, blurImage);
-    blurImage.update();
-    sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
-    bgImage = blurImage;
-    bgImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
-     */
+    recording = false;
     
-    /*
-    dropFbo.begin();
-    for (int i = 0; i < 100; i++) {
-        Drop *d = new Drop(&sourceImage, &bgImage,
-                           ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                           ofRandom(4, 8));
-        drops.push_back(d);
-        drops[drops.size()-1]->draw();
-    }
-    dropFbo.end();
-     */
+    //GUI;
+    gui = new ofxUICanvas();
+    gui->init(10, 10, 240, 200);
+    // gui->addLabel("SETTINGS", OFX_UI_FONT_LARGE);
+    // gui->addSpacer();
+    gui->addLabel("RECORDING", OFX_UI_FONT_LARGE);
+    gui->addSpacer();
+    gui->addToggle("START/STOP", false, 44, 44);
+    gui->addSpacer();
+    gui->addFPSSlider("FPS");
+    gui->autoSizeToFitWidgets();
+    
+    ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
 }
 
 //--------------------------------------------------------------
@@ -56,7 +49,6 @@ void ofApp::update(){
                                drawWidth, drawHeight);
             drops.push_back(d);
             drops[drops.size()-1]->draw();
-            //drops[ofRandom(drops.size()-1)]->kill();
         }
         dropFbo.end();
     }
@@ -64,21 +56,24 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
     if (blurImage.getWidth() > 0) {
         ofSetColor(255);
         blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
         dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
-        /*
-        for (int i = 0; i < drops.size(); i++) {
-            drops[i]->draw();
+        
+        if (recording) {
+            exp.begin();
+            blurImage.draw(0, 0, drawWidth, drawHeight);
+            dropFbo.draw(0, 0, drawWidth, drawHeight);
+            exp.end();
+            
+            ofSetColor(255, 0, 0);
+            ofDrawBitmapString("write " + ofToString(exp.getFrameNum()) + "frames" , 12,
+                               gui->getCanvasParent()->getRect()->height + 24);
         }
-         */
     }
-    
-    ofSetColor(0);
-    ofRect(0, 0, 200, 20);
-    ofSetColor(255);
-    ofDrawBitmapString(ofToString(ofGetFrameRate(), 8) + "fps", 10, 10);
+    ofSetWindowTitle("Rainy Day");
 }
 
 void ofApp::exit(){
@@ -86,6 +81,21 @@ void ofApp::exit(){
         delete drops[i];
     }
     drops.clear();
+    
+    delete gui;
+}
+
+void ofApp::guiEvent(ofxUIEventArgs &e){
+    string name = e.widget->getName();
+    if(name == "START/STOP"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        cout << "value: " << toggle->getValue() << endl;
+        recording = toggle->getValue();
+        if (recording && blurImage.getWidth() > 0) {
+            exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
+            exp.startExport();
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -100,7 +110,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    
+    ofShowCursor();
 }
 
 //--------------------------------------------------------------
@@ -110,12 +120,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    
+    ofShowCursor();
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    
+
 }
 
 //--------------------------------------------------------------
@@ -156,5 +166,11 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();
+        
+        if (recording) {
+            exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
+            exp.startExport();
+        }
+
     }
 }
