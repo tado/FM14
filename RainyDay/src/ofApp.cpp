@@ -10,29 +10,33 @@ void ofApp::setup(){
     sourceImage.resize(ofGetWidth(), ofGetHeight());
     
     //FBO
-    dropFbo.allocate(ofGetWidth(), ofGetHeight());
+    dropFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
     dropFbo.begin();
     ofClear(255,255,255, 0);
     dropFbo.end();
     
     // Blur image
-    dropRatio = 20.0;
+    dropRatio = 5.0;
     cv::Mat src_mat, dst_mat;
     src_mat = ofxCv::toCv(sourceImage);
     cv::GaussianBlur(src_mat, dst_mat, cv::Size(31,31), 0, 0);
     ofxCv::toOf(dst_mat, blurImage);
     blurImage.update();
     sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+    bgImage = blurImage;
+    bgImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
     
+    /*
     dropFbo.begin();
-    for (int i = 0; i < 5000; i++) {
-        Drop *d = new Drop(&sourceImage,
+    for (int i = 0; i < 100; i++) {
+        Drop *d = new Drop(&sourceImage, &bgImage,
                            ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                           ofRandom(2, 4));
+                           ofRandom(4, 8));
         drops.push_back(d);
         drops[drops.size()-1]->draw();
     }
     dropFbo.end();
+     */
 }
 
 //--------------------------------------------------------------
@@ -40,11 +44,17 @@ void ofApp::update(){
     if (blurImage.getWidth() > 0) {
         dropFbo.begin();
         for (int i = 0; i < 3; i++) {
-            Drop *d = new Drop(&sourceImage,
+            Drop *d = new Drop(&sourceImage, &bgImage,
                                ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                               ofRandom(4, 8));
+                               ofRandom(8, 16));
             drops.push_back(d);
             drops[drops.size()-1]->draw();
+            
+            int target = ofRandom(drops.size()-1);
+            ofVec2f pos = drops[target]->position;
+            float radius = drops[target]->radius;
+            ofSetColor(0);
+            
         }
         dropFbo.end();
     }
@@ -56,6 +66,11 @@ void ofApp::draw(){
         ofSetColor(255);
         blurImage.draw(0, 0);
         dropFbo.draw(0, 0);
+        /*
+        for (int i = 0; i < drops.size(); i++) {
+            drops[i]->draw();
+        }
+         */
     }
     
     ofSetColor(0);
@@ -132,7 +147,8 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
         
-        sourceImage.resize(ofGetWidth()/8.0, ofGetHeight()/8.0);
+        sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+        blurImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();

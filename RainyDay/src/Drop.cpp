@@ -1,18 +1,21 @@
 #include "Drop.h"
 #include "ofApp.h"
 
-Drop::Drop(ofImage *image, ofVec2f pos, float rad){
+Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad){
     position = pos;
     radius = rad;
     
-    inputImage = *image;
     float ratio = image->getWidth() / float(ofGetWidth());
     float cropWidth = ofGetWidth() / 8.0 * ratio;
     float cropHeight = ofGetHeight() / 8.0 * ratio;
     float cropX = ofMap(position.x, 0, ofGetWidth(), cropWidth * ratio, (ofGetWidth() - cropWidth) * ratio * 0.9);
     float cropY = ofMap(position.y, 0, ofGetHeight(), cropHeight * ratio, (ofGetHeight()- cropHeight) * ratio * 0.9);
     
-    inputImage.crop(cropX, cropY, cropWidth, cropHeight);
+    bgImage.allocate(radius, radius, OF_IMAGE_COLOR);
+    bgImage.cropFrom(*blur, position.x * ratio, position.y * ratio, radius * ratio, radius * ratio);
+    
+    inputImage.allocate(cropWidth, cropHeight, OF_IMAGE_COLOR);
+    inputImage.cropFrom(*image, cropX, cropY, cropWidth, cropHeight);
     inputImage.resize(radius*2, radius*2);
     
     // Crop image to circle
@@ -34,5 +37,6 @@ Drop::~Drop(){
 
 void Drop::draw(){
     ofSetColor(255, 255, 255);
+    bgImage.draw(position);
     dropImage.draw(position, radius, radius);
 }

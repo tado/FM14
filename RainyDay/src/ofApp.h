@@ -27,6 +27,7 @@ public:
     vector<Drop *> drops;
     ofImage sourceImage;
     ofImage blurImage;
+    ofImage bgImage;
     ofImage dropImage;
     ofImage maskImage;
     
