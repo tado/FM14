@@ -6,8 +6,15 @@ void ofApp::setup(){
     ofBackground(127);
     
     // drawWidth, drawHeight
-    drawWidth = 1920;
-    drawHeight = 1080;
+    /*
+     // FullHD
+     drawWidth = 1920;
+     drawHeight = 1080;
+     */
+    
+    // 4K
+    drawWidth = 3840;
+    drawHeight = 2160;
     
     // FBO
     dropFbo.allocate(drawWidth, drawHeight, GL_RGBA);
@@ -16,7 +23,7 @@ void ofApp::setup(){
     dropFbo.end();
     
     // image export
-    exp.setup(1920, 1080, 60);
+    exp.setup(drawWidth, drawHeight, 60);
     //exp.setFrameRange(0, 200);
     exp.setOverwriteSequence(true);
     exp.setAutoExit(true);
