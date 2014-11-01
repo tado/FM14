@@ -16,7 +16,7 @@ void ofApp::setup(){
     dropFbo.end();
     
     // Blur image
-    dropRatio = 12.0;
+    dropRatio = 20.0;
     cv::Mat src_mat, dst_mat;
     src_mat = ofxCv::toCv(sourceImage);
     cv::GaussianBlur(src_mat, dst_mat, cv::Size(31,31), 0, 0);
@@ -25,7 +25,7 @@ void ofApp::setup(){
     sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
     
     dropFbo.begin();
-    for (int i = 0; i < 50000; i++) {
+    for (int i = 0; i < 5000; i++) {
         Drop *d = new Drop(&sourceImage,
                            ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
                            ofRandom(2, 4));

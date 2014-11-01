@@ -24,7 +24,7 @@ public:
     
     void createCircleTexture();
     
-    deque<Drop *> drops;
+    vector<Drop *> drops;
     ofImage sourceImage;
     ofImage blurImage;
     ofImage dropImage;
