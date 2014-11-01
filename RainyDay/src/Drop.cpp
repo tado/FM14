@@ -1,15 +1,17 @@
 #include "Drop.h"
 #include "ofApp.h"
 
-Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad){
+Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad, int width, int height){
     position = pos;
     radius = rad;
+    drawWidth = width;
+    drawHeight = height;
     
-    float ratio = image->getWidth() / float(ofGetWidth());
-    float cropWidth = ofGetWidth() / 8.0 * ratio;
-    float cropHeight = ofGetHeight() / 8.0 * ratio;
-    float cropX = ofMap(position.x, 0, ofGetWidth(), cropWidth * ratio, (ofGetWidth() - cropWidth) * ratio * 0.9);
-    float cropY = ofMap(position.y, 0, ofGetHeight(), cropHeight * ratio, (ofGetHeight()- cropHeight) * ratio * 0.9);
+    float ratio = image->getWidth() / float(drawWidth);
+    float cropWidth = drawWidth / 8.0 * ratio;
+    float cropHeight = drawHeight / 8.0 * ratio;
+    float cropX = ofMap(position.x, 0, drawWidth, cropWidth * ratio, (drawWidth - cropWidth) * ratio * 0.9);
+    float cropY = ofMap(position.y, 0, drawHeight, cropHeight * ratio, (drawHeight- cropHeight) * ratio * 0.9);
     
     bgImage.allocate(radius, radius, OF_IMAGE_COLOR);
     bgImage.cropFrom(*blur, position.x * ratio, position.y * ratio, radius * ratio, radius * ratio);

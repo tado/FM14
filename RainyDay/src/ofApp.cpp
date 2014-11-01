@@ -4,9 +4,13 @@
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
+    
+    // drawWidth, drawHeight
+    drawWidth = 1920;
+    drawHeight = 1080;
 
     //FBO
-    dropFbo.allocate(ofGetWidth(), ofGetHeight(), GL_RGBA);
+    dropFbo.allocate(drawWidth, drawHeight, GL_RGBA);
     dropFbo.begin();
     ofClear(255,255,255, 0);
     dropFbo.end();
@@ -47,13 +51,13 @@ void ofApp::update(){
         dropFbo.begin();
         for (int i = 0; i < 3; i++) {
             Drop *d = new Drop(&sourceImage, &bgImage,
-                               ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                               ofRandom(3, 12));
+                               ofVec2f(ofRandom(drawWidth), ofRandom(drawHeight)),
+                               ofRandom(3, 12),
+                               drawWidth, drawHeight);
             drops.push_back(d);
             drops[drops.size()-1]->draw();
             //drops[ofRandom(drops.size()-1)]->kill();
         }
-        
         dropFbo.end();
     }
 }
@@ -62,8 +66,8 @@ void ofApp::update(){
 void ofApp::draw(){
     if (blurImage.getWidth() > 0) {
         ofSetColor(255);
-        blurImage.draw(0, 0);
-        dropFbo.draw(0, 0);
+        blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
+        dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
         /*
         for (int i = 0; i < drops.size(); i++) {
             drops[i]->draw();
@@ -135,7 +139,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         for(unsigned int k = 0; k < dragInfo.files.size(); k++){
             draggedImages[k].loadImage(dragInfo.files[k]);
         }
-        draggedImages[0].resize(ofGetWidth(), ofGetHeight());
+        draggedImages[0].resize(drawWidth, drawHeight);
         sourceImage = draggedImages[0];
         
         // Blur image
@@ -145,9 +149,9 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         cv::GaussianBlur(src_mat, dst_mat, cv::Size(51,51), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
-        sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+        sourceImage.resize(drawWidth/dropRatio, drawHeight/dropRatio);
         bgImage = blurImage;
-        bgImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+        bgImage.resize(drawWidth/dropRatio, drawHeight/dropRatio);
         
         dropFbo.begin();
         ofClear(255,255,255, 0);

@@ -4,7 +4,7 @@
 
 class Drop {
 public:
-    Drop(ofImage *image, ofImage *blur, ofVec2f position, float radius);
+    Drop(ofImage *image, ofImage *blur, ofVec2f position, float radius, int width, int height);
     ~Drop();
     void draw();
     void kill();
@@ -20,4 +20,7 @@ public:
     ofImage dropImage;
     ofImage inputImage;
     ofVec2f position;
+    
+    int drawWidth;
+    int drawHeight;
 };

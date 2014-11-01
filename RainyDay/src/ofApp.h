@@ -37,4 +37,7 @@ public:
     
     float dropRatio;
     ofFbo dropFbo;
+    
+    int drawWidth;
+    int drawHeight;
 };
