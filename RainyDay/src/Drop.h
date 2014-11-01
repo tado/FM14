@@ -7,6 +7,7 @@ public:
     Drop(ofImage *image, ofImage *blur, ofVec2f position, float radius);
     ~Drop();
     void draw();
+    void kill();
     
     float radius;
     float imageRatio;

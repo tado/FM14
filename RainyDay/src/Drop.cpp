@@ -32,7 +32,13 @@ Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad){
 }
 
 Drop::~Drop(){
+    
+}
 
+void Drop::kill(){
+    ofSetColor(255, 255, 255);
+    bgImage.draw(position, radius, radius);
+    //ofRect(position, radius, radius);
 }
 
 void Drop::draw(){
