@@ -26,11 +26,17 @@ void ofApp::setup(){
     //GUI;
     gui = new ofxUICanvas();
     gui->init(10, 10, 240, 200);
-    // gui->addLabel("SETTINGS", OFX_UI_FONT_LARGE);
-    // gui->addSpacer();
-    gui->addLabel("RECORDING", OFX_UI_FONT_LARGE);
+    gui->addLabel("RECORDING", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addToggle("START/STOP", false, 44, 44);
+    gui->addSpacer();
+    gui->addLabel("PARAMS", OFX_UI_FONT_MEDIUM);
+    gui->addSpacer();
+    gui->addIntSlider("BLUR", 0, 100, 20);
+    gui->addRangeSlider("DROP_SIZE", 1, 30, 3, 12);
+    gui->addButton("DROP_CLEAR", false);
+    gui->addSpacer();
+    gui->addLabel("FPS", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addFPSSlider("FPS");
     gui->autoSizeToFitWidgets();
@@ -42,10 +48,15 @@ void ofApp::setup(){
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {
         dropFbo.begin();
+        
+        ofxUIRangeSlider *range = (ofxUIRangeSlider *)gui->getWidget("DROP_SIZE");
+        float min = range->getValueLow();
+        float max = range->getValueHigh();
+        
         for (int i = 0; i < 3; i++) {
             Drop *d = new Drop(&sourceImage, &bgImage,
                                ofVec2f(ofRandom(drawWidth), ofRandom(drawHeight)),
-                               ofRandom(3, 12),
+                               ofRandom(min, max),
                                drawWidth, drawHeight);
             drops.push_back(d);
             drops[drops.size()-1]->draw();
@@ -95,6 +106,17 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
             exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S ")));
             exp.startExport();
         }
+    }
+
+    if(name == "DROP_CLEAR"){
+        for (int i = 0;  i < drops.size(); i++) {
+            delete drops[i];
+        }
+        drops.clear();
+
+        dropFbo.begin();
+        ofClear(255,255,255, 0);
+        dropFbo.end();
     }
 }
 
@@ -154,9 +176,11 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         
         // Blur image
         dropRatio = 1.0;
+        ofxUIIntSlider *slider = (ofxUIIntSlider *)gui->getWidget("BLUR");
+        int blurSize = int(slider->getValue()) * 2 + 1;
         cv::Mat src_mat, dst_mat;
         src_mat = ofxCv::toCv(sourceImage);
-        cv::GaussianBlur(src_mat, dst_mat, cv::Size(51,51), 0, 0);
+        cv::GaussianBlur(src_mat, dst_mat, cv::Size(blurSize,blurSize), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
         sourceImage.resize(drawWidth/dropRatio, drawHeight/dropRatio);
