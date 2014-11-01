@@ -1,0 +1,100 @@
+<Widget>
+    <Kind>22</Kind>
+    <Name>DEVICES</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>FaceTime HD Camera</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic NTSC/PAL - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080i 60 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080i 50 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080i 60 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080i 59.94 - 8 Bit</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080i 50 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080p 24 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 720p 59.94 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080p 23.976 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 720p 50 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 720p 50 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080p 23.976 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080i 59.94 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 720p 60 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 720p 60 - 10 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 720p 59.94 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic HD 1080p 24 - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>
+<Widget>
+    <Kind>17</Kind>
+    <Name>Blackmagic NTSC/PAL - 8 Bit</Name>
+    <Value>0</Value>
+</Widget>

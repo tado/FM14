@@ -2,103 +2,26 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetFrameRate(60);
     ofBackground(0);
-    showGui = false;
-    testPattern = false;
+    ofSetFrameRate(60);
     
-    topMargin = 135;
-    gridWidth = 480;
-    gridHeight = 270;
+    grabber = new ofVideoGrabber();
+    grabber->setDeviceID(2);
+    grabber->initGrabber(1920, 1080/2);
     
-    font.loadFont("NotoSans-Bold.ttf", 100);
     
     showGui = false;
-    
-    grabber.initGrabber(1920, 1080/2);
-    grabber.setDeviceID(2);
     setupGui();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    grabber.update();
+    grabber->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
-    int xdiv = 4;
-    int ydiv = 3;
-    
-    ofPushMatrix();
-    ofTranslate(0, topMargin);
-    
-    if (testPattern) {
-        // Test Pattern
-        for (int j = 0; j < ydiv; j++) {
-            for (int i = 0; i < xdiv; i++) {
-                if ((i + j) % 2 == 0) {
-                    ofSetColor(255, 0, 0);
-                } else {
-                    ofSetColor(0, 0, 255);
-                }
-                ofRect(gridWidth * i, gridHeight * j, gridWidth, gridHeight);
-                ofSetColor(255);
-                string msg = ofToString(j+1, 0) + "-" + ofToString(i+1, 0);
-                font.drawString(msg, gridWidth * i + gridWidth / 3.5, gridHeight * j + gridHeight / 1.5);
-            }
-        }
-    } else {
-        // draw video grid
-        ofSetColor(255);
-        for (int j = 0; j < ydiv; j++) {
-            for (int i = 0; i < xdiv; i++) {
-                grabber.draw(gridWidth * i, gridHeight * j, gridWidth, gridHeight);
-            }
-        }
-    }
-
-    ofPopMatrix();
-}
-
-
-void ofApp::setupGui(){
-    vector<ofVideoDevice> devices = grabber.listDevices();
-    for (int i = 0; i < devices.size(); i++) {
-        string item = devices[i].deviceName;
-        items.push_back(item);
-    }
-    
-    gui = new ofxUICanvas();
-    gui->setWidth(360);
-    gui->setHeight(54);
-    gui->setPosition(5, 5);
-    gui->addLabel("VIDEO SETTINGS", OFX_UI_FONT_MEDIUM);
-    gui->addSpacer();
-    gui->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
-    ddl = gui->addDropDownList("DEVICES", items);
-    ddl->setAllowMultiple(false);
-    ddl->setAutoClose(false);
-    gui->autoSizeToFitWidgets();
-    gui->setDrawWidgetPadding(true);
-    ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
-    gui->loadSettings("settings.xml");
-    gui->toggleVisible();
-}
-
-void ofApp::guiEvent(ofxUIEventArgs &e){
-    if (e.getName() == "DEVICES") {
-        grabber.close();
-        ofxUIDropDownList *ddlist = (ofxUIDropDownList *) e.widget;
-        vector<ofxUIWidget *> &selected = ddlist->getSelected();
-        for(int i = 0; i < selected.size(); i++){
-            cout << "SELECTED: " << selected[i]->getID() << endl;
-            cout << "DEVICEID: " << (selected[i]->getID() - 4) / 2 << endl;
-            grabber.setDeviceID((selected[i]->getID() - 4) / 2 );
-        }
-        grabber.initGrabber(1920, 1080);
-    }
+    grabber->draw(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 void ofApp::exit(){
@@ -106,55 +29,90 @@ void ofApp::exit(){
     delete gui;
 }
 
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
+void ofApp::setupGui(){
+    vector<ofVideoDevice> devices = grabber->listDevices();
+    vector<string> items;
+    for (int i = 0; i < devices.size(); i++) {
+        string item = devices[i].deviceName;
+        items.push_back(item);
+    }
     
+    gui = new ofxUICanvas();
+    gui->init(5, 5, 360, 100);
+    gui->addSpacer();
+    gui->addLabel("VIDEO DEVICE", OFX_UI_FONT_MEDIUM);
+    gui->addSpacer();
+    gui->setWidgetFontSize(OFX_UI_FONT_MEDIUM);
+    ddl = gui->addDropDownList("DEVICES", items);
+    ddl->setAllowMultiple(false);
+    ddl->setAutoClose(false);
+    gui->autoSizeToFitWidgets();
+    ofAddListener(gui->newGUIEvent, this, &ofApp::guiEvent);
+    gui->loadSettings("settings.xml");
+    gui->toggleVisible();
+}
+
+void ofApp::guiEvent(ofxUIEventArgs &e){
+    if (e.getName() == "DEVICES") {
+        ofxUIDropDownList *ddlist = (ofxUIDropDownList *) e.widget;
+        vector<ofxUIWidget *> &selected = ddlist->getSelected();
+        vector<int> &selectID = ddlist->getSelectedIndeces();
+        for (int i = 0; i < selectID.size(); i++) {
+            grabber->close();
+            delete grabber;
+            grabber = new ofVideoGrabber();
+            grabber->setDeviceID(selectID[i]);
+            grabber->initGrabber(1920, 1080/2);
+            cout << "Selected Video ID : " << selectID[i] << endl;
+        }
+    }
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
+void ofApp::keyPressed(int key){
     if (key == 'g') {
         gui->toggleVisible();
         showGui? ofHideCursor() : ofShowCursor();
         showGui? showGui = false : showGui = true;
     }
-    if (key == 't') {
-        testPattern? testPattern = false : testPattern = true;
-    }
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key){
+
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
-    
+
 }
