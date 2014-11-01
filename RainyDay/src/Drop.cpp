@@ -28,8 +28,11 @@ Drop::Drop(ofImage *image, ofVec2f pos, float rad){
     dropImage.update();
 }
 
+Drop::~Drop(){
+
+}
+
 void Drop::draw(){
     ofSetColor(255, 255, 255);
-    //inputImage.draw(position, radius, radius);
     dropImage.draw(position, radius, radius);
 }

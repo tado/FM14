@@ -5,6 +5,7 @@
 class Drop {
 public:
     Drop(ofImage *image, ofVec2f position, float radius);
+    ~Drop();
     void draw();
     
     float radius;

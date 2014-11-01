@@ -23,16 +23,26 @@ void ofApp::setup(){
     ofxCv::toOf(dst_mat, blurImage);
     blurImage.update();
     sourceImage.resize(ofGetWidth()/dropRatio, ofGetHeight()/dropRatio);
+    
+    dropFbo.begin();
+    for (int i = 0; i < 50000; i++) {
+        Drop *d = new Drop(&sourceImage,
+                           ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
+                           ofRandom(2, 4));
+        drops.push_back(d);
+        drops[drops.size()-1]->draw();
+    }
+    dropFbo.end();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {
         dropFbo.begin();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             Drop *d = new Drop(&sourceImage,
                                ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())),
-                               4);
+                               ofRandom(4, 8));
             drops.push_back(d);
             drops[drops.size()-1]->draw();
         }
@@ -55,7 +65,10 @@ void ofApp::draw(){
 }
 
 void ofApp::exit(){
-    
+    for (int i = 0;  i < drops.size(); i++) {
+        delete drops[i];
+    }
+    drops.clear();
 }
 
 //--------------------------------------------------------------
