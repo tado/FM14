@@ -92,7 +92,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
         cout << "value: " << toggle->getValue() << endl;
         recording = toggle->getValue();
         if (recording && blurImage.getWidth() > 0) {
-            exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
+            exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S ")));
             exp.startExport();
         }
     }
