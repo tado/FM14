@@ -26,6 +26,7 @@ void ofApp::setup(){
     //GUI;
     gui = new ofxUICanvas();
     gui->init(10, 10, 240, 200);
+    gui->addSpacer();
     gui->addLabel("RECORDING", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addToggle("START/STOP", false, 44, 44);
