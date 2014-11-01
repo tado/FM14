@@ -1,3 +1,6 @@
+# TIFF image
+*.tif
+
 # OF-specific ignore patterns
 
 openFrameworks.a
