@@ -1,13 +1,13 @@
 #include "Drop.h"
 #include "ofApp.h"
 
-Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad, int width, int height){
+Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad, int width, int height, float ratio){
     position = pos;
     radius = rad;
     drawWidth = width;
     drawHeight = height;
     
-    float ratio = image->getWidth() / float(drawWidth);
+    //float ratio = image->getWidth() / float(drawWidth);
     float cropWidth = drawWidth / 8.0 * ratio;
     float cropHeight = drawHeight / 8.0 * ratio;
     float cropX = ofMap(position.x, 0, drawWidth, cropWidth * ratio, (drawWidth - cropWidth) * ratio * 0.9);

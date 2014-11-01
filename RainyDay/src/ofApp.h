@@ -38,7 +38,7 @@ public:
     int drawWidth;
     int drawHeight;
     
-    ofxExportImageSequence exp;
+    ofxExportImageSequence *exp;
     
     ofxUICanvas *gui;
     bool recording;

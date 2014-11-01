@@ -6,29 +6,18 @@ void ofApp::setup(){
     ofBackground(127);
     
     // drawWidth, drawHeight
-    /*
-     // FullHD
-     drawWidth = 1920;
-     drawHeight = 1080;
-     */
-    
+    // FullHD
+    //drawWidth = 1920;
+    //drawHeight = 1080;
     // 4K
-    drawWidth = 3840;
-    drawHeight = 2160;
+    // drawWidth = 3840;
+    // drawHeight = 2160;
     
     // FBO
     dropFbo.allocate(drawWidth, drawHeight, GL_RGBA);
     dropFbo.begin();
     ofClear(255,255,255, 0);
     dropFbo.end();
-    
-    // image export
-    exp.setup(drawWidth, drawHeight, 60);
-    //exp.setFrameRange(0, 200);
-    exp.setOverwriteSequence(true);
-    exp.setAutoExit(true);
-    
-    recording = false;
     
     //GUI;
     gui = new ofxUICanvas();
@@ -44,12 +33,28 @@ void ofApp::setup(){
     gui->addRangeSlider("DROP_SIZE", 1, 30, 3, 12);
     gui->addButton("DROP_CLEAR", false);
     gui->addSpacer();
+    gui->addLabel("RESOLUTION", OFX_UI_FONT_MEDIUM);
+    gui->addSpacer();
+    vector<string> names; names.push_back("HD"); names.push_back("4K");
+    ofxUIRadio *radio = gui->addRadio("RESOLUTION", names, OFX_UI_ORIENTATION_HORIZONTAL);
+    radio->activateToggle("HD");
+    gui->addSpacer();
     gui->addLabel("FPS", OFX_UI_FONT_MEDIUM);
     gui->addSpacer();
     gui->addFPSSlider("FPS");
     gui->autoSizeToFitWidgets();
+    //gui->loadSettings("settings.xml");
     
     ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
+    
+    // init ofxExportImageSequence
+    drawWidth = 1920;
+    drawHeight = 1080;
+    exp = new ofxExportImageSequence;
+    exp->setup(drawWidth, drawHeight, 60);
+    exp->setOverwriteSequence(true);
+    exp->setAutoExit(true);
+    recording = false;
 }
 
 //--------------------------------------------------------------
@@ -65,7 +70,7 @@ void ofApp::update(){
             Drop *d = new Drop(&sourceImage, &bgImage,
                                ofVec2f(ofRandom(drawWidth), ofRandom(drawHeight)),
                                ofRandom(min, max),
-                               drawWidth, drawHeight);
+                               drawWidth, drawHeight, dropRatio);
             drops.push_back(d);
             drops[drops.size()-1]->draw();
         }
@@ -82,13 +87,13 @@ void ofApp::draw(){
         dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
         
         if (recording) {
-            exp.begin();
+            exp->begin();
             blurImage.draw(0, 0, drawWidth, drawHeight);
             dropFbo.draw(0, 0, drawWidth, drawHeight);
-            exp.end();
+            exp->end();
             
             ofSetColor(255, 0, 0);
-            ofDrawBitmapString("write " + ofToString(exp.getFrameNum()) + "frames" , 12,
+            ofDrawBitmapString("write " + ofToString(exp->getFrameNum()) + "frames" , 12,
                                gui->getCanvasParent()->getRect()->height + 24);
         }
     }
@@ -101,6 +106,7 @@ void ofApp::exit(){
     }
     drops.clear();
     
+    //gui->saveSettings("settings.xml");
     delete gui;
 }
 
@@ -111,8 +117,8 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
         cout << "value: " << toggle->getValue() << endl;
         recording = toggle->getValue();
         if (recording && blurImage.getWidth() > 0) {
-            exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S ")));
-            exp.startExport();
+            exp->setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S ")));
+            exp->startExport();
         }
     }
 
@@ -125,6 +131,21 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();
+    }
+    
+    if (name == "RESOLUTION") {
+        ofxUIRadio *radio = (ofxUIRadio *) e.widget;
+        string active = radio->getActiveName();
+        if (active == "HD") {
+            drawWidth = 1920;
+            drawHeight = 1080;
+        } else if(active == "4K"){
+            drawWidth = 3840;
+            drawHeight = 2160;
+        }
+        delete exp;
+        exp = new ofxExportImageSequence;
+        exp->setup(drawWidth, drawHeight, 60);
     }
 }
 
@@ -191,17 +212,17 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         cv::GaussianBlur(src_mat, dst_mat, cv::Size(blurSize,blurSize), 0, 0);
         ofxCv::toOf(dst_mat, blurImage);
         blurImage.update();
-        sourceImage.resize(drawWidth/dropRatio, drawHeight/dropRatio);
+        sourceImage.resize(1920/dropRatio, 1080/dropRatio);
         bgImage = blurImage;
-        bgImage.resize(drawWidth/dropRatio, drawHeight/dropRatio);
+        bgImage.resize(1920/dropRatio, 1080/dropRatio);
         
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();
         
         if (recording) {
-            exp.setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
-            exp.startExport();
+            exp->setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
+            exp->startExport();
         }
 
     }
