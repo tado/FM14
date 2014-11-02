@@ -88,20 +88,19 @@ void ofApp::draw(){
     
     if (blurImage.getWidth() > 0) {
         ofSetColor(255);
+        if (recording) {
+            exp->begin();
+        }
+        
         blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
         dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
         
         for (int i = 0; i < drops.size(); i++) {
             drops[i]->draw();
         }
-        
+
         if (recording) {
-        
-            exp->begin();
-            blurImage.draw(0, 0, drawWidth, drawHeight);
-            dropFbo.draw(0, 0, drawWidth, drawHeight);
             exp->end();
-            
             ofSetColor(255, 0, 0);
             ofDrawBitmapString("write " + ofToString(exp->getFrameNum()) + "frames" , 12,
                                gui->getCanvasParent()->getRect()->height + 24);
