@@ -13,12 +13,6 @@ void ofApp::setup(){
     // drawWidth = 3840;
     // drawHeight = 2160;
     
-    // FBO
-    dropFbo.allocate(drawWidth, drawHeight, GL_RGBA);
-    dropFbo.begin();
-    ofClear(255,255,255, 0);
-    dropFbo.end();
-    
     //GUI;
     gui = new ofxUICanvas();
     gui->init(10, 10, 240, 200);
@@ -80,9 +74,11 @@ void ofApp::update(){
         for (int i = 0; i < drops.size(); i++) {
             drops[i]->update();
         }
-        drops[ofRandom(drops.size()-1)]->velocity = ofVec2f(0, 0.2);
-        drops[ofRandom(drops.size()-1)]->moving = true;
         
+        if (int(ofRandom(5)) == 1) {
+            drops[ofRandom(drops.size()-1)]->velocity = ofVec2f(0, 0.2);
+            drops[ofRandom(drops.size()-1)]->moving = true;
+        }
     }
 }
 
@@ -92,7 +88,7 @@ void ofApp::draw(){
     if (blurImage.getWidth() > 0) {
         ofSetColor(255);
         blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
-        //dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+        dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
         
         for (int i = 0; i < drops.size(); i++) {
             drops[i]->draw();
@@ -158,6 +154,8 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
             drawWidth = 3840;
             drawHeight = 2160;
         }
+        
+        // Image Export
         delete exp;
         exp = new ofxExportImageSequence;
         exp->setup(drawWidth, drawHeight, 60);
@@ -239,7 +237,35 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
             exp->setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
             exp->startExport();
         }
-        createDrops(500);
+        
+        // FBO
+        dropFbo.allocate(drawWidth, drawHeight, GL_RGBA);
+        dropFbo.begin();
+        ofClear(255,255,255, 0);
+        dropFbo.end();
+
+        createBaseDrops(4000);
+        createDrops(100);
+    }
+}
+
+void ofApp::createBaseDrops(int num){
+    if (blurImage.getWidth() > 0) {
+        dropFbo.begin();
+        
+        ofxUIRangeSlider *range = (ofxUIRangeSlider *)gui->getWidget("DROP_SIZE");
+        float min = range->getValueLow() * 0.75;
+        float max = range->getValueHigh() * 0.75;
+        
+        for (int i = 0; i < num; i++) {
+            Drop *d = new Drop(&sourceImage, &bgImage,
+                               ofVec2f(ofRandom(drawWidth), ofRandom(drawHeight)),
+                               ofRandom(min, max),
+                               drawWidth, drawHeight, dropRatio);
+            baseDrops.push_back(d);
+            baseDrops[baseDrops.size()-1]->draw();
+        }
+        dropFbo.end();
     }
 }
 
