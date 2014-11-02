@@ -10,16 +10,23 @@ void ofApp::setup(){
 
     stateMachine.addState<SimplePixelate>();
     stateMachine.changeState("simple");
+    guiVisible = false;
     
     gui = new ofxUICanvas();
-    gui->init(0, 0, 200, 200);
+    gui->init(10, 10, 200, 200);
     gui->addSpacer();
     gui->addLabel("MAIN");
     gui->addSpacer();
     gui->addFPS();
     gui->addSpacer();
-    gui->addSlider("MIX", 0.0, 1.0, 1.0);
+    // gui->addToggle("FULLSCREEN", false);
+    gui->addIntSlider("MIX", 0, 255, 255);
+    gui->addSpacer();
+    gui->addButton("SAVE SETTINGS", false);
+    gui->loadSettings("main.xml");
     gui->autoSizeToFitWidgets();
+    gui->setVisible(false);
+    ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
 }
 
 //--------------------------------------------------------------
@@ -29,8 +36,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofxUISlider *m = (ofxUISlider *)gui->getWidget("MIX");
-    float mix = m->getValue() * 255;
+    ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
+    int mix = m->getValue();
     ofSetColor(mix);
     blackmagic->draw();
 }
@@ -40,9 +47,27 @@ void ofApp::exit(){
     blackmagic->exit();
 }
 
+void ofApp::guiEvent(ofxUIEventArgs &e){
+    string name = e.widget->getName();
+    if(name == "SAVE SETTINGS"){
+        gui->saveSettings("main.xml");
+    }
+    if(name == "FULLSCREEN"){
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        ofSetFullscreen(toggle->getValue());
+    }
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    if (key == 'g') {
+        gui->toggleVisible();
+        guiVisible? ofHideCursor() : ofShowCursor();
+        guiVisible? guiVisible = false : guiVisible = true;
+    }
+    if (key == 'f') {
+        ofToggleFullscreen();
+    }
 }
 
 //--------------------------------------------------------------

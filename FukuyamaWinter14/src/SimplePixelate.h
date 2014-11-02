@@ -10,7 +10,7 @@ public:
     void update();
     void draw();
     void guiEvent(ofxUIEventArgs &e);
-
+    void keyPressed(int key);
     
     ofPixels pixels;        
     ofTexture tex;

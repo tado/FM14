@@ -28,10 +28,12 @@ public:
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
+    void guiEvent(ofxUIEventArgs &e);
 
     itg::ofxStateMachine<SharedData> stateMachine;
     BlackmagicCapture * blackmagic;
     ofxUICanvas *gui;
+    bool guiVisible;
     
     //MultiOut multiOut;
 };
