@@ -77,8 +77,12 @@ void ofApp::update(){
         }
         dropFbo.end();
              */
+        for (int i = 0; i < drops.size(); i++) {
+            drops[i]->update();
+        }
+        drops[ofRandom(drops.size()-1)]->velocity = ofVec2f(0, 0.2);
+        drops[ofRandom(drops.size()-1)]->moving = true;
         
-        drops[ofRandom(drops.size()-1)]->position.y += 5;
     }
 }
 
@@ -235,7 +239,6 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
             exp->setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
             exp->startExport();
         }
-        
         createDrops(500);
     }
 }

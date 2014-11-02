@@ -6,6 +6,7 @@ class Drop {
 public:
     Drop(ofImage *image, ofImage *blur, ofVec2f position, float radius, int width, int height, float ratio);
     ~Drop();
+    void update();
     void draw();
     void kill();
     
@@ -19,8 +20,12 @@ public:
     ofImage bgImage;
     ofImage dropImage;
     ofImage inputImage;
+
     ofVec2f position;
+    ofVec2f velocity;
     
     int drawWidth;
     int drawHeight;
+    
+    bool moving;
 };

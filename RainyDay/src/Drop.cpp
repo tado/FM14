@@ -6,6 +6,7 @@ Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad, int width, int
     radius = rad;
     drawWidth = width;
     drawHeight = height;
+    moving = false;
     
     //float ratio = image->getWidth() / float(drawWidth);
     float cropWidth = drawWidth / 8.0 * ratio;
@@ -33,9 +34,20 @@ Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad, int width, int
     dropImage.update();
 }
 
-Drop::~Drop(){
-    
+void Drop::update(){
+    if (moving) {
+        position += velocity * radius;
+        if (position.y > drawHeight) {
+            position.y -= drawHeight;
+        }
+        velocity *= 0.98;
+    }
+    if (velocity.length() < 0.001) {
+        moving = false;
+        velocity.set(0, 0);
+    }
 }
+
 
 void Drop::draw(){
     ofSetColor(255, 255, 255);
@@ -47,4 +59,8 @@ void Drop::kill(){
     ofSetColor(255, 255, 255);
     bgImage.draw(position, radius, radius);
     //ofRect(position, radius, radius);
+}
+
+Drop::~Drop(){
+    
 }
