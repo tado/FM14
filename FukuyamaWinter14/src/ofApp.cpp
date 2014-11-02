@@ -1,6 +1,7 @@
 #include "ofApp.h"
 
 #include "SimplePixelate.h"
+#include "OpColorParticle.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -8,10 +9,13 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     blackmagic = new BlackmagicCapture(1920, 1080, 60.0);
 
+    // StateMachine
     stateMachine.addState<SimplePixelate>();
+    stateMachine.addState<OpColorParticle>();
     stateMachine.changeState("simple");
     guiVisible = false;
     
+    // GUI
     gui = new ofxUICanvas();
     gui->init(10, 10, 200, 200);
     gui->addSpacer();
@@ -19,7 +23,7 @@ void ofApp::setup(){
     gui->addSpacer();
     gui->addFPS();
     gui->addSpacer();
-    // gui->addToggle("FULLSCREEN", false);
+    //gui->addToggle("FULLSCREEN", false);
     gui->addIntSlider("MIX", 0, 255, 255);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
