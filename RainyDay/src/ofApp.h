@@ -26,6 +26,7 @@ public:
     void guiEvent(ofxUIEventArgs &e);
     
     void createCircleTexture();
+    void createDrops(int num);
     
     vector<Drop *> drops;
     ofImage sourceImage;

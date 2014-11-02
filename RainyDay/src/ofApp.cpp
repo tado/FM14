@@ -60,6 +60,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {
+            /*
         dropFbo.begin();
         
         ofxUIRangeSlider *range = (ofxUIRangeSlider *)gui->getWidget("DROP_SIZE");
@@ -75,6 +76,9 @@ void ofApp::update(){
             drops[drops.size()-1]->draw();
         }
         dropFbo.end();
+             */
+        
+        drops[ofRandom(drops.size()-1)]->position.y += 5;
     }
 }
 
@@ -84,9 +88,14 @@ void ofApp::draw(){
     if (blurImage.getWidth() > 0) {
         ofSetColor(255);
         blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
-        dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+        //dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+        
+        for (int i = 0; i < drops.size(); i++) {
+            drops[i]->draw();
+        }
         
         if (recording) {
+        
             exp->begin();
             blurImage.draw(0, 0, drawWidth, drawHeight);
             dropFbo.draw(0, 0, drawWidth, drawHeight);
@@ -101,10 +110,12 @@ void ofApp::draw(){
 }
 
 void ofApp::exit(){
+    /*
     for (int i = 0;  i < drops.size(); i++) {
         delete drops[i];
     }
     drops.clear();
+     */
     
     //gui->saveSettings("settings.xml");
     delete gui;
@@ -224,6 +235,27 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
             exp->setOutputDir(ofToString(ofGetTimestampString("%m%d%H%M%S")));
             exp->startExport();
         }
+        
+        createDrops(500);
+    }
+}
 
+void ofApp::createDrops(int num){
+    if (blurImage.getWidth() > 0) {
+        //dropFbo.begin();
+        
+        ofxUIRangeSlider *range = (ofxUIRangeSlider *)gui->getWidget("DROP_SIZE");
+        float min = range->getValueLow();
+        float max = range->getValueHigh();
+        
+        for (int i = 0; i < num; i++) {
+            Drop *d = new Drop(&sourceImage, &bgImage,
+                               ofVec2f(ofRandom(drawWidth), ofRandom(drawHeight)),
+                               ofRandom(min, max),
+                               drawWidth, drawHeight, dropRatio);
+            drops.push_back(d);
+            //drops[drops.size()-1]->draw();
+        }
+        //dropFbo.end();
     }
 }
