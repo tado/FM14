@@ -7,15 +7,17 @@ Drop::Drop(ofImage *image, ofImage *blur, ofVec2f pos, float rad, int width, int
     drawWidth = width;
     drawHeight = height;
     moving = false;
+    imageRatio = ratio;
+    
+    bgImage.allocate(radius, radius, OF_IMAGE_COLOR);
+    //bgImage.cropFrom(*blur, position.x * ratio, position.y * ratio, radius * ratio, radius * ratio);
+    bgImage.cropFrom(*blur, position.x, position.y, radius, radius);
     
     //float ratio = image->getWidth() / float(drawWidth);
     float cropWidth = drawWidth / 8.0 * ratio;
     float cropHeight = drawHeight / 8.0 * ratio;
     float cropX = ofMap(position.x, 0, drawWidth, cropWidth * ratio, (drawWidth - cropWidth) * ratio * 0.9);
     float cropY = ofMap(position.y, 0, drawHeight, cropHeight * ratio, (drawHeight- cropHeight) * ratio * 0.9);
-    
-    bgImage.allocate(radius, radius, OF_IMAGE_COLOR);
-    bgImage.cropFrom(*blur, position.x * ratio, position.y * ratio, radius * ratio, radius * ratio);
     
     inputImage.allocate(cropWidth, cropHeight, OF_IMAGE_COLOR);
     inputImage.cropFrom(*image, cropX, cropY, cropWidth, cropHeight);
@@ -40,7 +42,8 @@ void Drop::update(){
         if (position.y > drawHeight) {
             position.y -= drawHeight;
         }
-        velocity *= 0.98;
+        velocity *= 0.95;
+        //checkCollision();
     }
     if (velocity.length() < 0.001) {
         moving = false;
@@ -50,15 +53,25 @@ void Drop::update(){
 
 
 void Drop::draw(){
-    ofSetColor(255, 255, 255);
-    //bgImage.draw(position);
     dropImage.draw(position, radius, radius);
 }
 
 void Drop::kill(){
-    ofSetColor(255, 255, 255);
-    bgImage.draw(position, radius, radius);
-    //ofRect(position, radius, radius);
+    ((ofApp*)ofGetAppPtr())->dropFbo.begin();
+    bgImage.draw(position);
+    ((ofApp*)ofGetAppPtr())->dropFbo.end();
+}
+
+void Drop::checkCollision(){
+    int size = ((ofApp*)ofGetAppPtr())->baseDrops.size();
+    for (int i = 0; i < size; i++) {
+        float dist = ofDist(position.x, position.y,
+                            ((ofApp*)ofGetAppPtr())->baseDrops[i]->position.x,
+                            ((ofApp*)ofGetAppPtr())->baseDrops[i]->position.y);
+        if (dist < radius * 4) {
+            ((ofApp*)ofGetAppPtr())->baseDrops[i]->kill();
+        }
+    }
 }
 
 Drop::~Drop(){

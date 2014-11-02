@@ -4,6 +4,7 @@
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(127);
+    //ofEnableSmoothing();
     
     // drawWidth, drawHeight
     // FullHD
@@ -54,29 +55,29 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {
-            /*
+
         dropFbo.begin();
         
         ofxUIRangeSlider *range = (ofxUIRangeSlider *)gui->getWidget("DROP_SIZE");
-        float min = range->getValueLow();
-        float max = range->getValueHigh();
+        float min = range->getValueLow() * 0.75;;
+        float max = range->getValueHigh() * 0.75;;
         
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             Drop *d = new Drop(&sourceImage, &bgImage,
                                ofVec2f(ofRandom(drawWidth), ofRandom(drawHeight)),
                                ofRandom(min, max),
                                drawWidth, drawHeight, dropRatio);
-            drops.push_back(d);
-            drops[drops.size()-1]->draw();
+            baseDrops.push_back(d);
+            baseDrops[baseDrops.size()-1]->draw();
         }
         dropFbo.end();
-             */
+
         for (int i = 0; i < drops.size(); i++) {
             drops[i]->update();
         }
         
         if (int(ofRandom(5)) == 1) {
-            drops[ofRandom(drops.size()-1)]->velocity = ofVec2f(0, 0.2);
+            drops[ofRandom(drops.size()-1)]->velocity = ofVec2f(0, 0.5);
             drops[ofRandom(drops.size()-1)]->moving = true;
         }
     }
@@ -244,7 +245,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         ofClear(255,255,255, 0);
         dropFbo.end();
 
-        createBaseDrops(4000);
+        createBaseDrops(500);
         createDrops(100);
     }
 }

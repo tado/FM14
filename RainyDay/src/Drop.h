@@ -8,6 +8,7 @@ public:
     ~Drop();
     void update();
     void draw();
+    void checkCollision();
     void kill();
     
     float radius;
