@@ -1,15 +1,19 @@
 #pragma once
 #include "ofxState.h"
 #include "SharedData.h"
-#include "ofxGui.h"
+#include "ofxUI.h"
 
 class SimplePixelate : public itg::ofxState<SharedData>{
 public:
+    string getName();
     void setup();
     void update();
     void draw();
-    string getName();
+    void guiEvent(ofxUIEventArgs &e);
+
     
     ofPixels pixels;        
     ofTexture tex;
+    
+    ofxUICanvas *gui;
 };

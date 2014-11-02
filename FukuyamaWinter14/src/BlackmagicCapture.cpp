@@ -6,6 +6,7 @@ BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
     framerate = _framerate;
     cam.setup(width, height, framerate);
     colorTexture.allocate(width, height, GL_RGB);
+
     fbo.allocate(ofGetWidth(), ofGetHeight());
     fbo.begin();
     ofClear(0, 0, 0, 0);

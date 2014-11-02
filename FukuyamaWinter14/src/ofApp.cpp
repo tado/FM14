@@ -7,9 +7,19 @@ void ofApp::setup(){
     ofBackground(0);
     ofSetFrameRate(60);
     blackmagic = new BlackmagicCapture(1920, 1080, 60.0);
-    
+
     stateMachine.addState<SimplePixelate>();
     stateMachine.changeState("simple");
+    
+    gui = new ofxUICanvas();
+    gui->init(0, 0, 200, 200);
+    gui->addSpacer();
+    gui->addLabel("MAIN");
+    gui->addSpacer();
+    gui->addFPS();
+    gui->addSpacer();
+    gui->addSlider("MIX", 0.0, 1.0, 1.0);
+    gui->autoSizeToFitWidgets();
 }
 
 //--------------------------------------------------------------
@@ -19,7 +29,9 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255);
+    ofxUISlider *m = (ofxUISlider *)gui->getWidget("MIX");
+    float mix = m->getValue() * 255;
+    ofSetColor(mix);
     blackmagic->draw();
 }
 

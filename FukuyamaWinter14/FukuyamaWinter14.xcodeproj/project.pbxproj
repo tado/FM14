@@ -30,6 +30,7 @@
 		187A626B1A0606F200DC5640 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62601A0606F200DC5640 /* ofxSlider.cpp */; };
 		187A626C1A0606F200DC5640 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62621A0606F200DC5640 /* ofxSliderGroup.cpp */; };
 		187A626D1A0606F200DC5640 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62641A0606F200DC5640 /* ofxToggle.cpp */; };
+		18D0E9221A062EEA00072012 /* MultiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E9201A062EEA00072012 /* MultiOut.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
@@ -282,6 +283,8 @@
 		187A62631A0606F200DC5640 /* ofxSliderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSliderGroup.h; sourceTree = "<group>"; };
 		187A62641A0606F200DC5640 /* ofxToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
 		187A62651A0606F200DC5640 /* ofxToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
+		18D0E9201A062EEA00072012 /* MultiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiOut.cpp; sourceTree = "<group>"; };
+		18D0E9211A062EEA00072012 /* MultiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiOut.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
 		19572082584CC5A6F350437C /* b2DynamicTree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2DynamicTree.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Collision/b2DynamicTree.cpp; sourceTree = SOURCE_ROOT; };
 		199901E3C0391D3CA940B595 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2PolygonContact.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = SOURCE_ROOT; };
@@ -1790,6 +1793,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */,
 				187A624B1A06048200DC5640 /* BlackmagicCapture.h */,
+				18D0E9201A062EEA00072012 /* MultiOut.cpp */,
+				18D0E9211A062EEA00072012 /* MultiOut.h */,
 				187A624E1A0605D100DC5640 /* states */,
 			);
 			path = src;
@@ -1991,6 +1996,7 @@
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
+				18D0E9221A062EEA00072012 /* MultiOut.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,

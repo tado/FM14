@@ -4,9 +4,12 @@
 #define SCREEN_HEIGHT 1080
 
 #include "ofMain.h"
-#include "BlackmagicCapture.h"
 #include "ofxStateMachine.h"
 #include "SharedData.h"
+#include "ofxUI.h"
+
+#include "BlackmagicCapture.h"
+#include "MultiOut.h"
 
 class ofApp : public ofBaseApp{
     
@@ -28,4 +31,7 @@ public:
 
     itg::ofxStateMachine<SharedData> stateMachine;
     BlackmagicCapture * blackmagic;
+    ofxUICanvas *gui;
+    
+    //MultiOut multiOut;
 };
