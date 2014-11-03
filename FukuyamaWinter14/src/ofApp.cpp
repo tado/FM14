@@ -3,17 +3,19 @@
 #include "StBlank.h"
 #include "StSimplePixelate.h"
 #include "StCvOpDraw.h"
+#include "StCvOpParticle.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    ofSetFrameRate(30);
+    //ofSetFrameRate(30);
     blackmagic = new BlackmagicCapture(1920, 1080, 60.0);
 
     // StateMachine
     stateMachine.addState<StBlank>();
     stateMachine.addState<StSimplePixelate>();
     stateMachine.addState<StCvOpDraw>();
+    stateMachine.addState<StCvOpParticle>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -75,6 +77,9 @@ void ofApp::keyPressed(int key){
             break;
         case '3':
             stateMachine.changeState("StCvOpDraw");
+            break;
+        case '4':
+            stateMachine.changeState("StCvOpParticle");
             break;
        
             //---------------------------------------------------

@@ -3,7 +3,6 @@
 #include "SharedData.h"
 #include "ofxUI.h"
 #include "ofxCv.h"
-#include "Particle.h"
 
 class StCvOpDraw : public itg::ofxState<SharedData>{
 public:

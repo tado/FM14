@@ -2,18 +2,20 @@
 
 Particle::Particle(){
     radius = 5.0;
-    friction = 0.01;
+    friction = 0.001;
     mass = 1.0;
     bFixed = false;
 }
 
-void Particle::setup(ofVec2f _position, ofVec2f _velocity){
+void Particle::setup(ofVec2f _position, ofVec2f _velocity, ofColor _col){
     // 位置を設定
     position = _position;
     // 初期速度を設定
     velocity = _velocity;
+    
+    col = _col;
 }
-void Particle::setup(float positionX, float positionY, float velocityX, float velocityY){
+void Particle::setup(float positionX, float positionY, float velocityX, float velocityY, ofColor _col){
     // 位置を設定
     position = ofVec2f(positionX, positionY);
     // 初期速度を設定
@@ -48,6 +50,7 @@ void Particle::updatePos(){
 
 // 力の更新と座標の更新をupdateとしてまとめる
 void Particle::update(){
+    resetForce();
     updateForce();
     updatePos();
 }
@@ -109,6 +112,7 @@ void Particle::throughOfWalls(){
 
 // 描画
 void Particle::draw(){
+    ofSetColor(col);
     ofCircle(position, radius);
 }
 

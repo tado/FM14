@@ -55,7 +55,7 @@ void StSimplePixelate::draw(){
                 ofSetColor(255, 0, 0, mix);
                 ofCircle(i + radius * 0.5, j, radius * (float)r * circleScale);
                 ofSetColor(0, 255, 0, mix);
-                ofCircle(i, j, radius * (float)g * circleScale);
+                ofCircle(i, j, radius * (float)b * circleScale);
                 ofSetColor(0, 0, 255, mix);
                 ofCircle(i - radius * 0.5, j, radius * (float)g * circleScale);
                 ofPopMatrix();

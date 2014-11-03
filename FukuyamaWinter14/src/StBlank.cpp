@@ -13,7 +13,6 @@ void StBlank::setup(){
     gui->addSpacer();
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&StBlank::guiEvent);
 }
 
 void StBlank::update(){

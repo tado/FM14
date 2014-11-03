@@ -7,8 +7,8 @@ public:
     //コンストラクタ
     Particle();
     // 初期設定
-    void setup(ofVec2f position, ofVec2f velocity);
-    void setup(float positionX, float positionY, float velocityX, float velocityY);
+    void setup(ofVec2f position, ofVec2f velocity, ofColor col);
+    void setup(float positionX, float positionY, float velocityX, float velocityY, ofColor col);
     // 力をリセット
     void resetForce();
     // 力を加える
@@ -49,4 +49,6 @@ public:
     bool bFixed;
     // パーティクルの質量
     float mass;
+    // color
+    ofColor col;
 };

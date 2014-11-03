@@ -5,7 +5,7 @@
 #include "ofxCv.h"
 #include "Particle.h"
 
-class StCvOpDraw : public itg::ofxState<SharedData>{
+class StCvOpParticle : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();
