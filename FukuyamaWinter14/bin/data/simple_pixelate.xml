@@ -1,4 +1,19 @@
 <Widget>
+    <Kind>4</Kind>
+    <Name>PYR SCALE</Name>
+    <Value>0.299062520</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>LEVELS</Name>
+    <Value>5</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>WIN SIZE</Name>
+    <Value>44</Value>
+</Widget>
+<Widget>
     <Kind>42</Kind>
     <Name>MIX</Name>
     <Value>255</Value>

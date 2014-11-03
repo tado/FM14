@@ -1,7 +1,7 @@
 #include "ofApp.h"
 
 #include "SimplePixelate.h"
-#include "OpColorParticle.h"
+#include "DrawOpticalFlow.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -11,8 +11,8 @@ void ofApp::setup(){
 
     // StateMachine
     stateMachine.addState<SimplePixelate>();
-    stateMachine.addState<OpColorParticle>();
-    stateMachine.changeState("simple");
+    stateMachine.addState<DrawOpticalFlow>();
+    stateMachine.changeState("DrawOpticalFlow");
     guiVisible = false;
     
     // GUI

@@ -5,7 +5,7 @@
 #include "ofxCv.h"
 #include "Particle.h"
 
-class OpColorParticle : public itg::ofxState<SharedData>{
+class DrawOpticalFlow : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();
@@ -17,19 +17,19 @@ public:
     ofPixels pixels;
     ofTexture tex;
     ofxUICanvas *gui;
-    
-    // CV
+
     ofxCv::FlowFarneback flow;
+
+    int cvWidth, cvHeight;
     float pyrScale;
     int levels;
     int winsize;
     int iterations;
     int polyN;
     float polySigma;
-    float flowScale;
+    bool OPTFLOW_FARNEBACK_GAUSSIAN;
     
     // Particle
-    vector<Particle> particles;
-    static const int NUM = 20000;
-    ofVboMesh mesh;
+    deque<Particle *> particles;
+    static const int NUM = 100;
 };
