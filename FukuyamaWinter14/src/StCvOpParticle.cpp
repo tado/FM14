@@ -19,8 +19,9 @@ void StCvOpParticle::setup(){
     gui->addSpacer();
     gui->addIntSlider("SKIP", 1, 50, 10);
     gui->addIntSlider("MAX", 0, 1000, 500);
-    gui->addSlider("THRESH", 0, 20, 5);
-    gui->addSlider("RADIUS", 0, 1.0, 0.2);
+    gui->addSlider("THRESH", 0, 2.0, 1.0);
+    gui->addSlider("RADIUS", 0, 2.0, 0.2);
+    gui->addSlider("FRICTION", 0, 0.1, 0.001);
     gui->addSlider("ACCEL", 0, 4.0, 1.2);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
@@ -80,6 +81,7 @@ void StCvOpParticle::draw(){
     ofxUIIntSlider *gmax = (ofxUIIntSlider *)gui->getWidget("MAX"); int max = gmax->getValue();
     ofxUISlider *gthresh = (ofxUISlider *)gui->getWidget("THRESH"); float thresh = gthresh->getValue();
     ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
+    ofxUISlider *gfriction = (ofxUISlider *)gui->getWidget("FRICTION"); float friction = gfriction->getValue();
     ofxUISlider *gaccel = (ofxUISlider *)gui->getWidget("ACCEL"); float accel = gaccel->getValue();
     ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
@@ -105,12 +107,6 @@ void StCvOpParticle::draw(){
             }
             
             if (abs(average.x) + abs(average.y) > 0.5) {
-                /*
-                int n = ((y * camWidth + x) * 3) * camWidth / flow.getWidth();
-                unsigned char r = pix[n];
-                unsigned char g = pix[n + 1];
-                unsigned char b = pix[n + 2];
-                 */
                 float ratio = camWidth / flow.getWidth();
                 ofColor col  = pix.getColor(x * ratio, y * ratio);
 
@@ -122,9 +118,10 @@ void StCvOpParticle::draw(){
                 Particle *p = new Particle();
                 p->setup(ofVec2f(x + ofRandom(skip), y + ofRandom(skip)), ofVec2f(average.x * accel, average.y * accel), col);
                 p->radius = (abs(average.x) + abs(average.y)) * radius;
-                //if (abs(p->radius) > skip) {
-                //    p->radius = skip;
-                //}
+                p->friction = friction;
+                if (abs(p->radius) > skip) {
+                    p->radius = skip;
+                }
                 particles.push_back(p);
 
                 while (particles.size() > max) {

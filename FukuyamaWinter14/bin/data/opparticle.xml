@@ -11,7 +11,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>14</Value>
+    <Value>20</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -31,22 +31,27 @@
 <Widget>
     <Kind>42</Kind>
     <Name>MAX</Name>
-    <Value>322</Value>
+    <Value>494</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESH</Name>
-    <Value>1.979166746</Value>
+    <Value>0.916666687</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>0.562500000</Value>
+    <Value>1.031250000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>FRICTION</Name>
+    <Value>0.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACCEL</Name>
-    <Value>0.666666687</Value>
+    <Value>0.958333313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -56,10 +61,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>1.833333373</Value>
+    <Value>1.052083373</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>1.791666627</Value>
+    <Value>1.479166627</Value>
 </Widget>
