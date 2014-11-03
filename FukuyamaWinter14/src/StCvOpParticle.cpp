@@ -17,11 +17,18 @@ void StCvOpParticle::setup(){
     gui->addIntSlider("ITERATION", 1, 20, 2);
     gui->addToggle("GAUSS", false);
     gui->addSpacer();
-    gui->addSlider("RADIUS", 20, 200, 60);
-    gui->addIntSlider("MIX", 0, 255, 127);
+    gui->addIntSlider("SKIP", 1, 50, 10);
+    gui->addIntSlider("MAX", 0, 1000, 500);
+    gui->addSlider("THRESH", 0, 20, 5);
+    gui->addSlider("RADIUS", 0, 1.0, 0.2);
+    gui->addSlider("ACCEL", 0, 4.0, 1.2);
+    gui->addSpacer();
+    gui->addSlider("HUE", 0, 2.0, 1.0);
+    gui->addSlider("SAT", 0, 2.0, 1.0);
+    gui->addSlider("BR", 0, 1.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("flow.xml");
+    gui->loadSettings("opparticle.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
@@ -69,15 +76,15 @@ void StCvOpParticle::update(){
 }
 
 void StCvOpParticle::draw(){
-    int skip = 10;
-    int max = 500;
-    int thresh = 5;
-    float radius = 0.3;
-    float accel = 0.3;
-    float hue = 1.0;
-    float sat = 1.0;
-    float br = 1.0;
-    
+    ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
+    ofxUIIntSlider *gmax = (ofxUIIntSlider *)gui->getWidget("MAX"); int max = gmax->getValue();
+    ofxUISlider *gthresh = (ofxUISlider *)gui->getWidget("THRESH"); float thresh = gthresh->getValue();
+    ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
+    ofxUISlider *gaccel = (ofxUISlider *)gui->getWidget("ACCEL"); float accel = gaccel->getValue();
+    ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
+    ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
+    ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
+
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
     int camWidth = pix.getWidth();
     int camHeight = pix.getHeight();
@@ -98,12 +105,15 @@ void StCvOpParticle::draw(){
             }
             
             if (abs(average.x) + abs(average.y) > 0.5) {
+                /*
                 int n = ((y * camWidth + x) * 3) * camWidth / flow.getWidth();
                 unsigned char r = pix[n];
                 unsigned char g = pix[n + 1];
                 unsigned char b = pix[n + 2];
-                
-                ofColor col = ofColor(r, g, b);
+                 */
+                float ratio = camWidth / flow.getWidth();
+                ofColor col  = pix.getColor(x * ratio, y * ratio);
+
                 int h = col.getHue();
                 int s = col.getSaturation();
                 int v = col.getBrightness();
@@ -137,7 +147,7 @@ void StCvOpParticle::draw(){
 void StCvOpParticle::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("flow.xml");
+        gui->saveSettings("opparticle.xml");
     }
 }
 
