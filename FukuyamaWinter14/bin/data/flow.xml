@@ -1,0 +1,25 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>PYR SCALE</Name>
+    <Value>0.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>LEVELS</Name>
+    <Value>2</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>WIN SIZE</Name>
+    <Value>50</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>ITERATION</Name>
+    <Value>3</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GAUSS</Name>
+    <Value>1</Value>
+</Widget>
