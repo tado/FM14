@@ -25,7 +25,7 @@ void StCvOpParticle::setup(){
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
-    gui->addSlider("BR", 0, 1.0, 1.0);
+    gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("opparticle.xml");

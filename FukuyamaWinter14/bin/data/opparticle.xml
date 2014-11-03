@@ -1,7 +1,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYR SCALE</Name>
-    <Value>0.788906276</Value>
+    <Value>0.237187505</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -31,7 +31,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>MAX</Name>
-    <Value>1000</Value>
+    <Value>322</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -56,10 +56,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>0.791666687</Value>
+    <Value>1.833333373</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>1.000000000</Value>
+    <Value>1.791666627</Value>
 </Widget>
