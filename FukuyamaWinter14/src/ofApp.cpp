@@ -1,18 +1,18 @@
 #include "ofApp.h"
 
-#include "SimplePixelate.h"
-#include "DrawOpticalFlow.h"
+#include "StSimplePixelate.h"
+#include "StCvOpDraw.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    ofSetFrameRate(60);
+    ofSetFrameRate(30);
     blackmagic = new BlackmagicCapture(1920, 1080, 60.0);
 
     // StateMachine
-    stateMachine.addState<SimplePixelate>();
-    stateMachine.addState<DrawOpticalFlow>();
-    stateMachine.changeState("DrawOpticalFlow");
+    stateMachine.addState<StSimplePixelate>();
+    stateMachine.addState<StCvOpDraw>();
+    stateMachine.changeState("StSimplePixelate");
     guiVisible = false;
     
     // GUI
@@ -23,7 +23,6 @@ void ofApp::setup(){
     gui->addSpacer();
     gui->addFPS();
     gui->addSpacer();
-    //gui->addToggle("FULLSCREEN", false);
     gui->addIntSlider("MIX", 0, 255, 255);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
@@ -64,13 +63,28 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if (key == 'g') {
-        gui->toggleVisible();
-        guiVisible? ofHideCursor() : ofShowCursor();
-        guiVisible? guiVisible = false : guiVisible = true;
-    }
-    if (key == 'f') {
-        ofToggleFullscreen();
+    switch (key) {
+            
+        case '1':
+            stateMachine.changeState("StSimplePixelate");
+            break;
+        case '2':
+            stateMachine.changeState("StCvOpDraw");
+            break;
+       
+            //---------------------------------------------------
+
+        case 'f':
+            ofToggleFullscreen();
+            break;
+        case 'g':
+            gui->toggleVisible();
+            stateMachine.getSharedData().guiVisible?
+            ofHideCursor() : ofShowCursor();
+            stateMachine.getSharedData().guiVisible?
+            stateMachine.getSharedData().guiVisible = false :stateMachine.getSharedData().guiVisible = true;
+            break;
+            
     }
 }
 

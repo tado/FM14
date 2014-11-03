@@ -1,7 +1,11 @@
-#include "SimplePixelate.h"
+#include "StSimplePixelate.h"
 #include "ofApp.h"
 
-void SimplePixelate::setup(){
+string StSimplePixelate::getName(){
+    return "StSimplePixelate";
+}
+
+void StSimplePixelate::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
@@ -15,14 +19,14 @@ void SimplePixelate::setup(){
     gui->loadSettings("simple_pixelate.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&SimplePixelate::guiEvent);
+    ofAddListener(gui->newGUIEvent,this,&StSimplePixelate::guiEvent);
 }
 
-void SimplePixelate::update(){
+void StSimplePixelate::update(){
     pixels = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
 }
 
-void SimplePixelate::draw(){
+void StSimplePixelate::draw(){
     //((ofApp*)ofGetAppPtr())->blackmagic->draw();
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -59,21 +63,17 @@ void SimplePixelate::draw(){
         }
     }
     ofDisableBlendMode();
+    
+    gui->setVisible(getSharedData().guiVisible);
 }
 
-void SimplePixelate::guiEvent(ofxUIEventArgs &e){
+void StSimplePixelate::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("simple_pixelate.xml");
     }
 }
 
-void SimplePixelate::keyPressed(int key){
-    if (key == 'g') {
-        gui->toggleVisible();
-    }
-}
-
-string SimplePixelate::getName(){
-    return "simple";
+void StSimplePixelate::stateExit(){
+    gui->setVisible(false);
 }

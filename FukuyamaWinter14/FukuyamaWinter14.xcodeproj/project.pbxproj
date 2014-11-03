@@ -21,7 +21,7 @@
 		1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2813E36CEFD8D1C1B70E600 /* ofxUIRangeSlider.cpp */; };
 		169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */; };
 		187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */; };
-		187A62521A06065E00DC5640 /* SimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62501A06065E00DC5640 /* SimplePixelate.cpp */; };
+		187A62521A06065E00DC5640 /* StSimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62501A06065E00DC5640 /* StSimplePixelate.cpp */; };
 		187A62661A0606F200DC5640 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62551A0606F200DC5640 /* ofxBaseGui.cpp */; };
 		187A62671A0606F200DC5640 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62571A0606F200DC5640 /* ofxButton.cpp */; };
 		187A62681A0606F200DC5640 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A625A1A0606F200DC5640 /* ofxGuiGroup.cpp */; };
@@ -31,7 +31,7 @@
 		187A626C1A0606F200DC5640 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62621A0606F200DC5640 /* ofxSliderGroup.cpp */; };
 		187A626D1A0606F200DC5640 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62641A0606F200DC5640 /* ofxToggle.cpp */; };
 		18D0E9221A062EEA00072012 /* MultiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E9201A062EEA00072012 /* MultiOut.cpp */; };
-		18D0E9261A06617300072012 /* DrawOpticalFlow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E9241A06617300072012 /* DrawOpticalFlow.cpp */; };
+		18D0E9261A06617300072012 /* StCvOpDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E9241A06617300072012 /* StCvOpDraw.cpp */; };
 		18D0E92C1A06653300072012 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E92A1A06653300072012 /* Particle.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
@@ -266,8 +266,8 @@
 		187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlackmagicCapture.cpp; sourceTree = "<group>"; };
 		187A624B1A06048200DC5640 /* BlackmagicCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackmagicCapture.h; sourceTree = "<group>"; };
 		187A624F1A0605E700DC5640 /* SharedData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
-		187A62501A06065E00DC5640 /* SimplePixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplePixelate.cpp; sourceTree = "<group>"; };
-		187A62511A06065E00DC5640 /* SimplePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePixelate.h; sourceTree = "<group>"; };
+		187A62501A06065E00DC5640 /* StSimplePixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSimplePixelate.cpp; sourceTree = "<group>"; };
+		187A62511A06065E00DC5640 /* StSimplePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSimplePixelate.h; sourceTree = "<group>"; };
 		187A62551A0606F200DC5640 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
 		187A62561A0606F200DC5640 /* ofxBaseGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
 		187A62571A0606F200DC5640 /* ofxButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 		187A62651A0606F200DC5640 /* ofxToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
 		18D0E9201A062EEA00072012 /* MultiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiOut.cpp; sourceTree = "<group>"; };
 		18D0E9211A062EEA00072012 /* MultiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiOut.h; sourceTree = "<group>"; };
-		18D0E9241A06617300072012 /* DrawOpticalFlow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawOpticalFlow.cpp; sourceTree = "<group>"; };
-		18D0E9251A06617300072012 /* DrawOpticalFlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawOpticalFlow.h; sourceTree = "<group>"; };
+		18D0E9241A06617300072012 /* StCvOpDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpDraw.cpp; sourceTree = "<group>"; };
+		18D0E9251A06617300072012 /* StCvOpDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpDraw.h; sourceTree = "<group>"; };
 		18D0E92A1A06653300072012 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		18D0E92B1A06653300072012 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
@@ -821,10 +821,10 @@
 			isa = PBXGroup;
 			children = (
 				187A624F1A0605E700DC5640 /* SharedData.h */,
-				187A62501A06065E00DC5640 /* SimplePixelate.cpp */,
-				187A62511A06065E00DC5640 /* SimplePixelate.h */,
-				18D0E9241A06617300072012 /* DrawOpticalFlow.cpp */,
-				18D0E9251A06617300072012 /* DrawOpticalFlow.h */,
+				187A62501A06065E00DC5640 /* StSimplePixelate.cpp */,
+				187A62511A06065E00DC5640 /* StSimplePixelate.h */,
+				18D0E9241A06617300072012 /* StCvOpDraw.cpp */,
+				18D0E9251A06617300072012 /* StCvOpDraw.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2071,7 +2071,7 @@
 				7FD354D8FD42A3E0BE7B6A86 /* b2EdgeShape.cpp in Sources */,
 				F0A2BB1960C6187B7EA12EA5 /* b2PolygonShape.cpp in Sources */,
 				D178E2BCBC7F027A53B6C9DF /* b2BlockAllocator.cpp in Sources */,
-				187A62521A06065E00DC5640 /* SimplePixelate.cpp in Sources */,
+				187A62521A06065E00DC5640 /* StSimplePixelate.cpp in Sources */,
 				35D2652CBB47ABA129250F91 /* b2Draw.cpp in Sources */,
 				ACFD9F73073C6D26A4300E4C /* b2FreeList.cpp in Sources */,
 				D7014DA1DC8ABBB6FB6C76EE /* b2Math.cpp in Sources */,
@@ -2140,7 +2140,7 @@
 				9A83D1B3FB64456BC907667F /* ofxUIMinimalSlider.cpp in Sources */,
 				F440B307990F8F5CE40B9111 /* ofxUIMovingGraph.cpp in Sources */,
 				222C3AB10FA3158602718602 /* ofxUIMultiImageButton.cpp in Sources */,
-				18D0E9261A06617300072012 /* DrawOpticalFlow.cpp in Sources */,
+				18D0E9261A06617300072012 /* StCvOpDraw.cpp in Sources */,
 				F9C20834354ACC8337320B8C /* ofxUIMultiImageToggle.cpp in Sources */,
 				E3D59A6B55F05669B3FBF8BD /* ofxUINumberDialer.cpp in Sources */,
 				D60E54E7FD6E19BC8636E0D2 /* ofxUIRadio.cpp in Sources */,

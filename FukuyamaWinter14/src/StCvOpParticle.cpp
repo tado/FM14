@@ -1,27 +1,29 @@
-#include "DrawOpticalFlow.h"
+#include "StCvOpDraw.h"
 #include "ofApp.h"
 
-void DrawOpticalFlow::setup(){
+string StCvOpDraw::getName(){
+    return "StCvOpDraw";
+}
+
+void StCvOpDraw::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
-    gui->addLabel("OP COLOR PARTICLE");
+    gui->addLabel("DRAW OPTICALFLOW");
     gui->addSpacer();
     gui->addSlider("PYR SCALE", 0, 0.99, 0.5);
     gui->addIntSlider("LEVELS", 1, 10, 5);
     gui->addIntSlider("WIN SIZE", 1, 100, 30);
     gui->addIntSlider("ITERATION", 1, 20, 2);
-    gui->addIntSlider("MIX", 0, 255, 127);
+    gui->addToggle("GAUSS", false);
+    //gui->addIntSlider("MIX", 0, 255, 127);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("flow.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&DrawOpticalFlow::guiEvent);
     
-    polyN = 5;
-    polySigma = 1.1;
-    OPTFLOW_FARNEBACK_GAUSSIAN = false;
+    ofAddListener(gui->newGUIEvent,this,&StCvOpDraw::guiEvent);
     
     //パーティクルを生成
     for (int i = 0; i < NUM; i++){
@@ -32,15 +34,18 @@ void DrawOpticalFlow::setup(){
     }
 }
 
-void DrawOpticalFlow::update(){
+void StCvOpDraw::update(){
     //CV params
     ofxUISlider *p = (ofxUISlider *)gui->getWidget("PYR SCALE"); pyrScale = p->getValue();
     ofxUIIntSlider *l = (ofxUIIntSlider *)gui->getWidget("LEVELS"); levels = l->getValue();
     ofxUIIntSlider *w = (ofxUIIntSlider *)gui->getWidget("WIN SIZE"); winsize = w->getValue();
     ofxUIIntSlider *it = (ofxUIIntSlider *)gui->getWidget("ITERATION"); iterations = it->getValue();
+    ofxUIToggle *gs = (ofxUIToggle *)gui->getWidget("GAUSS"); OPTFLOW_FARNEBACK_GAUSSIAN = gs->getValue();
+    polyN = 7;
+    polySigma = 1.5;
     
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
-    pix.resize(320, 180);
+    pix.resize(160, 90);
     flow.setPyramidScale(pyrScale);
     flow.setNumLevels(levels);
     flow.setWindowSize(winsize);
@@ -55,28 +60,24 @@ void DrawOpticalFlow::update(){
     for (int i = 0; i < particles.size(); i++) {
         particles[i]->update();
     }
+    
+    gui->setVisible(getSharedData().guiVisible);
 }
 
-void DrawOpticalFlow::draw(){
+void StCvOpDraw::draw(){
     ofSetLineWidth(3);
     ofSetColor(255, 200);
     flow.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     ofSetLineWidth(1);
 }
 
-void DrawOpticalFlow::guiEvent(ofxUIEventArgs &e){
+void StCvOpDraw::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("flow.xml");
     }
 }
 
-void DrawOpticalFlow::keyPressed(int key){
-    if (key == 'g') {
-        gui->toggleVisible();
-    }
-}
-
-string DrawOpticalFlow::getName(){
-    return "DrawOpticalFlow";
+void StCvOpDraw::stateExit(){
+    gui->setVisible(false);
 }

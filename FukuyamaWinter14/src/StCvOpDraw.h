@@ -5,14 +5,14 @@
 #include "ofxCv.h"
 #include "Particle.h"
 
-class DrawOpticalFlow : public itg::ofxState<SharedData>{
+class StCvOpDraw : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();
     void update();
     void draw();
     void guiEvent(ofxUIEventArgs &e);
-    void keyPressed(int key);
+    void stateExit();
     
     ofPixels pixels;
     ofTexture tex;
@@ -28,8 +28,4 @@ public:
     int polyN;
     float polySigma;
     bool OPTFLOW_FARNEBACK_GAUSSIAN;
-    
-    // Particle
-    deque<Particle *> particles;
-    static const int NUM = 100;
 };
