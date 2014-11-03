@@ -20,6 +20,7 @@
 		1529EA60921FDF7B07077187 /* b2ParticleAssembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C10C48B1E9A15223A02411C /* b2ParticleAssembly.cpp */; };
 		1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2813E36CEFD8D1C1B70E600 /* ofxUIRangeSlider.cpp */; };
 		169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */; };
+		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */; };
 		187A62521A06065E00DC5640 /* StSimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62501A06065E00DC5640 /* StSimplePixelate.cpp */; };
 		187A62661A0606F200DC5640 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62551A0606F200DC5640 /* ofxBaseGui.cpp */; };
@@ -262,6 +263,8 @@
 		178547E33CE398C7B59F08AB /* ContourFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ContourFinder.h; path = ../../../addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h; sourceTree = SOURCE_ROOT; };
 		17E06821FB98542FDB806E50 /* ofxUIMultiImageButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIMultiImageButton.cpp; path = ../../../addons/ofxUI/src/ofxUIMultiImageButton.cpp; sourceTree = SOURCE_ROOT; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
+		185A19AA1A07147300C24D6E /* StBlank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StBlank.cpp; sourceTree = "<group>"; };
+		185A19AB1A07147300C24D6E /* StBlank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBlank.h; sourceTree = "<group>"; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
 		187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlackmagicCapture.cpp; sourceTree = "<group>"; };
 		187A624B1A06048200DC5640 /* BlackmagicCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackmagicCapture.h; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 			isa = PBXGroup;
 			children = (
 				187A624F1A0605E700DC5640 /* SharedData.h */,
+				185A19AA1A07147300C24D6E /* StBlank.cpp */,
+				185A19AB1A07147300C24D6E /* StBlank.h */,
 				187A62501A06065E00DC5640 /* StSimplePixelate.cpp */,
 				187A62511A06065E00DC5640 /* StSimplePixelate.h */,
 				18D0E9241A06617300072012 /* StCvOpDraw.cpp */,
@@ -2090,6 +2095,7 @@
 				B427DFF6B9AB0E77D6DA6FEF /* b2ChainAndCircleContact.cpp in Sources */,
 				187A62661A0606F200DC5640 /* ofxBaseGui.cpp in Sources */,
 				3427B76B23CCCED5264323F9 /* b2ChainAndPolygonContact.cpp in Sources */,
+				185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */,
 				B5F050DAFDC878A0E173FDD8 /* b2CircleContact.cpp in Sources */,
 				A18332F9CD3C4E774B368D9A /* b2Contact.cpp in Sources */,
 				8D5D332C944074A51DB04779 /* b2ContactSolver.cpp in Sources */,

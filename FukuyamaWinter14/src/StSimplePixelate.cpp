@@ -23,11 +23,11 @@ void StSimplePixelate::setup(){
 }
 
 void StSimplePixelate::update(){
-    pixels = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
+
 }
 
 void StSimplePixelate::draw(){
-    //((ofApp*)ofGetAppPtr())->blackmagic->draw();
+    ofPixelsRef pixels = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     int camWidth = 1920;

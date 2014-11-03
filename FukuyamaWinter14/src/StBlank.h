@@ -3,7 +3,7 @@
 #include "SharedData.h"
 #include "ofxUI.h"
 
-class StSimplePixelate : public itg::ofxState<SharedData>{
+class StBlank : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();
@@ -11,7 +11,6 @@ public:
     void draw();
     void stateExit();
     void guiEvent(ofxUIEventArgs &e);
-    
-    ofTexture tex;
+
     ofxUICanvas *gui;
 };

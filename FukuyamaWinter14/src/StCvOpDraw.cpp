@@ -16,7 +16,6 @@ void StCvOpDraw::setup(){
     gui->addIntSlider("WIN SIZE", 1, 100, 30);
     gui->addIntSlider("ITERATION", 1, 20, 2);
     gui->addToggle("GAUSS", false);
-    //gui->addIntSlider("MIX", 0, 255, 127);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("flow.xml");

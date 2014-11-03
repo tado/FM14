@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+#include "StBlank.h"
 #include "StSimplePixelate.h"
 #include "StCvOpDraw.h"
 
@@ -10,9 +11,10 @@ void ofApp::setup(){
     blackmagic = new BlackmagicCapture(1920, 1080, 60.0);
 
     // StateMachine
+    stateMachine.addState<StBlank>();
     stateMachine.addState<StSimplePixelate>();
     stateMachine.addState<StCvOpDraw>();
-    stateMachine.changeState("StSimplePixelate");
+    stateMachine.changeState("StBlank");
     guiVisible = false;
     
     // GUI
@@ -64,11 +66,14 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch (key) {
-            
+          
         case '1':
-            stateMachine.changeState("StSimplePixelate");
+            stateMachine.changeState("StBlank");
             break;
         case '2':
+            stateMachine.changeState("StSimplePixelate");
+            break;
+        case '3':
             stateMachine.changeState("StCvOpDraw");
             break;
        
