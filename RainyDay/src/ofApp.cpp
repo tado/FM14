@@ -55,7 +55,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     if (blurImage.getWidth() > 0) {
-
+        
         dropFbo.begin();
         
         ofxUIRangeSlider *range = (ofxUIRangeSlider *)gui->getWidget("DROP_SIZE");
@@ -71,12 +71,12 @@ void ofApp::update(){
             baseDrops[baseDrops.size()-1]->draw();
         }
         dropFbo.end();
-
+        
         for (int i = 0; i < drops.size(); i++) {
             drops[i]->update();
         }
         
-        if (int(ofRandom(5)) == 1) {
+        if (int(ofRandom(5)) == 1 && drops.size() > 10) {
             drops[ofRandom(drops.size()-1)]->velocity = ofVec2f(0, 0.5);
             drops[ofRandom(drops.size()-1)]->moving = true;
         }
@@ -90,20 +90,29 @@ void ofApp::draw(){
         ofSetColor(255);
         if (recording) {
             exp->begin();
-        }
-        
-        blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
-        dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
-        
-        for (int i = 0; i < drops.size(); i++) {
-            drops[i]->draw();
-        }
-
-        if (recording) {
+            
+            blurImage.draw(0, 0, drawWidth, drawHeight);
+            dropFbo.draw(0, 0, drawWidth, drawHeight);
+            
+            ofPushMatrix();
+            ofScale(drawWidth / float(ofGetWidth()), drawHeight / float(ofGetHeight()));
+            for (int i = 0; i < drops.size(); i++) {
+                drops[i]->draw();
+            }
+            ofPopMatrix();
+            
             exp->end();
-            ofSetColor(255, 0, 0);
+            exp->draw(0, 0);
             ofDrawBitmapString("write " + ofToString(exp->getFrameNum()) + "frames" , 12,
                                gui->getCanvasParent()->getRect()->height + 24);
+        } else {
+            
+            blurImage.draw(0, 0, ofGetWidth(), ofGetHeight());
+            dropFbo.draw(0, 0, ofGetWidth(), ofGetHeight());
+            
+            for (int i = 0; i < drops.size(); i++) {
+                drops[i]->draw();
+            }
         }
     }
     ofSetWindowTitle("Rainy Day");
@@ -111,10 +120,10 @@ void ofApp::draw(){
 
 void ofApp::exit(){
     /*
-    for (int i = 0;  i < drops.size(); i++) {
-        delete drops[i];
-    }
-    drops.clear();
+     for (int i = 0;  i < drops.size(); i++) {
+     delete drops[i];
+     }
+     drops.clear();
      */
     
     //gui->saveSettings("settings.xml");
@@ -132,16 +141,19 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
             exp->startExport();
         }
     }
-
+    
     if(name == "DROP_CLEAR"){
         for (int i = 0;  i < drops.size(); i++) {
             delete drops[i];
         }
         drops.clear();
-
+        
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();
+        
+        createBaseDrops(100);
+        createDrops(100);
     }
     
     if (name == "RESOLUTION") {
@@ -189,7 +201,7 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
@@ -243,8 +255,8 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
         dropFbo.begin();
         ofClear(255,255,255, 0);
         dropFbo.end();
-
-        createBaseDrops(500);
+        
+        createBaseDrops(100);
         createDrops(100);
     }
 }
