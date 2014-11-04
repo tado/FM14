@@ -27,11 +27,12 @@ void StSimplePixelate::update(){
 }
 
 void StSimplePixelate::draw(){
-    ofPixelsRef pixels = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
-    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     int camWidth = 1920;
     int camHeight = 1080;
+    
+    ofPixelsRef pixels = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
+    pixels.resize(camWidth, camHeight);
     
     ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
     ofxUISlider *gcircleScale = (ofxUISlider *)gui->getWidget("CIRCLE SCALE"); float circleScale = gcircleScale->getValue();

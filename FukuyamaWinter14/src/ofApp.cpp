@@ -29,8 +29,14 @@ void ofApp::setup(){
     gui->addSpacer();
     gui->addFPS();
     gui->addSpacer();
-    gui->addToggle("USE BLACKMAGIC", true);
     gui->addIntSlider("MIX", 0, 255, 255);
+    gui->addSpacer();
+    vector<string> names;
+    names.push_back("BLACKMAGIC"); names.push_back("INTERNAL CAM"); names.push_back("MOVIE");
+    ofxUIDropDownList *ddl;
+    ddl = gui->addDropDownList("INPUT SOURCE", names);
+    ddl->setAllowMultiple(false);
+    ddl->setAutoClose(true);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("main.xml");
@@ -62,9 +68,14 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("main.xml");
     }
-    if (name == "USE BLACKMAGIC") {
-        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        blackmagic->changeInput(toggle->getValue());
+    if (name == "INPUT SOURCE") {
+        ofxUIDropDownList *ddlist = (ofxUIDropDownList *) e.widget;
+        vector<ofxUIWidget *> &selected = ddlist->getSelected();
+        vector<int> &selectID = ddlist->getSelectedIndeces();
+        for (int i = 0; i < selectID.size(); i++) {
+            blackmagic->changeInput(selectID[i]);
+            cout << "Selected Video ID : " << selectID[i] << endl;
+        }
     }
 }
 

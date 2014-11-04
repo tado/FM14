@@ -78,8 +78,9 @@ void StCvOpParticle::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
 
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
-    int camWidth = pix.getWidth();
-    int camHeight = pix.getHeight();
+    int camWidth = SCREEN_WIDTH;
+    int camHeight = SCREEN_HEIGHT;
+    pix.resize(camWidth, camHeight);
     
     if (flow.getWidth() > 0) {
         ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(flow.getWidth()), SCREEN_HEIGHT / float(flow.getHeight()));

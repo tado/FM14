@@ -1,18 +1,26 @@
 #include "BlackmagicCapture.h"
 
 BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
-    useBlackmagic = true;
-
+    inputMode = 0;
+    
     width = _width;
     height = _height;
     framerate = _framerate;
     
-    if (useBlackmagic) {
-        blackmagic.setup(width, height, framerate);
-    } else {
-        grabber.initGrabber(width, height);
+    switch (inputMode) {
+        case 0:
+            blackmagic.setup(width, height, framerate);
+            break;
+        case 1:
+            grabber.initGrabber(width, height);
+            break;
+        case 2:
+            video.loadMovie("source.mp4");
+            video.play();
+            break;
     }
-
+    
+    
     colorTexture.allocate(width, height, GL_RGB);
     fbo.allocate(ofGetWidth(), ofGetHeight());
     fbo.begin();
@@ -21,25 +29,45 @@ BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
 }
 
 void BlackmagicCapture::exit() {
-    if (useBlackmagic) {
-        blackmagic.close();
+    switch (inputMode) {
+        case 0:
+            blackmagic.close();
+            break;
+        case 1:
+            grabber.close();
+            break;
+        case 2:
+            video.close();
+            break;
     }
 }
 
 void BlackmagicCapture::update() {
-    if (useBlackmagic) {
-        if(blackmagic.update()) {
-            colorTexture = blackmagic.getColorTexture();
-            colorPixels = blackmagic.getColorPixels();
-        }
-    } else {
-        grabber.update();
-        if (grabber.isFrameNew()) {
-            colorTexture = grabber.getTextureReference();
-            colorPixels = grabber.getPixelsRef();
-        }
+    switch (inputMode) {
+        case 0:
+            if(blackmagic.update()) {
+                colorTexture = blackmagic.getColorTexture();
+                colorPixels = blackmagic.getColorPixels();
+            }
+            break;
+            
+        case 1:
+            grabber.update();
+            if (grabber.isFrameNew()) {
+                colorTexture = grabber.getTextureReference();
+                colorPixels = grabber.getPixelsRef();
+            }
+            break;
+            
+        case 2:
+            video.update();
+            if (video.isFrameNew()) {
+                colorTexture = video.getTextureReference();
+                colorPixels = video.getPixelsRef();
+            }
+            break;
     }
-
+    
     fbo.begin();
     ofSetColor(255);
     colorTexture.draw(0, 0, width, height/2.0);
@@ -53,14 +81,28 @@ void BlackmagicCapture::draw() {
     ofPopMatrix();
 }
 
-void BlackmagicCapture::changeInput(bool usebm){
-    if (usebm) {
-        blackmagic.setup(width, height, framerate);
-        useBlackmagic = true;
-        grabber.close();
-    } else {
-        grabber.initGrabber(width, height);
-        useBlackmagic = false;
-        blackmagic.close();
+void BlackmagicCapture::changeInput(int _inputMode){
+    switch (_inputMode) {
+        case 0:
+            if(inputMode == 1) grabber.close();
+            if(inputMode == 2) video.close();
+            blackmagic.setup(width, height, framerate);
+            inputMode = 0;
+            break;
+            
+        case 1:
+            if(inputMode == 0) blackmagic.close();
+            if(inputMode == 2) video.close();
+            grabber.initGrabber(width, height);
+            inputMode = 1;
+            break;
+            
+        case 2:
+            if(inputMode == 0) blackmagic.close();
+            if(inputMode == 1) grabber.close();
+            video.loadMovie("source.mp4");
+            video.play();
+            inputMode = 2;
+            break;
     }
 }
