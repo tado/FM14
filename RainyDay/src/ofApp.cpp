@@ -152,7 +152,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
         ofClear(255,255,255, 0);
         dropFbo.end();
         
-        createBaseDrops(100);
+        createBaseDrops(1);
         createDrops(100);
     }
     
