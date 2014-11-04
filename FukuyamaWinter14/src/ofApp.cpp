@@ -4,6 +4,7 @@
 #include "StSimplePixelate.h"
 #include "StCvOpDraw.h"
 #include "StCvOpParticle.h"
+#include "StCvOpMesh.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -16,6 +17,7 @@ void ofApp::setup(){
     stateMachine.addState<StSimplePixelate>();
     stateMachine.addState<StCvOpDraw>();
     stateMachine.addState<StCvOpParticle>();
+    stateMachine.addState<StCvOpMesh>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -27,6 +29,7 @@ void ofApp::setup(){
     gui->addSpacer();
     gui->addFPS();
     gui->addSpacer();
+    gui->addToggle("USE BLACKMAGIC", true);
     gui->addIntSlider("MIX", 0, 255, 255);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
@@ -59,9 +62,9 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("main.xml");
     }
-    if(name == "FULLSCREEN"){
+    if (name == "USE BLACKMAGIC") {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        ofSetFullscreen(toggle->getValue());
+        blackmagic->changeInput(toggle->getValue());
     }
 }
 
@@ -80,6 +83,9 @@ void ofApp::keyPressed(int key){
             break;
         case '4':
             stateMachine.changeState("StCvOpParticle");
+            break;
+        case '5':
+            stateMachine.changeState("StCvOpMesh");
             break;
        
             //---------------------------------------------------

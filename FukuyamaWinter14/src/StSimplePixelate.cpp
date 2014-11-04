@@ -33,12 +33,9 @@ void StSimplePixelate::draw(){
     int camWidth = 1920;
     int camHeight = 1080;
     
-    ofxUISlider *r = (ofxUISlider *)gui->getWidget("RADIUS");
-    float radius = r->getValue();
-    ofxUISlider *cs = (ofxUISlider *)gui->getWidget("CIRCLE SCALE");
-    float circleScale = cs->getValue();
-    ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
-    int mix = m->getValue();
+    ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
+    ofxUISlider *gcircleScale = (ofxUISlider *)gui->getWidget("CIRCLE SCALE"); float circleScale = gcircleScale->getValue();
+    ofxUIIntSlider *gmix = (ofxUIIntSlider *)gui->getWidget("MIX"); int mix = gmix->getValue();
     
     ofSetCircleResolution(32);
     

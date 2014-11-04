@@ -1,4 +1,9 @@
 <Widget>
+    <Kind>2</Kind>
+    <Name>USE BLACKMAGIC</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
     <Kind>42</Kind>
     <Name>MIX</Name>
     <Value>255</Value>

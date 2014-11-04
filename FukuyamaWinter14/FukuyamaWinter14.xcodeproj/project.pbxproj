@@ -20,6 +20,7 @@
 		1529EA60921FDF7B07077187 /* b2ParticleAssembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C10C48B1E9A15223A02411C /* b2ParticleAssembly.cpp */; };
 		1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2813E36CEFD8D1C1B70E600 /* ofxUIRangeSlider.cpp */; };
 		169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */; };
+		182AD6EF1A084FE7003C3DD8 /* StCvOpMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
 		187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */; };
@@ -263,6 +264,8 @@
 		15C99204FF4D8D72AD034B63 /* ofxUINumberDialer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUINumberDialer.h; path = ../../../addons/ofxUI/src/ofxUINumberDialer.h; sourceTree = SOURCE_ROOT; };
 		178547E33CE398C7B59F08AB /* ContourFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ContourFinder.h; path = ../../../addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h; sourceTree = SOURCE_ROOT; };
 		17E06821FB98542FDB806E50 /* ofxUIMultiImageButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIMultiImageButton.cpp; path = ../../../addons/ofxUI/src/ofxUIMultiImageButton.cpp; sourceTree = SOURCE_ROOT; };
+		182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpMesh.cpp; sourceTree = "<group>"; };
+		182AD6EE1A084FE7003C3DD8 /* StCvOpMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpMesh.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		185A19AA1A07147300C24D6E /* StBlank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StBlank.cpp; sourceTree = "<group>"; };
 		185A19AB1A07147300C24D6E /* StBlank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBlank.h; sourceTree = "<group>"; };
@@ -835,6 +838,8 @@
 				18D0E9251A06617300072012 /* StCvOpDraw.h */,
 				185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */,
 				185A19AE1A071DCD00C24D6E /* StCvOpParticle.h */,
+				182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */,
+				182AD6EE1A084FE7003C3DD8 /* StCvOpMesh.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2008,6 +2013,7 @@
 				185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,
+				182AD6EF1A084FE7003C3DD8 /* StCvOpMesh.cpp in Sources */,
 				E212C821D1064B92DD953A42 /* ofxCvHaarFinder.cpp in Sources */,
 				63020F16C7E8DED980111241 /* ofxCvImage.cpp in Sources */,
 				D3301F6A0B43BB293ED97C1D /* ofxCvShortImage.cpp in Sources */,

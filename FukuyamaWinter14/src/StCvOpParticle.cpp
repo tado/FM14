@@ -34,16 +34,6 @@ void StCvOpParticle::setup(){
     gui->setVisible(false);
     
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticle::guiEvent);
-    
-    /*
-    //パーティクルを生成
-    for (int i = 0; i < NUM; i++){
-        Particle *myParticle = new Particle();
-        myParticle->friction = 0.005;
-        myParticle->setup(ofVec2f(ofRandom(ofGetWidth()), ofRandom(ofGetHeight())), ofVec2f(0, 0), ofColor(255));
-        particles.push_back(myParticle);
-    }
-     */
 }
 
 void StCvOpParticle::update(){

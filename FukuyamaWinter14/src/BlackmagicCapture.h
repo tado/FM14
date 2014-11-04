@@ -9,12 +9,16 @@ public:
     void update();
     void draw();
     void exit();
+    void changeInput(bool useBlackmagic);
     
     int width, height;
     float framerate;
     
-    ofxBlackMagic cam;
+    ofxBlackMagic blackmagic;
+    ofVideoGrabber grabber;
     ofTexture colorTexture;
     ofPixels colorPixels;
     ofFbo fbo;
+    
+    bool useBlackmagic;
 };
