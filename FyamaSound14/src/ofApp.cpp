@@ -13,7 +13,7 @@ void ofApp::setup(){
     stateMachine.changeState("StBlank");
     
     // SoundStream
-    int bufferSize = 512;
+    int bufferSize = 2048;
     ofSoundStreamSetup(0, 1, this, 44100, bufferSize, 4);
     
     // FFT
