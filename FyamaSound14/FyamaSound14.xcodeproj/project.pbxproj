@@ -26,6 +26,7 @@
 		183137DA1A0DD14C00F997F0 /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137D81A0DD14C00F997F0 /* StBlank.cpp */; };
 		183137DD1A0DD58200F997F0 /* FFTData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137DB1A0DD58200F997F0 /* FFTData.cpp */; };
 		183137E11A0DDA7D00F997F0 /* StFftSimplePlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137DF1A0DDA7D00F997F0 /* StFftSimplePlot.cpp */; };
+		183137E41A0DEC7B00F997F0 /* StFftDrawBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137E21A0DEC7B00F997F0 /* StFftDrawBar.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
 		1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B3C3C21F92F9310CA90986 /* ofxBaseMidi.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
@@ -300,6 +301,8 @@
 		183137DC1A0DD58200F997F0 /* FFTData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFTData.h; sourceTree = "<group>"; };
 		183137DF1A0DDA7D00F997F0 /* StFftSimplePlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSimplePlot.cpp; sourceTree = "<group>"; };
 		183137E01A0DDA7D00F997F0 /* StFftSimplePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSimplePlot.h; sourceTree = "<group>"; };
+		183137E21A0DEC7B00F997F0 /* StFftDrawBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDrawBar.cpp; sourceTree = "<group>"; };
+		183137E31A0DEC7B00F997F0 /* StFftDrawBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawBar.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
@@ -894,6 +897,8 @@
 				183137D91A0DD14C00F997F0 /* StBlank.h */,
 				183137DF1A0DDA7D00F997F0 /* StFftSimplePlot.cpp */,
 				183137E01A0DDA7D00F997F0 /* StFftSimplePlot.h */,
+				183137E21A0DEC7B00F997F0 /* StFftDrawBar.cpp */,
+				183137E31A0DEC7B00F997F0 /* StFftDrawBar.h */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -2225,6 +2230,7 @@
 				C3D11D4FFE1DE2FCC7662FDB /* b2Island.cpp in Sources */,
 				5A13697438B702582D30D374 /* b2World.cpp in Sources */,
 				BF30D7A362CEBF9286D087FD /* b2WorldCallbacks.cpp in Sources */,
+				183137E41A0DEC7B00F997F0 /* StFftDrawBar.cpp in Sources */,
 				B427DFF6B9AB0E77D6DA6FEF /* b2ChainAndCircleContact.cpp in Sources */,
 				3427B76B23CCCED5264323F9 /* b2ChainAndPolygonContact.cpp in Sources */,
 				B5F050DAFDC878A0E173FDD8 /* b2CircleContact.cpp in Sources */,

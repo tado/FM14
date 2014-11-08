@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include "StBlank.h"
 #include "StFftSimplePlot.h"
+#include "StFftDrawBar.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -8,6 +9,7 @@ void ofApp::setup(){
     
     stateMachine.addState<StBlank>();
     stateMachine.addState<StFftSimplePlot>();
+    stateMachine.addState<StFftDrawBar>();
     stateMachine.changeState("StBlank");
     
     // SoundStream
@@ -67,6 +69,9 @@ void ofApp::keyReleased(int key){
             break;
         case '2':
             stateMachine.changeState("StFftSimplePlot");
+            break;
+        case '3':
+            stateMachine.changeState("StFftDrawBar");
             break;
             //---------------------------------------------------
             
