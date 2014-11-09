@@ -6,10 +6,17 @@ FFTData::FFTData(int _bufferSize){
     drawBins.resize(fft->getBinSize());
     middleBins.resize(fft->getBinSize());
     audioBins.resize(fft->getBinSize());
+    maxValue = 0;
+}
+
+void FFTData::update(){
+    soundMutex.lock();
+    drawBins = middleBins;
+    soundMutex.unlock();
 }
 
 void FFTData::audioReceived(float* input, int bufferSize, int nChannels){
-    float maxValue = 0;
+    maxValue = 0;
     for(int i = 0; i < bufferSize; i++) {
         if(abs(input[i]) > maxValue) {
             maxValue = abs(input[i]);

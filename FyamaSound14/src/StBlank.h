@@ -2,6 +2,7 @@
 #include "ofxState.h"
 #include "SharedData.h"
 #include "ofxUI.h"
+#include "ofApp.h"
 
 class StBlank : public itg::ofxState<SharedData>{
 public:
@@ -13,4 +14,5 @@ public:
     void guiEvent(ofxUIEventArgs &e);
 
     ofxUICanvas *gui;
+    ofApp *app;
 };

@@ -34,9 +34,6 @@ void StFftDrawCircle::draw() {
     ofxUISlider *gcirclesize = (ofxUISlider *)gui->getWidget("CIRCLE SIZE"); float circlesize = gcirclesize->getValue();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbrightness = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbrightness->getValue();
-    app->fft->soundMutex.lock();
-    app->fft->drawBins = ((ofApp*)ofGetAppPtr())->fft->middleBins;
-    app->fft->soundMutex.unlock();
 
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < app->fft->drawBins.size(); i++) {

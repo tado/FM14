@@ -28,12 +28,8 @@ void StFftDrawBar::update(){
 
 void StFftDrawBar::draw() {
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
-    
     ofPushMatrix();
     ofTranslate(20, ofGetHeight() / 2 + plotsize / 2);
-    app->fft->soundMutex.lock();
-    app->fft->drawBins = ((ofApp*)ofGetAppPtr())->fft->middleBins;
-    app->fft->soundMutex.unlock();
     ofScale((ofGetWidth() - 40) / float(app->fft->drawBins.size()) , 1.0);
     plot(app->fft->drawBins, -plotsize, plotsize / 2);
     ofPopMatrix();
