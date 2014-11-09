@@ -13,6 +13,9 @@ void StFftDrawBar::setup(){
     gui->addSpacer();
     gui->addIntSlider("PLOT HEIGHT", 0, ofGetHeight(), 500);
     gui->addIntSlider("SATURATION", 0, 255, 100);
+    gui->addIntSlider("REPEAT", 1, 10, 6);
+    gui->addSlider("ZOOM", 1.0, 5.0, 1.2);
+    gui->addSlider("LINE WIDTH", 1.0, 10.0, 2.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("StFftDrawBar.xml");
@@ -30,30 +33,42 @@ void StFftDrawBar::update(){
 void StFftDrawBar::draw() {
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
     ofPushMatrix();
-    ofTranslate(20, ofGetHeight() / 2 + plotsize / 2);
-    ofScale((ofGetWidth() - 40) / float(app->fft->drawBins.size()) , 1.0);
+    //ofTranslate(20, ofGetHeight() / 2 + plotsize / 2);
     plot(app->fft->drawBins, -plotsize, plotsize / 2);
     ofPopMatrix();
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
+    ofxUIIntSlider *grep = (ofxUIIntSlider *)gui->getWidget("REPEAT"); int rep = grep->getValue();
+    ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
+    ofxUISlider *glinewidth = (ofxUISlider *)gui->getWidget("LINE WIDTH"); float linewidth = glinewidth->getValue();
     
-    ofNoFill();
     int n = buffer.size();
     ofPushMatrix();
-    ofTranslate(0, scale / 2 + offset, 0);
     ofFill();
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofTranslate(ofGetWidth()/2.0, ofGetHeight()/2.0);
+    ofScale(ofGetWidth() / float(app->fft->drawBins.size()) * zoom , ofGetWidth() / float(app->fft->drawBins.size()) * zoom);
     ofColor col;
-    for (int i = 0; i < n; i++) {
-        float hue = ofMap(i, 0, app->fft->drawBins.size(), 0, 255);
-        int br = ofMap(buffer[i], 0, 1.0, 0, 255);
-        col.setHsb(hue, saturation, br);
-        ofSetColor(col);
-        ofRect(n / 2.0 + i / 2.0, 0, 1, scale);
-        ofRect(n / 2.0 - i / 2.0, 0, 1, scale);
+    ofSetLineWidth(linewidth * zoom);
+    for (int j = 0; j < rep; j++) {
+        for (int i = 0; i < n; i++) {
+            float hue = ofMap(i, 0, app->fft->drawBins.size(), 0, 255);
+            int br = ofMap(buffer[i], 0, 1.0, 0, 255 / float(rep));
+            col.setHsb(hue, saturation, br);
+            ofSetColor(col);
+            //ofRect(i / 2.0, -scale / 2.0, 1, scale);
+            //ofRect(-i / 2.0, -scale / 2.0, 1, scale);
+            ofLine(i / 2.0, -scale / 2.0, i / 2.0, scale / 2.0);
+            ofLine(-i / 2.0, -scale / 2.0, -i / 2.0, scale / 2.0);
+
+        }
+        ofRotateZ(180 / rep);
     }
+    ofSetLineWidth(1.0);
     glPopMatrix();
+    ofDisableAlphaBlending();
 }
 
 void StFftDrawBar::guiEvent(ofxUIEventArgs &e){

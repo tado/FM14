@@ -15,7 +15,7 @@ void ofApp::setup(){
     stateMachine.changeState("StBlank");
     
     // FFT
-    int bufferSize = 2048;
+    int bufferSize = 1024;
     fft = new FFTData(bufferSize);
     
     // GUI
