@@ -2,6 +2,7 @@
 #include "StBlank.h"
 #include "StFftSimplePlot.h"
 #include "StFftDrawBar.h"
+#include "StFftDrawCircle.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -10,10 +11,11 @@ void ofApp::setup(){
     stateMachine.addState<StBlank>();
     stateMachine.addState<StFftSimplePlot>();
     stateMachine.addState<StFftDrawBar>();
+    stateMachine.addState<StFftDrawCircle>();
     stateMachine.changeState("StBlank");
     
     // SoundStream
-    int bufferSize = 2048;
+    int bufferSize = 1024;
     ofSoundStreamSetup(0, 1, this, 44100, bufferSize, 4);
     
     // FFT
@@ -72,6 +74,9 @@ void ofApp::keyReleased(int key){
             break;
         case '3':
             stateMachine.changeState("StFftDrawBar");
+            break;
+        case '4':
+            stateMachine.changeState("StFftDrawCircle");
             break;
             //---------------------------------------------------
             
