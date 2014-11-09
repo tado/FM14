@@ -3,3 +3,8 @@
     <Name>PLOT HEIGHT</Name>
     <Value>1080</Value>
 </Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>SATURATION</Name>
+    <Value>139</Value>
+</Widget>

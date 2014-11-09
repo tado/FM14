@@ -13,7 +13,7 @@ void StFftDrawCircle::setup(){
     gui->addSpacer();
     gui->addSlider("CIRCLE SIZE", 0, ofGetHeight(), 50.0);
     gui->addIntSlider("SATURATION", 0, 255, 100);
-    gui->addIntSlider("BRIGHTNESS", 0, 255, 100);
+    gui->addIntSlider("BRIGHTNESS", 0, 20, 5);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("StFftDrawCircle.xml");

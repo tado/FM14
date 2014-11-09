@@ -14,11 +14,8 @@ void ofApp::setup(){
     stateMachine.addState<StFftDrawCircle>();
     stateMachine.changeState("StBlank");
     
-    // SoundStream
-    int bufferSize = 1024;
-    ofSoundStreamSetup(0, 1, this, 44100, bufferSize, 4);
-    
     // FFT
+    int bufferSize = 2048;
     fft = new FFTData(bufferSize);
     
     // GUI
@@ -29,6 +26,9 @@ void ofApp::setup(){
     gui->addSpacer();
     gui->addFPS();
     gui->addSpacer();
+    gui->addSlider("FFT SCALE", 0.0, 20.0, 5.0);
+    gui->addSlider("FFT POW", 0.0, 1.0, 0.5);
+    gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("main.xml");
     gui->autoSizeToFitWidgets();
@@ -38,6 +38,10 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    ofxUISlider *gfftscale = (ofxUISlider *)gui->getWidget("FFT SCALE"); float fftscale = gfftscale->getValue();
+    ofxUISlider *gfftpow = (ofxUISlider *)gui->getWidget("FFT POW"); float fftpow = gfftpow->getValue();
+    fft->scale = fftscale;
+    fft->pow = fftpow;
     fft->update();
 }
 
@@ -51,10 +55,6 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
     if(name == "SAVE SETTINGS"){
         gui->saveSettings("main.xml");
     }
-}
-
-void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
-    fft->audioReceived(input, bufferSize, nChannels);
 }
 
 //--------------------------------------------------------------

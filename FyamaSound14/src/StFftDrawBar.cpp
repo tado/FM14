@@ -12,6 +12,7 @@ void StFftDrawBar::setup(){
     gui->addLabel("FFT Draw Bar");
     gui->addSpacer();
     gui->addIntSlider("PLOT HEIGHT", 0, ofGetHeight(), 500);
+    gui->addIntSlider("SATURATION", 0, 255, 100);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("StFftDrawBar.xml");
@@ -36,15 +37,19 @@ void StFftDrawBar::draw() {
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
+    ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
+    
     ofNoFill();
     int n = buffer.size();
     ofPushMatrix();
     ofTranslate(0, scale / 2 + offset, 0);
     ofFill();
-
+    ofColor col;
     for (int i = 0; i < n; i++) {
+        float hue = ofMap(i, 0, app->fft->drawBins.size(), 0, 255);
         int br = ofMap(buffer[i], 0, 1.0, 0, 255);
-        ofSetColor(br);
+        col.setHsb(hue, saturation, br);
+        ofSetColor(col);
         ofRect(n / 2.0 + i / 2.0, 0, 1, scale);
         ofRect(n / 2.0 - i / 2.0, 0, 1, scale);
     }

@@ -28,7 +28,6 @@ void StFftSimplePlot::update(){
 
 void StFftSimplePlot::draw() {
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
-
     ofPushMatrix();
     ofTranslate(20, ofGetHeight() / 2 + plotsize / 2);
     ofScale((ofGetWidth() - 40) / float(app->fft->drawBins.size()) , 1.0);
@@ -44,7 +43,7 @@ void StFftSimplePlot::plot(vector<float>& buffer, float scale, float offset) {
     ofRect(0, 0, n, scale);
     glPushMatrix();
     glTranslatef(0, scale / 2 + offset, 0);
-    ofSetLineWidth(3.0);
+    ofSetLineWidth(2.0);
     ofBeginShape();
     for (int i = 0; i < n; i++) {
         ofVertex(i, sqrt(buffer[i]) * scale);
@@ -52,6 +51,7 @@ void StFftSimplePlot::plot(vector<float>& buffer, float scale, float offset) {
     ofEndShape();
     ofSetLineWidth(1.0);
     glPopMatrix();
+    ofFill();
 }
 
 void StFftSimplePlot::guiEvent(ofxUIEventArgs &e){
