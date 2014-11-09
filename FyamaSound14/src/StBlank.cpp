@@ -20,7 +20,10 @@ void StBlank::update(){
 
 void StBlank::draw(){
     gui->setVisible(getSharedData().guiVisible);
-    ofSetColor(255);
+    app->drawFbo->fbo.begin();
+    ofDisableAlphaBlending();
+    ofClear(0,0,0);
+    app->drawFbo->fbo.end();
 }
 
 void StBlank::guiEvent(ofxUIEventArgs &e){

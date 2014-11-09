@@ -29,7 +29,9 @@ void StFftDrawCircle::update(){
 }
 
 void StFftDrawCircle::draw() {
-    ofSetColor(255, 63);
+    app->drawFbo->fbo.begin();
+    ofDisableAlphaBlending();
+    ofClear(0,0,0);
     ofSetCircleResolution(64);
     ofxUISlider *gcirclesize = (ofxUISlider *)gui->getWidget("CIRCLE SIZE"); float circlesize = gcirclesize->getValue();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
@@ -43,10 +45,11 @@ void StFftDrawCircle::draw() {
         ofColor col;
         col.setHsb(hue, saturation, brightness);
         ofSetColor(col);
-        ofCircle(ofGetWidth() / 2.0 + x, ofGetHeight() / 2.0, size);
-        ofCircle(ofGetWidth() / 2.0 - x, ofGetHeight() / 2.0, size);
+        ofCircle(ofGetWidth() / 2.0 + x, app->drawFbo->height / 2.0, size);
+        ofCircle(ofGetWidth() / 2.0 - x, app->drawFbo->height / 2.0, size);
     }
     ofDisableAlphaBlending();
+    app->drawFbo->fbo.end();
 }
 
 void StFftDrawCircle::guiEvent(ofxUIEventArgs &e){

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofMain.h"
+#include "DrawFbo.h"
 #include "ofxStateMachine.h"
 #include "SharedData.h"
 #include "ofxUI.h"
@@ -28,4 +28,5 @@ public:
     itg::ofxStateMachine<SharedData> stateMachine;
     ofxUICanvas *gui;
     FFTData *fft;
+    DrawFbo *drawFbo;
 };

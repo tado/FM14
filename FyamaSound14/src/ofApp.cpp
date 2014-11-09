@@ -6,7 +6,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofBackground(0);
+    ofBackground(31);
     
     stateMachine.addState<StBlank>();
     stateMachine.addState<StFftSimplePlot>();
@@ -17,6 +17,9 @@ void ofApp::setup(){
     // FFT
     int bufferSize = 1024;
     fft = new FFTData(bufferSize);
+    
+    // FBO
+    drawFbo = new DrawFbo();
     
     // GUI
     gui = new ofxUICanvas();
@@ -47,7 +50,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    drawFbo->draw();
 }
 
 void ofApp::guiEvent(ofxUIEventArgs &e){

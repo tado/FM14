@@ -27,12 +27,16 @@ void StFftSimplePlot::update(){
 }
 
 void StFftSimplePlot::draw() {
+    app->drawFbo->fbo.begin();
+    ofDisableAlphaBlending();
+    ofClear(0,0,0);
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
     ofPushMatrix();
-    ofTranslate(20, ofGetHeight() / 2 + plotsize / 2);
+    ofTranslate(20, app->drawFbo->height / 2 + plotsize / 2);
     ofScale((ofGetWidth() - 40) / float(app->fft->drawBins.size()) , 1.0);
     plot(app->fft->drawBins, -plotsize, plotsize / 2);
     ofPopMatrix();
+    app->drawFbo->fbo.end();
 }
 
 void StFftSimplePlot::plot(vector<float>& buffer, float scale, float offset) {
