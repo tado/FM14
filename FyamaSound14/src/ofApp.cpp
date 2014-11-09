@@ -3,24 +3,25 @@
 #include "StFftSimplePlot.h"
 #include "StFftDrawBar.h"
 #include "StFftDrawCircle.h"
+#include "StFftBox.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofBackground(31);
-    
-    stateMachine.addState<StBlank>();
-    stateMachine.addState<StFftSimplePlot>();
-    stateMachine.addState<StFftDrawBar>();
-    stateMachine.addState<StFftDrawCircle>();
-    stateMachine.changeState("StBlank");
-    
+    ofBackground(0);
     // FFT
-    int bufferSize = 1024;
+    bufferSize = 1024;
     fft = new FFTData(bufferSize);
     
     // FBO
     drawFbo = new DrawFbo();
     
+    stateMachine.addState<StBlank>();
+    stateMachine.addState<StFftSimplePlot>();
+    stateMachine.addState<StFftDrawBar>();
+    stateMachine.addState<StFftDrawCircle>();
+    stateMachine.addState<StFftBox>();
+    stateMachine.changeState("StBlank");
+        
     // GUI
     gui = new ofxUICanvas();
     gui->init(10, 10, 200, 200);
@@ -80,6 +81,9 @@ void ofApp::keyReleased(int key){
             break;
         case '4':
             stateMachine.changeState("StFftDrawCircle");
+            break;
+        case '5':
+            stateMachine.changeState("StFftBox");
             break;
             //---------------------------------------------------
             

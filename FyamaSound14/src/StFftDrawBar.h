@@ -16,4 +16,5 @@ public:
     
     ofxUICanvas *gui;
     ofApp *app;
+    ofEasyCam cam;
 };

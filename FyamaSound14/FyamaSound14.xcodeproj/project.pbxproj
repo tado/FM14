@@ -23,11 +23,13 @@
 		1529EA60921FDF7B07077187 /* b2ParticleAssembly.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3C10C48B1E9A15223A02411C /* b2ParticleAssembly.cpp */; };
 		1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E2813E36CEFD8D1C1B70E600 /* ofxUIRangeSlider.cpp */; };
 		169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */; };
+		181AB5531A1023F100DD7DEE /* StSoundWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181AB5511A1023F100DD7DEE /* StSoundWave.cpp */; };
 		183137DA1A0DD14C00F997F0 /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137D81A0DD14C00F997F0 /* StBlank.cpp */; };
 		183137DD1A0DD58200F997F0 /* FFTData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137DB1A0DD58200F997F0 /* FFTData.cpp */; };
 		183137E11A0DDA7D00F997F0 /* StFftSimplePlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137DF1A0DDA7D00F997F0 /* StFftSimplePlot.cpp */; };
 		183137E41A0DEC7B00F997F0 /* StFftDrawBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137E21A0DEC7B00F997F0 /* StFftDrawBar.cpp */; };
 		18C8A5A01A0F81C200C2B6A3 /* DrawFbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C8A59E1A0F81C200C2B6A3 /* DrawFbo.cpp */; };
+		18C8A5A41A0F962D00C2B6A3 /* StFftBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
 		18FD8A891A0E1C4F007268AC /* StFftDrawCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FD8A871A0E1C4F007268AC /* StFftDrawCircle.cpp */; };
 		1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B3C3C21F92F9310CA90986 /* ofxBaseMidi.cpp */; };
@@ -296,6 +298,8 @@
 		15C99204FF4D8D72AD034B63 /* ofxUINumberDialer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUINumberDialer.h; path = ../../../addons/ofxUI/src/ofxUINumberDialer.h; sourceTree = SOURCE_ROOT; };
 		178547E33CE398C7B59F08AB /* ContourFinder.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ContourFinder.h; path = ../../../addons/ofxCv/libs/ofxCv/include/ofxCv/ContourFinder.h; sourceTree = SOURCE_ROOT; };
 		17E06821FB98542FDB806E50 /* ofxUIMultiImageButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxUIMultiImageButton.cpp; path = ../../../addons/ofxUI/src/ofxUIMultiImageButton.cpp; sourceTree = SOURCE_ROOT; };
+		181AB5511A1023F100DD7DEE /* StSoundWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSoundWave.cpp; sourceTree = "<group>"; };
+		181AB5521A1023F100DD7DEE /* StSoundWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSoundWave.h; sourceTree = "<group>"; };
 		183137D71A0DD14C00F997F0 /* SharedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
 		183137D81A0DD14C00F997F0 /* StBlank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StBlank.cpp; sourceTree = "<group>"; };
 		183137D91A0DD14C00F997F0 /* StBlank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBlank.h; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
 		18C8A59E1A0F81C200C2B6A3 /* DrawFbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawFbo.cpp; sourceTree = "<group>"; };
 		18C8A59F1A0F81C200C2B6A3 /* DrawFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFbo.h; sourceTree = "<group>"; };
+		18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBox.cpp; sourceTree = "<group>"; };
+		18C8A5A31A0F962D00C2B6A3 /* StFftBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftBox.h; sourceTree = "<group>"; };
 		18FD8A871A0E1C4F007268AC /* StFftDrawCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDrawCircle.cpp; sourceTree = "<group>"; };
 		18FD8A881A0E1C4F007268AC /* StFftDrawCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawCircle.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
@@ -907,6 +913,10 @@
 				183137E31A0DEC7B00F997F0 /* StFftDrawBar.h */,
 				18FD8A871A0E1C4F007268AC /* StFftDrawCircle.cpp */,
 				18FD8A881A0E1C4F007268AC /* StFftDrawCircle.h */,
+				18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */,
+				18C8A5A31A0F962D00C2B6A3 /* StFftBox.h */,
+				181AB5511A1023F100DD7DEE /* StSoundWave.cpp */,
+				181AB5521A1023F100DD7DEE /* StSoundWave.h */,
 			);
 			name = States;
 			sourceTree = "<group>";
@@ -2155,6 +2165,7 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				18C8A5A41A0F962D00C2B6A3 /* StFftBox.cpp in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
@@ -2201,6 +2212,7 @@
 				D409288D137DB82107887FFD /* ofxFft.cpp in Sources */,
 				007F713E619B81D821BEA319 /* ofxFftBasic.cpp in Sources */,
 				29938E05AF78B3DF7A591187 /* ofxFftw.cpp in Sources */,
+				181AB5531A1023F100DD7DEE /* StSoundWave.cpp in Sources */,
 				47741AD4D543009E4DF29CEA /* ofxProcessFFT.cpp in Sources */,
 				0686C38EE993C67B96002FA1 /* kiss_fft.c in Sources */,
 				6DB9E3911BA6216FE1F0E91C /* kiss_fftr.c in Sources */,

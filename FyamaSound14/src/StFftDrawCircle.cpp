@@ -30,6 +30,7 @@ void StFftDrawCircle::update(){
 
 void StFftDrawCircle::draw() {
     app->drawFbo->fbo.begin();
+    cam.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofSetCircleResolution(64);
@@ -45,10 +46,11 @@ void StFftDrawCircle::draw() {
         ofColor col;
         col.setHsb(hue, saturation, brightness);
         ofSetColor(col);
-        ofCircle(ofGetWidth() / 2.0 + x, app->drawFbo->height / 2.0, size);
-        ofCircle(ofGetWidth() / 2.0 - x, app->drawFbo->height / 2.0, size);
+        ofCircle(x, 0, size);
+        ofCircle(-x, 0, size);
     }
     ofDisableAlphaBlending();
+    cam.end();
     app->drawFbo->fbo.end();
 }
 

@@ -1,7 +1,12 @@
 #include "DrawFbo.h"
 
 DrawFbo::DrawFbo(){
+    post.init(ofGetWidth(), ofGetHeight());
+    post.createPass<BloomPass>()->setEnabled(true);
+    post.createPass<GodRaysPass>()->setEnabled(true);
+    
     top = 226;
+    width = ofGetWidth();
     height = 630;
     fbo.allocate(1920, height);
     fbo.begin();
@@ -11,5 +16,10 @@ DrawFbo::DrawFbo(){
 
 void DrawFbo::draw(){
     ofSetColor(255);
-    fbo.draw(0, top);
+    post.begin();
+    ofTranslate(width, height);
+    ofRotateZ(180);
+    ofRotateY(180);
+    fbo.draw(-width, -top);
+    post.end();
 }

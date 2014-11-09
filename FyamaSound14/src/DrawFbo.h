@@ -1,5 +1,6 @@
 #pragma once
 #include "ofMain.h"
+#include "ofxPostProcessing.h"
 
 class DrawFbo {
 public:
@@ -7,5 +8,6 @@ public:
     void draw();
     
     ofFbo fbo;
-    int top, height;
+    int top, width, height;
+    ofxPostProcessing post;
 };

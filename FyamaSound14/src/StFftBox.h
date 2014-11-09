@@ -4,7 +4,7 @@
 #include "ofxUI.h"
 #include "ofApp.h"
 
-class StFftDrawCircle : public itg::ofxState<SharedData>{
+class StFftBox : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();
@@ -15,5 +15,9 @@ public:
     
     ofxUICanvas *gui;
     ofApp *app;
+    //float stiffness;
+    float *force, *size;
+    ofVec3f *rotSize;
     ofEasyCam cam;
+    int skip;
 };

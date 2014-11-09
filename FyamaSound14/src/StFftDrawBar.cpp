@@ -34,9 +34,11 @@ void StFftDrawBar::draw() {
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
 
     app->drawFbo->fbo.begin();
+    cam.begin();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofClear(0);
     plot(app->fft->drawBins, -plotsize, plotsize / 2);
+    cam.end();
     app->drawFbo->fbo.end();
 }
 
@@ -51,7 +53,7 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofPushMatrix();
     ofFill();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofTranslate(ofGetWidth()/2.0, app->drawFbo->height/2.0);
+    //ofTranslate(ofGetWidth()/2.0, app->drawFbo->height/2.0);
     ofScale(ofGetWidth() / float(app->fft->drawBins.size()) * zoom , ofGetWidth() / float(app->fft->drawBins.size()) * zoom);
     ofColor col;
     ofSetLineWidth(linewidth * zoom);

@@ -25,6 +25,7 @@ public:
     void gotMessage(ofMessage msg);
     void guiEvent(ofxUIEventArgs &e);
     
+    int bufferSize;
     itg::ofxStateMachine<SharedData> stateMachine;
     ofxUICanvas *gui;
     FFTData *fft;

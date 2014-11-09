@@ -32,7 +32,7 @@ void StFftSimplePlot::draw() {
     ofClear(0,0,0);
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
     ofPushMatrix();
-    ofTranslate(20, app->drawFbo->height / 2 + plotsize / 2);
+    ofTranslate(0, app->drawFbo->height / 2 + plotsize / 2);
     ofScale((ofGetWidth() - 40) / float(app->fft->drawBins.size()) , 1.0);
     plot(app->fft->drawBins, -plotsize, plotsize / 2);
     ofPopMatrix();
@@ -43,8 +43,6 @@ void StFftSimplePlot::plot(vector<float>& buffer, float scale, float offset) {
     ofNoFill();
     int n = buffer.size();
     ofSetColor(255);
-    ofSetLineWidth(0.5);
-    ofRect(0, 0, n, scale);
     glPushMatrix();
     glTranslatef(0, scale / 2 + offset, 0);
     ofSetLineWidth(2.0);
