@@ -29,6 +29,8 @@
 		183137DD1A0DD58200F997F0 /* FFTData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137DB1A0DD58200F997F0 /* FFTData.cpp */; };
 		183137E11A0DDA7D00F997F0 /* StFftSimplePlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137DF1A0DDA7D00F997F0 /* StFftSimplePlot.cpp */; };
 		183137E41A0DEC7B00F997F0 /* StFftDrawBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183137E21A0DEC7B00F997F0 /* StFftDrawBar.cpp */; };
+		18759DC71A11132F00DC1BBD /* ofxTwistedRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18759DBE1A11132F00DC1BBD /* ofxTwistedRibbon.cpp */; };
+		18759DD01A11142800DC1BBD /* StFftRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18759DCE1A11142800DC1BBD /* StFftRibbon.cpp */; };
 		18C8A5A01A0F81C200C2B6A3 /* DrawFbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C8A59E1A0F81C200C2B6A3 /* DrawFbo.cpp */; };
 		18C8A5A41A0F962D00C2B6A3 /* StFftBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
@@ -314,6 +316,10 @@
 		183137E31A0DEC7B00F997F0 /* StFftDrawBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawBar.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
+		18759DBE1A11132F00DC1BBD /* ofxTwistedRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTwistedRibbon.cpp; sourceTree = "<group>"; };
+		18759DBF1A11132F00DC1BBD /* ofxTwistedRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTwistedRibbon.h; sourceTree = "<group>"; };
+		18759DCE1A11142800DC1BBD /* StFftRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftRibbon.cpp; sourceTree = "<group>"; };
+		18759DCF1A11142800DC1BBD /* StFftRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftRibbon.h; sourceTree = "<group>"; };
 		18C8A59E1A0F81C200C2B6A3 /* DrawFbo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DrawFbo.cpp; sourceTree = "<group>"; };
 		18C8A59F1A0F81C200C2B6A3 /* DrawFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFbo.h; sourceTree = "<group>"; };
 		18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBox.cpp; sourceTree = "<group>"; };
@@ -922,8 +928,28 @@
 				181AB5521A1023F100DD7DEE /* StSoundWave.h */,
 				181AB5551A10492B00DD7DEE /* StFftTracer.cpp */,
 				181AB5561A10492B00DD7DEE /* StFftTracer.h */,
+				18759DCE1A11142800DC1BBD /* StFftRibbon.cpp */,
+				18759DCF1A11142800DC1BBD /* StFftRibbon.h */,
 			);
 			name = States;
+			sourceTree = "<group>";
+		};
+		18759D941A11132E00DC1BBD /* ofxTwistedRibbon */ = {
+			isa = PBXGroup;
+			children = (
+				18759DBD1A11132F00DC1BBD /* src */,
+			);
+			name = ofxTwistedRibbon;
+			path = ../../../addons/ofxTwistedRibbon;
+			sourceTree = "<group>";
+		};
+		18759DBD1A11132F00DC1BBD /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18759DBE1A11132F00DC1BBD /* ofxTwistedRibbon.cpp */,
+				18759DBF1A11132F00DC1BBD /* ofxTwistedRibbon.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		1E45F8C3CCFF6847BFF957AA /* flann */ = {
@@ -1637,6 +1663,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				18759D941A11132E00DC1BBD /* ofxTwistedRibbon */,
 				A0B90D3B0ADB9C1716816714 /* ofxOpenCv */,
 				E6053AB7FEC63D5F83825B88 /* ofxOsc */,
 				1F4FB5C423662B96ADFDCC0B /* ofxXmlSettings */,
@@ -2186,6 +2213,7 @@
 				ADE367465D2A8EBAD4C7A8D9 /* IpEndpointName.cpp in Sources */,
 				67FE4C7B15C2F0478C8126C2 /* NetworkingUtils.cpp in Sources */,
 				510CAFE035E576A4E1502D52 /* UdpSocket.cpp in Sources */,
+				18759DD01A11142800DC1BBD /* StFftRibbon.cpp in Sources */,
 				A29D8C96AE042ECEAA1BD4F3 /* NetworkingUtilsWin.cpp in Sources */,
 				28090DEB5109115003E8F1C5 /* UdpSocketWin.cpp in Sources */,
 				62545D179C94265CA1389D4A /* OscOutboundPacketStream.cpp in Sources */,
@@ -2272,6 +2300,7 @@
 				E4B11E431E7B4432B794E723 /* b2FrictionJoint.cpp in Sources */,
 				EA577AB835EB0637399363FA /* b2GearJoint.cpp in Sources */,
 				A01D694CFFCC370B66002D3A /* b2Joint.cpp in Sources */,
+				18759DC71A11132F00DC1BBD /* ofxTwistedRibbon.cpp in Sources */,
 				092641E12809CEAFF21F73EE /* b2MotorJoint.cpp in Sources */,
 				E87F18826B4009FF538F87AA /* b2MouseJoint.cpp in Sources */,
 				6AA3415BCECADF4BFF04564A /* b2PrismaticJoint.cpp in Sources */,

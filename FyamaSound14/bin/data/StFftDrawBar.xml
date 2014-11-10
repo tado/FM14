@@ -6,25 +6,25 @@
 <Widget>
     <Kind>42</Kind>
     <Name>SATURATION</Name>
-    <Value>139</Value>
+    <Value>207</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>BRIGHTNESS</Name>
-    <Value>21</Value>
+    <Value>88</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>REPEAT</Name>
-    <Value>10</Value>
+    <Value>6</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ZOOM</Name>
-    <Value>1.541666746</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>0.925000012</Value>
+    <Value>0.460937500</Value>
 </Widget>

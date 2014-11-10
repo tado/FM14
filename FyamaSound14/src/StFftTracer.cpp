@@ -99,7 +99,7 @@ void StFftTracer::setup() {
 }
 
 void StFftTracer::update(){
-    for (int i=0; i < app->fft->drawBins.size(); i++) {
+    for (int i=0; i < fft_size; i++) {
         float magnitude = powf(app->fft->drawBins[i], 0.4);
         float addFroce;
         addFroce = magnitude * 1500.0;
@@ -127,11 +127,9 @@ void StFftTracer::draw(){
     ofRotateY(ofGetElapsedTimef() * 3);
     ofRotateZ(ofGetElapsedTimef() * 2);
     //ofNoFill();
-    for (int i=0; i  < app->fft->drawBins.size(); i++) {
-        if(magnitude[i] > 1 && i < fft_size){
-            ofSetColor(ofColor::fromHsb(255 * i / fft_size, 200, 150));
-            trackers[i]->draw();
-        }
+    for (int i=0; i  < trackers.size(); i++) {
+        ofSetColor(ofColor::fromHsb(255 * i / fft_size, 200, 150));
+        trackers[i]->draw();
     }
     //ofFill();
     ofPopMatrix();
