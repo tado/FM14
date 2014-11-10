@@ -5,6 +5,7 @@
 #include "StFftDrawCircle.h"
 #include "StSoundWave.h"
 #include "StFftBox.h"
+#include "StFftTracer.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -22,6 +23,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftDrawBar>();
     stateMachine.addState<StFftDrawCircle>();
     stateMachine.addState<StFftBox>();
+    stateMachine.addState<StFftTracer>();
     stateMachine.changeState("StBlank");
         
     // GUI
@@ -86,6 +88,9 @@ void ofApp::keyReleased(int key){
             break;
         case '5':
             stateMachine.changeState("StFftBox");
+            break;
+        case '6':
+            stateMachine.changeState("StFftTracer");
             break;
             //---------------------------------------------------
             

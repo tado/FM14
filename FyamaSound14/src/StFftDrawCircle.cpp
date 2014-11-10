@@ -13,7 +13,7 @@ void StFftDrawCircle::setup(){
     gui->addSpacer();
     gui->addSlider("CIRCLE SIZE", 0, ofGetHeight(), 50.0);
     gui->addIntSlider("SATURATION", 0, 255, 100);
-    gui->addIntSlider("BRIGHTNESS", 0, 20, 5);
+    gui->addSlider("BRIGHTNESS", 0, 20.0, 5.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("StFftDrawCircle.xml");
@@ -36,7 +36,7 @@ void StFftDrawCircle::draw() {
     ofSetCircleResolution(64);
     ofxUISlider *gcirclesize = (ofxUISlider *)gui->getWidget("CIRCLE SIZE"); float circlesize = gcirclesize->getValue();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
-    ofxUIIntSlider *gbrightness = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbrightness->getValue();
+    ofxUISlider *gbrightness = (ofxUISlider *)gui->getWidget("BRIGHTNESS"); float brightness = gbrightness->getValue();
 
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
