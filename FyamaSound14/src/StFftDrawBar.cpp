@@ -16,7 +16,7 @@ void StFftDrawBar::setup(){
     gui->addIntSlider("BRIGHTNESS", 0, 255, 100);
     gui->addIntSlider("REPEAT", 1, 10, 6);
     gui->addSlider("ZOOM", 1.0, 5.0, 1.2);
-    gui->addSlider("LINE WIDTH", 1.0, 10.0, 2.0);
+    gui->addSlider("LINE WIDTH", 0.1, 10.0, 2.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
     gui->loadSettings("StFftDrawBar.xml");

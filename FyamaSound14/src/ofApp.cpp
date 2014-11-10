@@ -3,6 +3,7 @@
 #include "StFftSimplePlot.h"
 #include "StFftDrawBar.h"
 #include "StFftDrawCircle.h"
+#include "StSoundWave.h"
 #include "StFftBox.h"
 
 //--------------------------------------------------------------
@@ -16,6 +17,7 @@ void ofApp::setup(){
     drawFbo = new DrawFbo();
     
     stateMachine.addState<StBlank>();
+    stateMachine.addState<StSoundWave>();
     stateMachine.addState<StFftSimplePlot>();
     stateMachine.addState<StFftDrawBar>();
     stateMachine.addState<StFftDrawCircle>();
@@ -74,7 +76,7 @@ void ofApp::keyReleased(int key){
             stateMachine.changeState("StBlank");
             break;
         case '2':
-            stateMachine.changeState("StFftSimplePlot");
+            stateMachine.changeState("StSoundWave");
             break;
         case '3':
             stateMachine.changeState("StFftDrawBar");
