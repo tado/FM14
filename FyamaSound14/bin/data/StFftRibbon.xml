@@ -29,6 +29,12 @@
     <Value>20.000000000</Value>
 </Widget>
 <Widget>
+    <Kind>6</Kind>
+    <Name>HUE</Name>
+    <HighValue>183.281250000</HighValue>
+    <LowValue>7.968752861</LowValue>
+</Widget>
+<Widget>
     <Kind>42</Kind>
     <Name>SATURATION</Name>
     <Value>189</Value>

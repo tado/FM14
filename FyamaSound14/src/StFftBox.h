@@ -19,5 +19,4 @@ public:
     float *force, *size;
     ofVec3f *rotSize;
     ofEasyCam cam;
-    int skip;
 };

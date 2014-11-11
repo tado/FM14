@@ -12,6 +12,7 @@ void StFftDrawBar::setup(){
     gui->addLabel("FFT Draw Bar");
     gui->addSpacer();
     gui->addIntSlider("PLOT HEIGHT", 0, ofGetHeight(), 500);
+    gui->addRangeSlider("HUE", 0, 255, 0, 255);
     gui->addIntSlider("SATURATION", 0, 255, 100);
     gui->addIntSlider("BRIGHTNESS", 0, 255, 100);
     gui->addIntSlider("REPEAT", 1, 10, 6);
@@ -43,6 +44,7 @@ void StFftDrawBar::draw() {
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
+    ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbr = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbr->getValue();
     ofxUIIntSlider *grep = (ofxUIIntSlider *)gui->getWidget("REPEAT"); int rep = grep->getValue();
@@ -59,7 +61,7 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofSetLineWidth(linewidth * zoom);
     for (int j = 0; j < rep; j++) {
         for (int i = 0; i < n; i++) {
-            float hue = ofMap(i, 0, app->fft->drawBins.size(), 0, 255);
+            float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
             int br = ofMap(buffer[i], 0, 1.0, 0, 255 / float(rep)) * brightness / 64.0;
             col.setHsb(hue, saturation, br);
             ofSetColor(col);

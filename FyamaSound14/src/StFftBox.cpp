@@ -12,7 +12,9 @@ void StFftBox::setup(){
     gui->addLabel("FFT Box");
     gui->addSpacer();
     gui->addSlider("BOX SIZE", 0, ofGetHeight(), 50.0);
+    gui->addIntSlider("SKIP", 1, 12, 4);
     gui->addSlider("STIFFNESS", 0, 3.0, 1.0);
+    gui->addRangeSlider("HUE", 0, 255, 0, 255);
     gui->addIntSlider("SATURATION", 0, 255, 100);
     gui->addIntSlider("BRIGHTNESS", 0, 127, 5);
     gui->addSpacer();
@@ -32,8 +34,6 @@ void StFftBox::setup(){
         size[i] = 0.0;
         rotSize[i] = ofVec3f(ofRandom(-0.2, 0.2), ofRandom(-0.2, 0.2), ofRandom(-0.2, 0.2));
     }
-    
-    skip = 4.0;
 }
 
 void StFftBox::update(){
@@ -42,7 +42,9 @@ void StFftBox::update(){
 
 void StFftBox::draw() {
     ofxUISlider *gboxsize = (ofxUISlider *)gui->getWidget("BOX SIZE"); float boxsize = gboxsize->getValue();
+    ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
     ofxUISlider *gstiffness = (ofxUISlider *)gui->getWidget("STIFFNESS"); float stiffness = gstiffness->getValue();
+    ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbrightness = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbrightness->getValue();
     
@@ -61,7 +63,7 @@ void StFftBox::draw() {
         force[i] = (springForce + addForce) * 0.2;
         size[i] += force[i];
 
-        float hue = ofMap(i, 0, app->fft->drawBins.size() / float(skip), 0, 255);
+        float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
         if (hue > 255) {
             hue = 255;
         }

@@ -3,7 +3,6 @@
 DrawFbo::DrawFbo(){
     post.init(ofGetWidth(), ofGetHeight());
     post.createPass<BloomPass>()->setEnabled(true);
-    //post.createPass<GodRaysPass>()->setEnabled(true);
     
     top = 226;
     width = ofGetWidth();

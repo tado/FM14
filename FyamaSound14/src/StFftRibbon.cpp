@@ -16,6 +16,7 @@ void StFftRibbon::setup() {
     gui->addSlider("STIFFNESS", 0, 0.1, 0.01);
     gui->addSlider("DAMPING", 0.5, 1.0, 0.9);
     gui->addSlider("WIDTH", 0.1, 20.0, 1.0);
+    gui->addRangeSlider("HUE", 0, 255, 0, 255);
     gui->addIntSlider("SATURATION", 0, 255, 100);
     gui->addIntSlider("BRIGHTNESS", 0, 255, 100);
     gui->addSpacer();
@@ -47,6 +48,7 @@ void StFftRibbon::setup() {
 void StFftRibbon::update(){
     ofxUISlider *gpower = (ofxUISlider *)gui->getWidget("POWER"); float power = gpower->getValue();
     ofxUISlider *ggravity = (ofxUISlider *)gui->getWidget("POWER"); float gravity = ggravity->getValue();
+    ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbrightness = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbrightness->getValue();
     ofxUISlider *gstrength = (ofxUISlider *)gui->getWidget("STRENGTH"); float strength = gstrength->getValue();
@@ -68,7 +70,8 @@ void StFftRibbon::update(){
         pos[i] += vel[i];
         
         if(app->fft->drawBins[i] < 1.0){
-            ofColor col = ofColor::fromHsb(255 * i / fft_size, saturation, brightness);
+            float hue = ofMap(i, 0, fft_size, hueLow, hueHigh);
+            ofColor col = ofColor::fromHsb(hue, saturation, brightness);
             ribbons[i]->thickness = app->fft->drawBins[i] * width;
             ribbons[i]->update(pos[i], col);
         }

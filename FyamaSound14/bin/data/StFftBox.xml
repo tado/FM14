@@ -1,7 +1,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>BOX SIZE</Name>
-    <Value>303.750000000</Value>
+    <Value>219.375000000</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>SKIP</Name>
+    <Value>3</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -9,12 +14,18 @@
     <Value>0.859375000</Value>
 </Widget>
 <Widget>
+    <Kind>6</Kind>
+    <Name>HUE</Name>
+    <HighValue>223.125015259</HighValue>
+    <LowValue>7.968750000</LowValue>
+</Widget>
+<Widget>
     <Kind>42</Kind>
     <Name>SATURATION</Name>
-    <Value>199</Value>
+    <Value>208</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>BRIGHTNESS</Name>
-    <Value>76</Value>
+    <Value>80</Value>
 </Widget>
