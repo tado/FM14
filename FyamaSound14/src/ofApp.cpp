@@ -2,6 +2,7 @@
 #include "StBlank.h"
 #include "StFftSimplePlot.h"
 #include "StFftDrawBar.h"
+#include "StFftDot.h"
 #include "StFftDrawCircle.h"
 #include "StSoundWave.h"
 #include "StFftBox.h"
@@ -22,6 +23,7 @@ void ofApp::setup(){
     stateMachine.addState<StSoundWave>();
     stateMachine.addState<StFftSimplePlot>();
     stateMachine.addState<StFftDrawBar>();
+    stateMachine.addState<StFftDot>();
     stateMachine.addState<StFftDrawCircle>();
     stateMachine.addState<StFftBox>();
     stateMachine.addState<StFftTracer>();
@@ -86,12 +88,15 @@ void ofApp::keyReleased(int key){
             stateMachine.changeState("StFftDrawBar");
             break;
         case '4':
-            stateMachine.changeState("StFftDrawCircle");
+            stateMachine.changeState("StFftDot");
             break;
         case '5':
-            stateMachine.changeState("StFftBox");
+            stateMachine.changeState("StFftDrawCircle");
             break;
         case '6':
+            stateMachine.changeState("StFftBox");
+            break;
+        case '7':
             stateMachine.changeState("StFftRibbon");
             break;
             //---------------------------------------------------

@@ -55,7 +55,6 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofPushMatrix();
     ofFill();
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    //ofTranslate(ofGetWidth()/2.0, app->drawFbo->height/2.0);
     ofScale(ofGetWidth() / float(app->fft->drawBins.size()) * zoom , ofGetWidth() / float(app->fft->drawBins.size()) * zoom);
     ofColor col;
     ofSetLineWidth(linewidth * zoom);

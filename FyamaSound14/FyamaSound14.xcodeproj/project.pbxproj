@@ -34,6 +34,7 @@
 		18C8A5A01A0F81C200C2B6A3 /* DrawFbo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C8A59E1A0F81C200C2B6A3 /* DrawFbo.cpp */; };
 		18C8A5A41A0F962D00C2B6A3 /* StFftBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
+		18DB77441A12686600378C70 /* StFftDot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DB77421A12686600378C70 /* StFftDot.cpp */; };
 		18FD8A891A0E1C4F007268AC /* StFftDrawCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FD8A871A0E1C4F007268AC /* StFftDrawCircle.cpp */; };
 		1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B3C3C21F92F9310CA90986 /* ofxBaseMidi.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
@@ -324,6 +325,8 @@
 		18C8A59F1A0F81C200C2B6A3 /* DrawFbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawFbo.h; sourceTree = "<group>"; };
 		18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBox.cpp; sourceTree = "<group>"; };
 		18C8A5A31A0F962D00C2B6A3 /* StFftBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftBox.h; sourceTree = "<group>"; };
+		18DB77421A12686600378C70 /* StFftDot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDot.cpp; sourceTree = "<group>"; };
+		18DB77431A12686600378C70 /* StFftDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDot.h; sourceTree = "<group>"; };
 		18FD8A871A0E1C4F007268AC /* StFftDrawCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDrawCircle.cpp; sourceTree = "<group>"; };
 		18FD8A881A0E1C4F007268AC /* StFftDrawCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawCircle.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
@@ -920,6 +923,8 @@
 				183137E01A0DDA7D00F997F0 /* StFftSimplePlot.h */,
 				183137E21A0DEC7B00F997F0 /* StFftDrawBar.cpp */,
 				183137E31A0DEC7B00F997F0 /* StFftDrawBar.h */,
+				18DB77421A12686600378C70 /* StFftDot.cpp */,
+				18DB77431A12686600378C70 /* StFftDot.h */,
 				18FD8A871A0E1C4F007268AC /* StFftDrawCircle.cpp */,
 				18FD8A881A0E1C4F007268AC /* StFftDrawCircle.h */,
 				18C8A5A21A0F962D00C2B6A3 /* StFftBox.cpp */,
@@ -2288,6 +2293,7 @@
 				BF30D7A362CEBF9286D087FD /* b2WorldCallbacks.cpp in Sources */,
 				183137E41A0DEC7B00F997F0 /* StFftDrawBar.cpp in Sources */,
 				B427DFF6B9AB0E77D6DA6FEF /* b2ChainAndCircleContact.cpp in Sources */,
+				18DB77441A12686600378C70 /* StFftDot.cpp in Sources */,
 				3427B76B23CCCED5264323F9 /* b2ChainAndPolygonContact.cpp in Sources */,
 				B5F050DAFDC878A0E173FDD8 /* b2CircleContact.cpp in Sources */,
 				A18332F9CD3C4E774B368D9A /* b2Contact.cpp in Sources */,

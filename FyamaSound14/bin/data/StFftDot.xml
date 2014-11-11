@@ -1,36 +1,41 @@
 <Widget>
+    <Kind>4</Kind>
+    <Name>CIRCLE SIZE</Name>
+    <Value>10.937500000</Value>
+</Widget>
+<Widget>
     <Kind>42</Kind>
-    <Name>PLOT HEIGHT</Name>
-    <Value>1080</Value>
+    <Name>SKIP</Name>
+    <Value>3</Value>
 </Widget>
 <Widget>
     <Kind>6</Kind>
     <Name>HUE</Name>
-    <HighValue>255.000000000</HighValue>
+    <HighValue>252.343750000</HighValue>
     <LowValue>0.000000000</LowValue>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>SATURATION</Name>
-    <Value>189</Value>
+    <Value>255</Value>
 </Widget>
 <Widget>
-    <Kind>42</Kind>
+    <Kind>4</Kind>
     <Name>BRIGHTNESS</Name>
-    <Value>42</Value>
+    <Value>29.218750000</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>REPEAT</Name>
-    <Value>7</Value>
+    <Value>25</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SHIFT</Name>
+    <Value>26.822916031</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ZOOM</Name>
-    <Value>1.000000000</Value>
-</Widget>
-<Widget>
-    <Kind>4</Kind>
-    <Name>LINE WIDTH</Name>
-    <Value>1.028125048</Value>
+    <Value>3.145833254</Value>
 </Widget>
