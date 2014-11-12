@@ -1,7 +1,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>HUE</Name>
-    <Value>0</Value>
+    <Value>247</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -21,10 +21,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>FADE</Name>
-    <Value>41.671875000</Value>
+    <Value>7.937500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>LINE WIDTH</Name>
-    <Value>4.046875000</Value>
+    <Value>4.703125000</Value>
 </Widget>

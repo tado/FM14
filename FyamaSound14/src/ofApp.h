@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "BlackmagicCapture.h"
 #include "DrawFbo.h"
 #include "ofxStateMachine.h"
 #include "SharedData.h"
@@ -25,6 +26,7 @@ public:
     void gotMessage(ofMessage msg);
     void guiEvent(ofxUIEventArgs &e);
     
+    BlackmagicCapture * blackmagic;
     int bufferSize;
     itg::ofxStateMachine<SharedData> stateMachine;
     ofxUICanvas *gui;
