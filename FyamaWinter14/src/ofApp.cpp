@@ -8,6 +8,7 @@
 #include "StCvOpMesh.h"
 #include "StCvOpNote.h"
 #include "StCvOpDistort.h"
+#include "StSakuraParticle.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -24,6 +25,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpMesh>();
     stateMachine.addState<StCvOpNote>();
     stateMachine.addState<StCvOpDistort>();
+    stateMachine.addState<StSakuraParticle>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -46,14 +48,15 @@ void ofApp::setup(){
     gui->addSpacer();
     gui->addIntSlider("MIX", 0, 255, 255);
     gui->addSpacer();
+    gui->addButton("SAVE SETTINGS", false);
+    gui->addSpacer();
     vector<string> names;
     names.push_back("BLACKMAGIC"); names.push_back("INTERNAL CAM"); names.push_back("MOVIE");
     ofxUIDropDownList *ddl;
     ddl = gui->addDropDownList("INPUT SOURCE", names);
     ddl->setAllowMultiple(false);
     ddl->setAutoClose(true);
-    gui->addSpacer();
-    gui->addButton("SAVE SETTINGS", false);
+    
     gui->loadSettings("main.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
@@ -130,6 +133,9 @@ void ofApp::keyPressed(int key){
             break;
         case '8':
             stateMachine.changeState("StCvOpDistort");
+            break;
+        case '9':
+            stateMachine.changeState("StSakuraParticle");
             break;
        
             //---------------------------------------------------

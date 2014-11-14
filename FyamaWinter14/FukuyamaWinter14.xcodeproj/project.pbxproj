@@ -66,6 +66,8 @@
 		18D0E92C1A06653300072012 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E92A1A06653300072012 /* Particle.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
 		18FB69FA1A16A2B5004A2845 /* StCvOpParticlePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */; };
+		18FB69FE1A16C608004A2845 /* SakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */; };
+		18FB6A011A16C6CE004A2845 /* StSakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
 		2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9076967F8C54A04362C04AA /* Helpers.cpp */; };
@@ -388,6 +390,10 @@
 		18D0E92B1A06653300072012 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpParticlePath.cpp; sourceTree = "<group>"; };
 		18FB69F91A16A2B5004A2845 /* StCvOpParticlePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpParticlePath.h; sourceTree = "<group>"; };
+		18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SakuraParticle.cpp; sourceTree = "<group>"; };
+		18FB69FD1A16C608004A2845 /* SakuraParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SakuraParticle.h; sourceTree = "<group>"; };
+		18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSakuraParticle.cpp; sourceTree = "<group>"; };
+		18FB6A001A16C6CE004A2845 /* StSakuraParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSakuraParticle.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
 		19572082584CC5A6F350437C /* b2DynamicTree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2DynamicTree.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Collision/b2DynamicTree.cpp; sourceTree = SOURCE_ROOT; };
 		199901E3C0391D3CA940B595 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2PolygonContact.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = SOURCE_ROOT; };
@@ -999,6 +1005,8 @@
 				1846E4481A16069C00241F18 /* StCvOpNote.h */,
 				1846E44D1A1612DC00241F18 /* StCvOpDistort.cpp */,
 				1846E44E1A1612DC00241F18 /* StCvOpDistort.h */,
+				18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */,
+				18FB6A001A16C6CE004A2845 /* StSakuraParticle.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -1039,6 +1047,8 @@
 		18D0E9291A06652000072012 /* Particle */ = {
 			isa = PBXGroup;
 			children = (
+				18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */,
+				18FB69FD1A16C608004A2845 /* SakuraParticle.h */,
 				1846E44A1A1606E000241F18 /* NoteParticle.cpp */,
 				1846E44B1A1606E000241F18 /* NoteParticle.h */,
 				18D0E92A1A06653300072012 /* Particle.cpp */,
@@ -2276,6 +2286,7 @@
 				35D2652CBB47ABA129250F91 /* b2Draw.cpp in Sources */,
 				ACFD9F73073C6D26A4300E4C /* b2FreeList.cpp in Sources */,
 				D7014DA1DC8ABBB6FB6C76EE /* b2Math.cpp in Sources */,
+				18FB69FE1A16C608004A2845 /* SakuraParticle.cpp in Sources */,
 				846526908DD0BAEA0684CD1A /* b2Settings.cpp in Sources */,
 				999D76E6FFB13255152CB8D0 /* b2StackAllocator.cpp in Sources */,
 				C5A13ECE4E672F9F9ADED941 /* b2Stat.cpp in Sources */,
@@ -2298,6 +2309,7 @@
 				67AF5DC542760B9C51D9AA2E /* b2EdgeAndCircleContact.cpp in Sources */,
 				DF69DB222467E01AF295EA2F /* b2EdgeAndPolygonContact.cpp in Sources */,
 				18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */,
+				18FB6A011A16C6CE004A2845 /* StSakuraParticle.cpp in Sources */,
 				5263F54AA49B9AFFC6739D8D /* b2PolygonContact.cpp in Sources */,
 				4224F3B63BEABB1329D1C0B6 /* b2DistanceJoint.cpp in Sources */,
 				E4B11E431E7B4432B794E723 /* b2FrictionJoint.cpp in Sources */,
