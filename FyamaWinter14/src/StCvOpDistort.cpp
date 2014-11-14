@@ -75,7 +75,7 @@ void StCvOpDistort::update(){
             ofVec2f offset;
             offset = flow.getAverageFlowInRegion(area);
             if (offset.length() < thresh && ofGetFrameNum() % skip == 0) {
-                currentVertex[i] += ((position + distortionStrength * offset) / scale - currentVertex[i]) * 0.05;
+                currentVertex[i] += ((position + distortionStrength * offset) / scale - currentVertex[i]) * 0.3;
             }
             mesh.setVertex(i, currentVertex[i]);
             i++;
