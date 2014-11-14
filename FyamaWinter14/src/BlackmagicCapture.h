@@ -8,11 +8,13 @@ public:
     BlackmagicCapture(int width, int height, float framerate);
     void update();
     void draw();
+    void drawSub();
     void exit();
     void changeInput(int mode);
     
     int width, height;
     float framerate;
+    float drawTop, drawWidth, drawHeight, sourceTop, sourceWidth, sourceHeight;
     
     ofxBlackMagic blackmagic;
     ofVideoGrabber grabber;
@@ -25,5 +27,4 @@ public:
     
     // 0: BlackMagic, 1: internalCam, 2: Movie
     int inputMode;
-    
 };

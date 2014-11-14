@@ -32,8 +32,9 @@ void StCvOpParticle::setup(){
     gui->loadSettings("opparticle.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticle::guiEvent);
+
+    app = ((ofApp*)ofGetAppPtr());
 }
 
 void StCvOpParticle::update(){
@@ -82,6 +83,10 @@ void StCvOpParticle::draw(){
     int camHeight = SCREEN_HEIGHT;
     pix.resize(camWidth, camHeight);
     
+    app->drawFbo->fbo.begin();
+    ofDisableAlphaBlending();
+    ofClear(0,0,0);
+    ofTranslate(0, -app->drawFbo->top);
     if (flow.getWidth() > 0) {
         ofVec2f scale = ofVec2f(SCREEN_WIDTH / float(flow.getWidth()), SCREEN_HEIGHT / float(flow.getHeight()));
         ofPushMatrix();
@@ -128,6 +133,7 @@ void StCvOpParticle::draw(){
         ofDisableBlendMode();
         ofPopMatrix();
     }
+    app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
 }

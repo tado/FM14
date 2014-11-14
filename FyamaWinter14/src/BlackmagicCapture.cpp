@@ -1,11 +1,15 @@
 #include "BlackmagicCapture.h"
 
 BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
-    inputMode = 0;
+    inputMode = 2;
     
     width = _width;
     height = _height;
     framerate = _framerate;
+    
+    drawTop = sourceTop = 223 / 2.0;
+    drawWidth = sourceWidth = ofGetWidth();
+    drawHeight = sourceHeight = 630 / 2.0;
     
     switch (inputMode) {
         case 0:
@@ -19,7 +23,6 @@ BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
             video.play();
             break;
     }
-    
     
     colorTexture.allocate(width, height, GL_RGB);
     fbo.allocate(ofGetWidth(), ofGetHeight());
@@ -78,6 +81,13 @@ void BlackmagicCapture::draw() {
     ofPushMatrix();
     ofScale(1.0, 2.0);
     fbo.draw(0, 0);
+    ofPopMatrix();
+}
+
+void BlackmagicCapture::drawSub(){
+    ofPushMatrix();
+    ofScale(1.0, 2.0);
+    fbo.getTextureReference().drawSubsection(0, drawTop, drawWidth, drawHeight, 0, sourceTop, sourceWidth, sourceHeight);
     ofPopMatrix();
 }
 

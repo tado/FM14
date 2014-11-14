@@ -2,6 +2,7 @@
 #include "ofxState.h"
 #include "SharedData.h"
 #include "ofxUI.h"
+#include "ofApp.h"
 
 class StSimplePixelate : public itg::ofxState<SharedData>{
 public:
@@ -14,4 +15,5 @@ public:
     
     ofTexture tex;
     ofxUICanvas *gui;
+    ofApp *app;
 };

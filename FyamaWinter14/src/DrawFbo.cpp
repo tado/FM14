@@ -3,9 +3,11 @@
 
 DrawFbo::DrawFbo(){
 
+    /*
     post.init(ofGetWidth(), ofGetHeight());
     post.createPass<BloomPass>()->setEnabled(true);
     post.setFlip(true);
+     */
     
     top = 226;
     width = ofGetWidth();

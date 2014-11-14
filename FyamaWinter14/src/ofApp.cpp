@@ -21,6 +21,9 @@ void ofApp::setup(){
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
+    // FBO
+    drawFbo = new DrawFbo();
+    
     // GUI
     gui = new ofxUICanvas();
     gui->init(10, 10, 200, 200);
@@ -55,7 +58,12 @@ void ofApp::draw(){
     ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
     int mix = m->getValue();
     ofSetColor(mix);
-    blackmagic->draw();
+    blackmagic->drawSub();
+
+    ofSetColor(255);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    drawFbo->draw();
+    ofDisableAlphaBlending();
 }
 
 //--------------------------------------------------------------

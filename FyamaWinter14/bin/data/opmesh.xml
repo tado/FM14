@@ -36,7 +36,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>MAX</Name>
-    <Value>50000</Value>
+    <Value>65625</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -46,17 +46,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>3.020833492</Value>
+    <Value>10.833333969</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FRICTION</Name>
-    <Value>0.781250000</Value>
+    <Value>0.651041627</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACCEL</Name>
-    <Value>1.104166627</Value>
+    <Value>0.833333313</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -71,10 +71,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>0.979166687</Value>
+    <Value>0.875000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>1.062500000</Value>
+    <Value>1.000000000</Value>
 </Widget>

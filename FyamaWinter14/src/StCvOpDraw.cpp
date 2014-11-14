@@ -22,6 +22,8 @@ void StCvOpDraw::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpDraw::guiEvent);
+    
+    app = ((ofApp*)ofGetAppPtr());
 }
 
 void StCvOpDraw::update(){
@@ -51,10 +53,15 @@ void StCvOpDraw::update(){
 }
 
 void StCvOpDraw::draw(){
+    app->drawFbo->fbo.begin();
+    ofDisableAlphaBlending();
+    ofClear(0,0,0);
+    ofTranslate(0, -app->drawFbo->top);
     ofSetLineWidth(3);
     ofSetColor(255, 200);
     flow.draw(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     ofSetLineWidth(1);
+    app->drawFbo->fbo.end();
 }
 
 void StCvOpDraw::guiEvent(ofxUIEventArgs &e){

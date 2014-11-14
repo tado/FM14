@@ -7,10 +7,10 @@ string StCvOpMesh::getName(){
 
 void StCvOpMesh::setup(){
     mesh.setMode(OF_PRIMITIVE_POINTS);
-    fbo.allocate(SCREEN_WIDTH, SCREEN_HEIGHT);
-    fbo.begin();
-    ofClear(0, 0, 0, 0);
-    fbo.end();
+    //fbo.allocate(SCREEN_WIDTH, SCREEN_HEIGHT);
+    //fbo.begin();
+    //ofClear(0, 0, 0, 0);
+    //fbo.end();
     
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
@@ -27,7 +27,7 @@ void StCvOpMesh::setup(){
     gui->addToggle("CLEAR BACKGROUND", true);
     gui->addIntSlider("MAX", 0, 100000, 50000);
     gui->addSlider("THRESH", 0, 2.0, 1.0);
-    gui->addSlider("RADIUS", 0, 5.0, 1.0);
+    gui->addSlider("RADIUS", 0, 40.0, 1.0);
     gui->addSlider("FRICTION", 0, 5.0, 0.5);
     gui->addSlider("ACCEL", 0, 4.0, 1.2);
     gui->addIntSlider("FADE", 0, 63, 12);
@@ -50,6 +50,8 @@ void StCvOpMesh::setup(){
         p->setup(ofVec3f(ofRandom(SCREEN_WIDTH), ofRandom(SCREEN_HEIGHT), 0), ofVec3f(0, 0, 0), col);
         particles.push_back(p);
     }
+    
+    app = ((ofApp*)ofGetAppPtr());
 }
 
 void StCvOpMesh::update(){
@@ -128,6 +130,12 @@ void StCvOpMesh::draw(){
     ofxUIToggle *gclear = (ofxUIToggle *)gui->getWidget("CLEAR BACKGROUND"); bool clear = gclear->getValue();
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
     
+    app->drawFbo->fbo.begin();
+    ofTranslate(0, -app->drawFbo->top);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofSetColor(0, 0, 0, fade);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    
     if (clear) {
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         ofSetColor(0);
@@ -140,17 +148,18 @@ void StCvOpMesh::draw(){
                                particles[i]->position.y, 0));
         mesh.addColor(ofFloatColor(particles[i]->col.r/255.0, particles[i]->col.g/255.0, particles[i]->col.b/255.0));
     }
-    fbo.begin();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0, 0, 0, fade);
-    ofRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    //ofDisableAlphaBlending();
+    //fbo.begin();
+    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetColor(255);
     glPointSize(radius);
     mesh.draw();
-    fbo.end();
-    fbo.draw(0, 0);
+    //fbo.end();
+    //fbo.draw(0, 0);
     ofDisableBlendMode();
+    app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
 }
@@ -167,7 +176,9 @@ void StCvOpMesh::stateExit(){
     for (int i = 0; i < particles.size(); i++) {
         particles[i]->position = ofVec2f(ofRandom(SCREEN_WIDTH), ofRandom(SCREEN_HEIGHT));
     }
+    /*
     fbo.begin();
     ofClear(0, 0, 0, 0);
     fbo.end();
+     */
 }

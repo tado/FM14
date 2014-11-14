@@ -9,7 +9,7 @@
 #include "ofxUI.h"
 
 #include "BlackmagicCapture.h"
-#include "MultiOut.h"
+#include "DrawFbo.h"
 
 class ofApp : public ofBaseApp{
     
@@ -29,11 +29,10 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     void guiEvent(ofxUIEventArgs &e);
-
+    
     itg::ofxStateMachine<SharedData> stateMachine;
     BlackmagicCapture * blackmagic;
     ofxUICanvas *gui;
     bool guiVisible;
-    
-    //MultiOut multiOut;
+    DrawFbo *drawFbo;
 };

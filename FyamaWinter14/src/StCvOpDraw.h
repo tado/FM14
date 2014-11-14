@@ -3,6 +3,7 @@
 #include "SharedData.h"
 #include "ofxUI.h"
 #include "ofxCv.h"
+#include "ofApp.h"
 
 class StCvOpDraw : public itg::ofxState<SharedData>{
 public:
@@ -27,4 +28,5 @@ public:
     int polyN;
     float polySigma;
     bool OPTFLOW_FARNEBACK_GAUSSIAN;
+    ofApp *app;
 };

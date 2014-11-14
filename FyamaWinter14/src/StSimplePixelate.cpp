@@ -1,5 +1,4 @@
 #include "StSimplePixelate.h"
-#include "ofApp.h"
 
 string StSimplePixelate::getName(){
     return "StSimplePixelate";
@@ -20,6 +19,8 @@ void StSimplePixelate::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StSimplePixelate::guiEvent);
+    
+    app = ((ofApp*)ofGetAppPtr());
 }
 
 void StSimplePixelate::update(){
@@ -27,7 +28,6 @@ void StSimplePixelate::update(){
 }
 
 void StSimplePixelate::draw(){
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
     int camWidth = 1920;
     int camHeight = 1080;
     
@@ -37,9 +37,13 @@ void StSimplePixelate::draw(){
     ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
     ofxUISlider *gcircleScale = (ofxUISlider *)gui->getWidget("CIRCLE SCALE"); float circleScale = gcircleScale->getValue();
     ofxUIIntSlider *gmix = (ofxUIIntSlider *)gui->getWidget("MIX"); int mix = gmix->getValue();
-    
+
+    app->drawFbo->fbo.begin();
+    ofDisableAlphaBlending();
+    ofClear(0,0,0);
+    ofTranslate(0, -app->drawFbo->top);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetCircleResolution(32);
-    
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
             for (int j = 0; j < camHeight - radius/2.0; j+=radius){
@@ -61,6 +65,7 @@ void StSimplePixelate::draw(){
         }
     }
     ofDisableBlendMode();
+    app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);
 }

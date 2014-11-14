@@ -4,6 +4,7 @@
 #include "ofxUI.h"
 #include "ofxCv.h"
 #include "Particle.h"
+#include "ofApp.h"
 
 class StCvOpMesh : public itg::ofxState<SharedData>{
 public:
@@ -34,5 +35,7 @@ public:
     static const int NUM = 100;
     
     ofVboMesh mesh;
-    ofFbo fbo;
+    //ofFbo fbo;
+    
+    ofApp *app;
 };

@@ -11,12 +11,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>50</Value>
+    <Value>25</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>ITERATION</Name>
-    <Value>3</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>

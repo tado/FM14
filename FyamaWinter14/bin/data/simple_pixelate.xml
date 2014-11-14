@@ -1,15 +1,15 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>50.937500000</Value>
+    <Value>49.062500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE SCALE</Name>
-    <Value>1.000000000</Value>
+    <Value>0.822916687</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>MIX</Name>
-    <Value>127</Value>
+    <Value>255</Value>
 </Widget>
