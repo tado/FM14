@@ -5,6 +5,7 @@
 #include "StCvOpDraw.h"
 #include "StCvOpParticle.h"
 #include "StCvOpMesh.h"
+#include "StCvOpNote.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -18,6 +19,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpDraw>();
     stateMachine.addState<StCvOpParticle>();
     stateMachine.addState<StCvOpMesh>();
+    stateMachine.addState<StCvOpNote>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -62,8 +64,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    //ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
-    //int mix = m->getValue();
+    ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
+    srcMix = m->getValue();
     
     srcMix = oscControl->controlVal[0] * 2;
     ofSetColor(srcMix);
@@ -115,6 +117,9 @@ void ofApp::keyPressed(int key){
             break;
         case '5':
             stateMachine.changeState("StCvOpMesh");
+            break;
+        case '6':
+            stateMachine.changeState("StCvOpNote");
             break;
        
             //---------------------------------------------------

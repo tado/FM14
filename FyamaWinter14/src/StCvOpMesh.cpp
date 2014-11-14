@@ -37,7 +37,7 @@ void StCvOpMesh::setup(){
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("opmesh.xml");
+    gui->loadSettings("StCvOpMesh.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     
@@ -111,7 +111,7 @@ void StCvOpMesh::update(){
         particles[i]->updatePos();
         particles[i]->throughOfWalls();
         
-        ofColor col  = pix.getColor(x, y);
+        ofColor col  = pix.getColor(x + skip * 2, y);
         
         int h = col.getHue();
         int s = col.getSaturation();
@@ -167,7 +167,7 @@ void StCvOpMesh::draw(){
 void StCvOpMesh::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("opmesh.xml");
+        gui->saveSettings("StCvOpMesh.xml");
     }
 }
 

@@ -1,37 +1,42 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYR SCALE</Name>
-    <Value>0.237187505</Value>
+    <Value>0.479531258</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>LEVELS</Name>
-    <Value>3</Value>
+    <Value>4</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>6</Value>
+    <Value>21</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>ITERATION</Name>
-    <Value>2</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
     <Name>GAUSS</Name>
-    <Value>0</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
-    <Kind>42</Kind>
+    <Kind>4</Kind>
     <Name>SKIP</Name>
-    <Value>20</Value>
+    <Value>1.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>CLEAR BACKGROUND</Name>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>MAX</Name>
-    <Value>161</Value>
+    <Value>65625</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -41,17 +46,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>1.333333373</Value>
+    <Value>5.625000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>FRICTION</Name>
-    <Value>0.000000000</Value>
+    <Value>0.651041627</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>ACCEL</Name>
-    <Value>1.312500000</Value>
+    <Value>0.833333313</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>FADE</Name>
+    <Value>8</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -61,10 +71,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>1.531250000</Value>
+    <Value>0.875000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>2.000000000</Value>
+    <Value>1.000000000</Value>
 </Widget>

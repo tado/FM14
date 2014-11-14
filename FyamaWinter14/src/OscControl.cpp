@@ -3,6 +3,10 @@
 
 void OscControl::setup(){
     receiver.setup(9000);
+    
+    for (int i = 0; i < 8; i++) {
+        controlVal[i] = 255;
+    }
 }
 
 void OscControl::update(){
@@ -31,6 +35,9 @@ void OscControl::update(){
             }
             if (row == 53 && col == 5) {
                 app->stateMachine.changeState("StCvOpMesh");
+            }
+            if (row == 53 && col == 6) {
+                app->stateMachine.changeState("StCvOpNote");
             }
         }
         
