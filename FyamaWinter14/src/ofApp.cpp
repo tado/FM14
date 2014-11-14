@@ -4,6 +4,7 @@
 #include "StSimplePixelate.h"
 #include "StCvOpDraw.h"
 #include "StCvOpParticle.h"
+#include "StCvOpParticlePath.h"
 #include "StCvOpMesh.h"
 #include "StCvOpNote.h"
 #include "StCvOpDistort.h"
@@ -19,6 +20,7 @@ void ofApp::setup(){
     stateMachine.addState<StSimplePixelate>();
     stateMachine.addState<StCvOpDraw>();
     stateMachine.addState<StCvOpParticle>();
+    stateMachine.addState<StCvOpParticlePath>();
     stateMachine.addState<StCvOpMesh>();
     stateMachine.addState<StCvOpNote>();
     stateMachine.addState<StCvOpDistort>();
@@ -118,12 +120,15 @@ void ofApp::keyPressed(int key){
             stateMachine.changeState("StCvOpParticle");
             break;
         case '5':
-            stateMachine.changeState("StCvOpMesh");
+            stateMachine.changeState("StCvOpParticlePath");
             break;
         case '6':
-            stateMachine.changeState("StCvOpNote");
+            stateMachine.changeState("StCvOpMesh");
             break;
         case '7':
+            stateMachine.changeState("StCvOpNote");
+            break;
+        case '8':
             stateMachine.changeState("StCvOpDistort");
             break;
        

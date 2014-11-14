@@ -34,12 +34,15 @@ void OscControl::update(){
                 app->stateMachine.changeState("StCvOpParticle");
             }
             if (row == 53 && col == 5) {
-                app->stateMachine.changeState("StCvOpMesh");
+                app->stateMachine.changeState("StCvOpParticlePath");
             }
             if (row == 53 && col == 6) {
-                app->stateMachine.changeState("StCvOpNote");
+                app->stateMachine.changeState("StCvOpMesh");
             }
             if (row == 53 && col == 7) {
+                app->stateMachine.changeState("StCvOpNote");
+            }
+            if (row == 53 && col == 8) {
                 app->stateMachine.changeState("StCvOpDistort");
             }
         }
