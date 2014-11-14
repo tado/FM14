@@ -33,7 +33,7 @@ public:
     
     ofMesh mesh;
     float stepSize, xSteps, ySteps;
-    vector<ofVec2f> currentPos;
+    vector<ofVec2f> currentVertex;
     
     ofApp *app;
 };

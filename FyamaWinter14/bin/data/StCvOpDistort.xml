@@ -1,17 +1,17 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYR SCALE</Name>
-    <Value>0.495000005</Value>
+    <Value>0.505312502</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>LEVELS</Name>
-    <Value>6</Value>
+    <Value>1</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>30</Value>
+    <Value>40</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -24,14 +24,19 @@
     <Value>1</Value>
 </Widget>
 <Widget>
+    <Kind>4</Kind>
+    <Name>THRESH</Name>
+    <Value>1.500000000</Value>
+</Widget>
+<Widget>
     <Kind>42</Kind>
     <Name>SKIP</Name>
-    <Value>4</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>STRENGTH</Name>
-    <Value>23.437500000</Value>
+    <Value>175.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -41,12 +46,12 @@
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>0.583333313</Value>
+    <Value>0.166666672</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>1.572916627</Value>
+    <Value>0.729166687</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>

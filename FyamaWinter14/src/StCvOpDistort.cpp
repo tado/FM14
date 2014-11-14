@@ -17,8 +17,9 @@ void StCvOpDistort::setup(){
     gui->addIntSlider("ITERATION", 1, 20, 2);
     gui->addToggle("GAUSS", false);
     gui->addSpacer();
+    gui->addSlider("THRESH", 0, 2.0, 1.0);
     gui->addIntSlider("SKIP", 1, 10, 1);
-    gui->addSlider("STRENGTH", 0, 50.0, 5.0);
+    gui->addSlider("STRENGTH", 0, 200.0, 5.0);
     gui->addSlider("TOP SHIFT", 0, 100.0, 50.0);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
@@ -44,8 +45,9 @@ void StCvOpDistort::update(){
     ofxUIIntSlider *it = (ofxUIIntSlider *)gui->getWidget("ITERATION"); iterations = it->getValue();
     ofxUIToggle *gs = (ofxUIToggle *)gui->getWidget("GAUSS"); OPTFLOW_FARNEBACK_GAUSSIAN = gs->getValue();
     ofxUISlider *gstrength = (ofxUISlider *)gui->getWidget("STRENGTH"); float strength = gstrength->getValue();
+    ofxUISlider *gthresh = (ofxUISlider *)gui->getWidget("THRESH"); float thresh = gthresh->getValue();
     ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
-
+    
     polyN = 7;
     polySigma = 1.5;
     
@@ -59,21 +61,24 @@ void StCvOpDistort::update(){
     flow.setPolySigma(polySigma);
     flow.setUseGaussian(OPTFLOW_FARNEBACK_GAUSSIAN);
     
-    if (ofGetFrameNum() % skip == 0) {
-        flow.calcOpticalFlow(pix);
-        
-        int i = 0;
-        float distortionStrength = strength;
-        ofVec2f scale = ofVec2f(flow.getWidth() / float(ofGetWidth()), flow.getHeight() / float(ofGetHeight()));
-        for(int y = 1; y + 1 < ySteps; y++) {
-            for(int x = 1; x + 1 < xSteps; x++) {
-                int i = y * xSteps + x;
-                ofVec2f position(x * stepSize * scale.x, y * stepSize * scale.y);
-                ofRectangle area(position - ofVec2f(stepSize * scale.x, stepSize * scale.y) / 2.0, stepSize * scale.x, stepSize * scale.y);
-                ofVec2f offset = flow.getAverageFlowInRegion(area);
-                mesh.setVertex(i, (position + distortionStrength * offset) / scale);
-                i++;
+    
+    flow.calcOpticalFlow(pix);
+    
+    int i = 0;
+    float distortionStrength = strength;
+    ofVec2f scale = ofVec2f(flow.getWidth() / float(ofGetWidth()), flow.getHeight() / float(ofGetHeight()));
+    for(int y = 1; y + 1 < ySteps; y++) {
+        for(int x = 1; x + 1 < xSteps; x++) {
+            int i = y * xSteps + x;
+            ofVec2f position(x * stepSize * scale.x, y * stepSize * scale.y);
+            ofRectangle area(position - ofVec2f(stepSize * scale.x, stepSize * scale.y) / 2.0, stepSize * scale.x, stepSize * scale.y);
+            ofVec2f offset;
+            offset = flow.getAverageFlowInRegion(area);
+            if (offset.length() < thresh && ofGetFrameNum() % skip == 0) {
+                currentVertex[i] += ((position + distortionStrength * offset) / scale - currentVertex[i]) * 0.05;
             }
+            mesh.setVertex(i, currentVertex[i]);
+            i++;
         }
     }
     
@@ -123,6 +128,7 @@ void StCvOpDistort::createMesh(){
         for(int x = 0; x < xSteps; x++) {
             mesh.addVertex(ofVec2f(x * stepSize, y * stepSize));
             mesh.addTexCoord(ofVec2f(x * stepSize, y * stepSize));
+            currentVertex.push_back(ofVec2f(x * stepSize, y * stepSize));
         }
     }
     for(int y = 0; y + 1 < ySteps; y++) {
