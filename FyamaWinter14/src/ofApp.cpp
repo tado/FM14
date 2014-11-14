@@ -24,6 +24,12 @@ void ofApp::setup(){
     // FBO
     drawFbo = new DrawFbo();
     
+    // OSC Control
+    oscControl = new OscControl();
+    oscControl->setup();
+    srcMix = 255;
+    fxMix = 255;
+    
     // GUI
     gui = new ofxUICanvas();
     gui->init(10, 10, 200, 200);
@@ -51,16 +57,20 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     blackmagic->update();
+    oscControl->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
-    int mix = m->getValue();
-    ofSetColor(mix);
+    //ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
+    //int mix = m->getValue();
+    
+    srcMix = oscControl->controlVal[0] * 2;
+    ofSetColor(srcMix);
     blackmagic->drawSub();
 
-    ofSetColor(255);
+    fxMix = oscControl->controlVal[1] * 2;
+    ofSetColor(fxMix);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     drawFbo->draw();
     ofDisableAlphaBlending();

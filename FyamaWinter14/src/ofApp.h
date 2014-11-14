@@ -7,7 +7,7 @@
 #include "ofxStateMachine.h"
 #include "SharedData.h"
 #include "ofxUI.h"
-
+#include "OscControl.h"
 #include "BlackmagicCapture.h"
 #include "DrawFbo.h"
 
@@ -35,4 +35,6 @@ public:
     ofxUICanvas *gui;
     bool guiVisible;
     DrawFbo *drawFbo;
+    OscControl *oscControl;
+    int srcMix, fxMix;
 };
