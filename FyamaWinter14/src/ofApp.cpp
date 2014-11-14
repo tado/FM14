@@ -6,6 +6,7 @@
 #include "StCvOpParticle.h"
 #include "StCvOpMesh.h"
 #include "StCvOpNote.h"
+#include "StCvOpDistort.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -20,6 +21,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpParticle>();
     stateMachine.addState<StCvOpMesh>();
     stateMachine.addState<StCvOpNote>();
+    stateMachine.addState<StCvOpDistort>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -120,6 +122,9 @@ void ofApp::keyPressed(int key){
             break;
         case '6':
             stateMachine.changeState("StCvOpNote");
+            break;
+        case '7':
+            stateMachine.changeState("StCvOpDistort");
             break;
        
             //---------------------------------------------------

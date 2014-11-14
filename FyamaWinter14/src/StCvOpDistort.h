@@ -1,14 +1,39 @@
-//
-//  StCvOpDistort.h
-//  FukuyamaWinter14
-//
-//  Created by Atsushi Tadokoro on 11/14/14.
-//
-//
+#pragma once
+#include "ofxState.h"
+#include "SharedData.h"
+#include "ofxUI.h"
+#include "ofxCv.h"
+#include "Particle.h"
+#include "ofApp.h"
 
-#ifndef __FukuyamaWinter14__StCvOpDistort__
-#define __FukuyamaWinter14__StCvOpDistort__
-
-#include <stdio.h>
-
-#endif /* defined(__FukuyamaWinter14__StCvOpDistort__) */
+class StCvOpDistort : public itg::ofxState<SharedData>{
+public:
+    string getName();
+    void setup();
+    void update();
+    void draw();
+    void createMesh();
+    void guiEvent(ofxUIEventArgs &e);
+    void stateExit();
+    
+    ofPixels pixels;
+    ofTexture tex;
+    ofxUICanvas *gui;
+    
+    ofxCv::FlowFarneback flow;
+    
+    int cvWidth, cvHeight;
+    float pyrScale;
+    int levels;
+    int winsize;
+    int iterations;
+    int polyN;
+    float polySigma;
+    bool OPTFLOW_FARNEBACK_GAUSSIAN;
+    
+    ofMesh mesh;
+    float stepSize, xSteps, ySteps;
+    vector<ofVec2f> currentPos;
+    
+    ofApp *app;
+};

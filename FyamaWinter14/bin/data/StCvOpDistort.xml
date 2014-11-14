@@ -1,0 +1,55 @@
+<Widget>
+    <Kind>4</Kind>
+    <Name>PYR SCALE</Name>
+    <Value>0.495000005</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>LEVELS</Name>
+    <Value>6</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>WIN SIZE</Name>
+    <Value>30</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>ITERATION</Name>
+    <Value>2</Value>
+</Widget>
+<Widget>
+    <Kind>2</Kind>
+    <Name>GAUSS</Name>
+    <Value>1</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>SKIP</Name>
+    <Value>4</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>STRENGTH</Name>
+    <Value>23.437500000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>TOP SHIFT</Name>
+    <Value>50.000000000</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>HUE</Name>
+    <Value>0.583333313</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>SAT</Name>
+    <Value>1.572916627</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>BR</Name>
+    <Value>1.000000000</Value>
+</Widget>

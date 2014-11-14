@@ -39,6 +39,9 @@ void OscControl::update(){
             if (row == 53 && col == 6) {
                 app->stateMachine.changeState("StCvOpNote");
             }
+            if (row == 53 && col == 7) {
+                app->stateMachine.changeState("StCvOpDistort");
+            }
         }
         
         if(m.getAddress() == "/control"){
