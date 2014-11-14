@@ -49,7 +49,7 @@ void StSakuraParticle::draw(){
     if (ofGetFrameNum() % density == 0){
         for (int i = 0; i < 10; i++) {
             SakuraParticle *p = new SakuraParticle();
-            p->setup(ofVec3f(ofRandom(-1000, 0), ofRandom(-SCREEN_HEIGHT/2, SCREEN_HEIGHT), ofRandom(400)),
+            p->setup(ofVec3f(ofRandom(-200, 0), ofRandom(-SCREEN_HEIGHT/2, SCREEN_HEIGHT), ofRandom(400)),
                      ofVec3f(ofRandom(windSpeed * 0.5, windSpeed * 1.5), ofRandom(0.2,1.0), 0),
                      ofColor(255,180,180));
             p->friction = 0.0;

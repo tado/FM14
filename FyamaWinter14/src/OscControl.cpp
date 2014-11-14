@@ -45,7 +45,7 @@ void OscControl::update(){
             if (row == 53 && col == 8) {
                 app->stateMachine.changeState("StCvOpDistort");
             }
-            if (row == 53 && col == 9) {
+            if (row == 54 && col == 1) {
                 app->stateMachine.changeState("StSakuraParticle");
             }
         }
