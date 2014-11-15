@@ -54,6 +54,18 @@ void OscControl::update(){
             if (row == 55 && col == 2) {
                 app->stateMachine.changeState("StFftDrawCircle");
             }
+            if (row == 55 && col == 3) {
+                app->stateMachine.changeState("StFftDot");
+            }
+            if (row == 55 && col == 4) {
+                app->stateMachine.changeState("StFftDrawBar");
+            }
+            if (row == 55 && col == 5) {
+                app->stateMachine.changeState("StFftBox");
+            }
+            if (row == 55 && col == 6) {
+                app->stateMachine.changeState("StFftRibbon");
+            }
         }
         
         if(m.getAddress() == "/control"){

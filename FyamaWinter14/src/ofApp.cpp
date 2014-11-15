@@ -11,6 +11,10 @@
 #include "StSakuraParticle.h"
 #include "StSoundWave.h"
 #include "StFftDrawCircle.h"
+#include "StFftDot.h"
+#include "StFftDrawBar.h"
+#include "StFftBox.h"
+#include "StFftRibbon.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -35,6 +39,10 @@ void ofApp::setup(){
     stateMachine.addState<StSakuraParticle>();
     stateMachine.addState<StSoundWave>();
     stateMachine.addState<StFftDrawCircle>();
+    stateMachine.addState<StFftDot>();
+    stateMachine.addState<StFftDrawBar>();
+    stateMachine.addState<StFftBox>();
+    stateMachine.addState<StFftRibbon>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -162,6 +170,19 @@ void ofApp::keyPressed(int key){
             break;
         case 'w':
             stateMachine.changeState("StFftDrawCircle");
+            break;
+        case 'e':
+            stateMachine.changeState("StFftDot");
+            break;
+        case 'r':
+            stateMachine.changeState("StFftDrawBar");
+            break;
+        case 't':
+            stateMachine.changeState("StFftBox");
+            break;
+        case 'y':
+            stateMachine.changeState("StFftRibbon");
+            break;
        
             //---------------------------------------------------
 
