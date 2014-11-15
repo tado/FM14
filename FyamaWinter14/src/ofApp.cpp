@@ -10,6 +10,7 @@
 #include "StCvOpDistort.h"
 #include "StSakuraParticle.h"
 #include "StSoundWave.h"
+#include "StFftDrawCircle.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -33,6 +34,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpDistort>();
     stateMachine.addState<StSakuraParticle>();
     stateMachine.addState<StSoundWave>();
+    stateMachine.addState<StFftDrawCircle>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -158,6 +160,8 @@ void ofApp::keyPressed(int key){
         case 'q':
             stateMachine.changeState("StSoundWave");
             break;
+        case 'w':
+            stateMachine.changeState("StFftDrawCircle");
        
             //---------------------------------------------------
 

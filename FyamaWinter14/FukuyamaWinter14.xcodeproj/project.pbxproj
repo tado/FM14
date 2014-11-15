@@ -70,6 +70,15 @@
 		18FB6A011A16C6CE004A2845 /* StSakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */; };
 		18FB6A051A16D20D004A2845 /* FFTData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A031A16D20D004A2845 /* FFTData.cpp */; };
 		18FB6A081A16D58F004A2845 /* StSoundWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A061A16D58F004A2845 /* StSoundWave.cpp */; };
+		18FB6A191A16D940004A2845 /* StFftBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A091A16D940004A2845 /* StFftBox.cpp */; };
+		18FB6A1A1A16D940004A2845 /* StFftDot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A0B1A16D940004A2845 /* StFftDot.cpp */; };
+		18FB6A1B1A16D940004A2845 /* StFftDrawBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A0D1A16D940004A2845 /* StFftDrawBar.cpp */; };
+		18FB6A1C1A16D940004A2845 /* StFftDrawCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A0F1A16D940004A2845 /* StFftDrawCircle.cpp */; };
+		18FB6A1D1A16D940004A2845 /* StFftRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A111A16D940004A2845 /* StFftRibbon.cpp */; };
+		18FB6A1E1A16D940004A2845 /* StFftRings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A131A16D940004A2845 /* StFftRings.cpp */; };
+		18FB6A1F1A16D940004A2845 /* StFftSimplePlot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A151A16D940004A2845 /* StFftSimplePlot.cpp */; };
+		18FB6A201A16D940004A2845 /* StFftTracer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A171A16D940004A2845 /* StFftTracer.cpp */; };
+		18FB6A541A16D9EF004A2845 /* ofxTwistedRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A4B1A16D9EF004A2845 /* ofxTwistedRibbon.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
 		2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9076967F8C54A04362C04AA /* Helpers.cpp */; };
@@ -400,6 +409,24 @@
 		18FB6A041A16D20D004A2845 /* FFTData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFTData.h; sourceTree = "<group>"; };
 		18FB6A061A16D58F004A2845 /* StSoundWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSoundWave.cpp; sourceTree = "<group>"; };
 		18FB6A071A16D58F004A2845 /* StSoundWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSoundWave.h; sourceTree = "<group>"; };
+		18FB6A091A16D940004A2845 /* StFftBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBox.cpp; sourceTree = "<group>"; };
+		18FB6A0A1A16D940004A2845 /* StFftBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftBox.h; sourceTree = "<group>"; };
+		18FB6A0B1A16D940004A2845 /* StFftDot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDot.cpp; sourceTree = "<group>"; };
+		18FB6A0C1A16D940004A2845 /* StFftDot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDot.h; sourceTree = "<group>"; };
+		18FB6A0D1A16D940004A2845 /* StFftDrawBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDrawBar.cpp; sourceTree = "<group>"; };
+		18FB6A0E1A16D940004A2845 /* StFftDrawBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawBar.h; sourceTree = "<group>"; };
+		18FB6A0F1A16D940004A2845 /* StFftDrawCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDrawCircle.cpp; sourceTree = "<group>"; };
+		18FB6A101A16D940004A2845 /* StFftDrawCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawCircle.h; sourceTree = "<group>"; };
+		18FB6A111A16D940004A2845 /* StFftRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftRibbon.cpp; sourceTree = "<group>"; };
+		18FB6A121A16D940004A2845 /* StFftRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftRibbon.h; sourceTree = "<group>"; };
+		18FB6A131A16D940004A2845 /* StFftRings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftRings.cpp; sourceTree = "<group>"; };
+		18FB6A141A16D940004A2845 /* StFftRings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftRings.h; sourceTree = "<group>"; };
+		18FB6A151A16D940004A2845 /* StFftSimplePlot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSimplePlot.cpp; sourceTree = "<group>"; };
+		18FB6A161A16D940004A2845 /* StFftSimplePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSimplePlot.h; sourceTree = "<group>"; };
+		18FB6A171A16D940004A2845 /* StFftTracer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftTracer.cpp; sourceTree = "<group>"; };
+		18FB6A181A16D940004A2845 /* StFftTracer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftTracer.h; sourceTree = "<group>"; };
+		18FB6A4B1A16D9EF004A2845 /* ofxTwistedRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxTwistedRibbon.cpp; sourceTree = "<group>"; };
+		18FB6A4C1A16D9EF004A2845 /* ofxTwistedRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTwistedRibbon.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
 		19572082584CC5A6F350437C /* b2DynamicTree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2DynamicTree.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Collision/b2DynamicTree.cpp; sourceTree = SOURCE_ROOT; };
 		199901E3C0391D3CA940B595 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2PolygonContact.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = SOURCE_ROOT; };
@@ -1015,6 +1042,22 @@
 				18FB6A001A16C6CE004A2845 /* StSakuraParticle.h */,
 				18FB6A061A16D58F004A2845 /* StSoundWave.cpp */,
 				18FB6A071A16D58F004A2845 /* StSoundWave.h */,
+				18FB6A091A16D940004A2845 /* StFftBox.cpp */,
+				18FB6A0A1A16D940004A2845 /* StFftBox.h */,
+				18FB6A0B1A16D940004A2845 /* StFftDot.cpp */,
+				18FB6A0C1A16D940004A2845 /* StFftDot.h */,
+				18FB6A0D1A16D940004A2845 /* StFftDrawBar.cpp */,
+				18FB6A0E1A16D940004A2845 /* StFftDrawBar.h */,
+				18FB6A0F1A16D940004A2845 /* StFftDrawCircle.cpp */,
+				18FB6A101A16D940004A2845 /* StFftDrawCircle.h */,
+				18FB6A111A16D940004A2845 /* StFftRibbon.cpp */,
+				18FB6A121A16D940004A2845 /* StFftRibbon.h */,
+				18FB6A131A16D940004A2845 /* StFftRings.cpp */,
+				18FB6A141A16D940004A2845 /* StFftRings.h */,
+				18FB6A151A16D940004A2845 /* StFftSimplePlot.cpp */,
+				18FB6A161A16D940004A2845 /* StFftSimplePlot.h */,
+				18FB6A171A16D940004A2845 /* StFftTracer.cpp */,
+				18FB6A181A16D940004A2845 /* StFftTracer.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -1063,6 +1106,24 @@
 				18D0E92B1A06653300072012 /* Particle.h */,
 			);
 			name = Particle;
+			sourceTree = "<group>";
+		};
+		18FB6A211A16D9EF004A2845 /* ofxTwistedRibbon */ = {
+			isa = PBXGroup;
+			children = (
+				18FB6A4A1A16D9EF004A2845 /* src */,
+			);
+			name = ofxTwistedRibbon;
+			path = ../../../addons/ofxTwistedRibbon;
+			sourceTree = "<group>";
+		};
+		18FB6A4A1A16D9EF004A2845 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				18FB6A4B1A16D9EF004A2845 /* ofxTwistedRibbon.cpp */,
+				18FB6A4C1A16D9EF004A2845 /* ofxTwistedRibbon.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		1E45F8C3CCFF6847BFF957AA /* flann */ = {
@@ -1662,6 +1723,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				18FB6A211A16D9EF004A2845 /* ofxTwistedRibbon */,
 				1816346B1A15CE65005E39EB /* ofxPostProcessing */,
 				187A62531A0606F200DC5640 /* ofxGui */,
 				A0B90D3B0ADB9C1716816714 /* ofxOpenCv */,
@@ -2222,12 +2284,14 @@
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
+				18FB6A1F1A16D940004A2845 /* StFftSimplePlot.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,
 				187A626D1A0606F200DC5640 /* ofxToggle.cpp in Sources */,
+				18FB6A201A16D940004A2845 /* StFftTracer.cpp in Sources */,
 				E6ADFAF5B64F107FD970E6E7 /* ColorConversion.cpp in Sources */,
 				DD6B7D26B640FE59CC56C615 /* DeckLinkController.cpp in Sources */,
 				0FC43B3D38A4D41A1AD95D39 /* ofxBlackMagic.cpp in Sources */,
@@ -2267,15 +2331,19 @@
 				18FB6A051A16D20D004A2845 /* FFTData.cpp in Sources */,
 				56949DDBF017687AEE523F16 /* b2BroadPhase.cpp in Sources */,
 				187A62671A0606F200DC5640 /* ofxButton.cpp in Sources */,
+				18FB6A191A16D940004A2845 /* StFftBox.cpp in Sources */,
 				181634C01A15CE65005E39EB /* LUTPass.cpp in Sources */,
 				A483B57249A34514377C5AE8 /* b2CollideCircle.cpp in Sources */,
 				CF3A676E14EE72552C5CF31A /* b2CollideEdge.cpp in Sources */,
 				4728C070EE48C34814B7ADDD /* b2CollidePolygon.cpp in Sources */,
 				4334242E763D1D8FF8FB1E43 /* b2Collision.cpp in Sources */,
+				18FB6A1D1A16D940004A2845 /* StFftRibbon.cpp in Sources */,
 				181634C61A15CE65005E39EB /* RimHighlightingPass.cpp in Sources */,
 				181634C21A15CE65005E39EB /* PixelatePass.cpp in Sources */,
 				0B0D35C87FCA564C57A5B6BF /* b2Distance.cpp in Sources */,
 				181634B31A15CE65005E39EB /* BleachBypassPass.cpp in Sources */,
+				18FB6A1E1A16D940004A2845 /* StFftRings.cpp in Sources */,
+				18FB6A1A1A16D940004A2845 /* StFftDot.cpp in Sources */,
 				2229D0E5DBB8B82D783BEE52 /* b2DynamicTree.cpp in Sources */,
 				181634B41A15CE65005E39EB /* BloomPass.cpp in Sources */,
 				2213DF405455BC9DEAC553B7 /* b2TimeOfImpact.cpp in Sources */,
@@ -2306,6 +2374,7 @@
 				5C4E6310A2099ADABC29A23A /* b2TrackedBlock.cpp in Sources */,
 				D05287C5415F1FF3D192436E /* b2Body.cpp in Sources */,
 				A6006EAA2C95A6A9BEB9CDC4 /* b2ContactManager.cpp in Sources */,
+				18FB6A1C1A16D940004A2845 /* StFftDrawCircle.cpp in Sources */,
 				6C849FD52946FEAFF7BD6AC0 /* b2Fixture.cpp in Sources */,
 				C3D11D4FFE1DE2FCC7662FDB /* b2Island.cpp in Sources */,
 				5A13697438B702582D30D374 /* b2World.cpp in Sources */,
@@ -2341,6 +2410,7 @@
 				181634BC1A15CE65005E39EB /* GodRaysPass.cpp in Sources */,
 				9F23FA2C2157EC95DFC4AD75 /* b2Particle.cpp in Sources */,
 				1529EA60921FDF7B07077187 /* b2ParticleAssembly.cpp in Sources */,
+				18FB6A541A16D9EF004A2845 /* ofxTwistedRibbon.cpp in Sources */,
 				4C06E4C9B9CBCC35BC0E1E46 /* b2ParticleGroup.cpp in Sources */,
 				181634C71A15CE65005E39EB /* SSAOPass.cpp in Sources */,
 				F8F175BE4626C6F67BB1A2CD /* b2ParticleSystem.cpp in Sources */,
@@ -2353,6 +2423,7 @@
 				181634BE1A15CE65005E39EB /* KaleidoscopePass.cpp in Sources */,
 				F1E8DE8734BA6F69A5112FA8 /* ofxUIBaseDraws.cpp in Sources */,
 				C381F2B7CFD84C0E540EB4BC /* ofxUIBiLabelSlider.cpp in Sources */,
+				18FB6A1B1A16D940004A2845 /* StFftDrawBar.cpp in Sources */,
 				7D393646FB859A930EF58917 /* ofxUIButton.cpp in Sources */,
 				7BE46522B64E24FAEDE1A25D /* ofxUICanvas.cpp in Sources */,
 				DF0C851B244C4C867CEA8806 /* ofxUICircleSlider.cpp in Sources */,
