@@ -10,6 +10,7 @@
 #include "OscControl.h"
 #include "BlackmagicCapture.h"
 #include "DrawFbo.h"
+#include "FFTData.h"
 
 class ofApp : public ofBaseApp{
     
@@ -37,4 +38,7 @@ public:
     DrawFbo *drawFbo;
     OscControl *oscControl;
     int srcMix, fxMix;
+
+    int bufferSize;
+    FFTData *fft;
 };

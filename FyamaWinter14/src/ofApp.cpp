@@ -9,11 +9,17 @@
 #include "StCvOpNote.h"
 #include "StCvOpDistort.h"
 #include "StSakuraParticle.h"
+#include "StSoundWave.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    //ofSetFrameRate(30);
+    
+    // FFT
+    bufferSize = 1024;
+    fft = new FFTData(bufferSize);
+    
+    // Blackmagic
     blackmagic = new BlackmagicCapture(1920, 1080, 60.0);
 
     // StateMachine
@@ -26,6 +32,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpNote>();
     stateMachine.addState<StCvOpDistort>();
     stateMachine.addState<StSakuraParticle>();
+    stateMachine.addState<StSoundWave>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -45,6 +52,10 @@ void ofApp::setup(){
     gui->addLabel("MAIN");
     gui->addSpacer();
     gui->addFPS();
+    gui->addSpacer();
+    gui->addSlider("FFT SCALE", 0.0, 20.0, 5.0);
+    gui->addSlider("FFT POW", 0.0, 1.0, 0.5);
+    gui->addSpacer();
     gui->addSpacer();
     gui->addIntSlider("MIX", 0, 255, 255);
     gui->addSpacer();
@@ -67,6 +78,13 @@ void ofApp::setup(){
 void ofApp::update(){
     blackmagic->update();
     oscControl->update();
+    
+    // FFT
+    ofxUISlider *gfftscale = (ofxUISlider *)gui->getWidget("FFT SCALE"); float fftscale = gfftscale->getValue();
+    ofxUISlider *gfftpow = (ofxUISlider *)gui->getWidget("FFT POW"); float fftpow = gfftpow->getValue();
+    fft->scale = fftscale;
+    fft->pow = fftpow;
+    fft->update();
 }
 
 //--------------------------------------------------------------
@@ -136,6 +154,9 @@ void ofApp::keyPressed(int key){
             break;
         case '9':
             stateMachine.changeState("StSakuraParticle");
+            break;
+        case 'q':
+            stateMachine.changeState("StSoundWave");
             break;
        
             //---------------------------------------------------

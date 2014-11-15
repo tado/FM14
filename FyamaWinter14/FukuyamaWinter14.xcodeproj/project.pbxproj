@@ -68,6 +68,8 @@
 		18FB69FA1A16A2B5004A2845 /* StCvOpParticlePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */; };
 		18FB69FE1A16C608004A2845 /* SakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */; };
 		18FB6A011A16C6CE004A2845 /* StSakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */; };
+		18FB6A051A16D20D004A2845 /* FFTData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A031A16D20D004A2845 /* FFTData.cpp */; };
+		18FB6A081A16D58F004A2845 /* StSoundWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB6A061A16D58F004A2845 /* StSoundWave.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
 		1DAAC3FB4B98B08AE63F4687 /* ofxUISuperCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38EBD5650A3BF5A499B07525 /* ofxUISuperCanvas.cpp */; };
 		2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9076967F8C54A04362C04AA /* Helpers.cpp */; };
@@ -394,6 +396,10 @@
 		18FB69FD1A16C608004A2845 /* SakuraParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SakuraParticle.h; sourceTree = "<group>"; };
 		18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSakuraParticle.cpp; sourceTree = "<group>"; };
 		18FB6A001A16C6CE004A2845 /* StSakuraParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSakuraParticle.h; sourceTree = "<group>"; };
+		18FB6A031A16D20D004A2845 /* FFTData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFTData.cpp; sourceTree = "<group>"; };
+		18FB6A041A16D20D004A2845 /* FFTData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFTData.h; sourceTree = "<group>"; };
+		18FB6A061A16D58F004A2845 /* StSoundWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSoundWave.cpp; sourceTree = "<group>"; };
+		18FB6A071A16D58F004A2845 /* StSoundWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSoundWave.h; sourceTree = "<group>"; };
 		1902452F5E510A2DBC1E5BD6 /* ofxUIMultiImageToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxUIMultiImageToggle.h; path = ../../../addons/ofxUI/src/ofxUIMultiImageToggle.h; sourceTree = SOURCE_ROOT; };
 		19572082584CC5A6F350437C /* b2DynamicTree.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2DynamicTree.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Collision/b2DynamicTree.cpp; sourceTree = SOURCE_ROOT; };
 		199901E3C0391D3CA940B595 /* b2PolygonContact.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = b2PolygonContact.cpp; path = ../../../addons/ofxLiquidFun/libs/Box2D/Dynamics/Contacts/b2PolygonContact.cpp; sourceTree = SOURCE_ROOT; };
@@ -1007,6 +1013,8 @@
 				1846E44E1A1612DC00241F18 /* StCvOpDistort.h */,
 				18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */,
 				18FB6A001A16C6CE004A2845 /* StSakuraParticle.h */,
+				18FB6A061A16D58F004A2845 /* StSoundWave.cpp */,
+				18FB6A071A16D58F004A2845 /* StSoundWave.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2001,6 +2009,8 @@
 				181634681A15CDBA005E39EB /* DrawFbo.h */,
 				18574E5D1A15EAC600152134 /* OscControl.cpp */,
 				18574E5E1A15EAC600152134 /* OscControl.h */,
+				18FB6A031A16D20D004A2845 /* FFTData.cpp */,
+				18FB6A041A16D20D004A2845 /* FFTData.h */,
 				18D0E9291A06652000072012 /* Particle */,
 				187A624E1A0605D100DC5640 /* states */,
 			);
@@ -2254,6 +2264,7 @@
 				81E8321493F1FC980D766F87 /* ofxBox2dParticleSystem.cpp in Sources */,
 				2524F40639A33E4A34DF0F1C /* ofxBox2dPolygon.cpp in Sources */,
 				A33E832937B9A5A6FDF4BE47 /* ofxBox2dRect.cpp in Sources */,
+				18FB6A051A16D20D004A2845 /* FFTData.cpp in Sources */,
 				56949DDBF017687AEE523F16 /* b2BroadPhase.cpp in Sources */,
 				187A62671A0606F200DC5640 /* ofxButton.cpp in Sources */,
 				181634C01A15CE65005E39EB /* LUTPass.cpp in Sources */,
@@ -2372,6 +2383,7 @@
 				43BADBB2FE0F17D34B57A705 /* ofxUIScrollableCanvas.cpp in Sources */,
 				740A58CBFDFE578C83A349AF /* ofxUISlider.cpp in Sources */,
 				ADE7C2AFC51E3F7E5E389026 /* ofxUISortableList.cpp in Sources */,
+				18FB6A081A16D58F004A2845 /* StSoundWave.cpp in Sources */,
 				BFEFCE32DAFE10A8EB519F6C /* ofxUISpacer.cpp in Sources */,
 				181634B91A15CE65005E39EB /* EdgePass.cpp in Sources */,
 				52AFF80A869790144ACCC9BA /* ofxUISpectrum.cpp in Sources */,

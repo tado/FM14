@@ -48,6 +48,9 @@ void OscControl::update(){
             if (row == 54 && col == 1) {
                 app->stateMachine.changeState("StSakuraParticle");
             }
+            if (row == 55 && col == 1) {
+                app->stateMachine.changeState("StSoundWave");
+            }
         }
         
         if(m.getAddress() == "/control"){
