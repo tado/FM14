@@ -3,6 +3,7 @@
 #include "SharedData.h"
 #include "ofxUI.h"
 #include "ofApp.h"
+#include "ofxPostProcessing.h"
 
 class StFftBox : public itg::ofxState<SharedData>{
 public:
@@ -19,4 +20,6 @@ public:
     float *force, *size;
     ofVec3f *rotSize;
     ofEasyCam cam;
+    
+    ofxPostProcessing post;
 };

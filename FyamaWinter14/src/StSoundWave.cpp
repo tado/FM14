@@ -50,6 +50,7 @@ void StSoundWave::draw(){
     ofSetLineWidth(linewidth);
     ofSetColor(ofColor::fromHsb(hue, saturation, brightness));
     ofScale(zoom, 1.0);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofBeginShape();
     for (int i = 0; i < num; i++) {
         float x = ofMap(i, 0, num, app->drawFbo->width / -2.0, app->drawFbo->width / 2.0);

@@ -34,6 +34,10 @@ void StFftBox::setup(){
         size[i] = 0.0;
         rotSize[i] = ofVec3f(ofRandom(-0.2, 0.2), ofRandom(-0.2, 0.2), ofRandom(-0.2, 0.2));
     }
+    
+    post.init(ofGetWidth(), ofGetHeight());
+    post.createPass<BloomPass>()->setEnabled(true);
+    //post.setFlip(true);
 }
 
 void StFftBox::update(){
@@ -51,9 +55,10 @@ void StFftBox::draw() {
     app->drawFbo->fbo.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
-    cam.begin();
+    //cam.begin();
+    post.begin(cam);
+    ofTranslate(0, app->drawFbo->top / 2.0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    //ofTranslate(app->drawFbo->width / 2.0, app->drawFbo->height / 2.0);
     ofEnableDepthTest();
     //glCullFace(true);
     for (int i = 0; i < app->fft->drawBins.size(); i += skip){
@@ -82,7 +87,8 @@ void StFftBox::draw() {
     //glCullFace(false);
     ofDisableDepthTest();
     ofDisableAlphaBlending();
-    cam.end();
+    //cam.end();
+    post.end();
     app->drawFbo->fbo.end();
 }
 
