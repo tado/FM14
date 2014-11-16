@@ -92,7 +92,9 @@ void StCvOpParticle::draw(){
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        for (int i = 0; i < max; i++) {
+        int controlMax = powf(app->oscControl->controlVal[2] * 0.25, 1.5);
+        
+        for (int i = 0; i < controlMax; i++) {
             int x = ofRandom(flow.getWidth()-skip);
             int y = ofRandom(flow.getHeight()-skip);
             ofRectangle region = ofRectangle(x, y, skip, skip);
@@ -120,7 +122,7 @@ void StCvOpParticle::draw(){
                 }
                 particles.push_back(p);
 
-                while (particles.size() > max) {
+                while (particles.size() > controlMax) {
                     delete particles[0];
                     particles.pop_front();
                 }

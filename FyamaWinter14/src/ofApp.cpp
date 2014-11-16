@@ -19,6 +19,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
+    ofSetWindowPosition(1920, 0);
     
     // FFT
     bufferSize = 1024;
@@ -100,9 +101,10 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
-    srcMix = m->getValue();
     
+    //srcMix = m->getValue();
     srcMix = oscControl->controlVal[0] * 2;
+    
     ofSetColor(srcMix);
     blackmagic->drawSub();
 

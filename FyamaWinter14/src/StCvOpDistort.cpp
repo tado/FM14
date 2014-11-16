@@ -19,7 +19,7 @@ void StCvOpDistort::setup(){
     gui->addSpacer();
     gui->addSlider("THRESH", 0, 2.0, 1.0);
     gui->addIntSlider("SKIP", 1, 10, 1);
-    gui->addSlider("STRENGTH", 0, 200.0, 5.0);
+    //gui->addSlider("STRENGTH", 0, 200.0, 5.0);
     gui->addSlider("TOP SHIFT", 0, 100.0, 50.0);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
@@ -44,7 +44,7 @@ void StCvOpDistort::update(){
     ofxUIIntSlider *w = (ofxUIIntSlider *)gui->getWidget("WIN SIZE"); winsize = w->getValue();
     ofxUIIntSlider *it = (ofxUIIntSlider *)gui->getWidget("ITERATION"); iterations = it->getValue();
     ofxUIToggle *gs = (ofxUIToggle *)gui->getWidget("GAUSS"); OPTFLOW_FARNEBACK_GAUSSIAN = gs->getValue();
-    ofxUISlider *gstrength = (ofxUISlider *)gui->getWidget("STRENGTH"); float strength = gstrength->getValue();
+    //ofxUISlider *gstrength = (ofxUISlider *)gui->getWidget("STRENGTH"); float strength = gstrength->getValue();
     ofxUISlider *gthresh = (ofxUISlider *)gui->getWidget("THRESH"); float thresh = gthresh->getValue();
     ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
     
@@ -65,7 +65,9 @@ void StCvOpDistort::update(){
     flow.calcOpticalFlow(pix);
     
     int i = 0;
-    float distortionStrength = strength;
+    
+    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 300);
+    
     ofVec2f scale = ofVec2f(flow.getWidth() / float(ofGetWidth()), flow.getHeight() / float(ofGetHeight()));
     for(int y = 1; y + 1 < ySteps; y++) {
         for(int x = 1; x + 1 < xSteps; x++) {
