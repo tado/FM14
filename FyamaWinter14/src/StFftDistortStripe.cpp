@@ -91,7 +91,7 @@ void StFftDistortStripe::draw(){
     ofRotateZ(70);
     ofSetColor(255);
     ofTranslate(0, -app->drawFbo->top + topshift);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     float controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
 
@@ -108,6 +108,7 @@ void StFftDistortStripe::draw(){
     
     ofPopMatrix();
     app->drawFbo->fbo.end();
+    ofDisableAlphaBlending();
 }
 
 void StFftDistortStripe::guiEvent(ofxUIEventArgs &e){

@@ -14,7 +14,7 @@ void StFftSphereStripe::setup(){
     gui->addSlider("TOP SHIFT", 0, 100.0, 50.0);
     gui->addSlider("NOISE SCALE", 1.0, 30.0, 10.0);
     gui->addSlider("SHIFT SPEED", 0.0, 2.0, 1.0);
-    gui->addSlider("ZOOM", 1.0, 5.0, 2.0);
+    gui->addSlider("ZOOM", 0.0, 3.0, 1.0);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
@@ -27,10 +27,13 @@ void StFftSphereStripe::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftSphereStripe::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    //int width = app->blackmagic->width;
-    //int height = app->blackmagic->height;
-    int width = 128;
-    int height = 128;
+    post.init(ofGetWidth(), ofGetHeight());
+    post.createPass<BloomPass>()->setEnabled(true);
+    
+    cam.setFarClip(5000);
+
+    int width = 256;
+    int height = 256;
     unsigned char pixels[width * height * 4];
     
     for (int i = 0; i < width * height * 4; i += 4){
@@ -61,7 +64,7 @@ void StFftSphereStripe::update(){
         float noiseY = ofMap(currentVertex[i].y, 0, ofGetWidth(), 0, noisescale);
         float offset = ofNoise(noiseX + ofGetElapsedTimef() * shiftspeed,
                                noiseY + ofGetElapsedTimef() * shiftspeed);
-        currentVertex[i] = currentVertex[i].normalize() * (offset * fftSum * distortionStrength + ofGetWidth() / 8.0);
+        currentVertex[i] = currentVertex[i].normalize() * (offset * fftSum * distortionStrength + ofGetWidth() / 32.0);
         mesh.setVertex(i, currentVertex[i]);
     }
     
@@ -78,26 +81,29 @@ void StFftSphereStripe::draw(){
     
     
     app->drawFbo->fbo.begin();
-    cam.begin();
-    ofEnableDepthTest();
+    post.begin(cam);
+    ofTranslate(0, app->drawFbo->top / 2.0);
+    ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
     ofRotateZ(ofGetElapsedTimef() * shiftspeed * 1.2);
     ofDisableAlphaBlending();
     ofClear(0,0,0);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
+    ofEnableDepthTest();
     tex.bind();
     mesh.draw();
-    ofRotate(shiftspeed * ofGetElapsedTimef(), 1.0, 1.0, 1.0);
+    ofRotate(shiftspeed * ofGetElapsedTimef(), 1.0, 0.8, 0.5);
     mesh.draw();
     tex.unbind();
     //mesh.drawWireframe();
     ofDisableDepthTest();
-    cam.end();
+    post.end();
     app->drawFbo->fbo.end();
+    ofDisableAlphaBlending();
 }
 
 void StFftSphereStripe::guiEvent(ofxUIEventArgs &e){
@@ -118,33 +124,6 @@ void StFftSphereStripe::createMesh(){
 
         currentVertex.push_back(ofVec3f(mesh.getVertices()[i].x, mesh.getVertices()[i].y, mesh.getVertices()[i].z));
     }
-    
-    /*
-    stepSize = 20;
-    ySteps = ofGetWidth() * 2 / stepSize;
-    xSteps = ofGetWidth() * 2 / stepSize;
-    for(int y = 0; y < ySteps; y++) {
-        for(int x = 0; x < xSteps; x++) {
-            mesh.addVertex(ofVec3f(x * stepSize, y * stepSize, 0));
-            mesh.addTexCoord(ofVec3f(x * stepSize, y * stepSize, 0));
-            currentVertex.push_back(ofVec3f(x * stepSize, y * stepSize, 0));
-        }
-    }
-    for(int y = 0; y + 1 < ySteps; y++) {
-        for(int x = 0; x + 1 < xSteps; x++) {
-            int nw = y * xSteps + x;
-            int ne = nw + 1;
-            int sw = nw + xSteps;
-            int se = sw + 1;
-            mesh.addIndex(nw);
-            mesh.addIndex(ne);
-            mesh.addIndex(se);
-            mesh.addIndex(nw);
-            mesh.addIndex(se);
-            mesh.addIndex(sw);
-        }
-    }
-     */
 }
 
 void StFftSphereStripe::stateExit(){

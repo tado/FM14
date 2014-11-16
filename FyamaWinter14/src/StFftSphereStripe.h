@@ -3,6 +3,7 @@
 #include "SharedData.h"
 #include "ofxUI.h"
 #include "ofApp.h"
+#include "ofxPostProcessing.h"
 
 class StFftSphereStripe : public itg::ofxState<SharedData>{
 public:
@@ -25,4 +26,5 @@ public:
     ofTexture tex;
     float stepSize, xSteps, ySteps;
     vector<ofVec3f> currentVertex;
+    ofxPostProcessing post;
 };
