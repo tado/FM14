@@ -17,7 +17,7 @@
 #include "StFftDrawBar.h"
 #include "StFftBox.h"
 #include "StFftRibbon.h"
-
+#include "StFftDistort.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -49,6 +49,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftDrawBar>();
     stateMachine.addState<StFftBox>();
     stateMachine.addState<StFftRibbon>();
+    stateMachine.addState<StFftDistort>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     
@@ -192,6 +193,9 @@ void ofApp::keyPressed(int key){
             break;
         case 'y':
             stateMachine.changeState("StFftRibbon");
+            break;
+        case 'u':
+            stateMachine.changeState("StFftDistort");
             break;
        
             //---------------------------------------------------

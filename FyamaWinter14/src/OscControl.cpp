@@ -68,6 +68,9 @@ void OscControl::update(){
             if (row == 55 && col == 6) {
                 app->stateMachine.changeState("StFftRibbon");
             }
+            if (row == 55 && col == 7) {
+                app->stateMachine.changeState("StFftDistort");
+            }
         }
         
         if(m.getAddress() == "/control"){

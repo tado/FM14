@@ -49,6 +49,7 @@
 		1846E4491A16069C00241F18 /* StCvOpNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E4471A16069C00241F18 /* StCvOpNote.cpp */; };
 		1846E44C1A1606E000241F18 /* NoteParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E44A1A1606E000241F18 /* NoteParticle.cpp */; };
 		1846E44F1A1612DC00241F18 /* StCvOpDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E44D1A1612DC00241F18 /* StCvOpDistort.cpp */; };
+		184CE0C01A18EF380006D04A /* StFftDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0BE1A18EF380006D04A /* StFftDistort.cpp */; };
 		18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18574E5D1A15EAC600152134 /* OscControl.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
@@ -366,6 +367,8 @@
 		1846E44B1A1606E000241F18 /* NoteParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteParticle.h; sourceTree = "<group>"; };
 		1846E44D1A1612DC00241F18 /* StCvOpDistort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpDistort.cpp; sourceTree = "<group>"; };
 		1846E44E1A1612DC00241F18 /* StCvOpDistort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpDistort.h; sourceTree = "<group>"; };
+		184CE0BE1A18EF380006D04A /* StFftDistort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDistort.cpp; sourceTree = "<group>"; };
+		184CE0BF1A18EF380006D04A /* StFftDistort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDistort.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		18574E5D1A15EAC600152134 /* OscControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscControl.cpp; sourceTree = "<group>"; };
 		18574E5E1A15EAC600152134 /* OscControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscControl.h; sourceTree = "<group>"; };
@@ -1029,6 +1032,8 @@
 				185A19AB1A07147300C24D6E /* StBlank.h */,
 				187A62501A06065E00DC5640 /* StSimplePixelate.cpp */,
 				187A62511A06065E00DC5640 /* StSimplePixelate.h */,
+				18603D721A189198001F097D /* StRgbDelay.cpp */,
+				18603D731A189198001F097D /* StRgbDelay.h */,
 				18D0E9241A06617300072012 /* StCvOpDraw.cpp */,
 				18D0E9251A06617300072012 /* StCvOpDraw.h */,
 				185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */,
@@ -1061,8 +1066,8 @@
 				18FB6A161A16D940004A2845 /* StFftSimplePlot.h */,
 				18FB6A171A16D940004A2845 /* StFftTracer.cpp */,
 				18FB6A181A16D940004A2845 /* StFftTracer.h */,
-				18603D721A189198001F097D /* StRgbDelay.cpp */,
-				18603D731A189198001F097D /* StRgbDelay.h */,
+				184CE0BE1A18EF380006D04A /* StFftDistort.cpp */,
+				184CE0BF1A18EF380006D04A /* StFftDistort.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2290,6 +2295,7 @@
 				C4782ECC372420ACE0615B74 /* OscPrintReceivedElements.cpp in Sources */,
 				0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */,
 				879A251454401BC0B6E4F238 /* OscTypes.cpp in Sources */,
+				184CE0C01A18EF380006D04A /* StFftDistort.cpp in Sources */,
 				18FB6A1F1A16D940004A2845 /* StFftSimplePlot.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
