@@ -9,7 +9,7 @@ void StFftSphereStripe::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
-    gui->addLabel("FFT Distort");
+    gui->addLabel("STRIPE SPHERE");
     gui->addSpacer();
     gui->addSlider("TOP SHIFT", 0, 100.0, 50.0);
     gui->addSlider("NOISE SCALE", 1.0, 30.0, 10.0);
@@ -27,8 +27,10 @@ void StFftSphereStripe::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftSphereStripe::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    int width = app->blackmagic->width;
-    int height = app->blackmagic->height;
+    //int width = app->blackmagic->width;
+    //int height = app->blackmagic->height;
+    int width = 128;
+    int height = 128;
     unsigned char pixels[width * height * 4];
     
     for (int i = 0; i < width * height * 4; i += 4){
@@ -54,18 +56,13 @@ void StFftSphereStripe::update(){
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
         fftSum += app->fft->drawBins[i];
     }
-    
-    int i = 0;
-    for(int y = 1; y + 1 < ySteps; y++) {
-        for(int x = 1; x + 1 < xSteps; x++) {
-            int i = y * xSteps + x;
-            float noiseX = ofMap(currentVertex[i].x, 0, ofGetWidth(), 0, noisescale);
-            float noiseY = ofMap(currentVertex[i].y, 0, ofGetWidth(), 0, noisescale);
-            float offset = ofNoise(noiseX + ofGetElapsedTimef() * shiftspeed, noiseY + ofGetElapsedTimef() * shiftspeed);
-            currentVertex[i].z = offset * distortionStrength * fftSum;
-            mesh.setVertex(i, currentVertex[i]);
-            i++;
-        }
+    for (int i = 0; i < mesh.getVertices().size(); i++) {
+        float noiseX = ofMap(currentVertex[i].x, 0, ofGetWidth(), 0, noisescale);
+        float noiseY = ofMap(currentVertex[i].y, 0, ofGetWidth(), 0, noisescale);
+        float offset = ofNoise(noiseX + ofGetElapsedTimef() * shiftspeed,
+                               noiseY + ofGetElapsedTimef() * shiftspeed);
+        currentVertex[i] = currentVertex[i].normalize() * (offset * fftSum * distortionStrength + ofGetWidth() / 8.0);
+        mesh.setVertex(i, currentVertex[i]);
     }
     
     gui->setVisible(getSharedData().guiVisible);
@@ -81,32 +78,25 @@ void StFftSphereStripe::draw(){
     
     
     app->drawFbo->fbo.begin();
+    cam.begin();
+    ofEnableDepthTest();
+    ofRotateX(ofGetElapsedTimef() * shiftspeed);
+    ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
+    ofRotateZ(ofGetElapsedTimef() * shiftspeed * 1.2);
     ofDisableAlphaBlending();
     ofClear(0,0,0);
-    ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
-                            ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
-    ofPushMatrix();
-    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    ofScale(scale.x * zoom, scale.y * zoom);
-    ofRotateZ(70);
-    ofSetColor(255);
-    ofTranslate(0, -app->drawFbo->top + topshift);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    
     float controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
-    
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     tex.bind();
-    ofPushMatrix();
-    ofTranslate(-ofGetWidth()/2, -ofGetWidth()/2);
     mesh.draw();
-    ofRotateZ(10);
+    ofRotate(shiftspeed * ofGetElapsedTimef(), 1.0, 1.0, 1.0);
     mesh.draw();
-    ofPopMatrix();
-    img.getTextureReference().unbind();
-    
-    ofPopMatrix();
+    tex.unbind();
+    //mesh.drawWireframe();
+    ofDisableDepthTest();
+    cam.end();
     app->drawFbo->fbo.end();
 }
 
@@ -118,7 +108,18 @@ void StFftSphereStripe::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftSphereStripe::createMesh(){
-    mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
+    mesh = ofSpherePrimitive(ofGetWidth(), 48).getMesh();
+    for (int i = 0; i < mesh.getVertices().size(); i++) {
+        ofVec2f texCoord = mesh.getTexCoord(i);
+        texCoord.x *= tex.getWidth();
+        texCoord.y  = (1.0 - texCoord.y) * tex.getHeight();
+        mesh.setTexCoord(i, texCoord);
+
+        currentVertex.push_back(ofVec3f(mesh.getVertices()[i].x, mesh.getVertices()[i].y, mesh.getVertices()[i].z));
+    }
+    
+    /*
     stepSize = 20;
     ySteps = ofGetWidth() * 2 / stepSize;
     xSteps = ofGetWidth() * 2 / stepSize;
@@ -143,6 +144,7 @@ void StFftSphereStripe::createMesh(){
             mesh.addIndex(sw);
         }
     }
+     */
 }
 
 void StFftSphereStripe::stateExit(){

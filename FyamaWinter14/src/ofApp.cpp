@@ -19,6 +19,7 @@
 #include "StFftRibbon.h"
 #include "StFftDistort.h"
 #include "StFftDistortStripe.h"
+#include "StFftSphereStripe.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -52,6 +53,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftRibbon>();
     stateMachine.addState<StFftDistort>();
     stateMachine.addState<StFftDistortStripe>();
+    stateMachine.addState<StFftSphereStripe>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     

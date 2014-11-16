@@ -104,7 +104,7 @@ void StFftDistortStripe::draw(){
     ofRotateZ(10);
     mesh.draw();
     ofPopMatrix();
-    img.getTextureReference().unbind();
+    tex.unbind();
     
     ofPopMatrix();
     app->drawFbo->fbo.end();
