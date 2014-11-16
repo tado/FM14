@@ -44,7 +44,7 @@ void StFftDrawBar::draw() {
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
-    ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
+    //ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbr = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbr->getValue();
     ofxUIIntSlider *grep = (ofxUIIntSlider *)gui->getWidget("REPEAT"); int rep = grep->getValue();
@@ -60,6 +60,10 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofSetLineWidth(linewidth * zoom);
     
     int controlRep = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 20);
+    int controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 63);
+    int hueLow = controlHue;
+    int hueHigh = (controlHue + 255 - 63);
+
     
     for (int j = 0; j < controlRep; j++) {
         for (int i = 0; i < n; i++) {

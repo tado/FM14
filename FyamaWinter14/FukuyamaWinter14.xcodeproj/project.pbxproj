@@ -51,6 +51,7 @@
 		1846E44F1A1612DC00241F18 /* StCvOpDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E44D1A1612DC00241F18 /* StCvOpDistort.cpp */; };
 		184CE0C01A18EF380006D04A /* StFftDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0BE1A18EF380006D04A /* StFftDistort.cpp */; };
 		184CE0C61A193D5A0006D04A /* StFftDistortStripe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0C41A193D5A0006D04A /* StFftDistortStripe.cpp */; };
+		184CE0C91A1952B30006D04A /* StFftSphereStripe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */; };
 		18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18574E5D1A15EAC600152134 /* OscControl.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
@@ -372,6 +373,8 @@
 		184CE0BF1A18EF380006D04A /* StFftDistort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDistort.h; sourceTree = "<group>"; };
 		184CE0C41A193D5A0006D04A /* StFftDistortStripe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDistortStripe.cpp; sourceTree = "<group>"; };
 		184CE0C51A193D5A0006D04A /* StFftDistortStripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDistortStripe.h; sourceTree = "<group>"; };
+		184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSphereStripe.cpp; sourceTree = "<group>"; };
+		184CE0C81A1952B30006D04A /* StFftSphereStripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSphereStripe.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		18574E5D1A15EAC600152134 /* OscControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscControl.cpp; sourceTree = "<group>"; };
 		18574E5E1A15EAC600152134 /* OscControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscControl.h; sourceTree = "<group>"; };
@@ -1073,6 +1076,8 @@
 				184CE0BF1A18EF380006D04A /* StFftDistort.h */,
 				184CE0C41A193D5A0006D04A /* StFftDistortStripe.cpp */,
 				184CE0C51A193D5A0006D04A /* StFftDistortStripe.h */,
+				184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */,
+				184CE0C81A1952B30006D04A /* StFftSphereStripe.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2362,6 +2367,7 @@
 				18FB6A1E1A16D940004A2845 /* StFftRings.cpp in Sources */,
 				18FB6A1A1A16D940004A2845 /* StFftDot.cpp in Sources */,
 				2229D0E5DBB8B82D783BEE52 /* b2DynamicTree.cpp in Sources */,
+				184CE0C91A1952B30006D04A /* StFftSphereStripe.cpp in Sources */,
 				181634B41A15CE65005E39EB /* BloomPass.cpp in Sources */,
 				2213DF405455BC9DEAC553B7 /* b2TimeOfImpact.cpp in Sources */,
 				187A62681A0606F200DC5640 /* ofxGuiGroup.cpp in Sources */,
