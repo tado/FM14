@@ -18,6 +18,7 @@
 #include "StFftBox.h"
 #include "StFftRibbon.h"
 #include "StFftDistort.h"
+#include "StFftDistortStripe.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -50,6 +51,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftBox>();
     stateMachine.addState<StFftRibbon>();
     stateMachine.addState<StFftDistort>();
+    stateMachine.addState<StFftDistortStripe>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     

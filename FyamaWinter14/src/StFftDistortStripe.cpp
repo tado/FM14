@@ -1,11 +1,11 @@
-#include "StFftDistort.h"
+#include "StFftDistortStripe.h"
 #include "ofApp.h"
 
-string StFftDistort::getName(){
-    return "StFftDistort";
+string StFftDistortStripe::getName(){
+    return "StFftDistortStripe";
 }
 
-void StFftDistort::setup(){
+void StFftDistortStripe::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
@@ -14,28 +14,42 @@ void StFftDistort::setup(){
     gui->addSlider("TOP SHIFT", 0, 100.0, 50.0);
     gui->addSlider("NOISE SCALE", 1.0, 30.0, 10.0);
     gui->addSlider("SHIFT SPEED", 0.0, 2.0, 1.0);
-    gui->addSlider("LINE WIDTH", 0, 3.0, 1.0);
+    gui->addSlider("ZOOM", 1.0, 5.0, 2.0);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("StFftDistort.xml");
+    gui->loadSettings("StFftDistortStripe.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&StFftDistort::guiEvent);
+    ofAddListener(gui->newGUIEvent,this,&StFftDistortStripe::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
-    
+
+    int width = app->blackmagic->width;
+    int height = app->blackmagic->height;
+    unsigned char pixels[width * height * 4];
+
+    for (int i = 0; i < width * height * 4; i += 4){
+        pixels[i] = pixels[i+1] = pixels[i+2] = 255;
+        if (i % 8 == 0) {
+            pixels[i + 3] = 0;
+        } else {
+            pixels[i + 3] = 255;
+        }
+
+    }
+    tex.loadData(pixels, width, height, GL_RGBA);
     createMesh();
 }
 
-void StFftDistort::update(){
+void StFftDistortStripe::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
-
+    
     float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 10);
-
+    
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
         fftSum += app->fft->drawBins[i];
@@ -57,12 +71,14 @@ void StFftDistort::update(){
     gui->setVisible(getSharedData().guiVisible);
 }
 
-void StFftDistort::draw(){
+void StFftDistortStripe::draw(){
     ofxUISlider *gtopshift = (ofxUISlider *)gui->getWidget("TOP SHIFT"); float topshift = gtopshift->getValue();
-    ofxUISlider *glinewidth = (ofxUISlider *)gui->getWidget("LINE WIDTH"); float linewidth = glinewidth->getValue();
+    ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
+    ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
     ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
+    
     
     app->drawFbo->fbo.begin();
     ofDisableAlphaBlending();
@@ -70,38 +86,42 @@ void StFftDistort::draw(){
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
                             ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
     ofPushMatrix();
-    ofScale(scale.x, scale.y);
+    ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+    ofScale(scale.x * zoom, scale.y * zoom);
+    ofRotateZ(70);
     ofSetColor(255);
     ofTranslate(0, -app->drawFbo->top + topshift);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     
-    app->blackmagic->colorTexture.bind();
-    mesh.draw();
-    app->blackmagic->colorTexture.unbind();
-    
-    ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
+    float controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
+
+    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    ofSetLineWidth(linewidth);
-    if (linewidth > 0) {
-        mesh.drawWireframe();
-    }
+    tex.bind();
+    ofPushMatrix();
+    ofTranslate(-ofGetWidth()/2, -ofGetWidth()/2);
+    mesh.draw();
+    ofRotateZ(10);
+    mesh.draw();
+    ofPopMatrix();
+    img.getTextureReference().unbind();
     
     ofPopMatrix();
     app->drawFbo->fbo.end();
 }
 
-void StFftDistort::guiEvent(ofxUIEventArgs &e){
+void StFftDistortStripe::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("StFftDistort.xml");
+        gui->saveSettings("StFftDistortStripe.xml");
     }
 }
 
-void StFftDistort::createMesh(){
+void StFftDistortStripe::createMesh(){
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 20;
-    ySteps = ofGetHeight() / stepSize;
-    xSteps = ofGetWidth() / stepSize;
+    ySteps = ofGetWidth() * 2 / stepSize;
+    xSteps = ofGetWidth() * 2 / stepSize;
     for(int y = 0; y < ySteps; y++) {
         for(int x = 0; x < xSteps; x++) {
             mesh.addVertex(ofVec3f(x * stepSize, y * stepSize, 0));
@@ -125,6 +145,6 @@ void StFftDistort::createMesh(){
     }
 }
 
-void StFftDistort::stateExit(){
+void StFftDistortStripe::stateExit(){
     gui->setVisible(false);
 }
