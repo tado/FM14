@@ -92,7 +92,7 @@ void StCvOpParticlePath::draw(){
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int controlMax = powf(app->oscControl->controlVal[2] * 0.25, 1.5);
+        int controlMax = powf(app->oscControl->controlVal[2] * 0.25, 1.7);
         
         for (int i = 0; i < controlMax; i++) {
             int x = ofRandom(flow.getWidth()-skip);

@@ -3,9 +3,8 @@
 
 void OscControl::setup(){
     receiver.setup(9000);
-    
     for (int i = 0; i < 8; i++) {
-        controlVal[i] = 255;
+        controlVal[i] = 127;
     }
 }
 
@@ -47,6 +46,9 @@ void OscControl::update(){
             }
             if (row == 54 && col == 1) {
                 app->stateMachine.changeState("StSakuraParticle");
+            }
+            if (row == 54 && col == 2) {
+                app->stateMachine.changeState("StRgbDelay");
             }
             if (row == 55 && col == 1) {
                 app->stateMachine.changeState("StSoundWave");

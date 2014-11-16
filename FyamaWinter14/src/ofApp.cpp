@@ -9,6 +9,8 @@
 #include "StCvOpNote.h"
 #include "StCvOpDistort.h"
 #include "StSakuraParticle.h"
+#include "StRgbDelay.h"
+
 #include "StSoundWave.h"
 #include "StFftDrawCircle.h"
 #include "StFftDot.h"
@@ -16,10 +18,11 @@
 #include "StFftBox.h"
 #include "StFftRibbon.h"
 
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    ofSetWindowPosition(1920, 0);
+    // ofSetWindowPosition(1920, 0);
     
     // FFT
     bufferSize = 1024;
@@ -38,6 +41,8 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpNote>();
     stateMachine.addState<StCvOpDistort>();
     stateMachine.addState<StSakuraParticle>();
+    stateMachine.addState<StRgbDelay>();
+    
     stateMachine.addState<StSoundWave>();
     stateMachine.addState<StFftDrawCircle>();
     stateMachine.addState<StFftDot>();
@@ -166,6 +171,9 @@ void ofApp::keyPressed(int key){
             break;
         case '9':
             stateMachine.changeState("StSakuraParticle");
+            break;
+        case '0':
+            stateMachine.changeState("StRgbDelay");
             break;
         case 'q':
             stateMachine.changeState("StSoundWave");

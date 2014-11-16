@@ -58,7 +58,10 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofScale(ofGetWidth() / float(app->fft->drawBins.size()) * zoom , ofGetWidth() / float(app->fft->drawBins.size()) * zoom);
     ofColor col;
     ofSetLineWidth(linewidth * zoom);
-    for (int j = 0; j < rep; j++) {
+    
+    int controlRep = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 20);
+    
+    for (int j = 0; j < controlRep; j++) {
         for (int i = 0; i < n; i++) {
             float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
             int br = ofMap(buffer[i], 0, 1.0, 0, 255 / float(rep)) * brightness / 64.0;
@@ -70,7 +73,7 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
             ofRect(-i / 2.0, -scale / 2.0, linewidth * zoom, scale);
 
         }
-        ofRotateZ(180 / rep);
+        ofRotateZ(180 / controlRep);
     }
     ofSetLineWidth(1.0);
     glPopMatrix();

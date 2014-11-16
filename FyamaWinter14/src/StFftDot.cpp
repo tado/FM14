@@ -51,18 +51,21 @@ void StFftDot::draw() {
     ofScale(zoom, zoom);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    for (int j = 0; j < rep; j++) {
+    float controlRep = ofMap(app->oscControl->controlVal[2], 0, 127.0, 1.0, 120.0);
+    float controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 255 - 64);
+    
+    for (int j = 0; j < controlRep; j++) {
         for (int i = 0; i < app->fft->drawBins.size(); i += skip) {
             float size = ofMap(app->fft->drawBins[i], 0, 1.0, 1, circlesize);
             float x = ofMap(i, 0, app->fft->drawBins.size(), 0, ofGetWidth()/2.0);
-            float hue = ofMap(i, 0, app->fft->drawBins.size(), hueLow, hueHigh);
+            float hue = ofMap(i, 0, app->fft->drawBins.size(), controlHue, controlHue + 64);
             ofColor col;
             col.setHsb(hue, saturation, brightness);
             ofSetColor(col);
             ofCircle(x, shift, size);
             ofCircle(-x, shift, size);
         }
-        ofRotateZ(360 / float(rep));
+        ofRotateZ(360.0 / controlRep);
     }
     
     ofDisableAlphaBlending();
