@@ -33,12 +33,11 @@ void StFftDistortStripe::setup(){
 
     for (int i = 0; i < width * height * 4; i += 4){
         pixels[i] = pixels[i+1] = pixels[i+2] = 255;
-        if (i % 8 == 0) {
-            pixels[i + 3] = 0;
-        } else {
+        if (i % 12 == 0) {
             pixels[i + 3] = 255;
+        } else {
+            pixels[i + 3] = 0;
         }
-
     }
     tex.loadData(pixels, width, height, GL_RGBA);
     createMesh();

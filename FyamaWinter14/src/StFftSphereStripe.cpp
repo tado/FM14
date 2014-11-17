@@ -30,20 +30,19 @@ void StFftSphereStripe::setup(){
     post.init(ofGetWidth(), ofGetHeight());
     post.createPass<BloomPass>()->setEnabled(true);
     
-    cam.setFarClip(5000);
+    cam.setFarClip(10000);
 
-    int width = 256;
-    int height = 256;
+    int width = 512;
+    int height = 512;
     unsigned char pixels[width * height * 4];
     
     for (int i = 0; i < width * height * 4; i += 4){
         pixels[i] = pixels[i+1] = pixels[i+2] = 255;
-        if (i % 8 == 0) {
-            pixels[i + 3] = 0;
-        } else {
+        if (i % 16 == 0) {
             pixels[i + 3] = 255;
+        } else {
+            pixels[i + 3] = 0;
         }
-        
     }
     tex.loadData(pixels, width, height, GL_RGBA);
     createMesh();
@@ -53,7 +52,7 @@ void StFftSphereStripe::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 10);
+    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 5);
     
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -90,17 +89,24 @@ void StFftSphereStripe::draw(){
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    float controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
+    float controlHue;
+    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    ofEnableDepthTest();
+    //ofEnableDepthTest();
+    glDisable(GL_CULL_FACE);
     tex.bind();
     mesh.draw();
-    ofRotate(shiftspeed * ofGetElapsedTimef(), 1.0, 0.8, 0.5);
+    ofRotateX(shiftspeed * ofGetElapsedTimef() * 2.0);
+    ofRotateY(shiftspeed * ofGetElapsedTimef() * 2.3);
+    ofRotateZ(shiftspeed * ofGetElapsedTimef() * 2.5);
+    
+    col.setHsb(int(controlHue * 255 + 64) % 255, sat * 255, br * 255);
+    ofSetColor(col);
     mesh.draw();
     tex.unbind();
     //mesh.drawWireframe();
-    ofDisableDepthTest();
+    //ofDisableDepthTest();
     post.end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
