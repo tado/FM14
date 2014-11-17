@@ -10,6 +10,7 @@
 #include "StCvOpDistort.h"
 #include "StSakuraParticle.h"
 #include "StRgbDelay.h"
+#include "StKaleidoscope.h"
 
 #include "StSoundWave.h"
 #include "StFftDrawCircle.h"
@@ -45,6 +46,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpDistort>();
     stateMachine.addState<StSakuraParticle>();
     stateMachine.addState<StRgbDelay>();
+    stateMachine.addState<StKaleidoscope>();
     
     stateMachine.addState<StSoundWave>();
     stateMachine.addState<StFftDrawCircle>();

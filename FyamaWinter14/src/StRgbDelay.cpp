@@ -46,7 +46,6 @@ void StRgbDelay::draw(){
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetCircleResolution(32);
     
     ofSetColor(255, 0, 0);
     texBuffer[0].draw(0, 0, app->blackmagic->width, app->blackmagic->height);
