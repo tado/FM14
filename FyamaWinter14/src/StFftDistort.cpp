@@ -34,7 +34,7 @@ void StFftDistort::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
 
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 10);
+    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 8);
 
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -60,7 +60,7 @@ void StFftDistort::update(){
 void StFftDistort::draw(){
     ofxUISlider *gtopshift = (ofxUISlider *)gui->getWidget("TOP SHIFT"); float topshift = gtopshift->getValue();
     ofxUISlider *glinewidth = (ofxUISlider *)gui->getWidget("LINE WIDTH"); float linewidth = glinewidth->getValue();
-    ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
+    //ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
@@ -73,12 +73,13 @@ void StFftDistort::draw(){
     ofScale(scale.x, scale.y);
     ofSetColor(255);
     ofTranslate(0, -app->drawFbo->top + topshift);
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     app->blackmagic->colorTexture.bind();
     mesh.draw();
     app->blackmagic->colorTexture.unbind();
     
+    float hue =ofMap(app->oscControl->controlVal[3], 0, 127, 0.0, 1.0);
     ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofSetLineWidth(linewidth);
@@ -88,6 +89,7 @@ void StFftDistort::draw(){
     
     ofPopMatrix();
     app->drawFbo->fbo.end();
+    ofDisableAlphaBlending();
 }
 
 void StFftDistort::guiEvent(ofxUIEventArgs &e){
@@ -99,7 +101,7 @@ void StFftDistort::guiEvent(ofxUIEventArgs &e){
 
 void StFftDistort::createMesh(){
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    stepSize = 20;
+    stepSize = 10;
     ySteps = ofGetHeight() / stepSize;
     xSteps = ofGetWidth() / stepSize;
     for(int y = 0; y < ySteps; y++) {

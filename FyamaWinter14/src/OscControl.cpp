@@ -50,9 +50,6 @@ void OscControl::update(){
             if (row == 54 && col == 2) {
                 app->stateMachine.changeState("StRgbDelay");
             }
-            if (row == 54 && col == 3) {
-                app->stateMachine.changeState("StKaleidoscope");
-            }
             if (row == 55 && col == 1) {
                 app->stateMachine.changeState("StSoundWave");
             }
@@ -82,6 +79,9 @@ void OscControl::update(){
             }
             if (row == 56 && col == 2) {
                 app->stateMachine.changeState("StFftSphereDistort");
+            }
+            if (row == 56 && col == 3) {
+                app->stateMachine.changeState("StKaleidoscope");
             }
         }
         

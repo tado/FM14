@@ -10,6 +10,9 @@ void StKaleidoscope::setup(){
     gui->addSpacer();
     gui->addLabel("KALEIDO SCOPE");
     // gui->addSlider("HUE", 0, 1.0, 0.5);
+    gui->addSlider("SEGMENT", 0, 8.0, 3.0);
+    gui->addSlider("NOISE AMP", 0.0, 3.0, 1.0);
+    gui->addSlider("ZOOM", 1.0, 8.0, 2.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
@@ -35,17 +38,19 @@ void StKaleidoscope::setup(){
 }
 
 void StKaleidoscope::update(){
+    ofxUISlider *gsegment = (ofxUISlider *)gui->getWidget("SEGMENT"); float segment = gsegment->getValue();
+    ofxUISlider *gnoiseamp = (ofxUISlider *)gui->getWidget("NOISE AMP"); float noiseamp = gnoiseamp->getValue();
+
     fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
         fftSum += app->fft->drawBins[i];
     }
     float noiseStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 5, 10);
     noise->setFrequency(fftSum/ float(app->fft->drawBins.size()) * noiseStrength);
-    noise->setAmplitude(fftSum/ float(app->fft->drawBins.size()) * noiseStrength);
+    noise->setAmplitude(fftSum/ float(app->fft->drawBins.size()) * noiseStrength * noiseamp);
     //noise->setFrequency(fftSum/ float(app->fft->drawBins.size()) * 20.0);
-    //float segment = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 3);
-    //kaleido->setSegments(segment);
-    //kaleido->setAspect(2000 - ofVec2f(fftSum, fftSum) * 1000);
+
+    kaleido->setSegments(segment);
 }
 
 void StKaleidoscope::draw(){
@@ -53,7 +58,8 @@ void StKaleidoscope::draw(){
     // ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
-    
+    ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
+
     float hue =ofMap(app->oscControl->controlVal[3], 0, 127, 0.0, 1.0);
     app->drawFbo->fbo.begin();
     ofDisableAlphaBlending();
@@ -61,7 +67,7 @@ void StKaleidoscope::draw(){
     ofTranslate(0, -app->drawFbo->top);
     post.begin(cam);
     ofPushMatrix();
-    ofScale(2.0, 2.0);
+    ofScale(zoom, zoom);
     ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofRotateZ(ofGetElapsedTimef() * 40.0);
