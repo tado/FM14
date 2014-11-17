@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 419.0, 45.0, 1277.0, 1027.0 ],
+		"rect" : [ 419.0, 45.0, 395.0, 489.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 45.0, 0.0, 290.0, 34.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 180.0, 30.0, 374.0, 34.0 ],
+					"presentation_rect" : [ 30.0, 15.0, 330.0, 34.0 ],
 					"style" : "",
 					"text" : "Realtime Effect Controler"
 				}
@@ -99,7 +99,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 885.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1020.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 345.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -151,7 +151,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 795.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 900.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 300.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -203,7 +203,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 705.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 780.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 255.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -255,7 +255,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 615.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 660.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 210.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -307,7 +307,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 525.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 540.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 165.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -359,7 +359,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 435.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 420.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 120.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -411,7 +411,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 345.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 300.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 75.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -502,7 +502,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 255.0, 300.0, 20.0, 140.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 180.0, 690.0, 90.0, 300.0 ],
+					"presentation_rect" : [ 30.0, 300.0, 30.0, 165.0 ],
 					"style" : ""
 				}
 
@@ -621,7 +621,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 45.0, 45.0, 390.0, 240.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 180.0, 75.0, 930.0, 600.0 ],
+					"presentation_rect" : [ 30.0, 60.0, 345.0, 225.0 ],
 					"rows" : 5,
 					"style" : ""
 				}

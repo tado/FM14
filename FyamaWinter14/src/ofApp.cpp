@@ -11,6 +11,7 @@
 #include "StSakuraParticle.h"
 #include "StRgbDelay.h"
 #include "StKaleidoscope.h"
+#include "StTrianglePixelate.h"
 
 #include "StSoundWave.h"
 #include "StFftDrawCircle.h"
@@ -26,7 +27,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    ofSetWindowPosition(1920, 0);
+    // ofSetWindowPosition(1920, 0);
     
     // FFT
     bufferSize = 1024;
@@ -46,7 +47,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpDistort>();
     stateMachine.addState<StSakuraParticle>();
     stateMachine.addState<StRgbDelay>();
-    stateMachine.addState<StKaleidoscope>();
+    stateMachine.addState<StTrianglePixelate>();
     
     stateMachine.addState<StSoundWave>();
     stateMachine.addState<StFftDrawCircle>();
@@ -58,6 +59,8 @@ void ofApp::setup(){
     stateMachine.addState<StFftDistortStripe>();
     stateMachine.addState<StFftSphereStripe>();
     stateMachine.addState<StFftSphereDistort>();
+    stateMachine.addState<StKaleidoscope>();
+    
     stateMachine.changeState("StBlank");
     guiVisible = false;
     

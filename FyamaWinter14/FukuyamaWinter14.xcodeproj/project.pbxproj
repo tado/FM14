@@ -57,6 +57,7 @@
 		18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18574E5D1A15EAC600152134 /* OscControl.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
+		185D167E1A19CE3200BC748A /* StTrianglePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185D167C1A19CE3100BC748A /* StTrianglePixelate.cpp */; };
 		18603D741A189198001F097D /* StRgbDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18603D721A189198001F097D /* StRgbDelay.cpp */; };
 		187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */; };
 		187A62521A06065E00DC5640 /* StSimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62501A06065E00DC5640 /* StSimplePixelate.cpp */; };
@@ -388,6 +389,8 @@
 		185A19AB1A07147300C24D6E /* StBlank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBlank.h; sourceTree = "<group>"; };
 		185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpParticle.cpp; sourceTree = "<group>"; };
 		185A19AE1A071DCD00C24D6E /* StCvOpParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpParticle.h; sourceTree = "<group>"; };
+		185D167C1A19CE3100BC748A /* StTrianglePixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StTrianglePixelate.cpp; sourceTree = "<group>"; };
+		185D167D1A19CE3200BC748A /* StTrianglePixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StTrianglePixelate.h; sourceTree = "<group>"; };
 		18603D721A189198001F097D /* StRgbDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StRgbDelay.cpp; sourceTree = "<group>"; };
 		18603D731A189198001F097D /* StRgbDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StRgbDelay.h; sourceTree = "<group>"; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
@@ -1044,6 +1047,8 @@
 				185A19AB1A07147300C24D6E /* StBlank.h */,
 				187A62501A06065E00DC5640 /* StSimplePixelate.cpp */,
 				187A62511A06065E00DC5640 /* StSimplePixelate.h */,
+				185D167C1A19CE3100BC748A /* StTrianglePixelate.cpp */,
+				185D167D1A19CE3200BC748A /* StTrianglePixelate.h */,
 				18603D721A189198001F097D /* StRgbDelay.cpp */,
 				18603D731A189198001F097D /* StRgbDelay.h */,
 				184CE0CD1A19807B0006D04A /* StKaleidoscope.cpp */,
@@ -2327,6 +2332,7 @@
 				E6ADFAF5B64F107FD970E6E7 /* ColorConversion.cpp in Sources */,
 				DD6B7D26B640FE59CC56C615 /* DeckLinkController.cpp in Sources */,
 				0FC43B3D38A4D41A1AD95D39 /* ofxBlackMagic.cpp in Sources */,
+				185D167E1A19CE3200BC748A /* StTrianglePixelate.cpp in Sources */,
 				C3E6B03047001AECDDBFE6D3 /* DeckLinkAPIDispatch.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
