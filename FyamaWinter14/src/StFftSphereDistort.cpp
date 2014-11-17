@@ -52,7 +52,7 @@ void StFftSphereDistort::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 8);
+    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 4);
     
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -94,7 +94,7 @@ void StFftSphereDistort::draw(){
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofEnableDepthTest();
-    glDisable(GL_CULL_FACE);
+    glEnable(GL_CULL_FACE);
     app->blackmagic->colorTexture.bind();
     mesh.draw();
     
@@ -108,6 +108,7 @@ void StFftSphereDistort::draw(){
     app->blackmagic->colorTexture.unbind();
     //mesh.drawWireframe();
     ofDisableDepthTest();
+    glDisable(GL_CULL_FACE);
     post.end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
