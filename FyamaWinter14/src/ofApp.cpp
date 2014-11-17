@@ -20,6 +20,7 @@
 #include "StFftDistort.h"
 #include "StFftDistortStripe.h"
 #include "StFftSphereStripe.h"
+#include "StFftSphereDistort.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -54,6 +55,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftDistort>();
     stateMachine.addState<StFftDistortStripe>();
     stateMachine.addState<StFftSphereStripe>();
+    stateMachine.addState<StFftSphereDistort>();
     stateMachine.changeState("StBlank");
     guiVisible = false;
     

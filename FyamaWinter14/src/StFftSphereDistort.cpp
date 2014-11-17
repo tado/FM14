@@ -1,11 +1,11 @@
-#include "StFftSphereStripe.h"
+#include "StFftSphereDistort.h"
 #include "ofApp.h"
 
-string StFftSphereStripe::getName(){
-    return "StFftSphereStripe";
+string StFftSphereDistort::getName(){
+    return "StFftSphereDistort";
 }
 
-void StFftSphereStripe::setup(){
+void StFftSphereDistort::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
@@ -21,17 +21,17 @@ void StFftSphereStripe::setup(){
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("StFftSphereStripe.xml");
+    gui->loadSettings("StFftSphereDistort.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&StFftSphereStripe::guiEvent);
+    ofAddListener(gui->newGUIEvent,this,&StFftSphereDistort::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
     post.init(ofGetWidth(), ofGetHeight());
     post.createPass<BloomPass>()->setEnabled(true);
     
     cam.setFarClip(10000);
-
+    
     int width = 512;
     int height = 512;
     unsigned char pixels[width * height * 4];
@@ -48,7 +48,7 @@ void StFftSphereStripe::setup(){
     createMesh();
 }
 
-void StFftSphereStripe::update(){
+void StFftSphereDistort::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     
@@ -70,7 +70,7 @@ void StFftSphereStripe::update(){
     gui->setVisible(getSharedData().guiVisible);
 }
 
-void StFftSphereStripe::draw(){
+void StFftSphereDistort::draw(){
     ofxUISlider *gtopshift = (ofxUISlider *)gui->getWidget("TOP SHIFT"); float topshift = gtopshift->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
@@ -93,13 +93,10 @@ void StFftSphereStripe::draw(){
     controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    //ofEnableDepthTest();
+    ofEnableDepthTest();
     glDisable(GL_CULL_FACE);
-    tex.bind();
+    app->blackmagic->colorTexture.bind();
     mesh.draw();
-    //ofRotateX(shiftspeed * ofGetElapsedTimef() * 0.2 + 40);
-    //ofRotateY(shiftspeed * ofGetElapsedTimef() * 0.3 + 40);
-    //ofRotateZ(shiftspeed * ofGetElapsedTimef() * 0.5 + 40);
     
     ofRotateX(10);
     ofRotateY(12);
@@ -108,22 +105,22 @@ void StFftSphereStripe::draw(){
     col.setHsb(int(controlHue * 255 + 127) % 255, sat * 255, br * 255);
     ofSetColor(col);
     mesh.draw();
-    tex.unbind();
+    app->blackmagic->colorTexture.unbind();
     //mesh.drawWireframe();
-    //ofDisableDepthTest();
+    ofDisableDepthTest();
     post.end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
 }
 
-void StFftSphereStripe::guiEvent(ofxUIEventArgs &e){
+void StFftSphereDistort::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("StFftSphereStripe.xml");
+        gui->saveSettings("StFftSphereDistort.xml");
     }
 }
 
-void StFftSphereStripe::createMesh(){
+void StFftSphereDistort::createMesh(){
     //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     mesh = ofSpherePrimitive(ofGetWidth(), 48).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
@@ -131,11 +128,11 @@ void StFftSphereStripe::createMesh(){
         texCoord.x *= tex.getWidth();
         texCoord.y  = (1.0 - texCoord.y) * tex.getHeight();
         mesh.setTexCoord(i, texCoord);
-
+        
         currentVertex.push_back(ofVec3f(mesh.getVertices()[i].x, mesh.getVertices()[i].y, mesh.getVertices()[i].z));
     }
 }
 
-void StFftSphereStripe::stateExit(){
+void StFftSphereDistort::stateExit(){
     gui->setVisible(false);
 }

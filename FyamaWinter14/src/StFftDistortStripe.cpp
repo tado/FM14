@@ -101,6 +101,8 @@ void StFftDistortStripe::draw(){
     ofTranslate(-ofGetWidth()/2, -ofGetWidth()/2);
     mesh.draw();
     ofRotateZ(10);
+    col.setHsb(int(controlHue * 255 + 127) % 255, sat * 255, br * 255);
+    ofSetColor(col);
     mesh.draw();
     ofPopMatrix();
     tex.unbind();
@@ -119,7 +121,7 @@ void StFftDistortStripe::guiEvent(ofxUIEventArgs &e){
 
 void StFftDistortStripe::createMesh(){
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    stepSize = 20;
+    stepSize = 16;
     ySteps = ofGetWidth() * 2 / stepSize;
     xSteps = ofGetWidth() * 2 / stepSize;
     for(int y = 0; y < ySteps; y++) {

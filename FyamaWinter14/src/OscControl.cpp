@@ -77,6 +77,9 @@ void OscControl::update(){
             if (row == 56 && col == 1) {
                 app->stateMachine.changeState("StFftSphereStripe");
             }
+            if (row == 56 && col == 2) {
+                app->stateMachine.changeState("StFftSphereDistort");
+            }
         }
         
         if(m.getAddress() == "/control"){

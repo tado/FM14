@@ -52,6 +52,7 @@
 		184CE0C01A18EF380006D04A /* StFftDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0BE1A18EF380006D04A /* StFftDistort.cpp */; };
 		184CE0C61A193D5A0006D04A /* StFftDistortStripe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0C41A193D5A0006D04A /* StFftDistortStripe.cpp */; };
 		184CE0C91A1952B30006D04A /* StFftSphereStripe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */; };
+		184CE0CC1A1976D60006D04A /* StFftSphereDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0CA1A1976D60006D04A /* StFftSphereDistort.cpp */; };
 		18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18574E5D1A15EAC600152134 /* OscControl.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
@@ -375,6 +376,8 @@
 		184CE0C51A193D5A0006D04A /* StFftDistortStripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDistortStripe.h; sourceTree = "<group>"; };
 		184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSphereStripe.cpp; sourceTree = "<group>"; };
 		184CE0C81A1952B30006D04A /* StFftSphereStripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSphereStripe.h; sourceTree = "<group>"; };
+		184CE0CA1A1976D60006D04A /* StFftSphereDistort.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSphereDistort.cpp; sourceTree = "<group>"; };
+		184CE0CB1A1976D60006D04A /* StFftSphereDistort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSphereDistort.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		18574E5D1A15EAC600152134 /* OscControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscControl.cpp; sourceTree = "<group>"; };
 		18574E5E1A15EAC600152134 /* OscControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscControl.h; sourceTree = "<group>"; };
@@ -1078,6 +1081,8 @@
 				184CE0C51A193D5A0006D04A /* StFftDistortStripe.h */,
 				184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */,
 				184CE0C81A1952B30006D04A /* StFftSphereStripe.h */,
+				184CE0CA1A1976D60006D04A /* StFftSphereDistort.cpp */,
+				184CE0CB1A1976D60006D04A /* StFftSphereDistort.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2452,6 +2457,7 @@
 				7BE46522B64E24FAEDE1A25D /* ofxUICanvas.cpp in Sources */,
 				DF0C851B244C4C867CEA8806 /* ofxUICircleSlider.cpp in Sources */,
 				9BE4AE0AA2B8C436BDFE9D4D /* ofxUIDragableLabelButton.cpp in Sources */,
+				184CE0CC1A1976D60006D04A /* StFftSphereDistort.cpp in Sources */,
 				F392A99D83698FC099127880 /* ofxUIDropDownList.cpp in Sources */,
 				084025DA517D8329301FE1B6 /* ofxUIEventArgs.cpp in Sources */,
 				7252706DA14C1BE63950ADDA /* ofxUIFPS.cpp in Sources */,
