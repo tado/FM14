@@ -136,12 +136,13 @@ void StCvOpMesh::draw(){
     ofSetColor(0, 0, 0, fade);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
+    /*
     if (clear) {
         ofEnableBlendMode(OF_BLENDMODE_ALPHA);
         ofSetColor(0);
         ofRect(0, 0, ofGetWidth(), ofGetHeight());
     }
-
+     */
     mesh.clear();
     for (int i = 0; i < particles.size(); i++) {
         mesh.addVertex(ofVec3f(particles[i]->position.x,

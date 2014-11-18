@@ -72,6 +72,7 @@
 		18D0E9261A06617300072012 /* StCvOpDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E9241A06617300072012 /* StCvOpDraw.cpp */; };
 		18D0E92C1A06653300072012 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E92A1A06653300072012 /* Particle.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
+		18E82F9A1A1AC3C70069F7F4 /* StFftSphereRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E82F981A1AC3C70069F7F4 /* StFftSphereRibbon.cpp */; };
 		18FB69FA1A16A2B5004A2845 /* StCvOpParticlePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */; };
 		18FB69FE1A16C608004A2845 /* SakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */; };
 		18FB6A011A16C6CE004A2845 /* StSakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */; };
@@ -420,6 +421,8 @@
 		18D0E9251A06617300072012 /* StCvOpDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpDraw.h; sourceTree = "<group>"; };
 		18D0E92A1A06653300072012 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
 		18D0E92B1A06653300072012 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		18E82F981A1AC3C70069F7F4 /* StFftSphereRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSphereRibbon.cpp; sourceTree = "<group>"; };
+		18E82F991A1AC3C70069F7F4 /* StFftSphereRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSphereRibbon.h; sourceTree = "<group>"; };
 		18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpParticlePath.cpp; sourceTree = "<group>"; };
 		18FB69F91A16A2B5004A2845 /* StCvOpParticlePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpParticlePath.h; sourceTree = "<group>"; };
 		18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SakuraParticle.cpp; sourceTree = "<group>"; };
@@ -1079,6 +1082,8 @@
 				18FB6A101A16D940004A2845 /* StFftDrawCircle.h */,
 				18FB6A111A16D940004A2845 /* StFftRibbon.cpp */,
 				18FB6A121A16D940004A2845 /* StFftRibbon.h */,
+				18E82F981A1AC3C70069F7F4 /* StFftSphereRibbon.cpp */,
+				18E82F991A1AC3C70069F7F4 /* StFftSphereRibbon.h */,
 				18FB6A131A16D940004A2845 /* StFftRings.cpp */,
 				18FB6A141A16D940004A2845 /* StFftRings.h */,
 				18FB6A151A16D940004A2845 /* StFftSimplePlot.cpp */,
@@ -2335,6 +2340,7 @@
 				185D167E1A19CE3200BC748A /* StTrianglePixelate.cpp in Sources */,
 				C3E6B03047001AECDDBFE6D3 /* DeckLinkAPIDispatch.cpp in Sources */,
 				B6840996567E78436F7ECFAB /* ETF.cpp in Sources */,
+				18E82F9A1A1AC3C70069F7F4 /* StFftSphereRibbon.cpp in Sources */,
 				F76B4A79BD8DE4854141CB47 /* fdog.cpp in Sources */,
 				EBCDE831EFAE08274E799C97 /* Calibration.cpp in Sources */,
 				6AABAB39E82AF5CFEA23A205 /* ContourFinder.cpp in Sources */,

@@ -23,6 +23,7 @@
 #include "StFftDistortStripe.h"
 #include "StFftSphereStripe.h"
 #include "StFftSphereDistort.h"
+#include "StFftSphereRibbon.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -60,6 +61,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftSphereStripe>();
     stateMachine.addState<StFftSphereDistort>();
     stateMachine.addState<StKaleidoscope>();
+    stateMachine.addState<StFftSphereRibbon>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;
@@ -156,61 +158,6 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch (key) {
-          
-        case '1':
-            stateMachine.changeState("StBlank");
-            break;
-        case '2':
-            stateMachine.changeState("StSimplePixelate");
-            break;
-        case '3':
-            stateMachine.changeState("StCvOpDraw");
-            break;
-        case '4':
-            stateMachine.changeState("StCvOpParticle");
-            break;
-        case '5':
-            stateMachine.changeState("StCvOpParticlePath");
-            break;
-        case '6':
-            stateMachine.changeState("StCvOpMesh");
-            break;
-        case '7':
-            stateMachine.changeState("StCvOpNote");
-            break;
-        case '8':
-            stateMachine.changeState("StCvOpDistort");
-            break;
-        case '9':
-            stateMachine.changeState("StSakuraParticle");
-            break;
-        case '0':
-            stateMachine.changeState("StRgbDelay");
-            break;
-        case 'q':
-            stateMachine.changeState("StSoundWave");
-            break;
-        case 'w':
-            stateMachine.changeState("StFftDrawCircle");
-            break;
-        case 'e':
-            stateMachine.changeState("StFftDot");
-            break;
-        case 'r':
-            stateMachine.changeState("StFftDrawBar");
-            break;
-        case 't':
-            stateMachine.changeState("StFftBox");
-            break;
-        case 'y':
-            stateMachine.changeState("StFftRibbon");
-            break;
-        case 'u':
-            stateMachine.changeState("StFftDistort");
-            break;
-       
-            //---------------------------------------------------
-
         case 'f':
             ofToggleFullscreen();
             break;
@@ -220,8 +167,7 @@ void ofApp::keyPressed(int key){
             ofHideCursor() : ofShowCursor();
             stateMachine.getSharedData().guiVisible?
             stateMachine.getSharedData().guiVisible = false :stateMachine.getSharedData().guiVisible = true;
-            break;
-            
+            break;            
     }
 }
 

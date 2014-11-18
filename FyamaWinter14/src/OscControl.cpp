@@ -3,7 +3,7 @@
 
 
 string stateMatrix[5][8] = {
-    {"StFftDrawCircle", "StFftBox", "StFftRibbon"},
+    {"StFftDrawCircle", "StFftBox", "StFftSphereRibbon"},
     {"StFftDrawBar", "StFftSphereStripe", "StFftDistort", "StFftRibbon"},
     {"StSoundWave", "StFftDistortStripe", "StFftSphereStripe", "StFftSphereDistort", "StKaleidoscope"},
     {"StSimplePixelate", "StTrianglePixelate", "StCvOpDraw", "StCvOpParticle", "StCvOpParticlePath", "StCvOpNote", "StCvOpMesh", "StCvOpDistort"},

@@ -1,7 +1,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYR SCALE</Name>
-    <Value>0.479531258</Value>
+    <Value>0.288749993</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -46,7 +46,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>5.625000000</Value>
+    <Value>3.333333492</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -61,7 +61,7 @@
 <Widget>
     <Kind>42</Kind>
     <Name>FADE</Name>
-    <Value>8</Value>
+    <Value>7</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -71,10 +71,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>0.875000000</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>1.000000000</Value>
+    <Value>0.479166657</Value>
 </Widget>
