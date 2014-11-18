@@ -12,6 +12,7 @@ public:
     void setup();
     void update();
     void draw();
+    void stateEnter();
     void stateExit();
     void createMesh();
     void guiEvent(ofxUIEventArgs &e);

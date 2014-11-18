@@ -120,13 +120,12 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
-    
-    //srcMix = m->getValue();
+
     srcMix = oscControl->controlVal[0] * 2;
     
     ofSetColor(srcMix);
     blackmagic->drawSub();
-
+    ofDisableAlphaBlending();
     fxMix = oscControl->controlVal[1] * 2;
     ofSetColor(fxMix);
     ofEnableBlendMode(OF_BLENDMODE_ADD);

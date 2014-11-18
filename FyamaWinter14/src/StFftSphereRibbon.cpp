@@ -15,7 +15,6 @@ void StFftSphereRibbon::setup(){
     gui->addSlider("SHIFT SPEED", 0.0, 2.0, 1.0);
     gui->addSlider("INTERPORATION", 0.0, 1.0, 0.2);
     gui->addSlider("RIBBON WIDTH", 0.0, 10.0, 4.0);
-
     gui->addSlider("ZOOM", 0.0, 3.0, 1.0);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
@@ -93,8 +92,7 @@ void StFftSphereRibbon::draw(){
         ribbons[i]->draw();
     }
     
-    ofRotateX(5);
-    ofRotateY(20);
+    ofRotateX(-10);
     
     //mesh.drawWireframe();
     ofDisableDepthTest();
@@ -119,7 +117,7 @@ void StFftSphereRibbon::createMesh(){
         currentVertex.push_back(ofVec3f(mesh.getVertices()[i].x, mesh.getVertices()[i].y, mesh.getVertices()[i].z));
         interplateVertex.push_back(currentVertex[currentVertex.size()-1]);
         randomVec.push_back(ofVec3f(ofRandom(-1, 1),ofRandom(-1, 1),ofRandom(-1, 1)));
-        int hue = ofMap(i, 0, mesh.getVertices().size()-1, 0, 200);
+        int hue = ofMap(i, 0, mesh.getVertices().size()-1, 0, 80);
         ofColor col; col.setHsb(hue, 180, 127);
         ofxTwistedRibbon *r = new ofxTwistedRibbon();
         r->length = 40;
@@ -130,6 +128,13 @@ void StFftSphereRibbon::createMesh(){
     mesh.setMode(OF_PRIMITIVE_POINTS);
 }
 
+void StFftSphereRibbon::stateEnter(){
+    createMesh();
+}
+
 void StFftSphereRibbon::stateExit(){
+    ribbons.clear();
+    currentVertex.clear();
+    interplateVertex.clear();
     gui->setVisible(false);
 }
