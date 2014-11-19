@@ -28,7 +28,7 @@ void StFftRibbonCool::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftRibbonCool::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(ofGetWidth(), ofGetHeight());
+    post.init(app->drawFbo->width, app->drawFbo->height);
     post.createPass<BloomPass>()->setEnabled(true);
     
     createMesh();
@@ -73,7 +73,6 @@ void StFftRibbonCool::draw(){
     
     app->drawFbo->fbo.begin();
     post.begin(cam);
-    ofTranslate(0, app->drawFbo->top / 2.0);
     ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);

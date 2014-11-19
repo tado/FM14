@@ -8,6 +8,7 @@
 #include "StCvOpMesh.h"
 #include "StCvOpNote.h"
 #include "StCvOpDistort.h"
+#include "StFftDistortNotex.h"
 #include "StSakuraParticle.h"
 #include "StRgbDelay.h"
 #include "StKaleidoscope.h"
@@ -39,6 +40,9 @@ void ofApp::setup(){
     
     // Blackmagic
     blackmagic = new BlackmagicCapture(1920, 1080, 59.94);
+    
+    // FBO
+    drawFbo = new DrawFbo();
 
     // StateMachine
     stateMachine.addState<StBlank>();
@@ -49,6 +53,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpMesh>();
     stateMachine.addState<StCvOpNote>();
     stateMachine.addState<StCvOpDistort>();
+    stateMachine.addState<StFftDistortNotex>();
     stateMachine.addState<StSakuraParticle>();
     stateMachine.addState<StRgbDelay>();
     stateMachine.addState<StTrianglePixelate>();
@@ -71,9 +76,6 @@ void ofApp::setup(){
     
     stateMachine.changeState("StBlank");
     guiVisible = false;
-    
-    // FBO
-    drawFbo = new DrawFbo();
     
     // OSC Control
     oscControl = new OscControl();
@@ -128,7 +130,7 @@ void ofApp::draw(){
     ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
 
     srcMix = oscControl->controlVal[0] * 2;
-    
+
     ofSetColor(srcMix);
     blackmagic->drawSub();
     ofDisableAlphaBlending();

@@ -55,6 +55,7 @@
 		184CE0CC1A1976D60006D04A /* StFftSphereDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0CA1A1976D60006D04A /* StFftSphereDistort.cpp */; };
 		184CE0CF1A19807B0006D04A /* StKaleidoscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0CD1A19807B0006D04A /* StKaleidoscope.cpp */; };
 		18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18574E5D1A15EAC600152134 /* OscControl.cpp */; };
+		18599E591A1C7837001D24C5 /* StFftDistortNotex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18599E571A1C7837001D24C5 /* StFftDistortNotex.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
 		185D167E1A19CE3200BC748A /* StTrianglePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185D167C1A19CE3100BC748A /* StTrianglePixelate.cpp */; };
@@ -389,6 +390,8 @@
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		18574E5D1A15EAC600152134 /* OscControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscControl.cpp; sourceTree = "<group>"; };
 		18574E5E1A15EAC600152134 /* OscControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscControl.h; sourceTree = "<group>"; };
+		18599E571A1C7837001D24C5 /* StFftDistortNotex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftDistortNotex.cpp; sourceTree = "<group>"; };
+		18599E581A1C7837001D24C5 /* StFftDistortNotex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDistortNotex.h; sourceTree = "<group>"; };
 		185A19AA1A07147300C24D6E /* StBlank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StBlank.cpp; sourceTree = "<group>"; };
 		185A19AB1A07147300C24D6E /* StBlank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StBlank.h; sourceTree = "<group>"; };
 		185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpParticle.cpp; sourceTree = "<group>"; };
@@ -1105,6 +1108,8 @@
 				18FB6A181A16D940004A2845 /* StFftTracer.h */,
 				184CE0BE1A18EF380006D04A /* StFftDistort.cpp */,
 				184CE0BF1A18EF380006D04A /* StFftDistort.h */,
+				18599E571A1C7837001D24C5 /* StFftDistortNotex.cpp */,
+				18599E581A1C7837001D24C5 /* StFftDistortNotex.h */,
 				184CE0C41A193D5A0006D04A /* StFftDistortStripe.cpp */,
 				184CE0C51A193D5A0006D04A /* StFftDistortStripe.h */,
 				184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */,
@@ -2435,6 +2440,7 @@
 				187A62691A0606F200DC5640 /* ofxLabel.cpp in Sources */,
 				BECF964DBFA7ED2BC5CC2E18 /* b2Timer.cpp in Sources */,
 				5C4E6310A2099ADABC29A23A /* b2TrackedBlock.cpp in Sources */,
+				18599E591A1C7837001D24C5 /* StFftDistortNotex.cpp in Sources */,
 				D05287C5415F1FF3D192436E /* b2Body.cpp in Sources */,
 				A6006EAA2C95A6A9BEB9CDC4 /* b2ContactManager.cpp in Sources */,
 				18FB6A1C1A16D940004A2845 /* StFftDrawCircle.cpp in Sources */,

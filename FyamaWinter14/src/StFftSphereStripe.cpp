@@ -27,9 +27,8 @@ void StFftSphereStripe::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftSphereStripe::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    post.init(ofGetWidth(), ofGetHeight());
+    post.init(app->drawFbo->width, app->drawFbo->height);
     post.createPass<BloomPass>()->setEnabled(true);
-    
     cam.setFarClip(10000);
 
     int width = 512;
@@ -81,7 +80,7 @@ void StFftSphereStripe::draw(){
     
     app->drawFbo->fbo.begin();
     post.begin(cam);
-    ofTranslate(0, app->drawFbo->top / 2.0);
+    // ofTranslate(0, app->drawFbo->top / 2.0);
     ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
@@ -109,6 +108,7 @@ void StFftSphereStripe::draw(){
     ofSetColor(col);
     mesh.draw();
     tex.unbind();
+    
     //mesh.drawWireframe();
     //ofDisableDepthTest();
     post.end();
