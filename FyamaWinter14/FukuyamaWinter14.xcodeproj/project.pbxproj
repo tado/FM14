@@ -59,6 +59,7 @@
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
 		185D167E1A19CE3200BC748A /* StTrianglePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185D167C1A19CE3100BC748A /* StTrianglePixelate.cpp */; };
 		18603D741A189198001F097D /* StRgbDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18603D721A189198001F097D /* StRgbDelay.cpp */; };
+		18768BF91A1B0F1100CEE77F /* StFftRibbonCool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18768BF71A1B0F1100CEE77F /* StFftRibbonCool.cpp */; };
 		187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */; };
 		187A62521A06065E00DC5640 /* StSimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62501A06065E00DC5640 /* StSimplePixelate.cpp */; };
 		187A62661A0606F200DC5640 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62551A0606F200DC5640 /* ofxBaseGui.cpp */; };
@@ -73,6 +74,8 @@
 		18D0E92C1A06653300072012 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18D0E92A1A06653300072012 /* Particle.cpp */; };
 		18D50A5E9090B08B5C379765 /* b2PolygonAndCircleContact.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F531CAC5B6483B4596C50946 /* b2PolygonAndCircleContact.cpp */; };
 		18E82F9A1A1AC3C70069F7F4 /* StFftSphereRibbon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E82F981A1AC3C70069F7F4 /* StFftSphereRibbon.cpp */; };
+		18E82F9D1A1AE5320069F7F4 /* StFftPixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E82F9B1A1AE5320069F7F4 /* StFftPixelate.cpp */; };
+		18E82FA01A1AF5720069F7F4 /* StSphereSoundWave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18E82F9E1A1AF5720069F7F4 /* StSphereSoundWave.cpp */; };
 		18FB69FA1A16A2B5004A2845 /* StCvOpParticlePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */; };
 		18FB69FE1A16C608004A2845 /* SakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */; };
 		18FB6A011A16C6CE004A2845 /* StSakuraParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FB69FF1A16C6CE004A2845 /* StSakuraParticle.cpp */; };
@@ -395,6 +398,8 @@
 		18603D721A189198001F097D /* StRgbDelay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StRgbDelay.cpp; sourceTree = "<group>"; };
 		18603D731A189198001F097D /* StRgbDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StRgbDelay.h; sourceTree = "<group>"; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
+		18768BF71A1B0F1100CEE77F /* StFftRibbonCool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftRibbonCool.cpp; sourceTree = "<group>"; };
+		18768BF81A1B0F1100CEE77F /* StFftRibbonCool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftRibbonCool.h; sourceTree = "<group>"; };
 		187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlackmagicCapture.cpp; sourceTree = "<group>"; };
 		187A624B1A06048200DC5640 /* BlackmagicCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackmagicCapture.h; sourceTree = "<group>"; };
 		187A624F1A0605E700DC5640 /* SharedData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
@@ -423,6 +428,10 @@
 		18D0E92B1A06653300072012 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
 		18E82F981A1AC3C70069F7F4 /* StFftSphereRibbon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftSphereRibbon.cpp; sourceTree = "<group>"; };
 		18E82F991A1AC3C70069F7F4 /* StFftSphereRibbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSphereRibbon.h; sourceTree = "<group>"; };
+		18E82F9B1A1AE5320069F7F4 /* StFftPixelate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftPixelate.cpp; sourceTree = "<group>"; };
+		18E82F9C1A1AE5320069F7F4 /* StFftPixelate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftPixelate.h; sourceTree = "<group>"; };
+		18E82F9E1A1AF5720069F7F4 /* StSphereSoundWave.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StSphereSoundWave.cpp; sourceTree = "<group>"; };
+		18E82F9F1A1AF5720069F7F4 /* StSphereSoundWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StSphereSoundWave.h; sourceTree = "<group>"; };
 		18FB69F81A16A2B5004A2845 /* StCvOpParticlePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpParticlePath.cpp; sourceTree = "<group>"; };
 		18FB69F91A16A2B5004A2845 /* StCvOpParticlePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpParticlePath.h; sourceTree = "<group>"; };
 		18FB69FC1A16C608004A2845 /* SakuraParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SakuraParticle.cpp; sourceTree = "<group>"; };
@@ -1072,6 +1081,8 @@
 				18FB6A001A16C6CE004A2845 /* StSakuraParticle.h */,
 				18FB6A061A16D58F004A2845 /* StSoundWave.cpp */,
 				18FB6A071A16D58F004A2845 /* StSoundWave.h */,
+				18E82F9E1A1AF5720069F7F4 /* StSphereSoundWave.cpp */,
+				18E82F9F1A1AF5720069F7F4 /* StSphereSoundWave.h */,
 				18FB6A091A16D940004A2845 /* StFftBox.cpp */,
 				18FB6A0A1A16D940004A2845 /* StFftBox.h */,
 				18FB6A0B1A16D940004A2845 /* StFftDot.cpp */,
@@ -1084,6 +1095,8 @@
 				18FB6A121A16D940004A2845 /* StFftRibbon.h */,
 				18E82F981A1AC3C70069F7F4 /* StFftSphereRibbon.cpp */,
 				18E82F991A1AC3C70069F7F4 /* StFftSphereRibbon.h */,
+				18768BF71A1B0F1100CEE77F /* StFftRibbonCool.cpp */,
+				18768BF81A1B0F1100CEE77F /* StFftRibbonCool.h */,
 				18FB6A131A16D940004A2845 /* StFftRings.cpp */,
 				18FB6A141A16D940004A2845 /* StFftRings.h */,
 				18FB6A151A16D940004A2845 /* StFftSimplePlot.cpp */,
@@ -1098,6 +1111,8 @@
 				184CE0C81A1952B30006D04A /* StFftSphereStripe.h */,
 				184CE0CA1A1976D60006D04A /* StFftSphereDistort.cpp */,
 				184CE0CB1A1976D60006D04A /* StFftSphereDistort.h */,
+				18E82F9B1A1AE5320069F7F4 /* StFftPixelate.cpp */,
+				18E82F9C1A1AE5320069F7F4 /* StFftPixelate.h */,
 			);
 			name = states;
 			sourceTree = "<group>";
@@ -2308,6 +2323,7 @@
 				D3301F6A0B43BB293ED97C1D /* ofxCvShortImage.cpp in Sources */,
 				72A929D3561B8232A182ABFC /* ofxOscBundle.cpp in Sources */,
 				5864AD82E20F15536D054EA3 /* ofxOscMessage.cpp in Sources */,
+				18E82FA01A1AF5720069F7F4 /* StSphereSoundWave.cpp in Sources */,
 				1846E44C1A1606E000241F18 /* NoteParticle.cpp in Sources */,
 				4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */,
 				640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */,
@@ -2444,6 +2460,7 @@
 				A01D694CFFCC370B66002D3A /* b2Joint.cpp in Sources */,
 				187A626C1A0606F200DC5640 /* ofxSliderGroup.cpp in Sources */,
 				092641E12809CEAFF21F73EE /* b2MotorJoint.cpp in Sources */,
+				18E82F9D1A1AE5320069F7F4 /* StFftPixelate.cpp in Sources */,
 				181634691A15CDBA005E39EB /* DrawFbo.cpp in Sources */,
 				E87F18826B4009FF538F87AA /* b2MouseJoint.cpp in Sources */,
 				6AA3415BCECADF4BFF04564A /* b2PrismaticJoint.cpp in Sources */,
@@ -2494,6 +2511,7 @@
 				18D0E9261A06617300072012 /* StCvOpDraw.cpp in Sources */,
 				F9C20834354ACC8337320B8C /* ofxUIMultiImageToggle.cpp in Sources */,
 				E3D59A6B55F05669B3FBF8BD /* ofxUINumberDialer.cpp in Sources */,
+				18768BF91A1B0F1100CEE77F /* StFftRibbonCool.cpp in Sources */,
 				D60E54E7FD6E19BC8636E0D2 /* ofxUIRadio.cpp in Sources */,
 				181634B81A15CE65005E39EB /* DofPass.cpp in Sources */,
 				1587708E3CAC72997E43504E /* ofxUIRangeSlider.cpp in Sources */,

@@ -12,6 +12,7 @@
 #include "StRgbDelay.h"
 #include "StKaleidoscope.h"
 #include "StTrianglePixelate.h"
+//#include "StSphereSoundWave.h"
 
 #include "StSoundWave.h"
 #include "StFftDrawCircle.h"
@@ -24,6 +25,8 @@
 #include "StFftSphereStripe.h"
 #include "StFftSphereDistort.h"
 #include "StFftSphereRibbon.h"
+#include "StFftRibbonCool.h"
+#include "StFftPixelate.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -51,6 +54,7 @@ void ofApp::setup(){
     stateMachine.addState<StTrianglePixelate>();
     
     stateMachine.addState<StSoundWave>();
+    // stateMachine.addState<StSphereSoundWave>();
     stateMachine.addState<StFftDrawCircle>();
     stateMachine.addState<StFftDot>();
     stateMachine.addState<StFftDrawBar>();
@@ -62,6 +66,8 @@ void ofApp::setup(){
     stateMachine.addState<StFftSphereDistort>();
     stateMachine.addState<StKaleidoscope>();
     stateMachine.addState<StFftSphereRibbon>();
+    stateMachine.addState<StFftRibbonCool>();
+    stateMachine.addState<StFftPixelate>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;
@@ -157,9 +163,11 @@ void ofApp::guiEvent(ofxUIEventArgs &e){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     switch (key) {
+        /*
         case 'f':
             ofToggleFullscreen();
             break;
+         */
         case 'g':
             gui->toggleVisible();
             stateMachine.getSharedData().guiVisible?

@@ -1,12 +1,22 @@
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>73.437500000</Value>
+    <Value>80.937500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>CIRCLE SCALE</Name>
-    <Value>1.750000000</Value>
+    <Value>0.979166687</Value>
+</Widget>
+<Widget>
+    <Kind>4</Kind>
+    <Name>INTERPORATE</Name>
+    <Value>0.437500000</Value>
+</Widget>
+<Widget>
+    <Kind>42</Kind>
+    <Name>FADE</Name>
+    <Value>127</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -16,10 +26,10 @@
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>1.229166627</Value>
+    <Value>1.416666627</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>0.687500000</Value>
+    <Value>0.656250000</Value>
 </Widget>

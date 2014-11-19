@@ -1,10 +1,10 @@
-#include "StTrianglePixelate.h"
+#include "StFftPixelate.h"
 
-string StTrianglePixelate::getName(){
-    return "StTrianglePixelate";
+string StFftPixelate::getName(){
+    return "StFftPixelate";
 }
 
-void StTrianglePixelate::setup(){
+void StFftPixelate::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
@@ -12,24 +12,29 @@ void StTrianglePixelate::setup(){
     gui->addSpacer();
     gui->addSlider("RADIUS", 20, 200, 60);
     gui->addSlider("CIRCLE SCALE", 0, 2.0, 1.0);
+    gui->addSlider("INTERPORATE", 0.0, 1.0, 0.1);
+    gui->addIntSlider("FADE", 0, 127, 12);
     gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("StTrianglePixelate.xml");
+    gui->loadSettings("StFftPixelate.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&StTrianglePixelate::guiEvent);
+    ofAddListener(gui->newGUIEvent,this,&StFftPixelate::guiEvent);
     
     app = ((ofApp*)ofGetAppPtr());
+    
+    currentRotate = 45;
+    currentSize = 1.0;
 }
 
-void StTrianglePixelate::update(){
+void StFftPixelate::update(){
     
 }
 
-void StTrianglePixelate::draw(){
+void StFftPixelate::draw(){
     int camWidth = 1920;
     int camHeight = 1080;
     
@@ -38,16 +43,32 @@ void StTrianglePixelate::draw(){
     
     ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
     ofxUISlider *gcircleScale = (ofxUISlider *)gui->getWidget("CIRCLE SCALE"); float circleScale = gcircleScale->getValue();
+    ofxUISlider *ginterp = (ofxUISlider *)gui->getWidget("INTERPORATE"); float interp = ginterp->getValue();
+    ofxUIIntSlider *gfade = (ofxUIIntSlider *)gui->getWidget("FADE"); int fade = gfade->getValue();
     ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     app->drawFbo->fbo.begin();
-    ofDisableAlphaBlending();
-    ofClear(0,0,0);
+    //ofDisableAlphaBlending();
+    //ofClear(0,0,0);
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofSetColor(0, 0, 0, fade);
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
     ofTranslate(0, -app->drawFbo->top);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetCircleResolution(32);
+    
+    float fftSum = 0;
+    for (int i = 0; i < app->fft->drawBins.size(); i++) {
+        fftSum += app->fft->drawBins[i];
+    }
+    
+    float sizeScale = ofMap(app->oscControl->controlVal[2], 0, 127, 0.5, 2.0);
+    
+    currentRotate += (fftSum * 4.0 - currentRotate) / 10.0;
+    currentSize += (fftSum / 30.0 * sizeScale - currentSize) * interp;
+    
     if (pixels.size()>0){
         for (int i = 0; i < camWidth; i+=radius){
             for (int j = 0; j < camHeight - radius/2.0; j+=radius){
@@ -59,9 +80,9 @@ void StTrianglePixelate::draw(){
                 
                 float controlHue;
                 controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
-                col.setHsb(col.getHue() * controlHue, col.getSaturation() * sat, col.getBrightness() * br);
+                col.setHsb(col.getHue() * controlHue, col.getSaturation() * sat, col.getBrightness() * br * (fade / 255.0));
                 ofSetColor(col);
-                ofRect(0, 0, radius * circleScale, radius* circleScale);
+                ofRect(0, 0, radius* circleScale * currentSize, radius* circleScale * currentSize);
                 ofSetRectMode(OF_RECTMODE_CORNER);
                 ofPopMatrix();
             }
@@ -73,13 +94,13 @@ void StTrianglePixelate::draw(){
     gui->setVisible(getSharedData().guiVisible);
 }
 
-void StTrianglePixelate::guiEvent(ofxUIEventArgs &e){
+void StFftPixelate::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("StTrianglePixelate.xml");
+        gui->saveSettings("StFftPixelate.xml");
     }
 }
 
-void StTrianglePixelate::stateExit(){
+void StFftPixelate::stateExit(){
     gui->setVisible(false);
 }
