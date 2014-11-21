@@ -73,7 +73,9 @@ void StFftDistortNotex::draw(){
     ofScale(scale.x, scale.y);
     ofSetColor(255);
     ofTranslate(0, -app->drawFbo->top + topshift);
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    //ofEnableBlendMode(OF_BLENDMODE_ADD);
+    // ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    ofDisableBlendMode();
     
     //app->blackmagic->colorTexture.bind();
     //mesh.draw();
