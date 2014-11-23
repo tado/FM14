@@ -1,11 +1,11 @@
-#include "StFftDrawCircle.h"
+#include "StFftDrawCircleBlue.h"
 #include "ofApp.h"
 
-string StFftDrawCircle::getName(){
-    return "StFftDrawCircle";
+string StFftDrawCircleBlue::getName(){
+    return "StFftDrawCircleBlue";
 }
 
-void StFftDrawCircle::setup(){
+void StFftDrawCircleBlue::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
@@ -18,19 +18,19 @@ void StFftDrawCircle::setup(){
     gui->addSlider("BRIGHTNESS", 0, 20.0, 5.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("StFftDrawCircle.xml");
+    gui->loadSettings("StFftDrawCircleBlue.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&StFftDrawCircle::guiEvent);
+    ofAddListener(gui->newGUIEvent,this,&StFftDrawCircleBlue::guiEvent);
     
     app = ((ofApp*)ofGetAppPtr());
 }
 
-void StFftDrawCircle::update(){
+void StFftDrawCircleBlue::update(){
     gui->setVisible(getSharedData().guiVisible);
 }
 
-void StFftDrawCircle::draw() {
+void StFftDrawCircleBlue::draw() {
     app->drawFbo->fbo.begin();
     cam.begin();
     ofDisableAlphaBlending();
@@ -41,7 +41,7 @@ void StFftDrawCircle::draw() {
     ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUISlider *gbrightness = (ofxUISlider *)gui->getWidget("BRIGHTNESS"); float brightness = gbrightness->getValue();
-
+    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     for (int i = 0; i < app->fft->drawBins.size(); i += skip) {
         float size = ofMap(app->fft->drawBins[i], 0, 1.0, 0, circlesize);
@@ -50,13 +50,13 @@ void StFftDrawCircle::draw() {
         ofColor col;
         col.setHsb(hue, saturation, brightness);
         ofSetColor(col);
-
+        
         ofPushMatrix();
         ofTranslate(-ofGetWidth()/5, 0);
         ofCircle(x, 0, size);
         ofCircle(-x, 0, size);
         ofPopMatrix();
-
+        
         ofPushMatrix();
         ofTranslate(ofGetWidth()/5, 0);
         ofCircle(x, 0, size);
@@ -68,13 +68,13 @@ void StFftDrawCircle::draw() {
     app->drawFbo->fbo.end();
 }
 
-void StFftDrawCircle::guiEvent(ofxUIEventArgs &e){
+void StFftDrawCircleBlue::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("StFftDrawCircle.xml");
+        gui->saveSettings("StFftDrawCircleBlue.xml");
     }
 }
 
-void StFftDrawCircle::stateExit(){
+void StFftDrawCircleBlue::stateExit(){
     gui->setVisible(false);
 }

@@ -59,11 +59,12 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     ofColor col;
     ofSetLineWidth(linewidth * zoom);
     
-    int controlRep = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 20);
-    int controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 63);
+    int controlRep = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 10);
+    int controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 160);
+    
     int hueLow = controlHue;
-    int hueHigh = (controlHue + 255 - 63);
-
+    int hueHigh = hueLow;
+    //int hueHigh = (controlHue + 255 - 63);
     
     for (int j = 0; j < controlRep; j++) {
         for (int i = 0; i < n; i++) {

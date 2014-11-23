@@ -17,6 +17,7 @@
 
 #include "StSoundWave.h"
 #include "StFftDrawCircle.h"
+#include "StFftDrawCircleBlue.h"
 #include "StFftDot.h"
 #include "StFftDrawBar.h"
 #include "StFftBox.h"
@@ -24,6 +25,9 @@
 #include "StFftDistort.h"
 #include "StFftDistortStripe.h"
 #include "StFftSphereStripe.h"
+#include "StFftCubeStripe.h"
+#include "StFftCubeStripeDuo.h"
+#include "StFftCubeDistort.h"
 #include "StFftSphereDistort.h"
 #include "StFftSphereRibbon.h"
 #include "StFftRibbonCool.h"
@@ -61,6 +65,7 @@ void ofApp::setup(){
     stateMachine.addState<StSoundWave>();
     // stateMachine.addState<StSphereSoundWave>();
     stateMachine.addState<StFftDrawCircle>();
+    stateMachine.addState<StFftDrawCircleBlue>();
     stateMachine.addState<StFftDot>();
     stateMachine.addState<StFftDrawBar>();
     stateMachine.addState<StFftBox>();
@@ -68,7 +73,10 @@ void ofApp::setup(){
     stateMachine.addState<StFftDistort>();
     stateMachine.addState<StFftDistortStripe>();
     stateMachine.addState<StFftSphereStripe>();
+    stateMachine.addState<StFftCubeStripe>();
+    stateMachine.addState<StFftCubeStripeDuo>();
     stateMachine.addState<StFftSphereDistort>();
+    stateMachine.addState<StFftCubeDistort>();
     stateMachine.addState<StKaleidoscope>();
     stateMachine.addState<StFftSphereRibbon>();
     stateMachine.addState<StFftRibbonCool>();
