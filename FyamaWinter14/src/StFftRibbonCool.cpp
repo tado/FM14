@@ -86,14 +86,12 @@ void StFftRibbonCool::draw(){
     ofSetColor(col);
     glPointSize(5.0);
     
-    //mesh.draw();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ribbons[i]->draw();
     }
     
     ofRotateX(-10);
     
-    //mesh.drawWireframe();
     ofDisableDepthTest();
     glDisable(GL_CULL_FACE);
     post.end();
@@ -109,7 +107,6 @@ void StFftRibbonCool::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftRibbonCool::createMesh(){
-    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     mesh = ofSpherePrimitive(5, 8).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ofVec2f texCoord = mesh.getTexCoord(i);

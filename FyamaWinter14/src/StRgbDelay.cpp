@@ -24,7 +24,7 @@ void StRgbDelay::setup(){
 
 void StRgbDelay::update(){
     ofxUIIntSlider *gdelay = (ofxUIIntSlider *)gui->getWidget("DELAY"); int delay = gdelay->getValue();
-
+    
     ofPixelsRef pix = app->blackmagic->colorPixels;
     ofTexture t;
     t.loadData(pix);
@@ -37,7 +37,7 @@ void StRgbDelay::update(){
 void StRgbDelay::draw(){
     int camWidth = 1920;
     int camHeight = 1080;
-
+    
     ofxUIIntSlider *gdelay = (ofxUIIntSlider *)gui->getWidget("DELAY"); int delay = gdelay->getValue();
     ofxUIIntSlider *gmix = (ofxUIIntSlider *)gui->getWidget("MIX"); int mix = gmix->getValue();
     

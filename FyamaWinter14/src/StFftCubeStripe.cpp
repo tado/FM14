@@ -80,7 +80,6 @@ void StFftCubeStripe::draw(){
     
     app->drawFbo->fbo.begin();
     post.begin(cam);
-    // ofTranslate(0, app->drawFbo->top / 2.0);
     ofScale(zoom, zoom);
     ofDisableAlphaBlending();
     ofClear(0,0,0);
@@ -89,7 +88,7 @@ void StFftCubeStripe::draw(){
     controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.6);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    //ofEnableDepthTest();
+
     glDisable(GL_CULL_FACE);
     tex.bind();
     
@@ -100,9 +99,6 @@ void StFftCubeStripe::draw(){
     ofPopMatrix();
     
     tex.unbind();
-    
-    //mesh.drawWireframe();
-    //ofDisableDepthTest();
     post.end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
@@ -116,14 +112,12 @@ void StFftCubeStripe::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftCubeStripe::createMesh(){
-    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     mesh = ofBoxPrimitive(ofGetWidth() * 3.0, ofGetWidth() * 3.0, ofGetWidth() * 3.0).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ofVec2f texCoord = mesh.getTexCoord(i);
         texCoord.x *= tex.getWidth();
         texCoord.y  = (1.0 - texCoord.y) * tex.getHeight();
         mesh.setTexCoord(i, texCoord);
-        
         currentVertex.push_back(ofVec3f(mesh.getVertices()[i].x, mesh.getVertices()[i].y, mesh.getVertices()[i].z));
     }
 }

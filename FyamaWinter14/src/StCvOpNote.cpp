@@ -98,7 +98,7 @@ void StCvOpNote::draw(){
         ofScale(scale.x, scale.y);
         
         int controlMax = powf(app->oscControl->controlVal[2] * 0.125, 1.5);
-
+        
         for (int i = 0; i < controlMax; i++) {
             int x = ofRandom(flow.getWidth()-skip);
             int y = ofRandom(flow.getHeight()-skip);
@@ -110,16 +110,6 @@ void StCvOpNote::draw(){
             }
             
             if (abs(average.x) + abs(average.y) > 0.5) {
-                /*
-                float ratio = camWidth / flow.getWidth();
-                ofColor col  = pix.getColor(x * ratio, y * ratio);
-                
-                int h = col.getHue();
-                int s = col.getSaturation();
-                int v = col.getBrightness();
-                col.setHsb(h * hue, s * sat, v * br);
-                 */
-                
                 ofColor col;
                 col.setHsb(ofRandom(255), sat * 255, br * 255);
                 
@@ -144,8 +134,6 @@ void StCvOpNote::draw(){
             ofSetRectMode(OF_RECTMODE_CENTER);
             ofPushMatrix();
             ofTranslate(particles[i]->position);
-            //ofRotateX(particles[i]->rot.x);
-            //ofRotateY(particles[i]->rot.y);
             ofRotateZ(particles[i]->rot.z);
             img[particles[i]->imgNum].draw(0, 0, 0, particles[i]->radius * radius, particles[i]->radius * radius);
             ofPopMatrix();

@@ -7,10 +7,6 @@ string StCvOpMesh::getName(){
 
 void StCvOpMesh::setup(){
     mesh.setMode(OF_PRIMITIVE_POINTS);
-    //fbo.allocate(SCREEN_WIDTH, SCREEN_HEIGHT);
-    //fbo.begin();
-    //ofClear(0, 0, 0, 0);
-    //fbo.end();
     
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
@@ -93,18 +89,10 @@ void StCvOpMesh::update(){
         particles[i]->friction = friction / 100.0;
         
         ofVec2f force;
-        /*
-         ofVec2f center;
-         center.x = flow.getWidth() / 2.0;
-         center.y = flow.getHeight() / 2.0;
-         force = ofVec2f((x - center.x) * 0.01,
-         (y - center.y) * 0.01);
-         */
         
         if (x > 0 && y > 0 && x < flow.getWidth() - skip && y < flow.getHeight() - skip) {
             ofRectangle region = ofRectangle(x, y, skip, skip);
             force = flow.getAverageFlowInRegion(region);
-            //force = flow.getFlowPosition(x, y);
         }
         particles[i]->addForce(force * accel);
         particles[i]->updateForce();
@@ -136,13 +124,6 @@ void StCvOpMesh::draw(){
     ofSetColor(0, 0, 0, fade);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
     
-    /*
-    if (clear) {
-        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-        ofSetColor(0);
-        ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    }
-     */
     mesh.clear();
     for (int i = 0; i < particles.size(); i++) {
         mesh.addVertex(ofVec3f(particles[i]->position.x,
@@ -150,15 +131,11 @@ void StCvOpMesh::draw(){
         mesh.addColor(ofFloatColor(particles[i]->col.r/255.0, particles[i]->col.g/255.0, particles[i]->col.b/255.0));
     }
     
-    //ofDisableAlphaBlending();
-    //fbo.begin();
-    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofSetColor(255);
     glPointSize(radius);
     mesh.draw();
-    //fbo.end();
-    //fbo.draw(0, 0);
+    
     ofDisableBlendMode();
     app->drawFbo->fbo.end();
     
@@ -177,9 +154,4 @@ void StCvOpMesh::stateExit(){
     for (int i = 0; i < particles.size(); i++) {
         particles[i]->position = ofVec2f(ofRandom(SCREEN_WIDTH), ofRandom(SCREEN_HEIGHT));
     }
-    /*
-    fbo.begin();
-    ofClear(0, 0, 0, 0);
-    fbo.end();
-     */
 }

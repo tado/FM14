@@ -48,14 +48,11 @@ void StKaleidoscope::update(){
     float noiseStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 5, 10);
     noise->setFrequency(fftSum/ float(app->fft->drawBins.size()) * noiseStrength);
     noise->setAmplitude(fftSum/ float(app->fft->drawBins.size()) * noiseStrength * noiseamp);
-    //noise->setFrequency(fftSum/ float(app->fft->drawBins.size()) * 20.0);
 
     kaleido->setSegments(segment);
 }
 
 void StKaleidoscope::draw(){
-    //ofxUIIntSlider *gmix = (ofxUIIntSlider *)gui->getWidget("MIX"); int mix = gmix->getValue();
-    // ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();

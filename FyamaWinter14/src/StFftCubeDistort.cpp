@@ -82,9 +82,7 @@ void StFftCubeDistort::draw(){
     app->drawFbo->fbo.begin();
     post.begin(cam);
     ofScale(zoom, zoom);
-    //ofRotateX(ofGetElapsedTimef() * shiftspeed);
-    //ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
-    //ofRotateZ(ofGetElapsedTimef() * shiftspeed * 1.2);
+
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -103,10 +101,6 @@ void StFftCubeDistort::draw(){
     mesh.draw();
     ofPopMatrix();
     
-    //ofRotateX(10);
-    //ofRotateY(12);
-    //ofRotateZ(14);
-    
     app->blackmagic->colorTexture.unbind();
     post.end();
     app->drawFbo->fbo.end();
@@ -121,8 +115,6 @@ void StFftCubeDistort::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftCubeDistort::createMesh(){
-    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
-    // mesh = ofSpherePrimitive(ofGetWidth(), 48).getMesh();
     mesh = ofBoxPrimitive(ofGetWidth() * 2.0, ofGetWidth() * 2.0, ofGetWidth() * 2.0).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ofVec2f texCoord = mesh.getTexCoord(i);

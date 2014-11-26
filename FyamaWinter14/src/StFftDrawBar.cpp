@@ -44,7 +44,6 @@ void StFftDrawBar::draw() {
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
-    //ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbr = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbr->getValue();
     ofxUIIntSlider *grep = (ofxUIIntSlider *)gui->getWidget("REPEAT"); int rep = grep->getValue();
@@ -64,7 +63,6 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     
     int hueLow = controlHue;
     int hueHigh = hueLow;
-    //int hueHigh = (controlHue + 255 - 63);
     
     for (int j = 0; j < controlRep; j++) {
         for (int i = 0; i < n; i++) {
@@ -72,8 +70,6 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
             int br = ofMap(buffer[i], 0, 1.0, 0, 255 / float(rep)) * brightness / 64.0;
             col.setHsb(hue, saturation, br);
             ofSetColor(col);
-            //ofLine(i / 2.0, -scale / 2.0, i / 2.0, scale / 2.0);
-            //ofLine(-i / 2.0, -scale / 2.0, -i / 2.0, scale / 2.0);
             ofRect(i / 2.0, -scale / 2.0, linewidth * zoom, scale);
             ofRect(-i / 2.0, -scale / 2.0, linewidth * zoom, scale);
 

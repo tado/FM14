@@ -80,7 +80,6 @@ void StFftSphereStripe::draw(){
     
     app->drawFbo->fbo.begin();
     post.begin(cam);
-    // ofTranslate(0, app->drawFbo->top / 2.0);
     ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
@@ -92,13 +91,9 @@ void StFftSphereStripe::draw(){
     controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    //ofEnableDepthTest();
     glDisable(GL_CULL_FACE);
     tex.bind();
     mesh.draw();
-    //ofRotateX(shiftspeed * ofGetElapsedTimef() * 0.2 + 40);
-    //ofRotateY(shiftspeed * ofGetElapsedTimef() * 0.3 + 40);
-    //ofRotateZ(shiftspeed * ofGetElapsedTimef() * 0.5 + 40);
     
     ofRotateX(10);
     ofRotateY(12);
@@ -109,8 +104,6 @@ void StFftSphereStripe::draw(){
     mesh.draw();
     tex.unbind();
     
-    //mesh.drawWireframe();
-    //ofDisableDepthTest();
     post.end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
@@ -124,7 +117,6 @@ void StFftSphereStripe::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftSphereStripe::createMesh(){
-    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     mesh = ofSpherePrimitive(ofGetWidth(), 48).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ofVec2f texCoord = mesh.getTexCoord(i);

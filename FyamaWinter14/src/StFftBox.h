@@ -16,7 +16,6 @@ public:
     
     ofxUICanvas *gui;
     ofApp *app;
-    //float stiffness;
     float *force, *size;
     ofVec3f *rotSize;
     ofEasyCam cam;

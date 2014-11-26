@@ -33,7 +33,7 @@ void StCvOpParticle::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticle::guiEvent);
-
+    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -77,7 +77,7 @@ void StCvOpParticle::draw(){
     ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
-
+    
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
     int camWidth = SCREEN_WIDTH;
     int camHeight = SCREEN_HEIGHT;
@@ -107,7 +107,7 @@ void StCvOpParticle::draw(){
             if (abs(average.x) + abs(average.y) > 0.5) {
                 float ratio = camWidth / flow.getWidth();
                 ofColor col  = pix.getColor(x * ratio, y * ratio);
-
+                
                 int h = col.getHue();
                 int s = col.getSaturation();
                 int v = col.getBrightness();
@@ -121,7 +121,7 @@ void StCvOpParticle::draw(){
                     p->radius = skip;
                 }
                 particles.push_back(p);
-
+                
                 while (particles.size() > controlMax) {
                     delete particles[0];
                     particles.pop_front();

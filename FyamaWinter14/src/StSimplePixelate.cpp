@@ -24,7 +24,7 @@ void StSimplePixelate::setup(){
 }
 
 void StSimplePixelate::update(){
-
+    
 }
 
 void StSimplePixelate::draw(){
@@ -37,7 +37,7 @@ void StSimplePixelate::draw(){
     ofxUISlider *gradius = (ofxUISlider *)gui->getWidget("RADIUS"); float radius = gradius->getValue();
     ofxUISlider *gcircleScale = (ofxUISlider *)gui->getWidget("CIRCLE SCALE"); float circleScale = gcircleScale->getValue();
     ofxUIIntSlider *gmix = (ofxUIIntSlider *)gui->getWidget("MIX"); int mix = gmix->getValue();
-
+    
     app->drawFbo->fbo.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);

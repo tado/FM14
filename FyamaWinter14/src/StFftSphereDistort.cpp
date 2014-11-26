@@ -105,7 +105,7 @@ void StFftSphereDistort::draw(){
     ofSetColor(col);
     mesh.draw();
     app->blackmagic->colorTexture.unbind();
-    //mesh.drawWireframe();
+
     ofDisableDepthTest();
     glDisable(GL_CULL_FACE);
     post.end();
@@ -121,7 +121,6 @@ void StFftSphereDistort::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftSphereDistort::createMesh(){
-    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     mesh = ofSpherePrimitive(ofGetWidth(), 48).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ofVec2f texCoord = mesh.getTexCoord(i);

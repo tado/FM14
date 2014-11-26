@@ -84,21 +84,17 @@ void StFftRibbon::draw(){
     ofClear(0,0,0);
     cam.begin();
     glEnable(GL_DEPTH_TEST);
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofPushMatrix();
     ofScale(1.0, 1.0, 1.0);
     ofRotateX(ofGetElapsedTimef() * 1.1);
     ofRotateY(ofGetElapsedTimef() * 1.3);
     ofRotateZ(ofGetElapsedTimef() * 1.2);
-    //ofNoFill();
     for (int i=0; i  < fft_size-2; i+=2) {
         ribbons[i]->draw();
     }
-    //ofFill();
     ofPopMatrix();
     glDisable(GL_DEPTH_TEST);
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofDisableAlphaBlending();
     cam.end();
     app->drawFbo->fbo.end();

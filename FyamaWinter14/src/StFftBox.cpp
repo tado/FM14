@@ -37,7 +37,6 @@ void StFftBox::setup(){
     
     post.init(app->drawFbo->width, app->drawFbo->height);
     post.createPass<BloomPass>()->setEnabled(true);
-    //post.setFlip(true);
 }
 
 void StFftBox::update(){
@@ -48,7 +47,6 @@ void StFftBox::draw() {
     ofxUISlider *gboxsize = (ofxUISlider *)gui->getWidget("BOX SIZE"); float boxsize = gboxsize->getValue();
     ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
     ofxUISlider *gstiffness = (ofxUISlider *)gui->getWidget("STIFFNESS"); float stiffness = gstiffness->getValue();
-    //ofxUIRangeSlider *ghue = (ofxUIRangeSlider *)gui->getWidget("HUE"); float hueLow = ghue->getValueLow(); float hueHigh = ghue->getValueHigh();
     ofxUIIntSlider *gsaturation = (ofxUIIntSlider *)gui->getWidget("SATURATION"); int saturation = gsaturation->getValue();
     ofxUIIntSlider *gbrightness = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbrightness->getValue();
     
@@ -58,7 +56,6 @@ void StFftBox::draw() {
     post.begin(cam);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofEnableDepthTest();
-    //glCullFace(true);
     for (int i = 0; i < app->fft->drawBins.size(); i += skip){
         ofPushMatrix();
         float springForce = stiffness * -size[i];
@@ -86,7 +83,6 @@ void StFftBox::draw() {
         box.draw();
         ofPopMatrix();
     }
-    //glCullFace(false);
     ofDisableDepthTest();
     ofDisableAlphaBlending();
     post.end();

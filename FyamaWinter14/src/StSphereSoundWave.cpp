@@ -61,7 +61,6 @@ void StSphereSoundWave::draw(){
     ofBeginShape();
     for (int i = 0; i < num; i++) {
         float x = ofMap(i, 0, num, app->drawFbo->width / -2.0, app->drawFbo->width / 2.0);
-        //ofVertex(x, app->fft->audioBins[i] * app->drawFbo->height / 2.0);
         ofCurveVertex(x, app->fft->audioBins[i] * app->drawFbo->height / 2.0);
     }
     ofEndShape();
@@ -72,18 +71,12 @@ void StSphereSoundWave::draw(){
     cam.begin();
     ofBackground(0);
     ofSetColor(255);
-    
-    
 
     ofEnableDepthTest();
     fbo.getTextureReference().bind();
-    //img.getTextureReference().bind();
     sphere.draw();
     fbo.getTextureReference().unbind();
-    //img.getTextureReference().unbind();
-    
     ofDisableDepthTest();
-    
     
     ofDisableAlphaBlending();
     cam.end();

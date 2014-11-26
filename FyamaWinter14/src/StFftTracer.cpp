@@ -12,10 +12,7 @@ public:
     
     void update(ofVec3f _pos) {
         ofVec3f p = _pos;
-        
-        //if (p.distance(points.front()) > 1){
         points.push_front(p);
-        //}
         
         if (points.size() > trackerLength){
             points.pop_back();
@@ -24,30 +21,10 @@ public:
     
     void draw()	{
         if (points.empty()) return;
-        
-        /*
-         for (int i = 0; i < points.size() - 1; i++){
-         float a = ofMap(i, 0, points.size() - 1, 1, 0);
-         
-         ofVec3f &p0 = points[i];
-         ofVec3f &p1 = points[i + 1];
-         
-         float dist = p0.distance(p1);
-         
-         //if (dist < 40) {
-         //ofSetLineWidth(ofMap(dist, 0, 30, 0, 10));
-         //ofSetColor(dist*20, 127-dist*10, 255-dist*20);
-         ofLine(p0.x, p0.y, p0.z, p1.x, p1.y, p1.z);
-         //}
-         }
-         */
-        //ofSetLineWidth(1);
         ofBeginShape();
         for (int i = 0; i < points.size() - 1; i++){
-            //ofVertex(points[i].x, points[i].y, points[i].z);
             ofCurveVertex(points[i].x, points[i].y, points[i].z);
         }
-        //ofVertex(points[0].x, points[0].y, points[0].z);
         ofEndShape();
     }
     
@@ -81,21 +58,9 @@ void StFftTracer::setup() {
         t->setTrackerLength(8);
         trackers.push_back(t);
     }
-    
-    //ばねパラメータ
-    /*
-     stiffness = 1.0;
-     damping = 0.9;
-     mass = 100.0;
-     */
     stiffness = 1.0;
     damping = 0.5;
     mass = 10;
-    
-    //((ofApp*)ofGetAppPtr())->cam.setPosition(0, 0, -200);
-    //((ofApp*)ofGetAppPtr())->cam.lookAt(ofVec3f(0,0,0));
-    //camStart = ofPoint(0,0,-200);
-    //camEnd = camStart;
 }
 
 void StFftTracer::update(){
@@ -126,15 +91,12 @@ void StFftTracer::draw(){
     ofRotateX(ofGetElapsedTimef() * 4);
     ofRotateY(ofGetElapsedTimef() * 3);
     ofRotateZ(ofGetElapsedTimef() * 2);
-    //ofNoFill();
     for (int i=0; i  < trackers.size(); i++) {
         ofSetColor(ofColor::fromHsb(255 * i / fft_size, 200, 150));
         trackers[i]->draw();
     }
-    //ofFill();
     ofPopMatrix();
     glDisable(GL_DEPTH_TEST);
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     ofDisableAlphaBlending();
     cam.end();
     app->drawFbo->fbo.end();

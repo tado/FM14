@@ -60,7 +60,6 @@ void StFftDistortNotex::update(){
 void StFftDistortNotex::draw(){
     ofxUISlider *gtopshift = (ofxUISlider *)gui->getWidget("TOP SHIFT"); float topshift = gtopshift->getValue();
     ofxUISlider *glinewidth = (ofxUISlider *)gui->getWidget("LINE WIDTH"); float linewidth = glinewidth->getValue();
-    //ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
     ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
@@ -73,14 +72,7 @@ void StFftDistortNotex::draw(){
     ofScale(scale.x, scale.y);
     ofSetColor(255);
     ofTranslate(0, -app->drawFbo->top + topshift);
-    //ofEnableBlendMode(OF_BLENDMODE_ADD);
-    // ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofDisableBlendMode();
-    
-    //app->blackmagic->colorTexture.bind();
-    //mesh.draw();
-    //app->blackmagic->colorTexture.unbind();
-    
     float hue =ofMap(app->oscControl->controlVal[3], 0, 127, 0.7, 1.0);
     ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
     ofSetColor(col);
@@ -88,7 +80,6 @@ void StFftDistortNotex::draw(){
     if (linewidth > 0) {
         mesh.drawWireframe();
     }
-    
     ofPopMatrix();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();

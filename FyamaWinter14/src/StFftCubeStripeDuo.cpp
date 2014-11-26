@@ -80,7 +80,7 @@ void StFftCubeStripeDuo::draw(){
     
     app->drawFbo->fbo.begin();
     post.begin(cam);
-    // ofTranslate(0, app->drawFbo->top / 2.0);
+
     ofScale(zoom, zoom);
     ofDisableAlphaBlending();
     ofClear(0,0,0);
@@ -89,7 +89,6 @@ void StFftCubeStripeDuo::draw(){
     controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.6);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    //ofEnableDepthTest();
     glDisable(GL_CULL_FACE);
     tex.bind();
     
@@ -103,9 +102,7 @@ void StFftCubeStripeDuo::draw(){
     ofPopMatrix();
     
     tex.unbind();
-    
-    //mesh.drawWireframe();
-    //ofDisableDepthTest();
+
     post.end();
     app->drawFbo->fbo.end();
     ofDisableAlphaBlending();
@@ -119,7 +116,6 @@ void StFftCubeStripeDuo::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftCubeStripeDuo::createMesh(){
-    //mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     mesh = ofBoxPrimitive(ofGetWidth() * 2.0, ofGetWidth() * 2.0, ofGetWidth() * 2.0).getMesh();
     for (int i = 0; i < mesh.getVertices().size(); i++) {
         ofVec2f texCoord = mesh.getTexCoord(i);
