@@ -32,6 +32,7 @@ void StFftDrawCircle::update(){
 
 void StFftDrawCircle::draw() {
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     cam.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);

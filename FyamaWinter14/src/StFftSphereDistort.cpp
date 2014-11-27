@@ -80,13 +80,14 @@ void StFftSphereDistort::draw(){
     
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     post.begin(cam);
     ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
     ofRotateZ(ofGetElapsedTimef() * shiftspeed * 1.2);
-    ofDisableAlphaBlending();
-    ofClear(0,0,0);
+    //ofDisableAlphaBlending();
+    ofClear(0,0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue;
     controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);

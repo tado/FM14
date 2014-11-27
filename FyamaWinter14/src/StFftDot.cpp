@@ -35,6 +35,7 @@ void StFftDot::update(){
 
 void StFftDot::draw() {
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     cam.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);

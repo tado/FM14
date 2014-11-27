@@ -43,6 +43,7 @@ void StTrianglePixelate::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);

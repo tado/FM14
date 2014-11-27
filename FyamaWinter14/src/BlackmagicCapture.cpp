@@ -1,7 +1,7 @@
 #include "BlackmagicCapture.h"
 
 BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
-    inputMode = 0;
+    inputMode = 2;
     
     width = _width;
     height = _height;

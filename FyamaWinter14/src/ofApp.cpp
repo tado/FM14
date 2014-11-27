@@ -144,7 +144,7 @@ void ofApp::draw(){
     ofDisableAlphaBlending();
     fxMix = oscControl->controlVal[1] * 2;
     ofSetColor(fxMix);
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    // ofEnableBlendMode(OF_BLENDMODE_ADD);
     drawFbo->draw();
     ofDisableAlphaBlending();
 }

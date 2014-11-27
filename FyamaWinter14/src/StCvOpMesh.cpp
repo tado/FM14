@@ -119,6 +119,7 @@ void StCvOpMesh::draw(){
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     ofTranslate(0, -app->drawFbo->top);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(0, 0, 0, fade);

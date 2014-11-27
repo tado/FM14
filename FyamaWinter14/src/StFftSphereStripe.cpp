@@ -37,7 +37,7 @@ void StFftSphereStripe::setup(){
     
     for (int i = 0; i < width * height * 4; i += 4){
         pixels[i] = pixels[i+1] = pixels[i+2] = 255;
-        if (i % 16 == 0) {
+        if (i % 32 == 0) {
             pixels[i + 3] = 255;
         } else {
             pixels[i + 3] = 0;
@@ -51,7 +51,7 @@ void StFftSphereStripe::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 8);
+    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 6);
     
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -79,13 +79,14 @@ void StFftSphereStripe::draw(){
     
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     post.begin(cam);
     ofScale(zoom, zoom);
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
     ofRotateZ(ofGetElapsedTimef() * shiftspeed * 1.2);
-    ofDisableAlphaBlending();
-    ofClear(0,0,0);
+    //ofDisableAlphaBlending();
+    ofClear(0,0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue;
     controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);

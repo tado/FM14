@@ -41,6 +41,7 @@ void StSoundWave::draw(){
     
     gui->setVisible(getSharedData().guiVisible);
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     cam.begin();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(0, 0, 0, fade);

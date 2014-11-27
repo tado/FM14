@@ -64,6 +64,7 @@ void StFftDistort::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),

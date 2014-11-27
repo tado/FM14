@@ -54,6 +54,7 @@ void StCvOpDraw::update(){
 
 void StCvOpDraw::draw(){
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);

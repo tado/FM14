@@ -9,5 +9,5 @@ public:
     
     ofFbo fbo;
     int top, width, height;
-    //ofxPostProcessing post;
+    int blendMode; // 0:ALPHA, 1:ADD
 };

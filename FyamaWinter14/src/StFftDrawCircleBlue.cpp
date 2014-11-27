@@ -32,9 +32,10 @@ void StFftDrawCircleBlue::update(){
 
 void StFftDrawCircleBlue::draw() {
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     cam.begin();
-    ofDisableAlphaBlending();
-    ofClear(0,0,0);
+    //ofDisableAlphaBlending();
+    ofClear(0,0,0,0);
     ofSetCircleResolution(64);
     ofxUISlider *gcirclesize = (ofxUISlider *)gui->getWidget("CIRCLE SIZE"); float circlesize = gcirclesize->getValue();
     ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();

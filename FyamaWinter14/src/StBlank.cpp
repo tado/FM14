@@ -24,8 +24,7 @@ void StBlank::update(){
 void StBlank::draw(){
     gui->setVisible(getSharedData().guiVisible);
     app->drawFbo->fbo.begin();
-    ofDisableAlphaBlending();
-    ofClear(0,0,0);
+
     app->drawFbo->fbo.end();
 }
 

@@ -80,14 +80,16 @@ void StFftCubeDistort::draw(){
     
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     post.begin(cam);
+    
     ofScale(zoom, zoom);
 
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue;
-    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.65);
+    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.6);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofEnableDepthTest();
@@ -104,7 +106,7 @@ void StFftCubeDistort::draw(){
     app->blackmagic->colorTexture.unbind();
     post.end();
     app->drawFbo->fbo.end();
-    ofDisableAlphaBlending();
+    //ofDisableAlphaBlending();
 }
 
 void StFftCubeDistort::guiEvent(ofxUIEventArgs &e){

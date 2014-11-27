@@ -35,6 +35,7 @@ void StFftDrawBar::draw() {
     ofxUIIntSlider *gplotsize = (ofxUIIntSlider *)gui->getWidget("PLOT HEIGHT"); int plotsize = gplotsize->getValue();
 
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     cam.begin();
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofClear(0);

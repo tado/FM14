@@ -33,7 +33,7 @@ void StFftDistortStripe::setup(){
 
     for (int i = 0; i < width * height * 4; i += 4){
         pixels[i] = pixels[i+1] = pixels[i+2] = 255;
-        if (i % 12 == 0) {
+        if (i % 16 == 0) {
             pixels[i + 3] = 255;
         } else {
             pixels[i + 3] = 0;
@@ -80,8 +80,9 @@ void StFftDistortStripe::draw(){
     
     
     app->drawFbo->fbo.begin();
-    ofDisableAlphaBlending();
-    ofClear(0,0,0);
+    app->drawFbo->blendMode = 0;
+    //ofDisableAlphaBlending();
+    ofClear(0,0,0,0);
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
                             ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
     ofPushMatrix();

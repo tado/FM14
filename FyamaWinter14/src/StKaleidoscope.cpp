@@ -59,6 +59,7 @@ void StKaleidoscope::draw(){
 
     float hue =ofMap(app->oscControl->controlVal[3], 0, 127, 0.0, 1.0);
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 1;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);

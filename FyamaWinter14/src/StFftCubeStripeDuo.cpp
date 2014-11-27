@@ -79,6 +79,7 @@ void StFftCubeStripeDuo::draw(){
     
     
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     post.begin(cam);
 
     ofScale(zoom, zoom);

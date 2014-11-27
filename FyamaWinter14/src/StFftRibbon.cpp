@@ -80,6 +80,7 @@ void StFftRibbon::update(){
 
 void StFftRibbon::draw(){
     app->drawFbo->fbo.begin();
+    app->drawFbo->blendMode = 0;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     cam.begin();
