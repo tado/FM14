@@ -46,6 +46,10 @@ void StFftCubeDistort::setup(){
     }
     tex.loadData(pixels, width, height, GL_RGBA);
     createMesh();
+    
+    int rotSpeed = 40;
+    rotationL = ofVec3f( ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed) );
+    rotationR = ofVec3f( ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed) );
 }
 
 void StFftCubeDistort::update(){
@@ -98,8 +102,16 @@ void StFftCubeDistort::draw(){
     
     ofPushMatrix();
     ofTranslate(-ofGetWidth()/6, 0);
+    ofRotateX(rotationL.x * ofGetElapsedTimef());
+    ofRotateY(rotationL.y * ofGetElapsedTimef());
+    ofRotateZ(rotationL.z * ofGetElapsedTimef());
     mesh.draw();
-    ofTranslate(ofGetWidth()/3, 0);
+    ofPopMatrix();
+    ofPushMatrix();
+    ofTranslate(ofGetWidth()/6, 0);
+    ofRotateX(rotationR.x * ofGetElapsedTimef());
+    ofRotateY(rotationR.y * ofGetElapsedTimef());
+    ofRotateZ(rotationR.z * ofGetElapsedTimef());
     mesh.draw();
     ofPopMatrix();
     

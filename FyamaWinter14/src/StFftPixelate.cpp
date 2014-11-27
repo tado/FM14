@@ -50,7 +50,7 @@ void StFftPixelate::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     app->drawFbo->fbo.begin();
-    app->drawFbo->blendMode = 1;
+    app->drawFbo->blendMode = 0;
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(0, 0, 0, fade);
     ofRect(0, 0, ofGetWidth(), ofGetHeight());

@@ -2,7 +2,7 @@
 #include "ofApp.h"
 
 DrawFbo::DrawFbo(){
-    top = 226;
+    top = 224;
     width = ofGetWidth();
     height = 630;
     

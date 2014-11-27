@@ -141,9 +141,9 @@ void ofApp::draw(){
 
     ofSetColor(srcMix);
     blackmagic->drawSub();
-    ofDisableAlphaBlending();
+    //ofDisableAlphaBlending();
     fxMix = oscControl->controlVal[1] * 2;
-    ofSetColor(fxMix);
+    ofSetColor(255, fxMix);
     // ofEnableBlendMode(OF_BLENDMODE_ADD);
     drawFbo->draw();
     ofDisableAlphaBlending();
