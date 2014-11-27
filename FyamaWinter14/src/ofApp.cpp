@@ -32,6 +32,7 @@
 #include "StFftSphereRibbon.h"
 #include "StFftRibbonCool.h"
 #include "StFftPixelate.h"
+#include "StFftBlueBeam.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -81,6 +82,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftSphereRibbon>();
     stateMachine.addState<StFftRibbonCool>();
     stateMachine.addState<StFftPixelate>();
+    stateMachine.addState<StFftBlueBeam>();
     
     stateMachine.changeState("StBlank");
     guiVisible = false;

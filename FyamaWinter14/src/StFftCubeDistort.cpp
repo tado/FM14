@@ -97,7 +97,7 @@ void StFftCubeDistort::draw(){
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofEnableDepthTest();
-    glEnable(GL_CULL_FACE);
+    //glEnable(GL_CULL_FACE);
     app->blackmagic->colorTexture.bind();
     
     ofPushMatrix();

@@ -46,6 +46,9 @@ void StFftSphereDistort::setup(){
     }
     tex.loadData(pixels, width, height, GL_RGBA);
     createMesh();
+    
+    int rotSpeed = 40;
+    rotation = ofVec3f( ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed) );
 }
 
 void StFftSphereDistort::update(){
@@ -83,9 +86,14 @@ void StFftSphereDistort::draw(){
     app->drawFbo->blendMode = 0;
     post.begin(cam);
     ofScale(zoom, zoom);
+    /*
     ofRotateX(ofGetElapsedTimef() * shiftspeed);
     ofRotateY(ofGetElapsedTimef() * shiftspeed * 1.1);
     ofRotateZ(ofGetElapsedTimef() * shiftspeed * 1.2);
+     */
+    ofRotateX(rotation.x * ofGetElapsedTimef());
+    ofRotateY(rotation.y * ofGetElapsedTimef());
+    ofRotateZ(rotation.z * ofGetElapsedTimef());
     //ofDisableAlphaBlending();
     ofClear(0,0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);

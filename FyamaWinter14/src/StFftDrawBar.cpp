@@ -37,11 +37,12 @@ void StFftDrawBar::draw() {
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
     cam.begin();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofClear(0);
+    ofDisableAlphaBlending();
+    ofClear(0,0,0,0);
     plot(app->fft->drawBins, -plotsize, plotsize / 2);
     cam.end();
     app->drawFbo->fbo.end();
+    ofDisableAlphaBlending();
 }
 
 void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
@@ -79,7 +80,7 @@ void StFftDrawBar::plot(vector<float>& buffer, float scale, float offset) {
     }
     ofSetLineWidth(1.0);
     glPopMatrix();
-    ofDisableAlphaBlending();
+    //ofDisableAlphaBlending();
 }
 
 void StFftDrawBar::guiEvent(ofxUIEventArgs &e){

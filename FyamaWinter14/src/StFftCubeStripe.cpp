@@ -45,6 +45,9 @@ void StFftCubeStripe::setup(){
     }
     tex.loadData(pixels, width, height, GL_RGBA);
     createMesh();
+
+    int rotSpeed = 40;
+    rotation = ofVec3f( ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed), ofRandom(-rotSpeed, rotSpeed) );
 }
 
 void StFftCubeStripe::update(){
@@ -94,8 +97,9 @@ void StFftCubeStripe::draw(){
     tex.bind();
     
     ofPushMatrix();
-    ofRotateY(10);
-    ofRotateX(10);
+    ofRotateX(rotation.x * ofGetElapsedTimef());
+    ofRotateY(rotation.y * ofGetElapsedTimef());
+    ofRotateZ(rotation.z * ofGetElapsedTimef());
     mesh.draw();
     ofPopMatrix();
     

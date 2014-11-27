@@ -27,4 +27,5 @@ public:
     float stepSize, xSteps, ySteps;
     vector<ofVec3f> currentVertex;
     ofxPostProcessing post;
+    ofVec3f rotation;
 };

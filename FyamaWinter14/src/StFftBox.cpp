@@ -51,7 +51,7 @@ void StFftBox::draw() {
     ofxUIIntSlider *gbrightness = (ofxUIIntSlider *)gui->getWidget("BRIGHTNESS"); int brightness = gbrightness->getValue();
     
     app->drawFbo->fbo.begin();
-    app->drawFbo->blendMode = 0;
+    app->drawFbo->blendMode = 1;
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     post.begin(cam);
