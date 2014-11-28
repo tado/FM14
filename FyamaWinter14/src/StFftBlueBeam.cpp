@@ -95,7 +95,9 @@ void StFftBlueBeam::draw(){
     ofRect(-ofGetWidth(), -ofGetHeight(), ofGetWidth() * 2, ofGetHeight() * 2);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofRotateZ(45);
    
+    ofSetColor(255);
     for (int i = 0; i < NUM; i++) {
         ribbons[i]->draw();
     }
