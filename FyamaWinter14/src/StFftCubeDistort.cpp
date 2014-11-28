@@ -93,7 +93,7 @@ void StFftCubeDistort::draw(){
     ofClear(0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue;
-    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.6);
+    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.55);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofEnableDepthTest();

@@ -3,6 +3,7 @@
 #include "SharedData.h"
 #include "ofxUI.h"
 #include "ofxPostProcessing.h"
+#include "ofxTwistedRibbon.h"
 #include "ofApp.h"
 
 class StFftBlueBeam : public itg::ofxState<SharedData>{
@@ -19,9 +20,9 @@ public:
     ofApp *app;
     
     ofEasyCam cam;
-    ofMesh mesh;
+    vector<ofxTwistedRibbon *> ribbons;
     vector<ofVec3f> position;
     vector<ofVec3f> velocity;
     ofxPostProcessing post;
-    static const int NUM = 10000;
+    static const int NUM = 128;
 };

@@ -11,6 +11,10 @@ void StFftBlueBeam::setup(){
     gui->addSpacer();
     gui->addLabel("FFT BEAM");
     gui->addSpacer();
+    gui->addSlider("SPEED", 10, 2000, 500);
+    gui->addIntSlider("LENGTH", 1, 40, 10);
+    gui->addSlider("THICKNESS", 0.0, 400.0, 100.0);
+    gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);
     gui->addSlider("BR", 0, 2.0, 1.0);
@@ -22,20 +26,46 @@ void StFftBlueBeam::setup(){
     ofAddListener(gui->newGUIEvent,this,&StFftBlueBeam::guiEvent);
     app = ((ofApp*)ofGetAppPtr());
     
-    //post.init(app->drawFbo->width, app->drawFbo->height);
-    //post.createPass<BloomPass>()->setEnabled(true);
-    cam.setFarClip(2000);
+    post.init(app->drawFbo->width, app->drawFbo->height);
+    post.createPass<BloomPass>()->setEnabled(true);
     
-    createMesh();
+    for (int i = 0; i < NUM; i++) {
+        float angle = ofRandom(PI * 2);
+        float length = ofRandom(500, ofGetWidth()*2);
+        float x = cos(angle) * length;
+        float y = sin(angle) * length;
+        ofVec3f pos = ofVec3f(x, y, ofRandom(-20000, 0));
+        position.push_back(pos);
+        ofxTwistedRibbon *r = new ofxTwistedRibbon();
+        r->length = 8;
+        r->thickness = 20;
+        ofColor col = ofColor(0, 127, 255);
+        r->color = col;
+        ribbons.push_back(r);
+    }   
 }
 
 void StFftBlueBeam::update(){
+    ofxUISlider *gspeed = (ofxUISlider *)gui->getWidget("SPEED"); float speed = gspeed->getValue();
+    ofxUIIntSlider *glength = (ofxUIIntSlider *)gui->getWidget("LENGTH"); int length = glength->getValue();
+    ofxUISlider *gthick = (ofxUISlider *)gui->getWidget("THICKNESS"); float thick = gthick->getValue();
+    float fftSum = 0;
+    for (int i = 0; i < app->fft->drawBins.size(); i++) {
+        fftSum += app->fft->drawBins[i];
+    }
     for (int i = 0; i < NUM; i++) {
-        position[i].z += 40.0;
-        if (position[i].z > 0) {
-            position[i].z -= 10000;
+        position[i].z += speed;
+        if (position[i].z > 1000) {
+            float angle = ofRandom(PI * 2);
+            float length = ofRandom(500, ofGetWidth()*2);
+            position[i].x = cos(angle) * length;
+            position[i].y = sin(angle) * length;
+            position[i].z = -20000;
+            ribbons[i]->points.clear();
         }
-        mesh.setVertex(i, position[i]);
+        ribbons[i]->thickness =  app->fft->drawBins[i] * thick;
+        ribbons[i]->length = length;
+        ribbons[i]->update(position[i]);
     }
     gui->setVisible(getSharedData().guiVisible);
 }
@@ -43,19 +73,21 @@ void StFftBlueBeam::update(){
 void StFftBlueBeam::draw(){
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
-    //post.begin(cam);
-    cam.begin();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0, 0, 0, 8);
-    ofRect(-ofGetWidth(), -ofGetHeight(), ofGetWidth()*2, ofGetHeight()*2);
-    ofEnableBlendMode(OF_BLENDMODE_ADD);
-    glPointSize(4.0);
-    ofSetColor(0, 127, 255);
-    mesh.draw();
+    post.begin(cam);
+    
     ofDisableAlphaBlending();
-    cam.end();
-    //post.end();
+    ofSetColor(0);
+    ofRect(-ofGetWidth(), -ofGetHeight(), ofGetWidth() * 2, ofGetHeight() * 2);
+    
+    
+    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofSetColor(0, 127, 255);
+    for (int i = 0; i < NUM; i++) {
+        ribbons[i]->draw();
+    }
+    post.end();
     app->drawFbo->fbo.end();
+    ofDisableAlphaBlending();
 }
 
 void StFftBlueBeam::guiEvent(ofxUIEventArgs &e){
@@ -66,15 +98,7 @@ void StFftBlueBeam::guiEvent(ofxUIEventArgs &e){
 }
 
 void StFftBlueBeam::createMesh(){
-    mesh.setMode(OF_PRIMITIVE_POINTS);
-    for (int i = 0; i < NUM; i++) {
-        ofVec3f pos = ofVec3f(ofRandom(-ofGetWidth(), ofGetWidth()),
-                              ofRandom(-ofGetHeight(), ofGetHeight()),
-                              ofRandom(-10000, 0));
-        position.push_back(pos);
-        mesh.addVertex(pos);
-    }
-        
+    
 }
 
 void StFftBlueBeam::stateExit(){
