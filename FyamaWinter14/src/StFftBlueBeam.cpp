@@ -29,6 +29,8 @@ void StFftBlueBeam::setup(){
     post.init(app->drawFbo->width, app->drawFbo->height);
     post.createPass<BloomPass>()->setEnabled(true);
     
+    cam.setFarClip(20000);
+    
     for (int i = 0; i < NUM; i++) {
         float angle = ofRandom(PI * 2);
         float length = ofRandom(500, ofGetWidth()*2);
@@ -39,7 +41,7 @@ void StFftBlueBeam::setup(){
         ofxTwistedRibbon *r = new ofxTwistedRibbon();
         r->length = 8;
         r->thickness = 20;
-        ofColor col = ofColor(0, 127, 255);
+        ofColor col = ofColor(255);
         r->color = col;
         ribbons.push_back(r);
     }   
@@ -49,6 +51,17 @@ void StFftBlueBeam::update(){
     ofxUISlider *gspeed = (ofxUISlider *)gui->getWidget("SPEED"); float speed = gspeed->getValue();
     ofxUIIntSlider *glength = (ofxUIIntSlider *)gui->getWidget("LENGTH"); int length = glength->getValue();
     ofxUISlider *gthick = (ofxUISlider *)gui->getWidget("THICKNESS"); float thick = gthick->getValue();
+    ofxUISlider *ghue = (ofxUISlider *)gui->getWidget("HUE"); float hue = ghue->getValue();
+    ofxUISlider *gsat = (ofxUISlider *)gui->getWidget("SAT"); float sat = gsat->getValue();
+    ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
+    
+    
+    float strength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 2.0);
+    
+    float controlHue;
+    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.6);
+    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
+    
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
         fftSum += app->fft->drawBins[i];
@@ -63,14 +76,16 @@ void StFftBlueBeam::update(){
             position[i].z = -20000;
             ribbons[i]->points.clear();
         }
-        ribbons[i]->thickness =  app->fft->drawBins[i] * thick;
+        ribbons[i]->thickness =  app->fft->drawBins[i] * thick * strength;
         ribbons[i]->length = length;
+        ribbons[i]->color = col;
         ribbons[i]->update(position[i]);
     }
     gui->setVisible(getSharedData().guiVisible);
 }
 
 void StFftBlueBeam::draw(){
+    
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
     post.begin(cam);
@@ -79,9 +94,8 @@ void StFftBlueBeam::draw(){
     ofSetColor(0);
     ofRect(-ofGetWidth(), -ofGetHeight(), ofGetWidth() * 2, ofGetHeight() * 2);
     
-    
     ofEnableBlendMode(OF_BLENDMODE_ADD);
-    ofSetColor(0, 127, 255);
+   
     for (int i = 0; i < NUM; i++) {
         ribbons[i]->draw();
     }
