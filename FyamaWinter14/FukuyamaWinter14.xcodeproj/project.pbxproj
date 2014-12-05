@@ -55,6 +55,7 @@
 		184CE0C91A1952B30006D04A /* StFftSphereStripe.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0C71A1952B30006D04A /* StFftSphereStripe.cpp */; };
 		184CE0CC1A1976D60006D04A /* StFftSphereDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0CA1A1976D60006D04A /* StFftSphereDistort.cpp */; };
 		184CE0CF1A19807B0006D04A /* StKaleidoscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 184CE0CD1A19807B0006D04A /* StKaleidoscope.cpp */; };
+		185245411A316EB200BC8AC3 /* AlphaMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1852453F1A316EB200BC8AC3 /* AlphaMask.cpp */; };
 		18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18574E5D1A15EAC600152134 /* OscControl.cpp */; };
 		18599E591A1C7837001D24C5 /* StFftDistortNotex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18599E571A1C7837001D24C5 /* StFftDistortNotex.cpp */; };
 		185A19AC1A07147300C24D6E /* StBlank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AA1A07147300C24D6E /* StBlank.cpp */; };
@@ -394,6 +395,8 @@
 		184CE0CB1A1976D60006D04A /* StFftSphereDistort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftSphereDistort.h; sourceTree = "<group>"; };
 		184CE0CD1A19807B0006D04A /* StKaleidoscope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StKaleidoscope.cpp; sourceTree = "<group>"; };
 		184CE0CE1A19807B0006D04A /* StKaleidoscope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StKaleidoscope.h; sourceTree = "<group>"; };
+		1852453F1A316EB200BC8AC3 /* AlphaMask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlphaMask.cpp; sourceTree = "<group>"; };
+		185245401A316EB200BC8AC3 /* AlphaMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaMask.h; sourceTree = "<group>"; };
 		185527997F0B73A279912DB2 /* ofxStateMachine.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxStateMachine.h; path = ../../../addons/ofxStateMachine/src/ofxStateMachine.h; sourceTree = SOURCE_ROOT; };
 		18574E5D1A15EAC600152134 /* OscControl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OscControl.cpp; sourceTree = "<group>"; };
 		18574E5E1A15EAC600152134 /* OscControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OscControl.h; sourceTree = "<group>"; };
@@ -2158,6 +2161,8 @@
 				18574E5E1A15EAC600152134 /* OscControl.h */,
 				18FB6A031A16D20D004A2845 /* FFTData.cpp */,
 				18FB6A041A16D20D004A2845 /* FFTData.h */,
+				1852453F1A316EB200BC8AC3 /* AlphaMask.cpp */,
+				185245401A316EB200BC8AC3 /* AlphaMask.h */,
 				18D0E9291A06652000072012 /* Particle */,
 				187A624E1A0605D100DC5640 /* states */,
 			);
@@ -2565,6 +2570,7 @@
 				C961BE22AB9A8CCF037FC18F /* ofxUITextArea.cpp in Sources */,
 				F8D05F7C7F785CE323983B47 /* ofxUITextInput.cpp in Sources */,
 				04C82720B149CE576B8CBB06 /* ofxUIToggle.cpp in Sources */,
+				185245411A316EB200BC8AC3 /* AlphaMask.cpp in Sources */,
 				E3A1109F67D711D6C256031E /* ofxUIToggleMatrix.cpp in Sources */,
 				60012C723B05938A3D388335 /* ofxUIValuePlotter.cpp in Sources */,
 				AE281BEBF3A00F1FC37F3DA0 /* ofxUIWaveform.cpp in Sources */,

@@ -14,7 +14,7 @@ void StFftSphereDistort::setup(){
     gui->addSlider("TOP SHIFT", 0, 100.0, 50.0);
     gui->addSlider("NOISE SCALE", 1.0, 30.0, 10.0);
     gui->addSlider("SHIFT SPEED", 0.0, 2.0, 1.0);
-    gui->addSlider("ZOOM", 0.0, 3.0, 1.0);
+    gui->addSlider("ZOOM", 0.0, 4.0, 1.0);
     gui->addSpacer();
     gui->addSlider("HUE", 0, 2.0, 1.0);
     gui->addSlider("SAT", 0, 2.0, 1.0);

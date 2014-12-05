@@ -93,6 +93,9 @@ void ofApp::setup(){
     srcMix = 255;
     fxMix = 255;
     
+    // Alpha Mask
+    alphaMask = new AlphaMask();
+    
     // GUI
     gui = new ofxUICanvas();
     gui->init(10, 10, 200, 200);
@@ -126,6 +129,7 @@ void ofApp::setup(){
 void ofApp::update(){
     blackmagic->update();
     oscControl->update();
+    alphaMask->update();
     
     // FFT
     ofxUISlider *gfftscale = (ofxUISlider *)gui->getWidget("FFT SCALE"); float fftscale = gfftscale->getValue();
@@ -148,6 +152,11 @@ void ofApp::draw(){
     ofSetColor(255, fxMix);
     // ofEnableBlendMode(OF_BLENDMODE_ADD);
     drawFbo->draw();
+    
+    // Alpha Mask
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    alphaMask->draw();
+    
     ofDisableAlphaBlending();
 }
 
