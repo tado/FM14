@@ -45,6 +45,7 @@
 		181634C81A15CE65005E39EB /* ToonPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181634AA1A15CE65005E39EB /* ToonPass.cpp */; };
 		181634C91A15CE65005E39EB /* VerticalTiltShifPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181634AC1A15CE65005E39EB /* VerticalTiltShifPass.cpp */; };
 		181634CA1A15CE65005E39EB /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181634AE1A15CE65005E39EB /* ZoomBlurPass.cpp */; };
+		181E8D4F1A32554F003DC63B /* AlphaMask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181E8D4D1A32554F003DC63B /* AlphaMask.cpp */; };
 		182AD6EF1A084FE7003C3DD8 /* StCvOpMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */; };
 		183C30931A25D4C10041BF0C /* StFftBlueBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */; };
 		1846E4491A16069C00241F18 /* StCvOpNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E4471A16069C00241F18 /* StCvOpNote.cpp */; };
@@ -374,6 +375,8 @@
 		181634AD1A15CE65005E39EB /* VerticalTiltShifPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalTiltShifPass.h; sourceTree = "<group>"; };
 		181634AE1A15CE65005E39EB /* ZoomBlurPass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZoomBlurPass.cpp; sourceTree = "<group>"; };
 		181634AF1A15CE65005E39EB /* ZoomBlurPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomBlurPass.h; sourceTree = "<group>"; };
+		181E8D4D1A32554F003DC63B /* AlphaMask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlphaMask.cpp; sourceTree = "<group>"; };
+		181E8D4E1A32554F003DC63B /* AlphaMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlphaMask.h; sourceTree = "<group>"; };
 		182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpMesh.cpp; sourceTree = "<group>"; };
 		182AD6EE1A084FE7003C3DD8 /* StCvOpMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpMesh.h; sourceTree = "<group>"; };
 		183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBlueBeam.cpp; sourceTree = "<group>"; };
@@ -436,7 +439,7 @@
 		187B46F81A219FE0004CDC53 /* StFftDrawCircleBlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftDrawCircleBlue.h; sourceTree = "<group>"; };
 		187B46FA1A21A164004CDC53 /* StFftCubeStripeDuo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftCubeStripeDuo.cpp; sourceTree = "<group>"; };
 		187B46FB1A21A164004CDC53 /* StFftCubeStripeDuo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftCubeStripeDuo.h; sourceTree = "<group>"; };
-		18CE42021A26A18700697AC1 /* FukuyamaWinter14Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FukuyamaWinter14Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CE42021A26A18700697AC1 /* FukuyamaWinter14Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FukuyamaWinter14Debug.app; path = FukuyamaWinter14HDDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D0E9241A06617300072012 /* StCvOpDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpDraw.cpp; sourceTree = "<group>"; };
 		18D0E9251A06617300072012 /* StCvOpDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpDraw.h; sourceTree = "<group>"; };
 		18D0E92A1A06653300072012 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
@@ -2158,6 +2161,8 @@
 				18574E5E1A15EAC600152134 /* OscControl.h */,
 				18FB6A031A16D20D004A2845 /* FFTData.cpp */,
 				18FB6A041A16D20D004A2845 /* FFTData.h */,
+				181E8D4D1A32554F003DC63B /* AlphaMask.cpp */,
+				181E8D4E1A32554F003DC63B /* AlphaMask.h */,
 				18D0E9291A06652000072012 /* Particle */,
 				187A624E1A0605D100DC5640 /* states */,
 			);
@@ -2565,6 +2570,7 @@
 				C961BE22AB9A8CCF037FC18F /* ofxUITextArea.cpp in Sources */,
 				F8D05F7C7F785CE323983B47 /* ofxUITextInput.cpp in Sources */,
 				04C82720B149CE576B8CBB06 /* ofxUIToggle.cpp in Sources */,
+				181E8D4F1A32554F003DC63B /* AlphaMask.cpp in Sources */,
 				E3A1109F67D711D6C256031E /* ofxUIToggleMatrix.cpp in Sources */,
 				60012C723B05938A3D388335 /* ofxUIValuePlotter.cpp in Sources */,
 				AE281BEBF3A00F1FC37F3DA0 /* ofxUIWaveform.cpp in Sources */,

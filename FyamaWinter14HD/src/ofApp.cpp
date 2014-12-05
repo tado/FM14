@@ -37,7 +37,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    ofSetWindowPosition(1920, 0);
+    //ofSetWindowPosition(1920, 0);
     
     // FFT
     bufferSize = 1024;
@@ -93,6 +93,9 @@ void ofApp::setup(){
     srcMix = 255;
     fxMix = 255;
     
+    // Alpha Mask
+    alphaMask = new AlphaMask();
+    
     // GUI
     gui = new ofxUICanvas();
     gui->init(10, 10, 200, 200);
@@ -138,9 +141,9 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofxUIIntSlider *m = (ofxUIIntSlider *)gui->getWidget("MIX");
-
+    
     srcMix = oscControl->controlVal[0] * 2;
-
+    
     ofSetColor(srcMix);
     blackmagic->drawSub();
     //ofDisableAlphaBlending();
@@ -148,6 +151,11 @@ void ofApp::draw(){
     ofSetColor(255, fxMix);
     // ofEnableBlendMode(OF_BLENDMODE_ADD);
     drawFbo->draw();
+    
+    // Alpha Mask
+    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+    alphaMask->draw();
+    
     ofDisableAlphaBlending();
 }
 

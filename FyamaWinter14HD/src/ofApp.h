@@ -11,6 +11,7 @@
 #include "BlackmagicCapture.h"
 #include "DrawFbo.h"
 #include "FFTData.h"
+#include "AlphaMask.h"
 
 class ofApp : public ofBaseApp{
     
@@ -41,4 +42,6 @@ public:
 
     int bufferSize;
     FFTData *fft;
+
+    AlphaMask *alphaMask;
 };
