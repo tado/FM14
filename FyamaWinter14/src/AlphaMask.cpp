@@ -36,7 +36,6 @@ void AlphaMask::draw(){
     maskShader.begin();
     
     glActiveTexture(GL_TEXTURE0_ARB);
-    //topLayer.getTextureReference().bind();
     srcTex.bind();
     
     glActiveTexture(GL_TEXTURE1_ARB);
@@ -51,17 +50,14 @@ void AlphaMask::draw(){
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, maskOffsetY);
     glVertex2f(0, 0);
     
-    // glMultiTexCoord2d(GL_TEXTURE0_ARB, topLayer.getWidth(), 0);
     glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, maskOffsetY);
     glVertex2f(ofGetWidth(), 0);
     
-    // glMultiTexCoord2d(GL_TEXTURE0_ARB, topLayer.getWidth(), topLayer.getHeight());
     glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight());
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, mask.getHeight() - maskOffsetY);
     glVertex2f( ofGetWidth(), ofGetHeight());
     
-    // glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, topLayer.getHeight());
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight());
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, mask.getHeight() - maskOffsetY);
     glVertex2f(0, ofGetHeight());
@@ -87,5 +83,4 @@ void AlphaMask::draw(){
     ofTranslate(0, 630 + 224);
     ofRect(0, 0, 1920, 300);
     ofPopMatrix();
-
 }
