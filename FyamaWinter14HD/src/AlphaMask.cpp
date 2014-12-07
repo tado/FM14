@@ -52,15 +52,15 @@ void AlphaMask::draw(){
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, maskOffsetY);
-    glVertex2f(ofGetWidth(), 0);
+    glVertex2f(1920, 0);
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, srcTex.getWidth(), srcTex.getHeight());
     glMultiTexCoord2d(GL_TEXTURE1_ARB, mask.getWidth() - maskOffsetX, mask.getHeight() - maskOffsetY);
-    glVertex2f( ofGetWidth(), ofGetHeight());
+    glVertex2f(1920, 1080);
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, srcTex.getHeight());
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, mask.getHeight() - maskOffsetY);
-    glVertex2f(0, ofGetHeight());
+    glVertex2f(0, 1080);
     
     glEnd();
     
