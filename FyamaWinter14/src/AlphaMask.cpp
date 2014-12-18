@@ -43,8 +43,8 @@ void AlphaMask::draw(){
     
     glBegin(GL_QUADS);
     
-    float maskOffsetX =  ofMap(app->oscControl->controlVal[5], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
-    float maskOffsetY =  ofMap(app->oscControl->controlVal[5], 0, 127, -mask.getHeight(), mask.getHeight() / 3.0);
+    float maskOffsetX =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getWidth(), mask.getWidth() / 3.0);
+    float maskOffsetY =  ofMap(app->oscControl->controlVal[3], 0, 127, -mask.getHeight(), mask.getHeight() / 3.0);
     
     glMultiTexCoord2d(GL_TEXTURE0_ARB, 0, 0);
     glMultiTexCoord2d(GL_TEXTURE1_ARB, maskOffsetX, maskOffsetY);
@@ -73,7 +73,7 @@ void AlphaMask::draw(){
     maskShader.end();
     fbo.end();
     
-    ofSetColor(255, app->oscControl->controlVal[4] * 2);
+    ofSetColor(255, app->oscControl->controlVal[2] * 2);
     fbo.draw(0, 0);
     
     ofSetColor(0);

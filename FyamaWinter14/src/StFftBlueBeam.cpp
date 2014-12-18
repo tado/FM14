@@ -56,10 +56,10 @@ void StFftBlueBeam::update(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     
-    float strength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 2.0);
+    float strength = ofMap(app->oscControl->controlVal[4], 0, 127, 0, 2.0);
     
     float controlHue;
-    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.6);
+    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     
     float fftSum = 0;
@@ -95,6 +95,7 @@ void StFftBlueBeam::draw(){
     ofRect(-ofGetWidth(), -ofGetHeight(), ofGetWidth() * 2, ofGetHeight() * 2);
     
     ofEnableBlendMode(OF_BLENDMODE_ADD);
+    ofFill();
     ofRotateZ(45);
    
     ofSetColor(255);

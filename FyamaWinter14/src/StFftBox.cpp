@@ -64,7 +64,7 @@ void StFftBox::draw() {
         force[i] = (springForce + addForce) * 0.2;
         size[i] += force[i];
 
-        int controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 160);
+        int controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 160);
         int hueLow = controlHue;
         int hueHigh = (controlHue + 255 - 63);
         

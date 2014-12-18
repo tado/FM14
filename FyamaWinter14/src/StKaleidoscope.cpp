@@ -45,7 +45,7 @@ void StKaleidoscope::update(){
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
         fftSum += app->fft->drawBins[i];
     }
-    float noiseStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 5, 10);
+    float noiseStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 5, 10);
     noise->setFrequency(fftSum/ float(app->fft->drawBins.size()) * noiseStrength);
     noise->setAmplitude(fftSum/ float(app->fft->drawBins.size()) * noiseStrength * noiseamp);
 
@@ -57,7 +57,7 @@ void StKaleidoscope::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
 
-    float hue =ofMap(app->oscControl->controlVal[3], 0, 127, 0.0, 1.0);
+    float hue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.0, 1.0);
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 0;
     ofDisableAlphaBlending();

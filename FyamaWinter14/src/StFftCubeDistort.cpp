@@ -56,7 +56,7 @@ void StFftCubeDistort::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
     
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 8);
+    float distortionStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 1, 8);
     
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -93,7 +93,7 @@ void StFftCubeDistort::draw(){
     ofClear(0,0,0);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     float controlHue;
-    controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 0.55);
+    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.55);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofEnableDepthTest();

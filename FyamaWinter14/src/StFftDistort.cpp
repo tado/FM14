@@ -34,7 +34,7 @@ void StFftDistort::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
 
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 1, 8);
+    float distortionStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 1, 8);
 
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
@@ -79,7 +79,7 @@ void StFftDistort::draw(){
     mesh.draw();
     app->blackmagic->colorTexture.unbind();
     
-    float hue =ofMap(app->oscControl->controlVal[3], 0, 127, 0.0, 1.0);
+    float hue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.0, 1.0);
     ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofSetLineWidth(linewidth);

@@ -64,7 +64,7 @@ void StCvOpDistort::update(){
     
     int i = 0;
     
-    float distortionStrength = ofMap(app->oscControl->controlVal[2], 0, 127, 0, 300);
+    float distortionStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 0, 300);
     
     ofVec2f scale = ofVec2f(flow.getWidth() / float(ofGetWidth()), flow.getHeight() / float(ofGetHeight()));
     for(int y = 1; y + 1 < ySteps; y++) {

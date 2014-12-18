@@ -59,7 +59,7 @@ void StTrianglePixelate::draw(){
                 ofRotateZ(45);
                 
                 float controlHue;
-                controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
+                controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 1);
                 col.setHsb(col.getHue() * controlHue, col.getSaturation() * sat, col.getBrightness() * br);
                 ofSetColor(col);
                 ofRect(0, 0, radius * circleScale, radius* circleScale);

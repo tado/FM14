@@ -51,8 +51,8 @@ void StFftDot::draw() {
     ofScale(zoom, zoom);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    float controlRep = ofMap(app->oscControl->controlVal[2], 0, 127.0, 1.0, 120.0);
-    int controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 63);
+    float controlRep = ofMap(app->oscControl->controlVal[4], 0, 127.0, 1.0, 120.0);
+    int controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 63);
     int hueLow = controlHue;
     int hueHigh = (controlHue + 255 - 63);
     

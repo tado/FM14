@@ -63,7 +63,7 @@ void StFftPixelate::draw(){
         fftSum += app->fft->drawBins[i];
     }
     
-    float sizeScale = ofMap(app->oscControl->controlVal[2], 0, 127, 0.5, 2.0);
+    float sizeScale = ofMap(app->oscControl->controlVal[4], 0, 127, 0.5, 2.0);
     
     currentRotate += (fftSum * 4.0 - currentRotate) / 10.0;
     currentSize += (fftSum / 30.0 * sizeScale - currentSize) * interp;
@@ -78,7 +78,7 @@ void StFftPixelate::draw(){
                 ofRotateZ(45);
                 
                 float controlHue;
-                controlHue = ofMap(app->oscControl->controlVal[3], 0, 127, 0, 1);
+                controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 1);
                 col.setHsb(col.getHue() * controlHue, col.getSaturation() * sat, col.getBrightness() * br * (fade / 255.0));
                 ofSetColor(col);
                 ofRect(0, 0, radius* circleScale * currentSize, radius* circleScale * currentSize);
