@@ -94,6 +94,10 @@ void StCvOpMesh::update(){
             ofRectangle region = ofRectangle(x, y, skip, skip);
             force = flow.getAverageFlowInRegion(region);
         }
+
+        // wind
+        force += ofVec3f(0.01, 0.001, 0.0);
+        
         particles[i]->addForce(force * accel);
         particles[i]->updateForce();
         particles[i]->updatePos();
@@ -119,7 +123,7 @@ void StCvOpMesh::draw(){
     ofPixelsRef pix = ((ofApp*)ofGetAppPtr())->blackmagic->colorPixels;
     
     app->drawFbo->fbo.begin();
-    app->drawFbo->blendMode = 0;
+    app->drawFbo->blendMode = 1;
     ofTranslate(0, -app->drawFbo->top);
     ofEnableBlendMode(OF_BLENDMODE_ALPHA);
     ofSetColor(0, 0, 0, fade);
