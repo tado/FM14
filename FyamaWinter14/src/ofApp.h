@@ -44,4 +44,6 @@ public:
     FFTData *fft;
     
     AlphaMask *alphaMask;
+    
+    int screenMode; // 0: 1920 x 630, 1: FullHD
 };

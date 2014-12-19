@@ -1,4 +1,5 @@
 #include "BlackmagicCapture.h"
+#include "ofApp.h"
 
 BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
     inputMode = 0;
@@ -6,11 +7,7 @@ BlackmagicCapture::BlackmagicCapture(int _width, int _height, float _framerate){
     width = _width;
     height = _height;
     framerate = _framerate;
-    
-    drawTop = sourceTop = 223 / 2.0;
-    drawWidth = sourceWidth = ofGetWidth();
-    drawHeight = sourceHeight = 630 / 2.0;
-    
+
     switch (inputMode) {
         case 0:
             blackmagic.setup(width, height, framerate);
@@ -85,6 +82,17 @@ void BlackmagicCapture::draw() {
 }
 
 void BlackmagicCapture::drawSub(){
+    ofApp *app = ((ofApp*)ofGetAppPtr());
+    if (app->screenMode == 0) {
+        drawTop = sourceTop = 223 / 2.0;
+        drawHeight = sourceHeight = 630 / 2.0;
+    } else {
+        drawTop = sourceTop = 0;
+        drawHeight = sourceHeight = 1080 / 2.0;
+    }
+    
+    drawWidth = sourceWidth = ofGetWidth();
+    
     ofPushMatrix();
     ofScale(1.0, 2.0);
     fbo.getTextureReference().drawSubsection(0, drawTop, drawWidth, drawHeight, 0, sourceTop, sourceWidth, sourceHeight);

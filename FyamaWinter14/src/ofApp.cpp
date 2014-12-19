@@ -123,6 +123,9 @@ void ofApp::setup(){
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&ofApp::guiEvent);
+    
+    // 1920 x 630
+    screenMode = 0;
 }
 
 //--------------------------------------------------------------
@@ -195,7 +198,14 @@ void ofApp::keyPressed(int key){
             ofHideCursor() : ofShowCursor();
             stateMachine.getSharedData().guiVisible?
             stateMachine.getSharedData().guiVisible = false :stateMachine.getSharedData().guiVisible = true;
-            break;            
+            break;
+        case 'z':
+            if (screenMode == 0) {
+                screenMode = 1;
+            } else {
+                screenMode = 0;
+            }
+            break;
     }
 }
 

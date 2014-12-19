@@ -33,9 +33,9 @@ void StFftDistort::setup(){
 void StFftDistort::update(){
     ofxUISlider *gnoisescale = (ofxUISlider *)gui->getWidget("NOISE SCALE"); float noisescale = gnoisescale->getValue();
     ofxUISlider *gshiftspeed = (ofxUISlider *)gui->getWidget("SHIFT SPEED"); float shiftspeed = gshiftspeed->getValue();
-
+    
     float distortionStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 1, 8);
-
+    
     float fftSum = 0;
     for (int i = 0; i < app->fft->drawBins.size(); i++) {
         fftSum += app->fft->drawBins[i];
@@ -70,9 +70,9 @@ void StFftDistort::draw(){
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
                             ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
     ofPushMatrix();
-    ofScale(scale.x, scale.y);
+    //ofScale(scale.x, scale.y);
     ofSetColor(255);
-    ofTranslate(0, -app->drawFbo->top + topshift);
+    //ofTranslate(0, -app->drawFbo->top + topshift);
     ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     app->blackmagic->colorTexture.bind();
@@ -103,7 +103,7 @@ void StFftDistort::createMesh(){
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 10;
     ySteps = ofGetHeight() / stepSize;
-    xSteps = ofGetWidth() / stepSize;
+    xSteps = ofGetWidth() / stepSize + 1;
     for(int y = 0; y < ySteps; y++) {
         for(int x = 0; x < xSteps; x++) {
             mesh.addVertex(ofVec3f(x * stepSize, y * stepSize, 0));

@@ -30,7 +30,7 @@ void AlphaMask::update(){
 void AlphaMask::draw(){
     ofApp *app = ((ofApp*)ofGetAppPtr());
     srcTex = app->blackmagic->colorTexture;
-
+    
     fbo.begin();
     ofClear(0, 0, 0);
     maskShader.begin();
@@ -76,11 +76,13 @@ void AlphaMask::draw(){
     ofSetColor(255, app->oscControl->controlVal[2] * 2);
     fbo.draw(0, 0);
     
-    ofSetColor(0);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-    ofPushMatrix();
-    ofRect(0, 0, 1920, 224);
-    ofTranslate(0, 630 + 224);
-    ofRect(0, 0, 1920, 300);
-    ofPopMatrix();
+    if (app->screenMode == 0) {
+        ofSetColor(0);
+        ofSetRectMode(OF_RECTMODE_CORNER);
+        ofPushMatrix();
+        ofRect(0, 0, 1920, 224);
+        ofTranslate(0, 630 + 224);
+        ofRect(0, 0, 1920, 300);
+        ofPopMatrix();
+    }
 }

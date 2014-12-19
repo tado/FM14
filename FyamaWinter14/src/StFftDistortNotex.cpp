@@ -70,9 +70,9 @@ void StFftDistortNotex::draw(){
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
                             ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
     ofPushMatrix();
-    ofScale(scale.x, scale.y);
+    //ofScale(scale.x, scale.y);
     ofSetColor(255);
-    ofTranslate(0, -app->drawFbo->top + topshift);
+    //ofTranslate(0, -app->drawFbo->top + topshift);
     ofDisableBlendMode();
     float hue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.7, 1.0);
     ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
@@ -97,7 +97,7 @@ void StFftDistortNotex::createMesh(){
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 10;
     ySteps = ofGetHeight() / stepSize;
-    xSteps = ofGetWidth() / stepSize;
+    xSteps = ofGetWidth() / stepSize + 1;
     for(int y = 0; y < ySteps; y++) {
         for(int x = 0; x < xSteps; x++) {
             mesh.addVertex(ofVec3f(x * stepSize, y * stepSize, 0));

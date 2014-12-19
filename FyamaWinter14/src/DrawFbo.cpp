@@ -2,9 +2,9 @@
 #include "ofApp.h"
 
 DrawFbo::DrawFbo(){
-    top = 224;
+    top = 0;
     width = ofGetWidth();
-    height = 630;
+    height = 1080;
     
     fbo.allocate(width, height);
     fbo.begin();
