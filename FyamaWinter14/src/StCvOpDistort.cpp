@@ -98,10 +98,11 @@ void StCvOpDistort::draw(){
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
                             ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
     ofPushMatrix();
-    ofScale(scale.x, scale.y);
-    ofTranslate(0, -app->drawFbo->top + topshift);
+    //ofScale(scale.x, scale.y);
+    //ofTranslate(0, -app->drawFbo->top + topshift);
     
-    ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
+    float controlHue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.7, 1.0);
+    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     mesh.drawWireframe();
     
@@ -120,7 +121,7 @@ void StCvOpDistort::createMesh(){
     mesh.setMode(OF_PRIMITIVE_TRIANGLES);
     stepSize = 20;
     ySteps = app->blackmagic->colorTexture.getHeight() / stepSize;
-    xSteps = app->blackmagic->colorTexture.getWidth() / stepSize;
+    xSteps = app->blackmagic->colorTexture.getWidth() / stepSize + 1;
     for(int y = 0; y < ySteps; y++) {
         for(int x = 0; x < xSteps; x++) {
             mesh.addVertex(ofVec2f(x * stepSize, y * stepSize));
