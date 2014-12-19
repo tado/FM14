@@ -144,7 +144,9 @@ void StCvOpParticlePath::draw(){
                                          ));
                 if(dist < maxdist){
                     float level = ofMap(dist, 0, maxdist, 255, 0);
-                    ofColor col; col.setHsb(hue * 255, sat * 255, br * level);
+                    float controlHue;
+                    controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
+                    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * level);
                     ofSetColor(col);
                     
                     ofLine(particles[i]->position.x, particles[i]->position.y,
