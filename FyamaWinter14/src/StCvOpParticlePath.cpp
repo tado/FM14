@@ -34,6 +34,10 @@ void StCvOpParticlePath::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticlePath::guiEvent);
     
+    post.init(ofGetWidth(), ofGetHeight());
+    bloom = post.createPass<BloomPass>();
+    bloom->setEnabled(true);
+    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -85,6 +89,7 @@ void StCvOpParticlePath::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
+    post.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -93,7 +98,7 @@ void StCvOpParticlePath::draw(){
         ofPushMatrix();
         ofScale(scale.x, scale.y);
         
-        int controlMax = powf(app->oscControl->controlVal[4] * 0.25, 1.7);
+        int controlMax = powf(app->oscControl->controlVal[4] * 0.2, 1.5);
         
         for (int i = 0; i < controlMax; i++) {
             int x = ofRandom(flow.getWidth()-skip);
@@ -132,10 +137,9 @@ void StCvOpParticlePath::draw(){
         ofEnableBlendMode(OF_BLENDMODE_ADD);
 
         for (int i = 0; i < particles.size(); i++) {
-            ofSetLineWidth(3.0);
             //ofRect(particles[i]->position.x, particles[i]->position.y, particles[i]->radius, particles[i]->radius);
             
-            ofSetLineWidth(2.0);
+            ofSetLineWidth(3.0);
             for (int j = 1; j < particles.size()-1; j++) {
                 float dist = sqrt(double((particles[i]->position.x - particles[j]->position.x)
                                          * (particles[i]->position.x - particles[j]->position.x)
@@ -158,6 +162,7 @@ void StCvOpParticlePath::draw(){
         
         ofPopMatrix();
     }
+    post.end();
     app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);

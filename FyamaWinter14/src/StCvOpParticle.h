@@ -5,6 +5,7 @@
 #include "ofxCv.h"
 #include "Particle.h"
 #include "ofApp.h"
+#include "ofxPostProcessing.h"
 
 class StCvOpParticle : public itg::ofxState<SharedData>{
 public:
@@ -33,6 +34,9 @@ public:
     // Particle
     deque<Particle *> particles;
     static const int NUM = 100;
+    
+    ofxPostProcessing post;
+    BloomPass::Ptr bloom;
     
     ofApp *app;
 };

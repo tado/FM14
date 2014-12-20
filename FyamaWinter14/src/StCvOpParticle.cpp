@@ -34,6 +34,10 @@ void StCvOpParticle::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpParticle::guiEvent);
     
+    post.init(ofGetWidth(), ofGetHeight());
+    bloom = post.createPass<BloomPass>();
+    bloom->setEnabled(true);
+    
     app = ((ofApp*)ofGetAppPtr());
 }
 
@@ -85,6 +89,7 @@ void StCvOpParticle::draw(){
     
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
+    post.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofTranslate(0, -app->drawFbo->top);
@@ -136,6 +141,7 @@ void StCvOpParticle::draw(){
         ofDisableBlendMode();
         ofPopMatrix();
     }
+    post.end();
     app->drawFbo->fbo.end();
     
     gui->setVisible(getSharedData().guiVisible);

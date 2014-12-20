@@ -31,17 +31,17 @@
 <Widget>
     <Kind>42</Kind>
     <Name>MAX</Name>
-    <Value>781</Value>
+    <Value>578</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>THRESH</Name>
-    <Value>1.239583373</Value>
+    <Value>0.687500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>RADIUS</Name>
-    <Value>1.677083373</Value>
+    <Value>2.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
@@ -51,7 +51,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>ACCEL</Name>
-    <Value>1.500000000</Value>
+    <Value>2.062500000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
