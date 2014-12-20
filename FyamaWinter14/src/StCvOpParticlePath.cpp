@@ -139,7 +139,7 @@ void StCvOpParticlePath::draw(){
         for (int i = 0; i < particles.size(); i++) {
             //ofRect(particles[i]->position.x, particles[i]->position.y, particles[i]->radius, particles[i]->radius);
             
-            ofSetLineWidth(3.0);
+            ofSetLineWidth(4.0);
             for (int j = 1; j < particles.size()-1; j++) {
                 float dist = sqrt(double((particles[i]->position.x - particles[j]->position.x)
                                          * (particles[i]->position.x - particles[j]->position.x)

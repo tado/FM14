@@ -4,12 +4,12 @@
 		"appversion" : 		{
 			"major" : 7,
 			"minor" : 0,
-			"revision" : 0,
+			"revision" : 1,
 			"architecture" : "x86",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 9.0, 52.0, 932.0, 1016.0 ],
+		"rect" : [ 501.0, 45.0, 930.0, 1016.0 ],
 		"bgcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 		"editing_bgcolor" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 		"bglocked" : 0,
@@ -39,6 +39,40 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-31",
+					"ignoreclick" : 1,
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 724.0, 388.0, 100.0, 100.0 ],
+					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st30.jpg",
+					"presentation" : 1,
+					"presentation_rect" : [ 480.0, 330.0, 105.0, 105.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"autofit" : 1,
+					"forceaspect" : 1,
+					"id" : "obj-103",
+					"ignoreclick" : 1,
+					"maxclass" : "fpic",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 254.0, 603.0, 100.0, 100.0 ],
+					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st29.jpg",
+					"presentation" : 1,
+					"presentation_rect" : [ 165.0, 330.0, 105.0, 105.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Helvetica Neue",
 					"fontsize" : 24.0,
@@ -276,23 +310,6 @@
 				"box" : 				{
 					"autofit" : 1,
 					"forceaspect" : 1,
-					"id" : "obj-94",
-					"ignoreclick" : 1,
-					"maxclass" : "fpic",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 854.0, 282.0, 100.0, 100.0 ],
-					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st21.jpg",
-					"presentation" : 1,
-					"presentation_rect" : [ 585.0, 435.0, 105.0, 105.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"autofit" : 1,
-					"forceaspect" : 1,
 					"id" : "obj-91",
 					"ignoreclick" : 1,
 					"maxclass" : "fpic",
@@ -319,7 +336,7 @@
 					"patching_rect" : [ 583.0, 505.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st26.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 270.0, 540.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 585.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -336,7 +353,7 @@
 					"patching_rect" : [ 787.0, 344.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st25.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 165.0, 540.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 480.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -353,7 +370,7 @@
 					"patching_rect" : [ 239.0, 588.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st24.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 540.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 60.0, 330.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -370,7 +387,7 @@
 					"patching_rect" : [ 798.0, 616.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st23.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 795.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 1630.0, 715.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -387,7 +404,7 @@
 					"patching_rect" : [ 839.0, 436.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st22.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 690.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 690.0, 330.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -404,7 +421,7 @@
 					"patching_rect" : [ 810.0, 382.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st28.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 480.0, 540.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 795.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -421,7 +438,7 @@
 					"patching_rect" : [ 709.0, 373.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st20.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 480.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 375.0, 330.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -438,7 +455,7 @@
 					"patching_rect" : [ 628.0, 561.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st19.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 375.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 585.0, 330.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -455,7 +472,7 @@
 					"patching_rect" : [ 890.0, 640.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st18.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 270.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 270.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -472,7 +489,7 @@
 					"patching_rect" : [ 834.0, 436.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st17.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 165.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 165.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -489,7 +506,7 @@
 					"patching_rect" : [ 740.0, 441.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st16.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 435.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 60.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -506,7 +523,7 @@
 					"patching_rect" : [ 558.0, 460.0, 100.0, 100.0 ],
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st15.jpg",
 					"presentation" : 1,
-					"presentation_rect" : [ 375.0, 330.0, 105.0, 105.0 ]
+					"presentation_rect" : [ 690.0, 540.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -524,40 +541,6 @@
 					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st14.jpg",
 					"presentation" : 1,
 					"presentation_rect" : [ 270.0, 330.0, 105.0, 105.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"autofit" : 1,
-					"forceaspect" : 1,
-					"id" : "obj-32",
-					"ignoreclick" : 1,
-					"maxclass" : "fpic",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 1257.0, 429.0, 100.0, 100.0 ],
-					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st2.jpg",
-					"presentation" : 1,
-					"presentation_rect" : [ 165.0, 330.0, 105.0, 105.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"autofit" : 1,
-					"forceaspect" : 1,
-					"id" : "obj-31",
-					"ignoreclick" : 1,
-					"maxclass" : "fpic",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "jit_matrix" ],
-					"patching_rect" : [ 1228.0, 423.0, 100.0, 100.0 ],
-					"pic" : "Macintosh HD:/Users/tado/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon/st11.jpg",
-					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 330.0, 105.0, 105.0 ]
 				}
 
 			}
@@ -2264,7 +2247,14 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "st21.jpg",
+				"name" : "st29.jpg",
+				"bootpath" : "~/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon",
+				"patcherrelativepath" : "../bin/data/sticon",
+				"type" : "JPEG",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "st30.jpg",
 				"bootpath" : "~/Documents/of_v0.8.4_osx_release/apps/Fukuyama14/FyamaWinter14/bin/data/sticon",
 				"patcherrelativepath" : "../bin/data/sticon",
 				"type" : "JPEG",

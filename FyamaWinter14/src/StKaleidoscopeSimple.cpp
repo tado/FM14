@@ -45,7 +45,7 @@ void StKaleidoscopeSimple::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     ofxUISlider *gzoom = (ofxUISlider *)gui->getWidget("ZOOM"); float zoom = gzoom->getValue();
     
-    float hue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.0, 1.0);
+    float controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
     app->drawFbo->fbo.begin();
     app->drawFbo->blendMode = 1;
     ofDisableAlphaBlending();
@@ -54,7 +54,7 @@ void StKaleidoscopeSimple::draw(){
     post.begin(cam);
     ofPushMatrix();
     ofScale(zoom, zoom);
-    ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
+    ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
     ofRotateZ(ofGetElapsedTimef() * 20.0);
     app->blackmagic->colorTexture.draw(-app->blackmagic->width/2, -app->blackmagic->height/2, app->blackmagic->width, app->blackmagic->height);

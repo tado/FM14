@@ -7,7 +7,7 @@
 #include "ofApp.h"
 #include "ofxPostProcessing.h"
 
-class StCvOpNote : public itg::ofxState<SharedData>{
+class StCvOpSparkle : public itg::ofxState<SharedData>{
 public:
     string getName();
     void setup();

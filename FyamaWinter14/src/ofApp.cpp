@@ -7,6 +7,7 @@
 #include "StCvOpParticlePath.h"
 #include "StCvOpMesh.h"
 #include "StCvOpNote.h"
+#include "StCvOpSparkle.h"
 #include "StCvOpDistort.h"
 #include "StFftDistortNotex.h"
 #include "StSakuraParticle.h"
@@ -58,6 +59,7 @@ void ofApp::setup(){
     stateMachine.addState<StCvOpParticlePath>();
     stateMachine.addState<StCvOpMesh>();
     stateMachine.addState<StCvOpNote>();
+    stateMachine.addState<StCvOpSparkle>();
     stateMachine.addState<StCvOpDistort>();
     stateMachine.addState<StFftDistortNotex>();
     stateMachine.addState<StSakuraParticle>();

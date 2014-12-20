@@ -1,11 +1,11 @@
-#include "StCvOpNote.h"
+#include "StCvOpSparkle.h"
 #include "ofApp.h"
 
-string StCvOpNote::getName(){
-    return "StCvOpNote";
+string StCvOpSparkle::getName(){
+    return "StCvOpSparkle";
 }
 
-void StCvOpNote::setup(){
+void StCvOpSparkle::setup(){
     gui = new ofxUICanvas();
     gui->init(212, 10, 200, 200);
     gui->addSpacer();
@@ -29,15 +29,15 @@ void StCvOpNote::setup(){
     gui->addSlider("BR", 0, 2.0, 1.0);
     gui->addSpacer();
     gui->addButton("SAVE SETTINGS", false);
-    gui->loadSettings("StCvOpNote.xml");
+    gui->loadSettings("StCvOpSparkle.xml");
     gui->autoSizeToFitWidgets();
     gui->setVisible(false);
-    ofAddListener(gui->newGUIEvent,this,&StCvOpNote::guiEvent);
+    ofAddListener(gui->newGUIEvent,this,&StCvOpSparkle::guiEvent);
     
-    img[0].loadImage("note0.png");
-    img[1].loadImage("note1.png");
-    img[2].loadImage("note2.png");
-    img[3].loadImage("note3.png");
+    img[0].loadImage("sparkle0.png");
+    img[1].loadImage("sparkle1.png");
+    img[2].loadImage("sparkle2.png");
+    img[3].loadImage("sparkle3.png");
     
     post.init(ofGetWidth(), ofGetHeight());
     bloom = post.createPass<BloomPass>();
@@ -46,7 +46,7 @@ void StCvOpNote::setup(){
     app = ((ofApp*)ofGetAppPtr());
 }
 
-void StCvOpNote::update(){
+void StCvOpSparkle::update(){
     //CV params
     ofxUISlider *p = (ofxUISlider *)gui->getWidget("PYR SCALE"); pyrScale = p->getValue();
     ofxUIIntSlider *l = (ofxUIIntSlider *)gui->getWidget("LEVELS"); levels = l->getValue();
@@ -76,7 +76,7 @@ void StCvOpNote::update(){
     gui->setVisible(getSharedData().guiVisible);
 }
 
-void StCvOpNote::draw(){
+void StCvOpSparkle::draw(){
     ofxUIIntSlider *gskip = (ofxUIIntSlider *)gui->getWidget("SKIP"); int skip = gskip->getValue();
     ofxUIIntSlider *gmax = (ofxUIIntSlider *)gui->getWidget("MAX"); int max = gmax->getValue();
     ofxUISlider *gthresh = (ofxUISlider *)gui->getWidget("THRESH"); float thresh = gthresh->getValue();
@@ -93,7 +93,7 @@ void StCvOpNote::draw(){
     pix.resize(camWidth, camHeight);
     
     app->drawFbo->fbo.begin();
-    app->drawFbo->blendMode = 1;
+    app->drawFbo->blendMode = 0;
     post.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
@@ -136,7 +136,13 @@ void StCvOpNote::draw(){
         }
         ofEnableBlendMode(OF_BLENDMODE_ADD);
         for (int i = 0; i < particles.size(); i++) {
-            ofSetColor(particles[i]->color);
+            // ofSetColor(particles[i]->color);
+            
+            float controlHue;
+            controlHue = ofMap(app->oscControl->controlVal[5], 0, 127, 0, 0.6);
+            ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
+            ofSetColor(col);
+            
             ofSetRectMode(OF_RECTMODE_CENTER);
             ofPushMatrix();
             ofTranslate(particles[i]->position);
@@ -154,13 +160,13 @@ void StCvOpNote::draw(){
     gui->setVisible(getSharedData().guiVisible);
 }
 
-void StCvOpNote::guiEvent(ofxUIEventArgs &e){
+void StCvOpSparkle::guiEvent(ofxUIEventArgs &e){
     string name = e.widget->getName();
     if(name == "SAVE SETTINGS"){
-        gui->saveSettings("StCvOpNote.xml");
+        gui->saveSettings("StCvOpSparkle.xml");
     }
 }
 
-void StCvOpNote::stateExit(){
+void StCvOpSparkle::stateExit(){
     gui->setVisible(false);
 }
