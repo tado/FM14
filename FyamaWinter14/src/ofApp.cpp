@@ -12,6 +12,7 @@
 #include "StSakuraParticle.h"
 #include "StRgbDelay.h"
 #include "StKaleidoscope.h"
+#include "StKaleidoscopeSimple.h"
 #include "StTrianglePixelate.h"
 //#include "StSphereSoundWave.h"
 
@@ -79,6 +80,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftSphereDistort>();
     stateMachine.addState<StFftCubeDistort>();
     stateMachine.addState<StKaleidoscope>();
+    stateMachine.addState<StKaleidoscopeSimple>();
     stateMachine.addState<StFftSphereRibbon>();
     stateMachine.addState<StFftRibbonCool>();
     stateMachine.addState<StFftPixelate>();
@@ -150,10 +152,8 @@ void ofApp::draw(){
 
     ofSetColor(srcMix);
     blackmagic->drawSub();
-    //ofDisableAlphaBlending();
     fxMix = oscControl->controlVal[1] * 2;
     ofSetColor(255, fxMix);
-    // ofEnableBlendMode(OF_BLENDMODE_ADD);
     drawFbo->draw();
     
     // Alpha Mask

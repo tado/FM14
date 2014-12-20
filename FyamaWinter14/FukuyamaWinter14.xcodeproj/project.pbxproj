@@ -62,6 +62,7 @@
 		185A19AF1A071DCD00C24D6E /* StCvOpParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185A19AD1A071DCD00C24D6E /* StCvOpParticle.cpp */; };
 		185D167E1A19CE3200BC748A /* StTrianglePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185D167C1A19CE3100BC748A /* StTrianglePixelate.cpp */; };
 		18603D741A189198001F097D /* StRgbDelay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18603D721A189198001F097D /* StRgbDelay.cpp */; };
+		187532A31A450F91001A18A8 /* StKaleidoscopeSimple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187532A11A450F91001A18A8 /* StKaleidoscopeSimple.cpp */; };
 		18768BF91A1B0F1100CEE77F /* StFftRibbonCool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18768BF71A1B0F1100CEE77F /* StFftRibbonCool.cpp */; };
 		187A624C1A06048200DC5640 /* BlackmagicCapture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */; };
 		187A62521A06065E00DC5640 /* StSimplePixelate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187A62501A06065E00DC5640 /* StSimplePixelate.cpp */; };
@@ -412,6 +413,8 @@
 		18603D731A189198001F097D /* StRgbDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StRgbDelay.h; sourceTree = "<group>"; };
 		187084D91A43BA4A00876B62 /* FukuyamaWinter14Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FukuyamaWinter14Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1872C170F254B6602E12CDDD /* DeckLinkAPIDiscovery.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = DeckLinkAPIDiscovery.h; path = ../../../addons/ofxBlackmagic/libs/DeckLink/include/DeckLinkAPIDiscovery.h; sourceTree = SOURCE_ROOT; };
+		187532A11A450F91001A18A8 /* StKaleidoscopeSimple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StKaleidoscopeSimple.cpp; sourceTree = "<group>"; };
+		187532A21A450F91001A18A8 /* StKaleidoscopeSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StKaleidoscopeSimple.h; sourceTree = "<group>"; };
 		18768BF71A1B0F1100CEE77F /* StFftRibbonCool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftRibbonCool.cpp; sourceTree = "<group>"; };
 		18768BF81A1B0F1100CEE77F /* StFftRibbonCool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftRibbonCool.h; sourceTree = "<group>"; };
 		187A624A1A06048200DC5640 /* BlackmagicCapture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlackmagicCapture.cpp; sourceTree = "<group>"; };
@@ -1084,6 +1087,8 @@
 				185D167D1A19CE3200BC748A /* StTrianglePixelate.h */,
 				18603D721A189198001F097D /* StRgbDelay.cpp */,
 				18603D731A189198001F097D /* StRgbDelay.h */,
+				187532A11A450F91001A18A8 /* StKaleidoscopeSimple.cpp */,
+				187532A21A450F91001A18A8 /* StKaleidoscopeSimple.h */,
 				184CE0CD1A19807B0006D04A /* StKaleidoscope.cpp */,
 				184CE0CE1A19807B0006D04A /* StKaleidoscope.h */,
 				18D0E9241A06617300072012 /* StCvOpDraw.cpp */,
@@ -2469,6 +2474,7 @@
 				D7014DA1DC8ABBB6FB6C76EE /* b2Math.cpp in Sources */,
 				18FB69FE1A16C608004A2845 /* SakuraParticle.cpp in Sources */,
 				846526908DD0BAEA0684CD1A /* b2Settings.cpp in Sources */,
+				187532A31A450F91001A18A8 /* StKaleidoscopeSimple.cpp in Sources */,
 				999D76E6FFB13255152CB8D0 /* b2StackAllocator.cpp in Sources */,
 				C5A13ECE4E672F9F9ADED941 /* b2Stat.cpp in Sources */,
 				187A62691A0606F200DC5640 /* ofxLabel.cpp in Sources */,
