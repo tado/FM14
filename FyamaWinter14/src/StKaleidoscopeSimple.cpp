@@ -56,7 +56,7 @@ void StKaleidoscopeSimple::draw(){
     ofScale(zoom, zoom);
     ofColor col; col.setHsb(hue * 255, sat * 255, br * 255);
     ofSetColor(col);
-    //ofRotateZ(ofGetElapsedTimef() * 10.0);
+    ofRotateZ(ofGetElapsedTimef() * 20.0);
     app->blackmagic->colorTexture.draw(-app->blackmagic->width/2, -app->blackmagic->height/2, app->blackmagic->width, app->blackmagic->height);
     ofPopMatrix();
     post.end();

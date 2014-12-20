@@ -1,7 +1,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>PYR SCALE</Name>
-    <Value>0.505312502</Value>
+    <Value>0.314531267</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -11,12 +11,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>42</Value>
+    <Value>71</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>ITERATION</Name>
-    <Value>2</Value>
+    <Value>6</Value>
 </Widget>
 <Widget>
     <Kind>2</Kind>
@@ -26,7 +26,7 @@
 <Widget>
     <Kind>4</Kind>
     <Name>THRESH</Name>
-    <Value>1.552083373</Value>
+    <Value>0.843750000</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
@@ -36,20 +36,20 @@
 <Widget>
     <Kind>4</Kind>
     <Name>TOP SHIFT</Name>
-    <Value>50.000000000</Value>
+    <Value>52.083332062</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>HUE</Name>
-    <Value>0.166666672</Value>
+    <Value>1.000000000</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>SAT</Name>
-    <Value>0.927083313</Value>
+    <Value>0.708333313</Value>
 </Widget>
 <Widget>
     <Kind>4</Kind>
     <Name>BR</Name>
-    <Value>1.000000000</Value>
+    <Value>2.000000000</Value>
 </Widget>

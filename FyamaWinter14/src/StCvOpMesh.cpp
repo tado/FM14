@@ -96,7 +96,7 @@ void StCvOpMesh::update(){
         }
 
         // wind
-        force += ofVec3f(0.05, 0.01, 0.0);
+        force += ofVec3f(0.04, 0.007, 0.0);
         
         particles[i]->addForce(force * accel);
         particles[i]->updateForce();

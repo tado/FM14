@@ -31,8 +31,11 @@ void StCvOpDistort::setup(){
     gui->setVisible(false);
     ofAddListener(gui->newGUIEvent,this,&StCvOpDistort::guiEvent);
     
-    app = ((ofApp*)ofGetAppPtr());
+    post.init(ofGetWidth(), ofGetHeight());
+    bloom = post.createPass<BloomPass>();
+    bloom->setEnabled(true);
     
+    app = ((ofApp*)ofGetAppPtr());
     createMesh();
 }
 
@@ -92,22 +95,36 @@ void StCvOpDistort::draw(){
     ofxUISlider *gbr = (ofxUISlider *)gui->getWidget("BR"); float br = gbr->getValue();
     
     app->drawFbo->fbo.begin();
-    app->drawFbo->blendMode = 0;
+    app->drawFbo->blendMode = 1;
+    post.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);
     ofVec2f scale = ofVec2f(ofGetWidth() / float(app->blackmagic->colorTexture.getWidth()),
                             ofGetHeight() / float(app->blackmagic->colorTexture.getHeight()));
     ofPushMatrix();
-    //ofScale(scale.x, scale.y);
+    ofScale(scale.x, -scale.y);
+    ofTranslate(0, -app->blackmagic->height / scale.y);
+    ofSetColor(255);
     //ofTranslate(0, -app->drawFbo->top + topshift);
+    //ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    float controlHue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.7, 1.0);
+    float controlHue =ofMap(app->oscControl->controlVal[5], 0, 127, 0.0, 1.0);
     ofColor col; col.setHsb(controlHue * 255, sat * 255, br * 255);
     ofSetColor(col);
+    
+    app->blackmagic->colorTexture.bind();
+    mesh.draw();
+    app->blackmagic->colorTexture.unbind();
+    
+    /*
+    ofSetLineWidth(1);
     mesh.drawWireframe();
+     */
     
     ofPopMatrix();
+    post.end();
     app->drawFbo->fbo.end();
+    ofDisableAlphaBlending();
 }
 
 void StCvOpDistort::guiEvent(ofxUIEventArgs &e){

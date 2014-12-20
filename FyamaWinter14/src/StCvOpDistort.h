@@ -5,6 +5,7 @@
 #include "ofxCv.h"
 #include "Particle.h"
 #include "ofApp.h"
+#include "ofxPostProcessing.h"
 
 class StCvOpDistort : public itg::ofxState<SharedData>{
 public:
@@ -34,6 +35,9 @@ public:
     ofMesh mesh;
     float stepSize, xSteps, ySteps;
     vector<ofVec2f> currentVertex;
+    
+    ofxPostProcessing post;
+    BloomPass::Ptr bloom;
     
     ofApp *app;
 };
