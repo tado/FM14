@@ -67,7 +67,7 @@ void StCvOpDistort::update(){
     
     int i = 0;
     
-    float distortionStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 0, 300);
+    float distortionStrength = ofMap(app->oscControl->controlVal[4], 0, 127, 0, 20);
     
     ofVec2f scale = ofVec2f(flow.getWidth() / float(ofGetWidth()), flow.getHeight() / float(ofGetHeight()));
     for(int y = 1; y + 1 < ySteps; y++) {
@@ -78,7 +78,8 @@ void StCvOpDistort::update(){
             ofVec2f offset;
             offset = flow.getAverageFlowInRegion(area);
             if (offset.length() < thresh && ofGetFrameNum() % skip == 0) {
-                currentVertex[i] += ((position + distortionStrength * offset) / scale - currentVertex[i]) * 0.3;
+                //currentVertex[i] += ((position + distortionStrength * offset) / scale - currentVertex[i]) * 0.3;
+                currentVertex[i] += ((position + distortionStrength * offset) / scale - currentVertex[i]);
             }
             mesh.setVertex(i, currentVertex[i]);
             i++;

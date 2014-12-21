@@ -5,7 +5,7 @@
 string stateMatrix[5][8] = {
     {"StSoundWave", "StFftDistortStripe", "StFftSphereStripe", "StFftSphereDistort", "StKaleidoscope", "StFftDistortNotex"},
     {"StFftDrawCircleBlue", "StFftCubeStripe", "StFftCubeStripeDuo", "StFftCubeDistort", "StFftBlueBeam", "StFftDrawBar", "StFftBox", "StFftDrawCircle"},
-    {"StRgbDelay", "StKaleidoscopeSimple", "StCvOpDistort", "StCvOpParticlePath", "StCvOpSparkle", "StCvOpParticle", "StCvOpMesh"},
+    {"StRgbDelay", "StKaleidoscopeSimple", "StCvOpNoiseWrap", "StCvOpParticlePath", "StCvOpSparkle", "StCvOpParticle", "StCvOpMesh", "StCvOpDistort"},
     {},
     {"StSimplePixelate", "StTrianglePixelate", "StCvOpDraw","StSakuraParticle", "StFftDot", "StFftPixelate", "StFftRibbonCool", "StCvOpNote"}
 };

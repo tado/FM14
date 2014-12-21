@@ -6,12 +6,12 @@
 <Widget>
     <Kind>42</Kind>
     <Name>LEVELS</Name>
-    <Value>1</Value>
+    <Value>2</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>
     <Name>WIN SIZE</Name>
-    <Value>5</Value>
+    <Value>24</Value>
 </Widget>
 <Widget>
     <Kind>42</Kind>

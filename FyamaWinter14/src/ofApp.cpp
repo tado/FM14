@@ -14,6 +14,7 @@
 #include "StRgbDelay.h"
 #include "StKaleidoscope.h"
 #include "StKaleidoscopeSimple.h"
+#include "StCvOpNoiseWrap.h"
 #include "StTrianglePixelate.h"
 //#include "StSphereSoundWave.h"
 
@@ -39,7 +40,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofBackground(0);
-    //ofSetWindowPosition(1920, 0);
+    // ofSetWindowPosition(1920, 0);
     
     // FFT
     bufferSize = 1024;
@@ -83,6 +84,7 @@ void ofApp::setup(){
     stateMachine.addState<StFftCubeDistort>();
     stateMachine.addState<StKaleidoscope>();
     stateMachine.addState<StKaleidoscopeSimple>();
+    stateMachine.addState<StCvOpNoiseWrap>();
     stateMachine.addState<StFftSphereRibbon>();
     stateMachine.addState<StFftRibbonCool>();
     stateMachine.addState<StFftPixelate>();

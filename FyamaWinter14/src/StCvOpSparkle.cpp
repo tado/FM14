@@ -93,7 +93,7 @@ void StCvOpSparkle::draw(){
     pix.resize(camWidth, camHeight);
     
     app->drawFbo->fbo.begin();
-    app->drawFbo->blendMode = 0;
+    app->drawFbo->blendMode = 1;
     post.begin();
     ofDisableAlphaBlending();
     ofClear(0,0,0);

@@ -47,6 +47,7 @@
 		181634CA1A15CE65005E39EB /* ZoomBlurPass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 181634AE1A15CE65005E39EB /* ZoomBlurPass.cpp */; };
 		182AD6EF1A084FE7003C3DD8 /* StCvOpMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 182AD6ED1A084FE7003C3DD8 /* StCvOpMesh.cpp */; };
 		183C30931A25D4C10041BF0C /* StFftBlueBeam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */; };
+		183FC2E51A468E1700F0CA8A /* StCvOpNoiseWrap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */; };
 		1846E4491A16069C00241F18 /* StCvOpNote.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E4471A16069C00241F18 /* StCvOpNote.cpp */; };
 		1846E44C1A1606E000241F18 /* NoteParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E44A1A1606E000241F18 /* NoteParticle.cpp */; };
 		1846E44F1A1612DC00241F18 /* StCvOpDistort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1846E44D1A1612DC00241F18 /* StCvOpDistort.cpp */; };
@@ -381,6 +382,8 @@
 		182AD6EE1A084FE7003C3DD8 /* StCvOpMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpMesh.h; sourceTree = "<group>"; };
 		183C30911A25D4C10041BF0C /* StFftBlueBeam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StFftBlueBeam.cpp; sourceTree = "<group>"; };
 		183C30921A25D4C10041BF0C /* StFftBlueBeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StFftBlueBeam.h; sourceTree = "<group>"; };
+		183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpNoiseWrap.cpp; sourceTree = "<group>"; };
+		183FC2E41A468E1700F0CA8A /* StCvOpNoiseWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpNoiseWrap.h; sourceTree = "<group>"; };
 		1846E4471A16069C00241F18 /* StCvOpNote.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StCvOpNote.cpp; sourceTree = "<group>"; };
 		1846E4481A16069C00241F18 /* StCvOpNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StCvOpNote.h; sourceTree = "<group>"; };
 		1846E44A1A1606E000241F18 /* NoteParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NoteParticle.cpp; sourceTree = "<group>"; };
@@ -1090,6 +1093,8 @@
 				185D167D1A19CE3200BC748A /* StTrianglePixelate.h */,
 				18603D721A189198001F097D /* StRgbDelay.cpp */,
 				18603D731A189198001F097D /* StRgbDelay.h */,
+				183FC2E31A468E1700F0CA8A /* StCvOpNoiseWrap.cpp */,
+				183FC2E41A468E1700F0CA8A /* StCvOpNoiseWrap.h */,
 				187532A11A450F91001A18A8 /* StKaleidoscopeSimple.cpp */,
 				187532A21A450F91001A18A8 /* StKaleidoscopeSimple.h */,
 				184CE0CD1A19807B0006D04A /* StKaleidoscope.cpp */,
@@ -2427,6 +2432,7 @@
 				184CE0CF1A19807B0006D04A /* StKaleidoscope.cpp in Sources */,
 				47741AD4D543009E4DF29CEA /* ofxProcessFFT.cpp in Sources */,
 				0686C38EE993C67B96002FA1 /* kiss_fft.c in Sources */,
+				183FC2E51A468E1700F0CA8A /* StCvOpNoiseWrap.cpp in Sources */,
 				18574E5F1A15EAC600152134 /* OscControl.cpp in Sources */,
 				181634C31A15CE65005E39EB /* PostProcessing.cpp in Sources */,
 				6DB9E3911BA6216FE1F0E91C /* kiss_fftr.c in Sources */,
